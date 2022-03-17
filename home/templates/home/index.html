@@ -52,4 +52,62 @@
 {% endblock %}
 
 
+{% block corejs %}
+{{ block.super }}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+{% endblock %}
 
+
+
+{% block postloadjs %}
+{{ block.super }}
+<script>
+    // Animating the animal cards on window load
+    function homePageAnimCards(){
+        document.addEventListener("DOMContentLoaded", function(event) {
+        window.onload = function(){ 
+        gsap.fromTo(".shop-all-btn",
+            {
+                autoAlpha: 0
+            }, 
+            {
+                autoAlpha: 1, duration: 2, delay:3, zIndex:999
+            }
+        );
+
+        gsap.from("#up-fade-in", {
+        duration: 3,
+        ease: "power1.out",
+        y: -500,
+        opacity: 1,
+        });
+
+        gsap.from("#right-fade-in", {
+            duration: 3,
+            ease: "power1.out",
+            x: 500,
+            opacity: 1,
+        });
+
+        gsap.from("#bottom-fade-in", {
+            duration: 3,
+            ease: "power1.out",
+            y: 500,
+            opacity: 1,
+        });
+
+        gsap.from("#left-fade-in", {
+            duration: 3,
+            ease: "power1.out",
+            x: -500,
+            opacity: 1,
+        });
+        }})
+    }
+
+    if ($(window).width() > 768) {
+        homePageAnimCards();
+    }
+</script>
+
+{% endblock %}
