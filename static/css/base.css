@@ -112,6 +112,23 @@ ul{
     padding: 0 !important;
 }
 
+.card-img-top{
+    max-height: 16rem;
+    max-width: 14.6rem;
+    min-height: 16rem;
+    min-width: 14.6rem;
+}
+
+.img-lg{
+    max-width: 26em;
+}
+
+.img-md{
+    max-width: 10em;
+    min-height: 11rem;
+
+}
+
 /* ----------------------------------------------------------------- dropdowns */
 .dropdown-menu{
 

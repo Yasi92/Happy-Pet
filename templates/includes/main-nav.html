@@ -9,10 +9,10 @@
             <a class="nav-link text-black" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                 aria-expanded="false">All Products</a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">By Price</a></li>
-                <li><a class="dropdown-item" href="#">By Rating</a></li>
-                <li><a class="dropdown-item" href="#">By Category</a></li>
-                <li><a class="dropdown-item" href="#">All Products</a></li>
+                <li><a class="dropdown-item" href="{% url 'products' %}?sort=price&direction=asc">By Price</a></li>
+                <li><a class="dropdown-item" href="{% url 'products' %}?sort=rating&direction=desc">By Rating</a></li>
+                <li><a class="dropdown-item" href="{% url 'products' %}?sort=category&direction=asc">By Category</a></li>
+                <li><a class="dropdown-item" href="{% url 'products' %}">All Products</a></li>
             </ul>
         </li>
         <!-- ---------------------------------------Dogs------------------------------------ -->
@@ -20,17 +20,17 @@
             <a class="nav-link text-black" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                 aria-expanded="false">Dogs</a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">Nutrition</a></li>
-                <li><a class="dropdown-item" href="#">Snacks</a></li>
-                <li><a class="dropdown-item" href="#">Toys</a></li>
-                <li><a class="dropdown-item" href="#">Care</a></li>
-                <li><a class="dropdown-item" href="#">Pillows & Baskets</a></li>
-                <li><a class="dropdown-item" href="#">Collars</a></li>
-                <li><a class="dropdown-item" href="#">Clothing</a></li>
-                <li><a class="dropdown-item" href="#">Belts & Leashes</a></li>
-                <li><a class="dropdown-item" href="#">Accessories</a></li>
-                <li><a class="dropdown-item" href="#">Dietry Supplements</a></li>
-                <li><a class="dropdown-item" href="#">All For Your Dog</a></li>
+                <li><a class="dropdown-item" href="{% url 'products' %}?category=dogs&subcategory=nutrition">Nutrition</a></li>
+                <li><a class="dropdown-item" href="{% url 'products' %}?category=dogs&subcategory=snacks">Snacks</a></li>
+                <li><a class="dropdown-item" href="{% url 'products' %}?category=dogs&subcategory=toys">Toys</a></li>
+                <li><a class="dropdown-item" href="{% url 'products' %}?category=dogs&subcategory=care">Care</a></li>
+                <li><a class="dropdown-item" href="{% url 'products' %}?category=dogs&subcategory=pillows, baskets">Pillows & Baskets</a></li>
+                <li><a class="dropdown-item" href="{% url 'products' %}?category=dogs&subcategory=collars">Collars</a></li>
+                <li><a class="dropdown-item" href="{% url 'products' %}?category=dogs&subcategory=clothing">Clothing</a></li>
+                <li><a class="dropdown-item" href="{% url 'products' %}?category=dogs&subcategory=belts, leashes">Belts & Leashes</a></li>
+                <li><a class="dropdown-item" href="{% url 'products' %}?category=dogs&subcategory=accessories">Accessories</a></li>
+                <li><a class="dropdown-item" href="{% url 'products' %}?category=dogs&subcategory=dietary_supplements">Dietry Supplements</a></li>
+                <li><a class="dropdown-item" href="{% url 'products' %}?category=dogs&subcategory=nutrition,snacks,toys,care,pillows,baskets,collars,clothing,belts,leashes,accessories,dietary_supplements">All For Your Dog</a></li>
             </ul>
         </li>
         <!-- ---------------------------------------cats------------------------------------ -->
@@ -38,18 +38,18 @@
             <a class="nav-link text-black" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                 aria-expanded="false">Cats</a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">Nutrition</a></li>
-                <li><a class="dropdown-item" href="#">Snacks</a></li>
-                <li><a class="dropdown-item" href="#">Toys</a></li>
-                <li><a class="dropdown-item" href="#">Care</a></li>
-                <li><a class="dropdown-item" href="#">Pillows & Baskets</a></li>
-                <li><a class="dropdown-item" href="#">Collars</a></li>
-                <li><a class="dropdown-item" href="#">Clothing</a></li>
-                <li><a class="dropdown-item" href="#">Belts & Leashes</a></li>
-                <li><a class="dropdown-item" href="#">Accessories</a></li>
-                <li><a class="dropdown-item" href="#">Dietry Supplements</a></li>
-                <li><a class="dropdown-item" href="#">Cat Litter</a></li>
-                <li><a class="dropdown-item" href="#">All For Your Cat</a></li>
+                <li><a class="dropdown-item" href="{% url 'products' %}?category=cats&subcategory=nutrition">Nutrition</a></li>
+                <li><a class="dropdown-item" href="{% url 'products' %}?category=cats&subcategory=snacks">Snacks</a></li>
+                <li><a class="dropdown-item" href="{% url 'products' %}?category=cats&subcategory=toys">Toys</a></li>
+                <li><a class="dropdown-item" href="{% url 'products' %}?category=cats&subcategory=care">Care</a></li>
+                <li><a class="dropdown-item" href="{% url 'products' %}?category=cats&subcategory=pillows, baskets">Pillows & Baskets</a></li>
+                <li><a class="dropdown-item" href="{% url 'products' %}?category=cats&subcategory=collars">Collars</a></li>
+                <li><a class="dropdown-item" href="{% url 'products' %}?category=cats&subcategory=clothing">Clothing</a></li>
+                <li><a class="dropdown-item" href="{% url 'products' %}?category=cats&subcategory=belts, leashes">Belts & Leashes</a></li>
+                <li><a class="dropdown-item" href="{% url 'products' %}?category=cats&subcategory=accessories">Accessories</a></li>
+                <li><a class="dropdown-item" href="{% url 'products' %}?category=cats&subcategory=dietary_supplements">Dietry Supplements</a></li>
+                <li><a class="dropdown-item" href="{% url 'products' %}?category=birds&subcategory=cat_litter">Cat Litter</a></li>
+                <li><a class="dropdown-item" href="{% url 'products' %}?category=cats&subcategory=nutrition,snacks,toys,care,pillows,baskets,collars,clothing,belts,leashes,accessories,dietary_supplements,cat_litter">All For Your Cat</a></li>
             </ul>
         </li>
         <!-- ---------------------------------------birds------------------------------------ -->
@@ -57,15 +57,15 @@
             <a class="nav-link text-black" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                 aria-expanded="false">Birds</a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">Nutrition</a></li>
-                <li><a class="dropdown-item" href="#">Snacks</a></li>
-                <li><a class="dropdown-item" href="#">Toys</a></li>
-                <li><a class="dropdown-item" href="#">Care</a></li>
-                <li><a class="dropdown-item" href="#">Accessories</a></li>
-                <li><a class="dropdown-item" href="#">Dietry Supplements</a></li>
-                <li><a class="dropdown-item" href="#">Bird Houses</a></li>
-                <li><a class="dropdown-item" href="#">Chicken Feed</a></li>
-                <li><a class="dropdown-item" href="#">All For Your Bird</a></li>
+                <li><a class="dropdown-item" href="{% url 'products' %}?category=birds&subcategory=nutrition">Nutrition</a></li>
+                <li><a class="dropdown-item" href="{% url 'products' %}?category=birds&subcategory=snacks">Snacks</a></li>
+                <li><a class="dropdown-item" href="{% url 'products' %}?category=birds&subcategory=toys">Toys</a></li>
+                <li><a class="dropdown-item" href="{% url 'products' %}?category=birds&subcategory=care">Care</a></li>
+                <li><a class="dropdown-item" href="{% url 'products' %}?category=birds&subcategory=accessories">Accessories</a></li>
+                <li><a class="dropdown-item" href="{% url 'products' %}?category=birds&subcategory=dietary_supplements">Dietry Supplements</a></li>
+                <li><a class="dropdown-item" href="{% url 'products' %}?category=birds&subcategory=bird_houses">Bird Houses</a></li>
+                <li><a class="dropdown-item" href="{% url 'products' %}?category=birds&subcategory=chicken_feed">Chicken Feed</a></li>
+                <li><a class="dropdown-item" href="{% url 'products' %}?category=birds&subcategory=nutrition,snacks,toys,care,accessories,dietary_supplements,bird_houses,chicken_feed">All For Your Bird</a></li>
             </ul>
         </li>
         <!-- ---------------------------------------rodents------------------------------------ -->
@@ -73,15 +73,15 @@
             <a class="nav-link text-black" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                 aria-expanded="false">Rodents</a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">Nutrition</a></li>
-                <li><a class="dropdown-item" href="#">Snacks</a></li>
-                <li><a class="dropdown-item" href="#">Toys</a></li>
-                <li><a class="dropdown-item" href="#">Care</a></li>
-                <li><a class="dropdown-item" href="#">Collars</a></li>
-                <li><a class="dropdown-item" href="#">Accessories</a></li>
-                <li><a class="dropdown-item" href="#">Dietry Supplements</a></li>
-                <li><a class="dropdown-item" href="#">Rodent Houses</a></li>
-                <li><a class="dropdown-item" href="#">All For Your Rodent</a></li>
+                <li><a class="dropdown-item" href="{% url 'products' %}?category=rodents&subcategory=nutrition">Nutrition</a></li>
+                <li><a class="dropdown-item" href="{% url 'products' %}?category=rodents&subcategory=snacks">Snacks</a></li>
+                <li><a class="dropdown-item" href="{% url 'products' %}?category=rodents&subcategory=toys">Toys</a></li>
+                <li><a class="dropdown-item" href="{% url 'products' %}?category=rodents&subcategory=care">Care</a></li>
+                <li><a class="dropdown-item" href="{% url 'products' %}?category=rodents&subcategory=collars">Collars</a></li>
+                <li><a class="dropdown-item" href="{% url 'products' %}?category=rodents&subcategory=accessories">Accessories</a></li>
+                <li><a class="dropdown-item" href="{% url 'products' %}?category=rodents&subcategory=dietary_supplements">Dietry Supplements</a></li>
+                <li><a class="dropdown-item" href="{% url 'products' %}?category=rodents&subcategory=rodent_house">Rodent Houses</a></li>
+                <li><a class="dropdown-item" href="{% url 'products' %}?category=rodents&subcategory=nutrition,snacks,toys,care,collars,accessories,dietary_supplements,rodent_house">All For Your Rodent</a></li>
             </ul>
         </li>
     </ul>
