@@ -77,3 +77,19 @@ def all_products(request):
     
 
     return render(request, template, context)
+
+
+
+def product_detail(request, product_id):
+    """ A view to return product details and similar products """
+
+    products = Product.objects.all()
+    product = get_object_or_404(Product, pk=product_id)
+
+
+    template = 'products/product_detail.html'
+    context = {
+        'product' : product,
+    }
+
+    return render(request, template, context)        

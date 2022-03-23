@@ -26,11 +26,11 @@
                     <div class="col-sm-6 col-lg-4 col-xl-3 mb-4 product-div">
                         <div class="card h-100 text-center">
                             {% if product.image1 %}
-                                <a href="#" target="_blank">
+                                <a href="{% url 'product_detail' product.product_id %}" target="_blank">
                                     <img src="{{ product.image1.url }}" class="card-img-top img-responsive mt-2" alt="{{ product.name }}">
                                 </a>
                             {% else %}
-                                <a href="#">
+                                <a href="{% url 'product_detail' product.product_id %}">
                                     <img src="{{ MEDIA_URL }}noimage.png" class="card-img-top img-responsive" alt="{{ product.name }}">
                                 </a>
                             {% endif %}
