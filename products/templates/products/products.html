@@ -12,9 +12,21 @@
 {% block content %}
 <div class="overlay"></div>
     <div class="container-fluid">
-        <div class="row">
+        <div class="row my-3">
             <div class="col-12 text-center mt-3 mx-auto">
-                
+                <h2 class="logo-font">Products</h2>
+                {% if current_categories and current_subcategories %}
+                        <h4 class="current-category">
+                            <span class="badge bg-dark">
+                                <a href="{% url 'products' %}?category={{ current_categories.0 }}&subcategory={% for s in related_subcategory %}{{ s }},{% endfor %}" class="text-decoration-none text-white">{{ current_categories.0 | title }}</a>
+                            </span>
+                        </h4>
+                    <ul class="list-group list-group-horizontal justify-content-center">
+                        {% for s in current_subcategories %}
+                            <li class="list-group-item badge bg-white"><a href="{% url 'products' %}?category={{ current_categories.0 }}&subcategory={{ s }}" class="text-decoration-none text-black category-badge">{{ s.friendly_name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
             </div>
         </div>
 
@@ -96,5 +108,23 @@
             scrollTop: 0
             }, 1000);
         })
+    </script>
+    <script>
+            // Makes the entire list section clickable
+            $(".list-group-item").click(function() {
+                window.location = $(this).find("a").attr("href"); 
+            return false;
+        });
+    
+        $(".current-category").click(function() {
+            window.location = $(this).find("a").attr("href"); 
+            return false;
+        });
+    
+        // Makes the entire list section clickable
+        $(".product-div").click(function() {
+            window.location = $(this).find("a").attr("href"); 
+            return false;
+        });
     </script>
     {% endblock %}

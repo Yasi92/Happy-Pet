@@ -97,6 +97,34 @@ a{
 
 }
 
+ul{
+    padding: 0 !important;
+}
+
+.btt-button{
+    height: 2.5rem;
+    width: 2.5rem;
+    position: fixed;
+    bottom: 0.4rem;
+    right: 0.4rem;
+    background-color: #000;
+}
+
+
+.badge{
+    border-radius: 0 !important;
+}
+
+
+li.list-group-item:hover > a.category-badge{
+    color:#fff !important;
+}
+
+li.list-group-item:hover{
+    background-color: #000 !important;
+}
+
+
 /* --------------------------------------------------------images and cards */
 .img-responsive {
     height: 25rem;
