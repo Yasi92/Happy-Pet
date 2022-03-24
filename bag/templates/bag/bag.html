@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+{% block page_header %}
+
+<div class="container header-container">
+    <div class="row">
+        <div class="col">
+
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block content %}
+<div class="overlay"></div>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <button type="button" class="btn btn-dark btn-lg">
+                <a class="text-white" href="{% url 'products' %}">
+                    <span><i class="fa-solid fa-chevron-left text-white"></i> Continue Shopping</span>
+                </a>
+            </button>
+            <h2 class="logo-font my-4">Your Shopping Bag</h2>
+        </div>
+    </div>
+    <div class="row">
+
+    </div>
+</div>
+    <div class="row">
+        <div class="col-12 text-center">
+            <button type="button" class="btn btn-dark btn-lg">
+                <a class="text-white" href="{% url 'products' %}">
+                    <span><i class="fa-solid fa-chevron-left text-white"></i> Continue Shopping</span>
+                </a>
+            </button>
+            <button type="button" class="btn btn-dark btn-lg">
+                <a class="text-white" href="#">
+                    <span><i class="fa-solid fa-credit-card text-white"></i> Check Out</span>
+                </a>
+            </button>
+
+        </div>
+    </div>
+
+{% endblock %}
