@@ -5,7 +5,7 @@
 <div class="container header-container">
     <div class="row">
         <div class="col">
-
+            
         </div>
     </div>
 </div>
@@ -15,6 +15,8 @@
 <div class="container">
     <div class="row">
         <div class="col">
+          
+
             <button type="button" class="btn btn-dark btn-lg">
                 <a class="text-white" href="{% url 'products' %}">
                     <span><i class="fa-solid fa-chevron-left text-white"></i> Continue Shopping</span>
@@ -40,6 +42,17 @@
                 </a>
             </button>
 
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            {% for item in bag_items %}
+            {{ item }}
+            {% endfor %}
+            <br>
+            <br>
+            <br>
+            {{ request.session.bag }}
         </div>
     </div>
 
