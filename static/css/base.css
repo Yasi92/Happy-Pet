@@ -140,21 +140,21 @@ ul{
 }
 /* -------------------------------------------------------------------------------- carousel */
 /* This carousel is borrowed from (https://www.codeply.com/p/jCzaESNi07) */
-
+/* 
 .carousl,
-.carousel-innr,
+.carousel-inner,
 .carousel-inner > .carousel-item {
     overflow: hidden;
-}
+} */
 
-.carousel-inner > .carousel-item.active,
-.carousel-inner > .carousel-item-next {
+.sim-carousel-inner > .carousel-item.active,
+.sim-carousel-inner > .carousel-item-next {
     display: flex;
     flex-wrap: nowrap;
 }
 
 
-.carousel-control-prev {
+.sim-carousel-control-prev {
     z-index: 2000;
     left: -7%;
     border: 1px solid black;
@@ -164,7 +164,7 @@ ul{
     top: 40%;
 }
 
-.carousel-control-next {
+.sim-carousel-control-next {
     z-index: 2000;
     right: -7%;
     border: 1px solid black;

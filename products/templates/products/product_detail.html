@@ -100,12 +100,14 @@
                     </div>
                 </form>
             </div>
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-5 offset-1">
                 <div class="my-5">
-                    {% if product.image1 %}
+                    {% if product.image1 and not product.image2%}
                         <a href="{{ product.image1.url }}" target="_blank">
                             <img src="{{ product.image1.url }}" class="img-fluid img-lg" alt="{{ product.name }}">
                         </a>
+                    {% elif product.image1 and product.image2 %}
+                        {% include 'products/includes/product_image_carousel.html' %}
                     {% else %}
                         <a href="{{ product.image1.url }}">
                             <img src="{{ MEDIA_URL }}noimage.png" class="img-fluid img-lg" alt="{{ product.name }}">
@@ -158,9 +160,10 @@
 
 <script>
     /* This carousel is borrowed from (https://www.codeply.com/p/jCzaESNi07) */
+    // This carousel displays similar products 
     var myCarousel = document.querySelector('#myCarousel')
     var carousel = new bootstrap.Carousel(myCarousel, {interval: 2000, wrap: true})
-    var slides = document.querySelectorAll('.carousel .carousel-item')
+    var slides = document.querySelectorAll('.sim-carousel .carousel-item')
     
     slides.forEach((el) => {
         // number of slides per carousel-item
