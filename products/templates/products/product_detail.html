@@ -16,7 +16,7 @@
 <div class="overlay"></div>
     <div class="container">
         <div class="row my-3">
-            <div class="col-12 col-md-6 mt-3">
+            <div class="col-12 col-md-6 mt-3 order-2 order-md-1">
                 <div>
                     <h3>{{ product.name }}</h3>
                     <h4 class="text-start">€{{ product.price|floatformat:"2" }}</h4>
@@ -100,7 +100,7 @@
                     </div>
                 </form>
             </div>
-            <div class="col-12 col-md-5 offset-1">
+            <div class="col-12 col-md-5 offset-md-1 order-1 order-md-2">
                 <div class="my-5">
                     {% if product.image1 and not product.image2%}
                         <a href="{{ product.image1.url }}" target="_blank">
@@ -159,11 +159,11 @@
 {{ block.super }}
 
 <script>
+     function simlilarCarousel(){
     /* This carousel is borrowed from (https://www.codeply.com/p/jCzaESNi07) */
-    // This carousel displays similar products 
     var myCarousel = document.querySelector('#myCarousel')
     var carousel = new bootstrap.Carousel(myCarousel, {interval: 2000, wrap: true})
-    var slides = document.querySelectorAll('.sim-carousel .carousel-item')
+    var slides = document.querySelectorAll('.carousel .carousel-item')
     
     slides.forEach((el) => {
         // number of slides per carousel-item
@@ -179,5 +179,13 @@
             next = next.nextElementSibling
         }
     })
+}
+
+
+if ($(window).width() > 768) {
+    simlilarCarousel();
+   
+}
+
     </script>
 {% endblock %}

@@ -298,3 +298,10 @@ ul{
 }
 
 
+@media screen and (max-width: 576px){
+    .sim-carousel-inner > .carousel-item.active,
+    .sim-carousel-inner > .carousel-item-next {
+        display: flex;
+        flex-wrap: wrap;
+    }
+}
