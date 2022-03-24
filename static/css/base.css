@@ -138,6 +138,45 @@ ul{
 .dropdown-item{
     color: #fff;
 }
+/* -------------------------------------------------------------------------------- carousel */
+/* This carousel is borrowed from (https://www.codeply.com/p/jCzaESNi07) */
+
+.carousl,
+.carousel-innr,
+.carousel-inner > .carousel-item {
+    overflow: hidden;
+}
+
+.carousel-inner > .carousel-item.active,
+.carousel-inner > .carousel-item-next {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+
+.carousel-control-prev {
+    z-index: 2000;
+    left: -7%;
+    border: 1px solid black;
+    border-radius: 50%;
+    width: 2.6rem;
+    height: 2.6rem;
+    top: 40%;
+}
+
+.carousel-control-next {
+    z-index: 2000;
+    right: -7%;
+    border: 1px solid black;
+    border-radius: 50%;
+    width: 2.6rem;
+    height: 2.6rem;
+    top: 40%;
+
+}
+
+
+
 
 /* -----------------------------------------------------------------spacing */
 /* custom negative right margin */

@@ -85,11 +85,14 @@ def product_detail(request, product_id):
 
     products = Product.objects.all()
     product = get_object_or_404(Product, pk=product_id)
-
+    similar_products = products.filter(category=product.category,
+                                subcategory=product.subcategory).exclude(
+                                product_id=product.product_id)
 
     template = 'products/product_detail.html'
     context = {
         'product' : product,
+        'similar_products' : similar_products,
     }
 
     return render(request, template, context)        
