@@ -213,8 +213,15 @@ ul{
 
 }
 
-
-
+span > i.carousel-control-right-black,
+span > i.carousel-control-left-black {
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: 100% 100%;
+    color: rgba(82, 81, 81, 0.543) !important;
+    font-size: 2rem;
+}
 
 /* -----------------------------------------------------------------spacing */
 /* custom negative right margin */
