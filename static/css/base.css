@@ -124,6 +124,16 @@ li.list-group-item:hover{
     background-color: #000 !important;
 }
 
+.table-responsive > table.table tbody > tr:last-child > td {
+    border-bottom: none;
+  }
+
+
+.btt-link,
+.update-link,
+.remove-item{
+    cursor: pointer;
+}
 
 /* --------------------------------------------------------images and cards */
 .img-responsive {
