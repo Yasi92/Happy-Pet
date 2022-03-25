@@ -159,11 +159,11 @@
 {{ block.super }}
 
 <script>
-     function simlilarCarousel(){
+    function simlilarCarousel(){
     /* This carousel is borrowed from (https://www.codeply.com/p/jCzaESNi07) */
     var myCarousel = document.querySelector('#myCarousel')
     var carousel = new bootstrap.Carousel(myCarousel, {interval: 2000, wrap: true})
-    var slides = document.querySelectorAll('.carousel .carousel-item')
+    var slides = document.querySelectorAll('.sim-carousel .carousel-item')
     
     slides.forEach((el) => {
         // number of slides per carousel-item

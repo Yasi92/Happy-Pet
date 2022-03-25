@@ -55,11 +55,11 @@
             </div>
         {% elif similar_products|length <= 4 %}    
             <div class="row">
-                <div class="col-12 text-center">
+                <div class="col text-center">
                     <h1 class="my-4">Similar Products</h1>
                     <div class="row">
                         {% for s in similar_products %}
-                            <div class="col-3 border card">
+                            <div class="col-4 border card">
                                 <div class="card-body">
                                     <img class="img-fluid" src="{{ s.image1.url }}">
                                     <p class="card-text text-black px-3">{{ product.name }}</p>                                         
