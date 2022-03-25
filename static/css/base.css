@@ -216,13 +216,24 @@ ul{
 span > i.carousel-control-right-black,
 span > i.carousel-control-left-black {
     display: inline-block;
-    background-repeat: no-repeat;
-    background-position: 50%;
-    background-size: 100% 100%;
     color: rgba(82, 81, 81, 0.543) !important;
     font-size: 2rem;
 }
 
+.carousel-control-prev{
+    position: absolute;
+    left: -10% ;
+    top: 0;
+
+}
+
+
+.carousel-control-next{
+    position: absolute;
+    right: -10% ;
+    top: 0;
+
+}
 /* -----------------------------------------------------------------spacing */
 /* custom negative right margin */
 .mr-n2 {
