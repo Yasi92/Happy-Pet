@@ -67,40 +67,14 @@ All pages on this website are responsive to desktop, iPad and, mobile screens.
 
 ### User Stories: <a id="user-stories"></a>
 
-1. As a first-time visitor, I would like to find a worth reading book.
-2. As a first-time visitor, I would like to find out more about my favorite book and read other readers' reviews.
-3. As a first-time visitor, I would like to become a member of the community to be able to add my favorite book to the website.
-4. As a returning visitor, I would like to edit my profile and info.
-5. As a returning visitor, I would like to write a review about a book I have recently read/purchased from the online store.
-6. As a returning visitor, I would like to check out all the best seller books on the website and find out more about them.
-7. As a returning visitor, I would like to delete a review I left on a book.
-8. As a returning visitor, I would like to edit a book I added to the website.
-9. As a returning visitor, I would like to Remove a book I added to the website.
-10. As a visitor, I would like to filter the books by the category I am looking for.
+1. As a first-time visitor, I would like to ...
+
 
 ### Wireframe Mockups: <a id="wireframes"></a>      
                    
                           
 Home page:                  
 [Home page wireframes PDF](static/readme-assets/wireframes/home.pdf)        
-
-Profile Page:             
-[Profile Page wireframes PDF](static/readme-assets/wireframes/profile.pdf)     
-
-Edit Profile Page:            
-[Edit Profile wireframes PDF](static/readme-assets/wireframes/edit-profile.pdf) 
-
-sign-In Page:            
-[Login Page wireframes PDF](static/readme-assets/wireframes/login.pdf)           
-
-Sign-Up Page:            
-[Sign Up Page wireframes PDF](static/readme-assets/wireframes/sign-up.pdf) 
-
-Book Detail Page:            
-[Book Detail Page wireframes PDF](static/readme-assets/wireframes/books.pdf) 
-
-Add a Book / Edit Book Page:            
-[Add a Book Page wireframes PDF](static/readme-assets/wireframes/add-a-book.pdf) 
 
 ### Flowchart: <a id="flowchart"></a>
 [Registeration and sign-in flowchart](static/readme-assets/readme-img/Login-sign-up.drawio.png) 
@@ -129,87 +103,7 @@ Add a Book / Edit Book Page:
 *   ### Navigation Bar <a id="nav"></a>     
     * Featured on all pages to allow for easy navigation.
     * This section will allow users to easily navigate from page to page across all devices without having to revert back to the previous page via the back button.
-    * The navigation bar displays different links such as "Profile", "Add a Book" and "Sign Out" if the user is logged in and, "Sign In" and "Sign Up" if the user has not logged in.
-    * The navigation bar collapses from medium screen sizes to a hamburger icon, which unfolds to a navigation drawer when clicked.
-    * The search box is embedded in the navigation bar on the home page, where all books are displayed for a quick search by title or author. 
-
-
-![landing page](static/readme-assets/readme-img/home-pg-out.png)
-*  ### Home page provides: <a id="home"></a>
-    * A search box in which users can search for their favorite books by title or author.
-    * Category collection bar which filters books by their category.
-    * Small book cards with image, title, and author name, which on click navigates users to a page with full information of each book.            
-
-
-![Book Detail](static/readme-assets/readme-img/added-book.png)
-*  ### Book Detail Page Provides: <a id="book"></a>
-    * A full image of the book cover.
-    * Full information of the book such as title, author, publisher, price, pages and, name of the user who added the book.
-    * A "Go get it" button that navigates users to the online store in a new tab.
-    * A back button that redirects to the previous page.
-    * A best seller badge is embedded in the title box if the book falls in the bestseller collection.
-    * If the book is added by the user, the "Delete" and "Edit" buttons will be shown underneath the book details to enable the user to delete or edit the added book.
-    ![Delete Confirmation Modal](static/readme-assets/readme-img/book-del-conf.png)
-    * The "Delete" button opens to a modal for delete confirmation and removes the book from the database if confirmed by the user and returns to the same page with book details if ignored.
-    ![Edit Book Form](static/readme-assets/readme-img/edit-book.png)
-    * The "Edit" button redirects to the edit book page with a form where all the inputs are pre-filled with the book details and the user is able to make any change to the book and submit it.
-    ![Book Description](static/readme-assets/readme-img/book-desc.png)
-    * Short description of the book which expands on "Read More" click.
-    ![Review Form](static/readme-assets/readme-img/review-form.png)
-    * With the review form users can compose a review which will be inserted in the database and displayed in the review section in detail.
-    ![Review Section](static/readme-assets/readme-img/review-section.png)
-    * Display reviews
-    * In this section all corresponding reviews of the book are displayed in a list which is visible in slices of 4 and can be expanded to more reviews by clicking on the "Load More" button.
-    * The creation date of the review is shown underneath the review text in a format of time ago. 
-    * In case the review is added by the username stored in the session, the delete button will be displayed next to the review which enables users to remove it.
-
-
-
-![Profile Page](static/readme-assets/readme-img/landing-profile.png)
-*  ### Profile Page provides: <a id="profile"></a>  
-    * Users account details such as username, location, and email address.
-    * An "Edit Profile" button that navigates to the edit profile page where users can change their profile.
-    ![Edit Profile Page](static/readme-assets/readme-img/edit-profile-pg.png)
-    * The "Edit Profile" button navigates to a page with a form where the inputs are pre-filled with the users' detail and the user is able to change their profile.
-    * If the user enters a username that already exists in the database a message will pop up on the page alerting the user that the username already exists and returns to the page.
-    * If the form after validation is successfully updated the user will be navigated to the profile page with the updated data and a message that confirms that the profile is updated.
-    * If there is no change in the form, the user will be redirected to the profile page with the existing data.
-    * The "Cancel" button works in the same way as if there is no change in the form and it redirects to the profile page with the existing data.
-    * An "Add a Book" button that redirects to the add a book page.
-    ![Added Books](static/readme-assets/readme-img/added-books.png)
-    * In this section, all the books that are added by the user are displayed in a list featured with "Edit" and "Delete" buttons which enables the user to modify the book.
-    * The list items are wrapped in a link that navigates to the book detail page.
-    ![Added Reviews](static/readme-assets/readme-img/added-reviews.png)
-    * In this section, all the reviews composed by the user are displayed in a list featured with a "Delete" button which enables users to remove the review.
-    ![Added Reviews](static/readme-assets/readme-img/delete-rev-conf.png)
-    * The "Delete" button opens to a modal to confirm the review deletion.
-
-
-![Add a Book Page](static/readme-assets/readme-img/add-book-pg.png)
-*  ### Add a Book Page provides: <a id="add-book"></a>  
-    * A form with which users can add a book to the website.
-    * There is a label for each input that guides users to the type of the expected information for each field and, the form will not be submitted unless all the fields are validated.
-    * In the event that the book title already exists in the database, a message will be shown to the user informing them about the issue.
-    * A check box is featured in the form to mark the best seller books.
-
-
-
-![Sign Up Page](static/readme-assets/readme-img/sign-up-pg.png)
-*  ### Sign-Up Page provides: <a id="sign-up"></a>  
-    * A registration form with which users can register and make an account.
-    * The form checks if the username already exists in the database and shows a message to the user in that case.
-    * The form will not be submitted unless are the fields are validated and correctly filled.
-    * After the submission, the user will be navigated to the profile page with their account detail.
-    * There is a shortcut link to the login page if the user already has an account.
-
-
-![Sign In Page](static/readme-assets/readme-img/sign-in-pg.png)
-*  ### Sign-In Page provides: <a id="sign-in"></a>  
-    * A login form with which users can sign in to their account.
-    * In case the username and/if the password is incorrect, a message will be shown to the user informing them about the issue.
-    * In this form the account data in the database are checked with the user's input and log into the account if they match. 
-    * There is a shortcut link to the sign-up page for users who have not registered yet.
-
+    
 
 ![Custom 404 Page](static/readme-assets/readme-img/404-page.png)
 *  ### Custom 404 Page: <a id="404"></a>
@@ -235,17 +129,14 @@ Add a Book / Edit Book Page:
     * The quick access links in the footer alters according to the navigation bar links on different pages.
 
 ### Yet to be implemented <a id="yet-to-be-implemented"></a>
-   1. Enable users to upload images to the website instead of an image URL.
-   2. On Create Account Page, add the ability to see the password that was typed in, to avoid accidental typos.
-   3. Enable users to update their passwords.
-   4. Enable users to recover their password if it is forgotten.
-   
 
+ 
+   
 
 ## Information Architecture <a id="data-info"></a>                 
 
 ### Database Choice <a id="db"></a>
-* My personal preference for the database for this project would be SQL as it would suit this project better however, as one of the requirements for this milestone project was using a relational database as Mongodb, this was chosen as my database.
+
 
 
 ### Data Storage Types <a id="data-type"></a>
@@ -256,12 +147,7 @@ Add a Book / Edit Book Page:
     * DateTime 
 
 ### Collections JSON format <a id="json-format"></a>
-- [Review collection](static/readme-assets/review-example.json)                       
-- [User collection](static/readme-assets/user-example.json)                       
-- [Book collection](static/readme-assets/book-example.json)                     
-- [Category collection](static/readme-assets/category-example.json)               
-* The "username" is added to all collections except the category, to match the user who added books and reviews.
-* I am aware of the fact that here I could have also gotten this done without creating an additional collection for "category", however, I have decided to do it in this way in order to be able to add extra categories to the collection bar in the future without the need of adding the relevant books first.
+
 
 ## Technologies Used <a id="tech"></a>
 ### Languages <a id="langs"></a>
@@ -378,7 +264,7 @@ Ensure you have the following tools and packages installed on your machine:
 
 #### Instructions
 1. Clone the repository with the following command.
-`$ git clone https://github.com/Yasi92/read-and-recommend.git`
+`$ git clone https://github.com/Yasi92/Happy-Pet.git`
 2. cd to the correct repository location.
 3. If needed, Upgrade pip locally with
 `pip install --upgrade pip`
@@ -403,7 +289,7 @@ Ensure you have the following tools and packages installed on your machine:
 | Key | Value |
 | ----------- | ----------- |
 | IP | 0.0.0.0 |
-| MONGO_URI	 | mongodb+srv://<username>:<password>@<cluster_name>-qtxun.mongodb.net/<database_name>?retryWrites=true&w=majority |
+|  |  |
 | PORT | 8000 |
 | SECRET_KEY | 	<your_secret_key> |
 
@@ -414,8 +300,6 @@ Ensure you have the following tools and packages installed on your machine:
 ## Credits <a id="credits"></a>
 ### Content <a id="content"></a>
 
-All the books in this website are taken from [Amazon Book Store](https://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Dstripbooks-intl-ship&field-keywords=&ref=nb_sb_noss_1&crid=JQUXS5J7BQOJ&sprefix=biography%2Cstripbooks-intl-ship%2C332)
-
 ### Media <a id="media"></a>
 The heading image in the website is taken from: 
 - [Pinterest](https://nl.pinterest.com/)
@@ -424,12 +308,8 @@ The heading image in the website is taken from:
 - The template and functions for 404 and 500 pages were provided by my mentor **Richard Wells**.
 - Styling active element menu in flask has been learned from [here](https://stackoverflow.com/questions/22173041/styling-active-element-menu-in-flask)
 - The dynamic copyright year is learned form [here](https://stackoverflow.com/questions/43714006/how-can-one-create-a-dynamic-copyright-date-without-document-write-in-javascri)
-- The "Read More" method on the book description section has been borrowed from [here](https://www.freakyjolly.com/custom-jquery-function-read-more-and-read-less/)
-- The back to previouse page button is learned from [here](https://css-tricks.com/snippets/javascript/go-back-button/)
-- The load More button and slicing items on the profile page and books.html is learned from [here](https://www.youtube.com/watch?v=XFXDZrjimrY)
 - The back to top button is learned from this thread on stackoverflow [here](https://stackoverflow.com/questions/14249998/jquery-back-to-top)
-- The hover effect on the links is borrowed from [here](http://ianlunn.github.io/Hover/)
-- The fadeIn effect on the book cards is learned from [here](https://stackoverflow.com/questions/54384218/fade-in-effect-for-div-without-id) 
+ 
 ## Acknowledgements <a id="ackn"></a>
 
 - Special thanks to my mentor **Richard Wells** for his constant valuable feedback and ideas throughout the project. 
