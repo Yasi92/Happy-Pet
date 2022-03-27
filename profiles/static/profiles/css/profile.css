@@ -1,0 +1,7 @@
+.profile-form-input::placeholder{
+    color: rgba(101, 101, 101, 0.468);
+}
+
+#profile-update-form .form-control{
+    color: rgb(0, 0, 0);
+}

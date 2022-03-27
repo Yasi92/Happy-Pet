@@ -37,7 +37,7 @@
                             <h3>Edit Profile</h3>
                             <form action="{% url 'profile' %}" method="POST" id="profile-update-form">
                                 {% csrf_token %}
-                                {{ form }}
+                                {{ form | crispy }}
                                 <div class="text-center">
                                     <button class="btn btn-black text-center">Update Information</button>
                                 </div>
