@@ -162,8 +162,9 @@ ul{
 }
 
 .img-md{
-    max-width: 10em;
+    max-width: 10rem;
     min-height: 11rem;
+    max-height: 11rem;
 
 }
 

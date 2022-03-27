@@ -45,12 +45,13 @@
                             <tbody>
                                 {% for item in bag_items %}
                                     <tr>
-                                        <td>
-                                            <img src="{{ item.product.image1.url }}" alt="" class="img-fluid img-md">
+                                        <td class="text-center">
+                                            <img src="{{ item.product.image1.url }}" alt="{{ item.product.name }}" class="img-fluid img-md">
                                         </td>
                                         <td>
                                             <p>{{ item.product.name }}</p>
                                             <p>Size: {% if item.product.has_sizes %}{{ item.size|upper }}{% else %}N/A{% endif %}</p>
+                                            <p>Color: {% if item.product.colors %}{{ item.color|upper }}{% else %}N/A{% endif %}</p>
                                             <p>{{ item.product.sku }}</p>
                                         </td>
                                         <td>
