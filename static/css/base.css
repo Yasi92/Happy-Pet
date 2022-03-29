@@ -240,6 +240,7 @@ span > i.carousel-control-left-black {
     height: 50%;
     width: 80%;
     margin: 0 auto;
+
   }
 
 
@@ -479,7 +480,9 @@ span > i.carousel-control-left-black {
         /* max-width: fit-content; */
         min-width: fit-content;
         overflow-x: hidden;
+        max-width: 90vw;
     }
+
 
     .sim-carousel-control-prev {
         z-index: 2000;
