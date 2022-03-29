@@ -16,6 +16,7 @@ def bag_contents(request):
     bag = request.session.get('bag', {})
     color = None
     size = None
+    quantity = None
 
     for item_id, item_data in bag.items():
         if isinstance(item_data, int):
@@ -29,14 +30,11 @@ def bag_contents(request):
             })
         else:
             product = get_object_or_404(Product, pk=item_id)
-            # for item, data in item_data.items():
             if 'items_by_filter' in item_data:
-                item_data = item_data
-                for filter, value in item_data.items():
+                for item, quantity in item_data['items_by_filter'].items():
                 
-                    size = item_data['items_by_filter']['size']
-                    color = item_data['items_by_filter']['color']
-                    quantity = item_data['items_by_filter']['quantity']
+                    size = item.split('_')[1]
+                    color = item.split('_')[2]
                     total += quantity * product.price
                     product_count += quantity
 

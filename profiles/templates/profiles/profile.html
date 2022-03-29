@@ -3,7 +3,7 @@
 {% block page_header %}
 
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'profiles/css/profile.css' %}">
+<link rel="stylesheet" href="{% static 'profiles/css/profile.css' %}">
 {% endblock %}
 
 
@@ -18,10 +18,19 @@
 {% block content %}
 <div class="overlay"></div>
 <div class="container">
+
     <div class="row">
-        <div class="col">
-            <h2>{{profile}}</h2>
-            <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+        <div class="col-6">
+            <button class="btn btn-lg btn-dark w-100">Profile Info</button>
+            <p class="text-start">Username : {{ profile }}</p>
+            <p class="text-start"> Telephone Number : {{ profile.default_phone_number }}</p>
+            <p class="text-start"> Country : {{ profile.default_country }}</p>
+            <p class="text-start"> Post Code : {{ profile.default_postcode }}</p>
+            <p class="text-start"> City Or Town : {{ profile.default_city }}</p>
+            <p class="text-start"> Street Adress 1 : {{ profile.default_street_address1 }}</p>
+            <p class="text-start"> Street Address 2 : {{ profile.default_street_address2 }}</p>
+
+            <button class="btn btn-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
                 aria-controls="offcanvasRight">Edit Profile</button>
 
             <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight"
@@ -46,7 +55,19 @@
                     </div>
                 </div>
             </div>
+
+        </div>
+
+
+
+
+        <div class="col-6">
+            <button class="btn btn-lg btn-dark w-100">Order History</button>
+
         </div>
     </div>
+
+
+
 
     {% endblock %}
