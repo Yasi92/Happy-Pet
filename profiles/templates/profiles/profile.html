@@ -22,21 +22,66 @@
     <div class="row">
         <div class="col-6">
             <button class="btn btn-lg btn-dark w-100">Profile Info</button>
-            <p class="text-start">Username : {{ profile }}</p>
-            <p class="text-start"> Telephone Number : {{ profile.default_phone_number }}</p>
-            <p class="text-start"> Country : {{ profile.default_country }}</p>
-            <p class="text-start"> Post Code : {{ profile.default_postcode }}</p>
-            <p class="text-start"> City Or Town : {{ profile.default_city }}</p>
-            <p class="text-start"> Street Adress 1 : {{ profile.default_street_address1 }}</p>
-            <p class="text-start"> Street Address 2 : {{ profile.default_street_address2 }}</p>
+            <p class="text-start"> 
+                Username : {{ profile }}</p>
+            <p class="text-start"> 
+                Email Address : {{ profile.user.email }}</p>
+            <p class="text-start"> 
+                Telephone Number : 
+                {% if profile.default_phone_number %}                
+                    {{ profile.default_phone_number }} 
+                {% else %}
+                    <small class="text-info"> Not Filled Yet </small>
+                {% endif %}
+            </p>
+                <p class="text-start"> 
+                Country : 
+                {% if profile.default_country %}
+                    {{ profile.default_country }} 
+                {% else %}
+                    <small class="text-info"> Not Filled Yet </small>
+                {% endif %}
+            </p>
+            <p class="text-start"> 
+                Post Code : 
+                {% if profile.default_postcode %}
+                    {{ profile.default_postcode }} 
+                {% else %}
+                    <small class="text-info"> Not Filled Yet </small>
+                {% endif %}
+            </p>
+            <p class="text-start"> 
+                City or Town : 
+                {% if profile.default_city %}
+                    {{ profile.default_city }} 
+                {% else %}
+                    <small class="text-info"> Not Filled Yet </small>
+                {% endif %}
+            </p>
+            <p class="text-start"> 
+                Street Adress 1 : 
+                {% if profile.default_street_address1 %}
+                    {{ profile.default_street_address1 }} 
+                {% else %}
+                    <small class="text-info"> Not Filled Yet </small>
+                {% endif %}
+            </p>
+            <p class="text-start"> 
+                Street Address 2 : 
+                {% if profile.default_street_address2 %}
+                    {{ profile.default_street_address2 }} 
+                {% else %}
+                    <small class="text-info"> Not Filled Yet </small>
+                {% endif %}
+            </p>
 
             <button class="btn btn-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
-                aria-controls="offcanvasRight">Edit Profile</button>
+                aria-controls="offcanvasRight">Update Profile</button>
 
             <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight"
                 aria-labelledby="offcanvasRightLabel">
                 <div class="offcanvas-header">
-                    <h5 id="offcanvasRightLabel">Edit Profile</h5>
+                    <h5 id="offcanvasRightLabel">Update Profile</h5>
                     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
                         aria-label="Close"></button>
                 </div>
