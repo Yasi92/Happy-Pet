@@ -45,7 +45,7 @@ class Migration(migrations.Migration):
                 ('quantity', models.IntegerField(default=0)),
                 ('lineitem_total', models.FloatField(editable=False)),
                 ('order', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='lineitems', to='checkout.order')),
-                ('product', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='products.product')),
+                ('product', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='products.Product')),
             ],
         ),
     ]
