@@ -8,7 +8,6 @@
   height: 40px;
   padding: 10px 12px;
   border: 1px solid transparent;
-  border-radius: 0px;
   background-color: white;
   box-shadow: 0 1px 3px 0 #e6ebf1;
   -webkit-transition: box-shadow 150ms ease;
@@ -38,4 +37,14 @@
 #card-element{
     border: 1px solid #6c757d;
     border-radius: 5px;
+}
+
+select,
+select option{
+  color: #000;
+}
+
+select:invalid,
+.select option[value=""]{
+  color: #aab7c4 !important;
 }

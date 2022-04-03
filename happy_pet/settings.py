@@ -184,13 +184,11 @@ USE_L10N = True
 
 USE_TZ = True
 
-FREE_DELIVERY_THRESHOLD = 30
-STANDARD_DELIVERY_PERCENTAGE = 10
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'), )  
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -201,3 +199,12 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+#  stripe
+
+FREE_DELIVERY_THRESHOLD = 30
+STANDARD_DELIVERY_PERCENTAGE = 10
+STRIPE_CURRENCY = 'EUR'
+STRIPE_PUBLIC_KEY = os.environ.get('STRIPE_PUBLIC_KEY')
+STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')
