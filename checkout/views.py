@@ -23,6 +23,8 @@ def checkout(request):
         'order_form' : order_form,
         'profile' : profile,
         'profile_update_form' : profile_update_form,
+        'stripe_public_key' : 'pk_test_51KkQS5DU2roDlZ9zDCN7mosc3z077ghwoUBVUwC03kVHy0ZNW3vRC0ey1EuIi7FPdHreTgQHALoSf1qKzzbi5Xbx00ZBfxvkX7',
+        'client_secret' : 'test client secret',
     }
 
     return render(request, template, context)

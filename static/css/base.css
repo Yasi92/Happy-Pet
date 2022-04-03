@@ -135,6 +135,11 @@ li.list-group-item:hover{
     cursor: pointer;
 }
 
+.query-form button.btn{
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
 /* --------------------------------------------------------images and cards */
 .img-responsive {
     height: 25rem;
