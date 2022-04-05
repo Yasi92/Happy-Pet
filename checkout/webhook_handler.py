@@ -1,5 +1,6 @@
 from django.http import HttpResponse
 from django.conf import settings
+from flask import request
 
 from .models import Order, OrderLineItem
 from products.models import Product
@@ -32,6 +33,7 @@ class StripeWH_Handler:
         pid = intent.id
         bag = intent.metadata.bag
         save_info = intent.metadata.save_info
+        print(save_info)
 
         billing_details = intent.charges.data[0].billing_details
         shipping_details = intent.shipping
@@ -45,13 +47,15 @@ class StripeWH_Handler:
         # Update profile information if save_info was checked
         profile = None
         username = intent.metadata.username
+
         if username != 'AnonymousUser':
             profile = UserProfile.objects.get(user__username=username)
-            if save_info:
+
+            if save_info == "true":
                 profile.default_phone_number = shipping_details.phone
                 profile.default_country = shipping_details.address.country
                 profile.default_postcode = shipping_details.address.postal_code
-                profile.default_town_or_city = shipping_details.address.city
+                profile.default_city = shipping_details.address.city
                 profile.default_street_address1 = shipping_details.address.line1
                 profile.default_street_address2 = shipping_details.address.line2
                 profile.default_county = shipping_details.address.state
@@ -87,6 +91,7 @@ class StripeWH_Handler:
         else:
             order = None
             try:
+
                 order = Order.objects.create(
                     full_name=shipping_details.name,
                     user_profile=profile,
@@ -149,7 +154,7 @@ class StripeWH_Handler:
                                 quantity=quantity,
                                 product_color=color,
                                 )
-                                order_line_item.save()
+                                order_line_item.save()             
             except Exception as e:
                 if order:
                     order.delete()

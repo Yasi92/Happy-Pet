@@ -22,56 +22,64 @@
     <div class="row">
         <div class="col-6">
             <button class="btn btn-lg btn-dark w-100">Profile Info</button>
-            <p class="text-start"> 
+        </div>
+
+        <div class="col-6">
+            <button class="btn btn-lg btn-dark w-100">Order History</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6 border border-3 rounded-3">
+            <p class="text-start">
                 Username : {{ profile }}</p>
-            <p class="text-start"> 
+            <p class="text-start">
                 Email Address : {{ profile.user.email }}</p>
-            <p class="text-start"> 
-                Telephone Number : 
-                {% if profile.default_phone_number %}                
-                    {{ profile.default_phone_number }} 
+            <p class="text-start">
+                Telephone Number :
+                {% if profile.default_phone_number %}
+                {{ profile.default_phone_number }}
                 {% else %}
-                    <small class="text-info"> Not Filled Yet </small>
+                <small class="text-info"> Not Filled Yet </small>
                 {% endif %}
             </p>
-                <p class="text-start"> 
-                Country : 
+            <p class="text-start">
+                Country :
                 {% if profile.default_country %}
-                    {{ profile.default_country }} 
+                {{ profile.default_country }}
                 {% else %}
-                    <small class="text-info"> Not Filled Yet </small>
+                <small class="text-info"> Not Filled Yet </small>
                 {% endif %}
             </p>
-            <p class="text-start"> 
-                Post Code : 
+            <p class="text-start">
+                Post Code :
                 {% if profile.default_postcode %}
-                    {{ profile.default_postcode }} 
+                {{ profile.default_postcode }}
                 {% else %}
-                    <small class="text-info"> Not Filled Yet </small>
+                <small class="text-info"> Not Filled Yet </small>
                 {% endif %}
             </p>
-            <p class="text-start"> 
-                City or Town : 
+            <p class="text-start">
+                City or Town :
                 {% if profile.default_city %}
-                    {{ profile.default_city }} 
+                {{ profile.default_city }}
                 {% else %}
-                    <small class="text-info"> Not Filled Yet </small>
+                <small class="text-info"> Not Filled Yet </small>
                 {% endif %}
             </p>
-            <p class="text-start"> 
-                Street Adress 1 : 
+            <p class="text-start">
+                Street Adress 1 :
                 {% if profile.default_street_address1 %}
-                    {{ profile.default_street_address1 }} 
+                {{ profile.default_street_address1 }}
                 {% else %}
-                    <small class="text-info"> Not Filled Yet </small>
+                <small class="text-info"> Not Filled Yet </small>
                 {% endif %}
             </p>
-            <p class="text-start"> 
-                Street Address 2 : 
+            <p class="text-start">
+                Street Address 2 :
                 {% if profile.default_street_address2 %}
-                    {{ profile.default_street_address2 }} 
+                {{ profile.default_street_address2 }}
                 {% else %}
-                    <small class="text-info"> Not Filled Yet </small>
+                <small class="text-info"> Not Filled Yet </small>
                 {% endif %}
             </p>
 
@@ -100,15 +108,64 @@
                     </div>
                 </div>
             </div>
-
         </div>
-        <div class="col-6">
-            <button class="btn btn-lg btn-dark w-100">Order History</button>
+        <div class="col-6 border border-3 rounded-3">
+            <div class="order-history-table table-responsive">
+                <table class="table table-sm table-borderless">
+                    <thead>
+                        <tr>
+                            <th>Order Number</th>
+                            <th>Date</th>
+                            <th>Items</th>
+                            <th>Order Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for order in orders %}
+                        <tr>
+                            <td>
+                                <a href="{% url 'order_history' order.order_number %}" 
+                                    title="{{ order.order_number }}">
+                                    {{ order.order_number|truncatechars:6 }}
+                                </a>
+                            </td>
+                            <td>{{ order.date }}</td>
+                            <td>
+                                <ul class="list_unstyled">
+                                    {% for item in order.lineitems.all %}
+                                    <li class="small">
+                                        {{ item.product.name }}
+                                        {{ item.quantity }}
+                                        {% if item.product.has_sizes %}
+                                        Size : {{ item.size|title }}
+                                        {% endif %}
+
+                                        {% if item.product.has_color %}
+                                        Color : {{ item.color|title }}
+                                        {% endif %}
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </td>
+                            <td>{{ order.grand_total }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-    {% endblock %}
 
-  
+
+
+
+
+</div>
+
+</div>
+{% endblock %}
+
+
 
 {% block postloadjs %}
 {{ block.super }}
