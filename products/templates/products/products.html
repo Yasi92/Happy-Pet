@@ -49,7 +49,7 @@
                     </div>
                 </div>
                 <div class="col-12 col-md-6 order-md-first">
-                    <p class="text-muted mt-3 text-center text-md-left">
+                    <p class="text-muted mt-3 text-md-left">
                         {% if search_term or current_categories or current_sorting != 'None_None' %}
                             <span class="small"><a href="{% url 'products' %}">Products Home</a> | </span>
                         {% endif %}
@@ -59,14 +59,21 @@
             </div>
             <div class="row">
                 {% for product in products %}
-                    <div class="col-sm-6 col-lg-4 col-xl-3 mb-4 product-div">
+                    <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
                         <div class="card h-100 text-center">
+                            <button class="heart-icon-borderless btn m-1">
+                                <a href="{% url 'add_to_wishlist' product.product_id %}" class="wishlist-btn">
+                                    <span class="icon">
+                                        <i class="fa-regular fa-heart fa-xl"></i>
+                                    </span>
+                                </a>
+                            </button>
                             {% if product.image1 %}
-                                <a href="{% url 'product_detail' product.product_id %}" target="_blank">
+                                <a href="{% url 'product_detail' product.product_id %}" target="_blank" class="product-dtl-link">
                                     <img src="{{ product.image1.url }}" class="card-img-top img-responsive mt-2" alt="{{ product.name }}">
                                 </a>
                             {% else %}
-                                <a href="{% url 'product_detail' product.product_id %}">
+                                <a href="{% url 'product_detail' product.product_id %}" class="product-dtl-link">
                                     <img src="{{ MEDIA_URL }}noimage.png" class="card-img-top img-responsive" alt="{{ product.name }}">
                                 </a>
                             {% endif %}
@@ -146,10 +153,10 @@
         });
     
         // Makes the entire list section clickable
-        $(".product-div").click(function() {
-            window.location = $(this).find("a").attr("href"); 
-            return false;
-        });
+        // $(".product-div").click(function() {
+        //     window.location = $(this).find(".product-dtl-link").attr("href"); 
+        //     return false;
+        // });
     </script>
         <script>
             // This sort selector is learned from boutique ado project

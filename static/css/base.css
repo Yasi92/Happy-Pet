@@ -110,6 +110,55 @@ ul{
     background-color: #000;
 }
 
+button.heart-icon{
+    width: 3.1rem;
+    height: 3.1rem;
+    border: 1px solid rgba(194, 194, 194, 0.838);
+    border-radius: 50%;
+}
+
+.heart-icon-borderless{
+    width: 3.1rem;
+    height: 3.1rem;
+    font-size: 1.5rem;
+
+}
+
+.heart-icon-borderless > a{
+    color: #6c757d;
+    
+}
+
+.heart-icon-borderless:hover > a{
+    color: #000000;
+    
+}
+
+button.heart-icon:hover{
+
+    border: 1px solid black;
+
+}
+
+.add-to-bag-btn{
+    width: 70%;
+    background-color: rgb(237, 222, 60);
+}
+
+.add-to-bag-btn:hover{
+    background-color: rgb(213, 196, 4);
+}
+
+.btn-outline-dark{
+    border-color: rgba(194, 194, 194, 0.838);
+}
+
+
+.btn-outline-dark:hover{
+    background-color: #fff;
+    color: #000;
+    border-color: #000;
+}
 
 .badge{
     border-radius: 0 !important;

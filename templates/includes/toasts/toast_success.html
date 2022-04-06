@@ -13,6 +13,7 @@
 			</div>
 		</div>
 		{% if grand_total and not on_profile_page %}
+		{% if not wishlist_item %}
 		<p class="logo-font bg-light text-black py-1">Your Bag ({{ product_count }})</p>
 		<div class="bag-notification-wrapper">
 			{% for item in bag_items %}
@@ -55,5 +56,7 @@
 			</div>
 		</div>
 		{% endif %}
+		{% endif %}
+
 	</div>
 </div>

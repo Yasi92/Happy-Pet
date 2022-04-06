@@ -53,12 +53,17 @@
             </div>
         </div>
         <div class="col-6">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="{% url 'wishlist' %}">
                 <div class="text-center text-black">
                     <div>
                         <i class="fa-solid fa-heart fa-lg"></i>
                     </div>
-                    <p class="my-0">My Wish List</p>
+                    <p class="my-0">
+                        Favorite
+                        {% if request.session.wishlist_bag %}
+                        ({{ request.session.wishlist_bag|length }})
+                        {% endif %}
+                    </p>
                 </div>
             </a>
         </div>

@@ -35,24 +35,17 @@ def view_wishlist(request):
 
 def add_to_wishlist(request, item_id):
     product = get_object_or_404(Product, product_id=item_id)
-    # redirect_url = request.POST.get('redirect_url')
-
     wishlist_bag = request.session.get('wishlist_bag', {})
 
 
     if item_id in list(wishlist_bag.keys()):
-
         messages.success(request, f'{ product.name } Already exists in your wish list')
 
     else:
         wishlist_bag[item_id] = True
-        messages.success(request, f'Added { product.name } to your wish list')
-
+        messages.success(request, f'Added { product.name } to your wish list')  
 
 
     request.session['wishlist_bag'] = wishlist_bag
-
-   
-
-    return redirect('wishlist')
+    return redirect('product_detail', product_id=item_id) 
 

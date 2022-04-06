@@ -15,7 +15,7 @@
 <div class="overlay"></div>
 <div class="container">
     <div class="row">
-        <div class="col-10 offset-1 offset-md-0 col-md-12">
+        <div class="col-10 offset-1">
             <button type="button" class="btn btn-dark btn-lg">
                 <a class="text-white" href="{% url 'products' %}">
                     <span><i class="fa-solid fa-chevron-left text-white"></i> Continue Shopping</span>
@@ -47,9 +47,6 @@
                             <div class="mt-4">
                                 <p>SKU: {{ product.sku }} <br>
                                     Price: {{ product.price }}€ <br>
-
-
-
                                     Size:
                                     {% if product.has_sizes %}
                                     <ul class="list-group list-group-horizontal small">
@@ -62,7 +59,6 @@
                                     {% else %}
                                     N/A
                                     {% endif %}
-
                                     <br>
                                     Color:
                                     {% if product.colors %}
@@ -84,6 +80,7 @@
             </div>
         </div>
         {% endfor %}
+
     </div>
 </div>
 
@@ -94,12 +91,15 @@
 {% block postloadjs %}
 {{ block.super }}
 <script>
-    // Makes the entire list section clickable
+    // Makes the entire card section clickable
     $(".wishlist-item").click(function () {
         window.location = $(this).find("a").attr("href");
         return false;
     });
 </script>
+
+
+
 
 
 {% endblock %}
