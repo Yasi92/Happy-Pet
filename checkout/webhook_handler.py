@@ -33,7 +33,6 @@ class StripeWH_Handler:
         pid = intent.id
         bag = intent.metadata.bag
         save_info = intent.metadata.save_info
-        print(save_info)
 
         billing_details = intent.charges.data[0].billing_details
         shipping_details = intent.shipping
@@ -51,6 +50,7 @@ class StripeWH_Handler:
         if username != 'AnonymousUser':
             profile = UserProfile.objects.get(user__username=username)
 
+            # The save_info value is returned as a string since it is passed to stripe with js
             if save_info == "true":
                 profile.default_phone_number = shipping_details.phone
                 profile.default_country = shipping_details.address.country

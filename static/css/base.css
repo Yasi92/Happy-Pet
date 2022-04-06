@@ -120,7 +120,7 @@ li.list-group-item:hover > a.category-badge{
     color:#fff !important;
 }
 
-li.list-group-item:hover{
+li.list-group-item.current-category:hover{
     background-color: #000 !important;
 }
 

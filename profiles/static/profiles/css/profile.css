@@ -15,3 +15,13 @@
     color: #aab7c4;
 }
 
+.order-history{
+    max-height: 416px;
+    overflow-y: auto;
+    
+}
+
+.list-group-item.order-history-list{
+    border-bottom: 2px solid #000;
+}
+

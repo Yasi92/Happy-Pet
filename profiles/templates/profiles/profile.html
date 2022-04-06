@@ -19,17 +19,16 @@
 <div class="overlay"></div>
 <div class="container">
 
-    <div class="row">
-        <div class="col-6">
-            <button class="btn btn-lg btn-dark w-100">Profile Info</button>
+    <div class="row mx-3 mx-md-0">
+        <div class="col-lg-5 p-0 mx-auto my-3 col-12 ">
+            <button class="btn btn-lg btn-dark w-100 order-1">Profile Info</button>
         </div>
 
-        <div class="col-6">
+        <div class="col-lg-5 col-12 p-0 offset-lg-1 mx-auto my-3 order-3 order-lg-2 ">
             <button class="btn btn-lg btn-dark w-100">Order History</button>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-6 border border-3 rounded-3">
+
+        <div class="col-lg-5 col-12 p-3 mx-auto border border-3 rounded-3 order-2 order-lg-3 ">
             <p class="text-start">
                 Username : {{ profile }}</p>
             <p class="text-start">
@@ -85,7 +84,6 @@
 
             <button class="btn btn-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
                 aria-controls="offcanvasRight">Update Profile</button>
-
             <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight"
                 aria-labelledby="offcanvasRightLabel">
                 <div class="offcanvas-header">
@@ -109,51 +107,60 @@
                 </div>
             </div>
         </div>
-        <div class="col-6 border border-3 rounded-3">
-            <div class="order-history-table table-responsive">
-                <table class="table table-sm table-borderless">
-                    <thead>
-                        <tr>
-                            <th>Order Number</th>
-                            <th>Date</th>
-                            <th>Items</th>
-                            <th>Order Total</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for order in orders %}
-                        <tr>
-                            <td>
-                                <a href="{% url 'order_history' order.order_number %}" 
-                                    title="{{ order.order_number }}">
-                                    {{ order.order_number|truncatechars:6 }}
-                                </a>
-                            </td>
-                            <td>{{ order.date }}</td>
-                            <td>
-                                <ul class="list_unstyled">
-                                    {% for item in order.lineitems.all %}
-                                    <li class="small">
-                                        {{ item.product.name }}
-                                        {{ item.quantity }}
-                                        {% if item.product.has_sizes %}
-                                        Size : {{ item.size|title }}
-                                        {% endif %}
+ 
+       
+      
+        <div class="col-lg-5 col-12 p-3 offset-lg-1 mx-auto border border-3 rounded-3 order-history order-4 ">
 
-                                        {% if item.product.has_color %}
-                                        Color : {{ item.color|title }}
-                                        {% endif %}
-                                    </li>
-                                    {% endfor %}
-                                </ul>
-                            </td>
-                            <td>{{ order.grand_total }}</td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </div>
+            <table class="table table-sm table-responsive">
+                <thead>
+                    <tr>
+                        <th><small>Order Number</small></th>
+                        <th><small>Date</small></th>
+                        <th><small>Items</small></th>
+                        <th><small>Order Total</small></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for order in orders %}
+                    <tr>
+                        <td>
+                            <a href="{% url 'order_history' order.order_number %}" title="{{ order.order_number }}">
+                                <small>{{ order.order_number|truncatechars:6 }}</small>
+                            </a>
+                        </td>
+                        <td><small>{{ order.date }}</small></td>
+                        <td>
+                            <ul class="list-group list-group-flush">
+                                {% for item in order.lineitems.all|slice:":2" %}
+                                
+                                <li class="small list-group-item order-history-list">
+                                    
+                                    {{ item.product.name }} x{{ item.quantity }} <br>
+                                    {% if item.product_size %}
+                                    Size : {{ item.product_size|title }} <br>
+                                    {% endif %}
+
+                                    {% if item.product_color %}
+                                    Color : {{ item.product_color|title }}
+                                    {% endif %}
+                                </li>
+                                {% endfor %}
+
+                                {% if order.lineitems.all|length > 2 %}
+                                    <span class="px-3">...</span>
+                                {% endif %}
+                            </ul>
+                        </td>
+                        <td><small>{{ order.grand_total }}</small></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
         </div>
+
+
+
     </div>
 
 
@@ -162,7 +169,6 @@
 
 </div>
 
-</div>
 {% endblock %}
 
 

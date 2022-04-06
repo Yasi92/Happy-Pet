@@ -23,7 +23,7 @@
                         </h4>
                     <ul class="list-group list-group-horizontal justify-content-center">
                         {% for s in current_subcategories %}
-                            <li class="list-group-item badge bg-white"><a href="{% url 'products' %}?category={{ current_categories.0 }}&subcategory={{ s }}" class="text-decoration-none text-black category-badge">{{ s.friendly_name }}</a></li>
+                            <li class="list-group-item current-category badge bg-white"><a href="{% url 'products' %}?category={{ current_categories.0 }}&subcategory={{ s }}" class="text-decoration-none text-black category-badge">{{ s.friendly_name }}</a></li>
                         {% endfor %}
                     </ul>
                 {% endif %}

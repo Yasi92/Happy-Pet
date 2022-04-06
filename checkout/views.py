@@ -107,8 +107,6 @@ def checkout(request):
                             )
                             order_line_item.save()
             request.session['save_info'] = 'save-info' in request.POST
-            save = request.session.get('save_info')
-            print(f'--------------{save} in checkout view post method')
             return redirect(reverse('checkout_success', args=[order.order_number]))
 
         else:
@@ -171,7 +169,6 @@ def checkout(request):
 def checkout_success(request, order_number):
     profile =  None
     save_info = request.session['save_info']
-    print(save_info)
     order = get_object_or_404(Order, order_number=order_number)
     messages.success(request, f'Order {order_number} successfully processed! \
                         A confiramation email will be sent to {order.email}. ')
@@ -191,8 +188,7 @@ def checkout_success(request, order_number):
             'default_street_address2': order.street_address2,
             'default_county': order.county,
         }    
-        for key, value in profile_data.items():
-            print(f'//////////////////{key} : {value}')
+
         user_profile_form = UserProfileForm(profile_data, instance=profile)
         if user_profile_form.is_valid():
             user_profile_form.save()
