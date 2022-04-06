@@ -3,32 +3,89 @@
 
 {% block page_header %}
 
-    <div class="container header-container">
-        <div class="row">
-            <div class="col">
-                
-            </div>
+<div class="container header-container">
+    <div class="row">
+        <div class="col">
+
         </div>
     </div>
+</div>
 {% endblock %}
 {% block content %}
-    <div class="overlay"></div>
-    <div class="container">
-        <div class="row">
-            <div class="col-10 offset-1 offset-md-0 col-md-12">
-                <button type="button" class="btn btn-dark btn-lg">  
-                    <a class="text-white" href="{% url 'products' %}">
-                        <span><i class="fa-solid fa-chevron-left text-white"></i> Continue Shopping</span>
-                    </a>
-                </button>
-                <h2 class="logo-font my-4">Your Wish List</h2>
+<div class="overlay"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-10 offset-1 offset-md-0 col-md-12">
+            <button type="button" class="btn btn-dark btn-lg">
+                <a class="text-white" href="{% url 'products' %}">
+                    <span><i class="fa-solid fa-chevron-left text-white"></i> Continue Shopping</span>
+                </a>
+            </button>
+            <h2 class="logo-font my-4">Your Wish List</h2>
+        </div>
+    </div>
+    <div class="row">
+        {% for product in products %}
+        <div class="col-10 offset-1">
+            <div class="card mb-3 p-3 wishlist-item">
+                <a href="{% url 'product_detail' product.product_id %}" target="_blank"></a>
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="{{ product.image1.url }}" class="img-fluid rounded-start img-md"
+                            alt="{{ product.name }}">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="float-end">
+                            <a href="#" class="text-black" title="Remove Item">
+                                <span class="icon">
+                                    <i class="fa-solid fa-trash-can fa-xl"></i>
+                                </span>
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">{{ product.name }}</h5>
+                            <div class="mt-4">
+                                <p>SKU: {{ product.sku }} <br>
+                                    Price: {{ product.price }}€ <br>
+
+
+
+                                    Size:
+                                    {% if product.has_sizes %}
+                                    <ul class="list-group list-group-horizontal small">
+                                        {% for x in product.has_sizes %}
+                                        <li class="list-group-item">
+                                            {{ x }}
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                    {% else %}
+                                    N/A
+                                    {% endif %}
+
+                                    <br>
+                                    Color:
+                                    {% if product.colors %}
+                                    <ul class="list-group list-group-horizontal small">
+                                        {% for x in product.colors %}
+                                        <li class="list-group-item">
+                                            {{ x }}
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                    {% else %}
+                                    N/A
+                                    {% endif %}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="row">
-         
-        </div>  
-  </div>
-
+        {% endfor %}
+    </div>
+</div>
 
 {% endblock %}
 
@@ -36,6 +93,13 @@
 
 {% block postloadjs %}
 {{ block.super }}
+<script>
+    // Makes the entire list section clickable
+    $(".wishlist-item").click(function () {
+        window.location = $(this).find("a").attr("href");
+        return false;
+    });
+</script>
+
 
 {% endblock %}
-

@@ -103,6 +103,10 @@
                     <input type="hidden" name="redirect_url" value="{{ request.path }}">
                 </div>
             </form>
+
+            <button class="btn btn-black">
+                <a href="{% url 'add_to_wishlist' product.product_id %}" class="text-white">Add To your wish list</a>
+            </button>
         </div>
         <div class="col-12 col-sm-6 col-lg-5 offset-0 offset-lg-1 order-1 order-md-2">
             <div class="my-5">
