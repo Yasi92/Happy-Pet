@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+
+    <div class="container header-container">
+        <div class="row">
+            <div class="col">
+                
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block content %}
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-10 offset-1 offset-md-0 col-md-12">
+                <button type="button" class="btn btn-dark btn-lg">  
+                    <a class="text-white" href="{% url 'products' %}">
+                        <span><i class="fa-solid fa-chevron-left text-white"></i> Continue Shopping</span>
+                    </a>
+                </button>
+                <h2 class="logo-font my-4">Your Wish List</h2>
+            </div>
+        </div>
+        <div class="row">
+         
+        </div>  
+  </div>
+
+
+{% endblock %}
+
+
+
+{% block postloadjs %}
+{{ block.super }}
+
+{% endblock %}
+
