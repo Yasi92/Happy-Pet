@@ -3,6 +3,7 @@ from django.shortcuts import render
 from audioop import reverse
 from django.shortcuts import get_object_or_404, redirect, render, HttpResponse
 from django.contrib import messages
+from flask import current_app
 from products.models import Product
 import wishlist
 
@@ -37,6 +38,12 @@ def add_to_wishlist(request, item_id):
     product = get_object_or_404(Product, product_id=item_id)
     wishlist_bag = request.session.get('wishlist_bag', {})
 
+    # Returns to the current url
+    # The method is borroewed from the thread on slack community
+    # (https://stackoverflow.com/questions/23026337/django-get-current-url-path-from-actual-current-page)
+    current_url = request.META['HTTP_REFERER']
+
+
 
     if item_id in list(wishlist_bag.keys()):
         messages.success(request, f'{ product.name } Already exists in your wish list')
@@ -47,5 +54,5 @@ def add_to_wishlist(request, item_id):
 
 
     request.session['wishlist_bag'] = wishlist_bag
-    return redirect('product_detail', product_id=item_id) 
+    return redirect(current_url)
 
