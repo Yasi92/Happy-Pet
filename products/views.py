@@ -2,9 +2,10 @@ from audioop import reverse
 from django.shortcuts import get_object_or_404, redirect, render, reverse
 from django.contrib import messages
 from django.db.models import Q
-from .models import Product, Category, Subcategories
+from .models import Product, Category, ProductReview, Subcategories
 
 from django.db.models.functions import Lower
+from .forms import ProductReviewForm
 
 
 def all_products(request):
@@ -89,6 +90,8 @@ def product_detail(request, product_id):
                                 subcategory=product.subcategory).exclude(
                                 product_id=product.product_id)
 
+
+
     template = 'products/product_detail.html'
     context = {
         'product' : product,
@@ -96,3 +99,13 @@ def product_detail(request, product_id):
     }
 
     return render(request, template, context)        
+
+
+
+
+
+
+
+
+
+

@@ -1,11 +1,13 @@
-from math import prod
 from django.shortcuts import render
-from audioop import reverse
 from django.shortcuts import get_object_or_404, redirect, render, HttpResponse
 from django.contrib import messages
-from flask import current_app
 from products.models import Product
-import wishlist
+from django.http import HttpResponseRedirect
+
+
+
+
+
 
 
 # Create your views here.
@@ -38,12 +40,12 @@ def add_to_wishlist(request, item_id):
     wishlist_bag = request.session.get('wishlist_bag', {})
     wishlist_item_id = request.session.get('wishlist_item_id', [])
 
-
-
     # Returns to the current url
     # The method is borroewed from the thread on slack community
     # (https://stackoverflow.com/questions/23026337/django-get-current-url-path-from-actual-current-page)
     current_url = request.META['HTTP_REFERER']
+    next = request.GET.get('next')
+    print(next)
 
     
     if item_id in list(wishlist_bag.keys()):
@@ -58,9 +60,7 @@ def add_to_wishlist(request, item_id):
     request.session['wishlist_bag'] = wishlist_bag
     request.session['wishlist_item_id'] = wishlist_item_id
 
-
-    print(wishlist_item_id)
-    return redirect(current_url) 
+    return HttpResponseRedirect(current_url) 
 
 
 
@@ -69,6 +69,13 @@ def add_to_wishlist(request, item_id):
 def remove_from_wishlist(request, item_id):
     product = get_object_or_404(Product, product_id=item_id)
     wishlist_bag = request.session.get('wishlist_bag', {})
+
+    # A wishlist_item_id is used here to toggle the favorite icon based on 
+    # whether the item exists in the wish list or not.
+
+    # A seperate list is prefered over iterating through keys and values 
+    # in wishlist_bag since the for loop to get the item_id value 
+    # conflicts the outer for loop of products.
     wishlist_item_id = request.session.get('wishlist_item_id', [])
 
 

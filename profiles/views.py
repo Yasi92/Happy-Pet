@@ -1,8 +1,10 @@
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib import messages
 from profiles.models import UserProfile
 from .forms import UserProfileForm
 from checkout.models import Order
+from products.models import Product, ProductReview
+from products.forms import ProductReviewForm
 
 # Create your views here.
 def profile(request):
@@ -55,3 +57,29 @@ def order_history(request, order_number):
 
     return render (request, template, context)
 
+
+
+def add_review(request, product_id):
+    product = get_object_or_404(Product, product_id=product_id)
+
+    if request.method == 'POST' and request.user.is_authenticated:
+
+        stars = request.POST['stars']
+        content = request.POST['content']
+
+        ProductReview.objects.create(product=product, user=request.user, stars=stars, content=content)    
+
+    form = ProductReviewForm()   
+
+
+    template = 'profiles/add_review.html'
+    context = {
+        'product' : product,
+        'form' : form,
+
+    }
+
+
+    form = ProductReviewForm()   
+
+    return render(request, template, context)

@@ -1,7 +1,7 @@
 
-from itertools import product
 from django.db import models
 from multiselectfield import MultiSelectField
+from django.contrib.auth.models import User
 
 
 class Category(models.Model):
@@ -119,4 +119,12 @@ class Subcategories(models.Model):
     def __str__(self):
         return self.name
 
+
+
+class ProductReview(models.Model):
+    product = models.ForeignKey(Product, related_name='reviews', on_delete=models.CASCADE)
+    user = models.ForeignKey(User, related_name='reviews', on_delete=models.CASCADE)
+    content = models.TextField(blank=True, null=True)
+    stars = models.IntegerField()
+    date = models.DateTimeField(auto_now_add=True)
 
