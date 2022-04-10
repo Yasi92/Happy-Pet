@@ -25,14 +25,25 @@
                         <span class="text-uppercase">Keep Shopping</span>
                     </a>
                 </button>
+                {% if product.product_id in request.session.wishlist_item_id %}
                 <button class="btn btn-outline-dark btn-sm">
-                    <a href="{% url 'add_to_wishlist' product.product_id %}" class="text-black">
+                    <a href="{% url 'remove_from_wishlist' product.product_id %}" class="text-black">
                         <span class="icon">
                             <i class="fa-solid fa-heart"></i>
                         </span>
-                        <span class="text-uppercase">Add to Wish list</span>
+                        <span class="text-uppercase">Remove From Wish List</span>
                     </a>
                 </button>
+                {% else %}
+                <button class="btn btn-outline-dark btn-sm">
+                    <a href="{% url 'add_to_wishlist' product.product_id %}" class="text-black">
+                        <span class="icon">
+                            <i class="fa-regular fa-heart"></i>
+                        </span>
+                        <span class="text-uppercase">Add To Wish list</span>
+                    </a>
+                </button>
+                {% endif %}
         </div>
     </div>
     <div class="row my-3">

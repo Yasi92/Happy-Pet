@@ -36,6 +36,8 @@ def view_wishlist(request):
 def add_to_wishlist(request, item_id):
     product = get_object_or_404(Product, product_id=item_id)
     wishlist_bag = request.session.get('wishlist_bag', {})
+    wishlist_item_id = request.session.get('wishlist_item_id', [])
+
 
 
     # Returns to the current url
@@ -49,9 +51,15 @@ def add_to_wishlist(request, item_id):
 
     else:
         wishlist_bag[item_id] = True
+        wishlist_item_id.append(int(item_id)) 
+
         messages.info(request, f'{ product.name } Added to your wish list')
 
     request.session['wishlist_bag'] = wishlist_bag
+    request.session['wishlist_item_id'] = wishlist_item_id
+
+
+    print(wishlist_item_id)
     return redirect(current_url) 
 
 
@@ -61,6 +69,7 @@ def add_to_wishlist(request, item_id):
 def remove_from_wishlist(request, item_id):
     product = get_object_or_404(Product, product_id=item_id)
     wishlist_bag = request.session.get('wishlist_bag', {})
+    wishlist_item_id = request.session.get('wishlist_item_id', [])
 
 
     # Returns to the current url
@@ -69,10 +78,13 @@ def remove_from_wishlist(request, item_id):
     current_url = request.META['HTTP_REFERER']
 
 
+    wishlist_item_id.remove(int(item_id))
     del wishlist_bag[item_id]
     messages.info(request, f'{ product.name } Removed from your wish list')
 
 
     request.session['wishlist_bag'] = wishlist_bag
-    return redirect(view_wishlist)   
+    request.session['wishlist_item_id'] = wishlist_item_id
+
+    return redirect(current_url)   
 

@@ -1,12 +1,12 @@
-<div class="collapse col-12 navbar-collapse bg-white" id="main-nav">
+<div class="collapse col-12 navbar-collapse bg-dark" id="main-nav">
     <ul class="navbar-nav w-auto mx-auto">
-        <a class="font-weight-bold nav-link text-black mr-5" href="{% url 'home' %}"
+        <a class="font-weight-bold nav-link text-white mr-5" href="{% url 'home' %}"
             id="home-link">
             Home
         </a>
         <!-- --------------------------------------All Products------------------------------------ -->
         <li class="nav-item dropdown px-2">
-            <a class="nav-link text-black" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+            <a class="nav-link text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                 aria-expanded="false">All Products</a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href="{% url 'products' %}?sort=price&direction=asc">By Price</a></li>
@@ -17,8 +17,8 @@
         </li>
         <!-- ---------------------------------------Dogs------------------------------------ -->
         <li class="nav-item dropdown px-2">
-            <a class="nav-link text-black" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-                aria-expanded="false">Dogs</a>
+            <a class="nav-link text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">Dogs <i class="fa-solid fa-dog"></i></a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href="{% url 'products' %}?category=dogs&subcategory=nutrition">Nutrition</a></li>
                 <li><a class="dropdown-item" href="{% url 'products' %}?category=dogs&subcategory=snacks">Snacks</a></li>
@@ -35,8 +35,8 @@
         </li>
         <!-- ---------------------------------------cats------------------------------------ -->
         <li class="nav-item dropdown px-2">
-            <a class="nav-link text-black" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-                aria-expanded="false">Cats</a>
+            <a class="nav-link text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">Cats <i class="fa-solid fa-cat"></i></a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href="{% url 'products' %}?category=cats&subcategory=nutrition">Nutrition</a></li>
                 <li><a class="dropdown-item" href="{% url 'products' %}?category=cats&subcategory=snacks">Snacks</a></li>
@@ -54,8 +54,8 @@
         </li>
         <!-- ---------------------------------------birds------------------------------------ -->
         <li class="nav-item dropdown px-2">
-            <a class="nav-link text-black" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-                aria-expanded="false">Birds</a>
+            <a class="nav-link text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">Birds <i class="fa-solid fa-dove"></i></a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href="{% url 'products' %}?category=birds&subcategory=nutrition">Nutrition</a></li>
                 <li><a class="dropdown-item" href="{% url 'products' %}?category=birds&subcategory=snacks">Snacks</a></li>
@@ -70,8 +70,8 @@
         </li>
         <!-- ---------------------------------------rodents------------------------------------ -->
         <li class="nav-item dropdown px-2">
-            <a class="nav-link text-black" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-                aria-expanded="false">Rodents</a>
+            <a class="nav-link text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">Rodents <i class="fa-solid fa-otter"></i></a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href="{% url 'products' %}?category=rodents&subcategory=nutrition">Nutrition</a></li>
                 <li><a class="dropdown-item" href="{% url 'products' %}?category=rodents&subcategory=snacks">Snacks</a></li>

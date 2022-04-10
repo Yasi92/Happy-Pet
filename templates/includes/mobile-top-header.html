@@ -62,6 +62,8 @@
                         Favorite
                         {% if request.session.wishlist_bag %}
                         ({{ request.session.wishlist_bag|length }})
+                        {% else %}
+                        (0)
                         {% endif %}
                     </p>
                 </div>

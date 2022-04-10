@@ -61,6 +61,17 @@
                 {% for product in products %}
                     <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
                         <div class="card product-card h-100 text-center">
+
+                            {% if product.product_id in request.session.wishlist_item_id %}
+                            
+                            <button class="heart-icon-borderless btn m-1">
+                                <a href="{% url 'remove_from_wishlist' product.product_id %}" class="wishlist-btn">
+                                    <span class="icon">
+                                        <i class="fa-solid fa-heart fa-xl"></i>
+                                    </span>
+                                </a>
+                            </button>
+                            {% else %}
                             <button class="heart-icon-borderless btn m-1">
                                 <a href="{% url 'add_to_wishlist' product.product_id %}" class="wishlist-btn">
                                     <span class="icon">
@@ -68,6 +79,9 @@
                                     </span>
                                 </a>
                             </button>
+                            {% endif %}
+
+                           
                             {% if product.image1 %}
                                 <a href="{% url 'product_detail' product.product_id %}" target="_blank" class="product-dtl-link">
                                     <img src="{{ product.image1.url }}" class="card-img-top img-responsive mt-2" alt="{{ product.name }}">

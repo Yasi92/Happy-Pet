@@ -101,6 +101,8 @@
                                     Favorite
                                     {% if request.session.wishlist_bag %}
                                     ({{ request.session.wishlist_bag|length }})
+                                    {% else %}
+                                    (0)
                                     {% endif %}
                                 </p>
                             </div>
@@ -136,11 +138,6 @@
 
             </div>
         </nav>
-        <div id="delivery-banner" class="row text-center">
-            <div class="col bg-black text-white">
-                <h4 class="logo-font my-1">Free delivery on orders over ${{ free_delivery_threshold }}!</h4>
-            </div>
-        </div>
     </header>
     {% if messages %}
     <div class="message-container">

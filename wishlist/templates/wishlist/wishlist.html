@@ -16,7 +16,7 @@
 <div class="container">
     <div class="row">
         <div class="col-10 offset-1">
-            <button type="button" class="btn btn-dark btn-lg">
+            <button type="button" class="btn btn-dark">
                 <a class="text-white" href="{% url 'products' %}">
                     <span><i class="fa-solid fa-chevron-left text-white"></i> Continue Shopping</span>
                 </a>
@@ -34,19 +34,27 @@
             <div class="card mb-3 p-3">
                 <div class="row g-0">
                     <div class="col-md-4">
-                        <a href="{% url 'product_detail' product.product_id %}" target="_blank">
-                            <img src="{{ product.image1.url }}" class="img-fluid rounded-start img-md"
-                            alt="{{ product.name }}">
-                        </a>
-                    </div>
-                    <div class="col-md-8">
-                        <div class="float-end">
+                        <div class="float-end d-block d-md-none">
                             <a href="{% url 'remove_from_wishlist' product.product_id %}" class="text-black" title="Remove Item">
                                 <span class="icon">
                                     <i class="fa-solid fa-trash-can fa-xl"></i>
                                 </span>
                             </a>
                         </div>
+                        <a href="{% url 'product_detail' product.product_id %}" target="_blank">
+                            <img src="{{ product.image1.url }}" class="img-fluid rounded-start img-md"
+                            alt="{{ product.name }}">
+                        </a>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="float-end d-none d-md-block">
+                            <a href="{% url 'remove_from_wishlist' product.product_id %}" class="text-black" title="Remove Item">
+                                <span class="icon">
+                                    <i class="fa-solid fa-trash-can fa-xl"></i>
+                                </span>
+                            </a>
+                        </div>
+                      
                         <div class="card-body">
                             <h5 class="card-title">{{ product.name }}</h5>
                             <div class="mt-4">
