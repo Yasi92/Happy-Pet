@@ -14,7 +14,6 @@ def view_wishlist(request):
 
 
     wishlist_bag = request.session.get('wishlist_bag', {})
-    print(wishlist_bag)
 
     products = []
 
@@ -38,21 +37,42 @@ def add_to_wishlist(request, item_id):
     product = get_object_or_404(Product, product_id=item_id)
     wishlist_bag = request.session.get('wishlist_bag', {})
 
+
+    # Returns to the current url
+    # The method is borroewed from the thread on slack community
+    # (https://stackoverflow.com/questions/23026337/django-get-current-url-path-from-actual-current-page)
+    current_url = request.META['HTTP_REFERER']
+
+    
+    if item_id in list(wishlist_bag.keys()):
+        messages.info(request, f'{ product.name } Already exists in your wish list')
+
+    else:
+        wishlist_bag[item_id] = True
+        messages.info(request, f'{ product.name } Added to your wish list')
+
+    request.session['wishlist_bag'] = wishlist_bag
+    return redirect(current_url) 
+
+
+
+
+
+def remove_from_wishlist(request, item_id):
+    product = get_object_or_404(Product, product_id=item_id)
+    wishlist_bag = request.session.get('wishlist_bag', {})
+
+
     # Returns to the current url
     # The method is borroewed from the thread on slack community
     # (https://stackoverflow.com/questions/23026337/django-get-current-url-path-from-actual-current-page)
     current_url = request.META['HTTP_REFERER']
 
 
-
-    if item_id in list(wishlist_bag.keys()):
-        messages.success(request, f'{ product.name } Already exists in your wish list')
-
-    else:
-        wishlist_bag[item_id] = True
-        messages.success(request, f'Added { product.name } to your wish list')  
+    del wishlist_bag[item_id]
+    messages.info(request, f'{ product.name } Removed from your wish list')
 
 
     request.session['wishlist_bag'] = wishlist_bag
-    return redirect(current_url)
+    return redirect(view_wishlist)   
 

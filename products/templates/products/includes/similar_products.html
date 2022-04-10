@@ -121,7 +121,7 @@
         <h1 class="my-4">Similar Products</h1>
         <div class="row">
             {% for s in similar_products %}
-            <div class="col-4 border card">
+            <div class="col-md-4 col-12 border card">
                 <div class="card-body">
                     <img class="img-fluid" src="{{ s.image1.url }}">
                     <p class="card-text text-black px-3">{{ product.name }}</p>

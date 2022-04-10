@@ -60,7 +60,7 @@
             <div class="row">
                 {% for product in products %}
                     <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
-                        <div class="card h-100 text-center">
+                        <div class="card product-card h-100 text-center">
                             <button class="heart-icon-borderless btn m-1">
                                 <a href="{% url 'add_to_wishlist' product.product_id %}" class="wishlist-btn">
                                     <span class="icon">
@@ -181,4 +181,5 @@
             }
         })
         </script>
+
     {% endblock %}
