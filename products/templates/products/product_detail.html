@@ -178,10 +178,49 @@
                             <div class="col-12">
                                 <div class="card w-100">
                                     <div class="card-body">
-                                        <h6 class="card-title">Profile : {{ review.user }}</h6>
-                                        <p class="card-subtitle">Rating : {{ review.stars }}</p>
-                                        <p class="card-text">Review : {{ review.content }}</p>
-                                        <p class="card-subtitle text-info">Date added : {{ review.date }}</p>
+                                        <p class="card-title">{{ review.user }}
+                                        <span>
+                                        {% if review.stars == 1 %}
+                                        <i class="fa fa-star" style="color: #edd605;"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        {% elif review.stars == 2 %}
+                                        <i class="fa fa-star" style="color: #edd605;"></i>
+                                        <i class="fa fa-star" style="color: #edd605;"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        {% elif review.stars == 3 %}
+                                        <i class="fa fa-star" style="color: #edd605;"></i>
+                                        <i class="fa fa-star" style="color: #edd605;"></i>
+                                        <i class="fa fa-star" style="color: #edd605;"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        {% elif review.stars == 4 %}
+                                        <i class="fa fa-star" style="color: #edd605;"></i>
+                                        <i class="fa fa-star" style="color: #edd605;"></i>
+                                        <i class="fa fa-star" style="color: #edd605;"></i>
+                                        <i class="fa fa-star" style="color: #edd605;"></i>
+                                        <i class="fa fa-star"></i>
+                                        {% elif review.stars == 5 %}
+                                        <i class="fa fa-star" style="color: #edd605;"></i>
+                                        <i class="fa fa-star" style="color: #edd605;"></i>
+                                        <i class="fa fa-star" style="color: #edd605;"></i>
+                                        <i class="fa fa-star" style="color: #edd605;"></i>
+                                        <i class="fa fa-star" style="color: #edd605;"></i>
+                                        {% else %}
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        {% endif %}
+                                    </span>
+                                </p>
+                                        <p class="card-text">{{ review.content }}</p>
+                                        <small class="card-subtitle text-muted">Date added : {{ review.date }}</small>
                                     </div>
                                 </div>
                             </div>

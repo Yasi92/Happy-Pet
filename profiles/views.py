@@ -70,7 +70,8 @@ def add_review(request, product_id):
         ProductReview.objects.create(
                             product=product, user=request.user,
                             stars=stars, content=content)  
-        messages.success(request, f'Thank you for your review!')                      
+        messages.success(request, f'Thank you for your review!')       
+        return redirect('profile')               
 
     form = ProductReviewForm()   
 
@@ -80,7 +81,6 @@ def add_review(request, product_id):
         'product' : product,
         'form' : form,
         'on_review_page' : True,
-
     }
 
 
