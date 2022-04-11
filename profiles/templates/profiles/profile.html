@@ -126,7 +126,7 @@
                     {% for order in orders %}
                     <tr>
                         <td>
-                            <a href="{% url 'order_history' order.order_number %}" title="{{ order.order_number }}">
+                            <a class="link-primary text-decoration-underline" href="{% url 'order_history' order.order_number %}" title="{{ order.order_number }}">
                                 <small>{{ order.order_number|truncatechars:6 }}</small>
                             </a>
                         </td>
@@ -145,7 +145,7 @@
                                     {% if item.product_color %}
                                     Color : {{ item.product_color|title }}
                                     {% endif %}
-                                    <small><a href="{% url 'add_review' item.product.product_id %}">Add Review</a></small>
+                                    <small><a class="link-primary text-decoration-underline" href="{% url 'add_review' item.product.product_id %}">Add Review</a></small>
                                 </li>
 
                                 {% endfor %}

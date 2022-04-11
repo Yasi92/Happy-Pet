@@ -16,7 +16,7 @@ def profile(request):
     if request.user.is_authenticated:
         profile = get_object_or_404(UserProfile, user=request.user)
         form = UserProfileForm(instance=profile)
-        orders = profile.orders.all()
+        orders = profile.orders.all().order_by('-date')
 
 
 
@@ -27,7 +27,7 @@ def profile(request):
             messages.success(request, 'Profile updated successfully!')    
 
     # form = UserProfileForm()
-    orders = profile.orders.all()
+    orders = profile.orders.all().order_by('-date')
 
 
     template = "profiles/profile.html"
