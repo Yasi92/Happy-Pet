@@ -22,7 +22,7 @@
     </div>
 
     <div class="row">
-        <div class="col-12">
+        <div class="col-12 col-md-6">
 
             <form action="{% url 'edit_product' product.product_id %}" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
@@ -55,10 +55,3 @@
 
 {% endblock %}
 
-
-{% block postloadjs %}
-{{ block.super }}
-
-
-
-{% endblock %}

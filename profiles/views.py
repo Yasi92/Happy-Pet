@@ -5,8 +5,11 @@ from .forms import UserProfileForm
 from checkout.models import Order
 from products.models import Product, ProductReview
 from products.forms import ProductReviewForm
+from django.contrib.auth.decorators import login_required
+
 
 # Create your views here.
+@login_required
 def profile(request):
     """
     Display the user's profile

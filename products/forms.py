@@ -1,5 +1,7 @@
 from django import forms
 from .models import Product, ProductReview, Subcategories, Category
+from .widgets import CustomClearableFileInput
+
 
 
 class ProductReviewForm(forms.ModelForm):
@@ -37,6 +39,11 @@ class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
         fields = '__all__'
+
+    image1 = forms.ImageField(label='Image1', required=False, widget=CustomClearableFileInput)    
+    image2 = forms.ImageField(label='Image2', required=False, widget=CustomClearableFileInput)    
+    image3 = forms.ImageField(label='Image3', required=False, widget=CustomClearableFileInput)    
+
   
 
     def __init__(self, *args, **kwargs):
@@ -50,4 +57,4 @@ class ProductForm(forms.ModelForm):
         self.fields['subcategory'].choices = subcategories_name
 
         for field_name, field in self.fields.items():
-            field.widget.attrs['class'] = 'border-black'
+            field.widget.attrs['class'] = 'border-black my-1'
