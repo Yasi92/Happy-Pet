@@ -105,9 +105,10 @@ ul{
     height: 2.5rem;
     width: 2.5rem;
     position: fixed;
-    bottom: 0.4rem;
-    right: 0.4rem;
+    right: 0;
     background-color: #000;
+    z-index: 999;
+
 }
 
 button.heart-icon{
@@ -459,9 +460,8 @@ span > i.carousel-control-left-black {
 footer.page-footer{
     background-color: #000;
     color: #fff;
+
 }
-
-
 
 
 /* ------------------------------------------------- media Queries */

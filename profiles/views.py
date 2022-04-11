@@ -15,7 +15,6 @@ def profile(request):
     # profile = get_object_or_404(UserProfile, user=request.user)
     if request.user.is_authenticated:
         profile = get_object_or_404(UserProfile, user=request.user)
-        form = UserProfileForm(instance=profile)
         orders = profile.orders.all().order_by('-date')
 
 
@@ -26,7 +25,13 @@ def profile(request):
             form.save()
             messages.success(request, 'Profile updated successfully!')    
 
-    # form = UserProfileForm()
+        else:
+            messages.error(request, "Update failed. Please ensure the form is valid.")    
+
+    else:
+        form = UserProfileForm(instance=profile)
+
+
     orders = profile.orders.all().order_by('-date')
 
 

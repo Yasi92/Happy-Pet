@@ -1,5 +1,6 @@
 from django import forms
-from .models import ProductReview
+from .models import Product, ProductReview, Subcategories, Category
+
 
 class ProductReviewForm(forms.ModelForm):
     class Meta:
@@ -28,3 +29,25 @@ class ProductReviewForm(forms.ModelForm):
             self.fields[field].widget.attrs['placeholder'] = placeholder
             self.fields[field].widget.attrs['class'] = 'product-review-form'
             self.fields[field].label = False
+
+
+
+
+class ProductForm(forms.ModelForm):
+    class Meta:
+        model = Product
+        fields = '__all__'
+  
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        categories = Category.objects.all()                
+        subcategories = Subcategories.objects.all()    
+        category_name = [(c.category_id, c.name) for c in categories]          
+        subcategories_name = [(s.subcategory_id, s.name) for s in subcategories]          
+
+        self.fields['category'].choices = category_name
+        self.fields['subcategory'].choices = subcategories_name
+
+        for field_name, field in self.fields.items():
+            field.widget.attrs['class'] = 'border-black'

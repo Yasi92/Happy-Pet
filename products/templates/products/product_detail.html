@@ -138,8 +138,8 @@
                 {% elif product.image1 and product.image2 %}
                 {% include 'products/includes/product_image_carousel.html' %}
                 {% else %}
-                <a href="{{ product.image1.url }}">
-                    <img src="{{ MEDIA_URL }}noimage.png" class="img-fluid img-lg" alt="{{ product.name }}">
+                <a href="#">
+                    <img src="/media/noimage.pmg.jpeg" class="img-fluid img-lg" alt="{{ product.name }}">
                 </a>
                 {% endif %}
             </div>
