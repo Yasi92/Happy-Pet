@@ -67,7 +67,10 @@ def add_review(request, product_id):
         stars = request.POST['stars']
         content = request.POST['content']
 
-        ProductReview.objects.create(product=product, user=request.user, stars=stars, content=content)    
+        ProductReview.objects.create(
+                            product=product, user=request.user,
+                            stars=stars, content=content)  
+        messages.success(request, f'Thank you for your review!')                      
 
     form = ProductReviewForm()   
 
@@ -76,6 +79,7 @@ def add_review(request, product_id):
     context = {
         'product' : product,
         'form' : form,
+        'on_review_page' : True,
 
     }
 
