@@ -51,6 +51,12 @@
             <div>
                 <h3>{{ product.name }}</h3>
                 <h4 class="text-start">€{{ product.price|floatformat:"2" }}</h4>
+                {% if request.user.is_superuser %}
+                <small>
+                    <a href="{% url 'edit_product' product.product_id %}">Edit</a> | 
+                    <a class="text-danger" href="{% url 'delete_product' product.product_id %}">Delete</a>
+                </small>
+                {% endif %}
                 <hr>
                 <p class="small">
                     <a href="{% url 'products' %}?category={{ product.category.name }}&subcategory={{ product.subcategory.friendly_name }}"
@@ -59,6 +65,8 @@
                         {{ product.category.name | title }} / {{ product.subcategory.friendly_name }}
                     </a>
                 </p>
+
+
                 {% if product.rating %}
                 <small class="text-muted">{{ product.rating }} / 5</small>
                 {% else %}
@@ -127,6 +135,9 @@
                     </div>
                 </div>
             </form>
+
+      
+
 
         </div>
         <div class="col-12 col-sm-6 col-lg-5 offset-0 offset-lg-1 order-1 order-md-2">

@@ -114,6 +114,13 @@
                                         <small>{{ x }}</small>
                                         {% endfor %}
                                     </p>
+
+                                    {% if request.user.is_superuser %}
+                                    <small>
+                                        <a href="{% url 'edit_product' product.product_id %}">Edit</a> | 
+                                        <a class="text-danger" href="{% url 'delete_product' product.product_id %}">Delete</a>
+                                    </small>
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>
