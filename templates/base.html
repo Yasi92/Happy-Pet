@@ -165,6 +165,15 @@
     {% block content %}
     {% endblock %}
 
+
+    <footer class="page-footer mt-3 text-center align-items-center">
+        <!-- the dynamic copyright year is learned form (https://stackoverflow.com/questions/43714006/how-can-one-create-a-dynamic-copyright-date-without-document-write-in-javascri) -->
+        <p class="align-middle py-3">Copyright &copy; <span id="year"> </span> - HAPPY PET all Rights Reserved</p>
+    </footer>
+
+
+
+
     {% block postloadjs %}
     <script type="text/javascript">
         // initialize bootsraap toast
@@ -181,6 +190,13 @@
         })
         
     </script>
+
+
+<script>
+      // Gets the year we are in, to display in the footer
+  var date = new Date().getFullYear();
+  document.getElementById("year").innerHTML = date;
+</script>
     {% endblock %}
 
 </body>

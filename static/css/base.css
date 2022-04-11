@@ -454,6 +454,15 @@ span > i.carousel-control-left-black {
 }
 
 
+/* -------------------------------------------------------------------------------- footer */
+
+footer.page-footer{
+    background-color: #000;
+    color: #fff;
+}
+
+
+
 
 /* ------------------------------------------------- media Queries */
 /* slightly larger container on xl screens */
