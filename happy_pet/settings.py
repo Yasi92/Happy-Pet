@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
+import dj_database_url
 from dotenv import load_dotenv 
 load_dotenv()
 
@@ -151,6 +152,11 @@ DATABASES = {
         }
     }
 }
+
+
+# DATABASES = {
+#     'default' : dj_database_url.parse('postgres://aeiaqgzynezskn:91eb50ed52a2106f9c4195cfae78c401e332da3d6fa4f6f87dd56adf311bf348@ec2-99-80-170-190.eu-west-1.compute.amazonaws.com:5432/d4qefnavoil1eq')
+# }
 
 
 # Password validation

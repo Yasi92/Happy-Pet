@@ -8,43 +8,11 @@
 from django.db import models
 
 
-class Products(models.Model):
-    product_id = models.AutoField(db_column='Product_ID', primary_key=True)  # Field name made lowercase.
-    name = models.CharField(max_length=45)
-    friendlyname = models.CharField(max_length=45, blank=True, null=True)
-    category = models.ForeignKey('Category', models.DO_NOTHING, db_column='category_ID')  # Field name made lowercase.
-    subcategory = models.ForeignKey('Subcategories', models.DO_NOTHING, db_column='subcategory_ID')  # Field name made lowercase.
-    description = models.TextField(blank=True, null=True)
-    price = models.FloatField()
-    rating = models.DecimalField(max_digits=2, decimal_places=0, blank=True, null=True)
-    image1 = models.CharField(max_length=200, blank=True, null=True)
-    sku = models.CharField(unique=True, max_length=45)
-    has_sizes = models.CharField(max_length=45, blank=True, null=True)
-    colors = models.CharField(max_length=45, blank=True, null=True)
-    image2 = models.CharField(max_length=200, blank=True, null=True)
-    image3 = models.CharField(max_length=200, blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'Products'
-
-
-class Subcategories(models.Model):
-    subcategory_id = models.AutoField(db_column='subcategory_ID', primary_key=True)  # Field name made lowercase.
-    friendly_name = models.CharField(max_length=45)
-    name = models.CharField(max_length=45, blank=True, null=True)
-    category = models.CharField(max_length=45, blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'SUBCATEGORIES'
-
-
 class AccountEmailaddress(models.Model):
-    email = models.CharField(unique=True, max_length=254)
-    verified = models.IntegerField()
-    primary = models.IntegerField()
+    verified = models.BooleanField()
+    primary = models.BooleanField()
     user = models.ForeignKey('AuthUser', models.DO_NOTHING)
+    email = models.CharField(unique=True, max_length=254)
 
     class Meta:
         managed = False
@@ -71,7 +39,6 @@ class AuthGroup(models.Model):
 
 
 class AuthGroupPermissions(models.Model):
-    id = models.BigAutoField(primary_key=True)
     group = models.ForeignKey(AuthGroup, models.DO_NOTHING)
     permission = models.ForeignKey('AuthPermission', models.DO_NOTHING)
 
@@ -82,9 +49,9 @@ class AuthGroupPermissions(models.Model):
 
 
 class AuthPermission(models.Model):
-    name = models.CharField(max_length=255)
     content_type = models.ForeignKey('DjangoContentType', models.DO_NOTHING)
     codename = models.CharField(max_length=100)
+    name = models.CharField(max_length=255)
 
     class Meta:
         managed = False
@@ -95,14 +62,14 @@ class AuthPermission(models.Model):
 class AuthUser(models.Model):
     password = models.CharField(max_length=128)
     last_login = models.DateTimeField(blank=True, null=True)
-    is_superuser = models.IntegerField()
+    is_superuser = models.BooleanField()
     username = models.CharField(unique=True, max_length=150)
-    first_name = models.CharField(max_length=150)
     last_name = models.CharField(max_length=150)
     email = models.CharField(max_length=254)
-    is_staff = models.IntegerField()
-    is_active = models.IntegerField()
+    is_staff = models.BooleanField()
+    is_active = models.BooleanField()
     date_joined = models.DateTimeField()
+    first_name = models.CharField(max_length=150)
 
     class Meta:
         managed = False
@@ -110,7 +77,6 @@ class AuthUser(models.Model):
 
 
 class AuthUserGroups(models.Model):
-    id = models.BigAutoField(primary_key=True)
     user = models.ForeignKey(AuthUser, models.DO_NOTHING)
     group = models.ForeignKey(AuthGroup, models.DO_NOTHING)
 
@@ -121,7 +87,6 @@ class AuthUserGroups(models.Model):
 
 
 class AuthUserUserPermissions(models.Model):
-    id = models.BigAutoField(primary_key=True)
     user = models.ForeignKey(AuthUser, models.DO_NOTHING)
     permission = models.ForeignKey(AuthPermission, models.DO_NOTHING)
 
@@ -131,18 +96,7 @@ class AuthUserUserPermissions(models.Model):
         unique_together = (('user', 'permission'),)
 
 
-class Category(models.Model):
-    category_id = models.IntegerField(db_column='category_ID', primary_key=True)  # Field name made lowercase.
-    name = models.CharField(max_length=45)
-    friendlyname = models.CharField(db_column='friendlyName', max_length=45, blank=True, null=True)  # Field name made lowercase.
-
-    class Meta:
-        managed = False
-        db_table = 'category'
-
-
 class CheckoutOrder(models.Model):
-    id = models.BigAutoField(primary_key=True)
     order_number = models.CharField(max_length=32)
     full_name = models.CharField(max_length=50)
     email = models.CharField(max_length=254)
@@ -154,9 +108,9 @@ class CheckoutOrder(models.Model):
     street_address2 = models.CharField(max_length=80, blank=True, null=True)
     county = models.CharField(max_length=80, blank=True, null=True)
     date = models.DateTimeField()
-    delivery_cost = models.DecimalField(max_digits=6, decimal_places=2)
-    order_total = models.DecimalField(max_digits=10, decimal_places=2)
-    grand_total = models.DecimalField(max_digits=10, decimal_places=2)
+    delivery_cost = models.DecimalField(max_digits=10, decimal_places=5)  # max_digits and decimal_places have been guessed, as this database handles decimal fields as float
+    order_total = models.DecimalField(max_digits=10, decimal_places=5)  # max_digits and decimal_places have been guessed, as this database handles decimal fields as float
+    grand_total = models.DecimalField(max_digits=10, decimal_places=5)  # max_digits and decimal_places have been guessed, as this database handles decimal fields as float
     user_profile = models.ForeignKey('ProfilesUserprofile', models.DO_NOTHING, blank=True, null=True)
     original_bag = models.TextField()
     stripe_pid = models.CharField(max_length=254)
@@ -164,30 +118,18 @@ class CheckoutOrder(models.Model):
     class Meta:
         managed = False
         db_table = 'checkout_order'
-
-
-class CheckoutOrderlineitem(models.Model):
-    id = models.BigAutoField(primary_key=True)
-    product_size = models.CharField(max_length=10, blank=True, null=True)
-    product_color = models.CharField(max_length=15, blank=True, null=True)
-    quantity = models.IntegerField()
-    lineitem_total = models.FloatField()
-    order = models.ForeignKey(CheckoutOrder, models.DO_NOTHING)
-    product = models.ForeignKey(Products, models.DO_NOTHING)
-
-    class Meta:
-        managed = False
-        db_table = 'checkout_orderlineitem'
+# Unable to inspect table 'checkout_orderlineitem'
+# The error was: list index out of range
 
 
 class DjangoAdminLog(models.Model):
     action_time = models.DateTimeField()
     object_id = models.TextField(blank=True, null=True)
     object_repr = models.CharField(max_length=200)
-    action_flag = models.PositiveSmallIntegerField()
     change_message = models.TextField()
     content_type = models.ForeignKey('DjangoContentType', models.DO_NOTHING, blank=True, null=True)
     user = models.ForeignKey(AuthUser, models.DO_NOTHING)
+    action_flag = models.PositiveSmallIntegerField()
 
     class Meta:
         managed = False
@@ -205,7 +147,6 @@ class DjangoContentType(models.Model):
 
 
 class DjangoMigrations(models.Model):
-    id = models.BigAutoField(primary_key=True)
     app = models.CharField(max_length=255)
     name = models.CharField(max_length=255)
     applied = models.DateTimeField()
@@ -226,49 +167,17 @@ class DjangoSession(models.Model):
 
 
 class DjangoSite(models.Model):
-    domain = models.CharField(unique=True, max_length=100)
     name = models.CharField(max_length=50)
+    domain = models.CharField(unique=True, max_length=100)
 
     class Meta:
         managed = False
         db_table = 'django_site'
-
-
-class ProductsCategory(models.Model):
-    id = models.BigAutoField(primary_key=True)
-    name = models.CharField(max_length=254)
-    friendly_name = models.CharField(max_length=254, blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'products_category'
-
-
-class ProductsPostimage(models.Model):
-    id = models.BigAutoField(primary_key=True)
-    images = models.CharField(max_length=100, blank=True, null=True)
-    product_id = models.IntegerField()
-
-    class Meta:
-        managed = False
-        db_table = 'products_postimage'
-
-
-class ProductsProductreview(models.Model):
-    id = models.BigAutoField(primary_key=True)
-    content = models.TextField(blank=True, null=True)
-    stars = models.IntegerField()
-    date = models.DateTimeField()
-    product = models.ForeignKey(Products, models.DO_NOTHING)
-    user = models.ForeignKey(AuthUser, models.DO_NOTHING)
-
-    class Meta:
-        managed = False
-        db_table = 'products_productreview'
+# Unable to inspect table 'products_productreview'
+# The error was: list index out of range
 
 
 class ProfilesUserprofile(models.Model):
-    id = models.BigAutoField(primary_key=True)
     default_phone_number = models.CharField(max_length=20, blank=True, null=True)
     default_country = models.CharField(max_length=2, blank=True, null=True)
     default_postcode = models.CharField(max_length=20, blank=True, null=True)
@@ -288,8 +197,8 @@ class SocialaccountSocialaccount(models.Model):
     uid = models.CharField(max_length=191)
     last_login = models.DateTimeField()
     date_joined = models.DateTimeField()
-    extra_data = models.TextField()
     user = models.ForeignKey(AuthUser, models.DO_NOTHING)
+    extra_data = models.TextField()
 
     class Meta:
         managed = False
@@ -301,8 +210,8 @@ class SocialaccountSocialapp(models.Model):
     provider = models.CharField(max_length=30)
     name = models.CharField(max_length=40)
     client_id = models.CharField(max_length=191)
-    secret = models.CharField(max_length=191)
     key = models.CharField(max_length=191)
+    secret = models.CharField(max_length=191)
 
     class Meta:
         managed = False
@@ -310,7 +219,6 @@ class SocialaccountSocialapp(models.Model):
 
 
 class SocialaccountSocialappSites(models.Model):
-    id = models.BigAutoField(primary_key=True)
     socialapp = models.ForeignKey(SocialaccountSocialapp, models.DO_NOTHING)
     site = models.ForeignKey(DjangoSite, models.DO_NOTHING)
 
