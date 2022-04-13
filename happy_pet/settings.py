@@ -29,7 +29,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['happy-pet.herokuapp.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -139,19 +139,27 @@ WSGI_APPLICATION = 'happy_pet.wsgi.application'
 #     }
 # }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'HappyPetDB',
-        'USER': 'root',
-        'PASSWORD': os.environ.get("DATABASE_PASSWORD"),
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
-        'OPTIONS': {
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+if 'DATABASE_URL' in os.environ:
+    DATABASES = {
+        'default' : dj_database_url.parse(os.environ.get('DATABASE_URL'))
+
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'HappyPetDB',
+            'USER': 'root',
+            'PASSWORD': os.environ.get("DATABASE_PASSWORD"),
+            'HOST': '127.0.0.1',
+            'PORT': '3306',
+            'OPTIONS': {
+                'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+            }
         }
     }
-}
+
+
 
 
 

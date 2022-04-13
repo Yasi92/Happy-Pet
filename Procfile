@@ -1,0 +1,1 @@
+web: gunicorn happy_pet.wsgi:application
