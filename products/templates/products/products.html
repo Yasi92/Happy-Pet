@@ -83,7 +83,7 @@
                         </a>
                         {% else %}
                         <a href="{% url 'product_detail' product.product_id %}" class="product-dtl-link">
-                            <img src="/media/noimage.pmg.jpeg" class="card-img-top img-responsive"
+                            <img src="{{ MRDIA_URL }}/noimage.pmg.jpeg" class="card-img-top img-responsive"
                                 alt="{{ product.name }}">
                         </a>
                         {% endif %}
