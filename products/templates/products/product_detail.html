@@ -51,12 +51,39 @@
             <div>
                 <h3>{{ product.name }}</h3>
                 <h4 class="text-start">€{{ product.price|floatformat:"2" }}</h4>
+
+
                 {% if request.user.is_superuser %}
                 <small>
-                    <a href="{% url 'edit_product' product.product_id %}">Edit</a> | 
-                    <a class="text-danger" href="{% url 'delete_product' product.product_id %}">Delete</a>
+                    <a href="{% url 'edit_product' product.product_id %}">Edit</a> |
+                    <a data-bs-toggle="modal" data-bs-target="#modal-{{ product.product_id }}" class="text-danger"
+                        href="#">Delete</a>
                 </small>
+
+                <!-- Modal Structure -->
+                <div class="modal fade" tabindex="-1" id="modal-{{ product.product_id }}"
+                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Delete Product</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p>Are you sure you want to delete "{{ product.name }}"</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <a class="btn btn-small btn-black"
+                                    href="{% url 'delete_product' product.product_id %}">Yes</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 {% endif %}
+
+
                 <hr>
                 <p class="small">
                     <a href="{% url 'products' %}?category={{ product.category.name }}&subcategory={{ product.subcategory.friendly_name }}"
@@ -136,7 +163,7 @@
                 </div>
             </form>
 
-      
+
 
 
         </div>
@@ -190,46 +217,46 @@
                                 <div class="card w-100">
                                     <div class="card-body">
                                         <p class="card-title">{{ review.user }}
-                                        <span>
-                                        {% if review.stars == 1 %}
-                                        <i class="fa fa-star" style="color: #edd605;"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        {% elif review.stars == 2 %}
-                                        <i class="fa fa-star" style="color: #edd605;"></i>
-                                        <i class="fa fa-star" style="color: #edd605;"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        {% elif review.stars == 3 %}
-                                        <i class="fa fa-star" style="color: #edd605;"></i>
-                                        <i class="fa fa-star" style="color: #edd605;"></i>
-                                        <i class="fa fa-star" style="color: #edd605;"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        {% elif review.stars == 4 %}
-                                        <i class="fa fa-star" style="color: #edd605;"></i>
-                                        <i class="fa fa-star" style="color: #edd605;"></i>
-                                        <i class="fa fa-star" style="color: #edd605;"></i>
-                                        <i class="fa fa-star" style="color: #edd605;"></i>
-                                        <i class="fa fa-star"></i>
-                                        {% elif review.stars == 5 %}
-                                        <i class="fa fa-star" style="color: #edd605;"></i>
-                                        <i class="fa fa-star" style="color: #edd605;"></i>
-                                        <i class="fa fa-star" style="color: #edd605;"></i>
-                                        <i class="fa fa-star" style="color: #edd605;"></i>
-                                        <i class="fa fa-star" style="color: #edd605;"></i>
-                                        {% else %}
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        {% endif %}
-                                    </span>
-                                </p>
+                                            <span>
+                                                {% if review.stars == 1 %}
+                                                <i class="fa fa-star" style="color: #edd605;"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                {% elif review.stars == 2 %}
+                                                <i class="fa fa-star" style="color: #edd605;"></i>
+                                                <i class="fa fa-star" style="color: #edd605;"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                {% elif review.stars == 3 %}
+                                                <i class="fa fa-star" style="color: #edd605;"></i>
+                                                <i class="fa fa-star" style="color: #edd605;"></i>
+                                                <i class="fa fa-star" style="color: #edd605;"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                {% elif review.stars == 4 %}
+                                                <i class="fa fa-star" style="color: #edd605;"></i>
+                                                <i class="fa fa-star" style="color: #edd605;"></i>
+                                                <i class="fa fa-star" style="color: #edd605;"></i>
+                                                <i class="fa fa-star" style="color: #edd605;"></i>
+                                                <i class="fa fa-star"></i>
+                                                {% elif review.stars == 5 %}
+                                                <i class="fa fa-star" style="color: #edd605;"></i>
+                                                <i class="fa fa-star" style="color: #edd605;"></i>
+                                                <i class="fa fa-star" style="color: #edd605;"></i>
+                                                <i class="fa fa-star" style="color: #edd605;"></i>
+                                                <i class="fa fa-star" style="color: #edd605;"></i>
+                                                {% else %}
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                {% endif %}
+                                            </span>
+                                        </p>
                                         <p class="card-text">{{ review.content }}</p>
                                         <small class="card-subtitle text-muted">Date added : {{ review.date }}</small>
                                     </div>
