@@ -10,7 +10,7 @@ class Category(models.Model):
     friendlyname = models.CharField(db_column='friendlyName', max_length=45, blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
-        managed = False
+
         db_table = 'category'
         verbose_name_plural = 'Categories'
 
@@ -72,9 +72,7 @@ class Product(models.Model):
     colors = MultiSelectField(max_length=350, choices=colors, blank=True, null=True)
 
 
-
     class Meta:
-        managed = False
         db_table = 'Products'         
               
 
@@ -111,7 +109,7 @@ class Subcategories(models.Model):
 
 
     class Meta:
-        managed = False
+
         db_table = 'SUBCATEGORIES'   
         verbose_name_plural = 'Subcategories'
 
