@@ -9,6 +9,8 @@ from profiles.forms import UserProfileForm
 from .models import Order, OrderLineItem, UserProfile
 from bag.contexts import bag_contents
 from products.models import Product
+from django.core.mail import send_mail
+
 
 import json
 import stripe
@@ -172,6 +174,13 @@ def checkout_success(request, order_number):
     order = get_object_or_404(Order, order_number=order_number)
     messages.success(request, f'Order {order_number} successfully processed! \
                         A confiramation email will be sent to {order.email}. ')
+    send_mail(
+    'Order completed!',
+    'Thank you for your shopping.',
+    None,
+    [str(order.email)],
+    fail_silently=False,
+    )                    
 
     if request.user.is_authenticated:
         profile = UserProfile.objects.get(user=request.user)
