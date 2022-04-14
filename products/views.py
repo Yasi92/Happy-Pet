@@ -99,8 +99,6 @@ def product_detail(request, product_id):
 
 
 
-
-
 @login_required
 def add_product(request):
     """

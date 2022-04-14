@@ -2,8 +2,8 @@
 from math import prod
 from unicodedata import category
 from django.test import TestCase
-from .models import Category, Product, Subcategories
-from .forms import ProductForm
+from ..models import Category, Product, Subcategories
+from ..forms import ProductForm
 
 class TestViews(TestCase):
 
