@@ -180,7 +180,7 @@ def checkout_success(request, order_number):
 
 
     send_mail(
-    f'Your order {order.number} is completed!',
+    f'Your order {order.order_number} is completed!',
     message_body,
     None,
     [str(order.email)],
