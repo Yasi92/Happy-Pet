@@ -6,7 +6,7 @@
 <body style="font-family:Arial, Helvetica, sans-serif">
     <div>
         <hr>
-        <h2>Thank You {{order.full_name}} for shopping with us.</h2>
+        <h2>Thank You "{{order.full_name}}" for shopping with Happy Pet.</h2>
         <hr>
         <p>Your order information is below.</p>
     </div>
@@ -14,7 +14,7 @@
     <h5>Order Date : {{ order.date }}</h5>
     <hr>
     <h5>Order Details: </h5> <br>
-    <table style="border: 2px solid rgb(213, 213, 213);">
+    <table style="border: 2px solid rgb(213, 213, 213); padding: 1rem;">
         <thead>
             <tr>
                 <th scope="col">Product</th>
@@ -78,10 +78,10 @@
     </p>
 
     <hr>
-    <small>Billing Info:</small>
-    <p>Order Total : <strong>{{ order.order_total }}</strong></p>
-    <p>Delivery : <strong>{{ order.delivery_cost }}</strong></p>
-    <p>Grand Total : <strong>{{ order.grand_total }}</strong></p>
+    <h5>Billing Info:</h5>
+    <p>Order Total : <strong>{{ order.order_total }}</strong><br>
+    Delivery : <strong>{{ order.delivery_cost }}</strong><br>
+    Grand Total : <strong>{{ order.grand_total }}</strong></p>
 
 
 </body>
