@@ -460,9 +460,14 @@ span > i.carousel-control-left-black {
 footer.page-footer{
     background-color: #000;
     color: #fff;
+    width: 100vw !important;
 
 }
 
+
+.header-container-allauth{
+    padding-top: 8.5rem;
+}
 
 /* ------------------------------------------------- media Queries */
 /* slightly larger container on xl screens */
@@ -483,7 +488,7 @@ footer.page-footer{
     }
 
     .header-container {
-        padding-top: 164px;
+        padding-top: 8rem;
     }
 
     /* displays dropdown menu on hover */
