@@ -180,26 +180,13 @@ def checkout_success(request, order_number):
     messages.success(request, f'Order {order_number} successfully processed! \
                         A confiramation email will be sent to {order.email}. ')
 
-
-    # message_body = f'Thank you {order.full_name} for shopping with us!'
-
-
-    # send_mail(
-    # f'Your order {order.order_number} is completed!',
-    # message_body,
-    # None,
-    # [str(order.email)],
-    # fail_silently=False,
-    # )     
-    # 
     merge_data = {
         'order' : order,
     }     
           
-
     html_body = render_to_string("email-templates.html", merge_data)
     message = EmailMultiAlternatives(
-       subject=f'Your order {order.order_number} is completed!',
+       subject=f'Your order with Happy Pet is confirmed!',
        body=f'Thank you {order.full_name} for shopping with us.',
        from_email=None,
        to=[str(order.email)]
