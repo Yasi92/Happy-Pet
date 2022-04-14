@@ -20,7 +20,6 @@ def all_products(request):
     related_subcategory = None
     
 
-
     if request.GET:
         if 'sort' and 'direction' in request.GET:
             sortkey = request.GET['sort']
@@ -41,7 +40,6 @@ def all_products(request):
             products = products.order_by(sortkey)
 
 
-
         if 'category' and 'subcategory' in request.GET:
             categories = request.GET['category'].split(',')
             subcategories = request.GET['subcategory'].split(',')
@@ -54,7 +52,6 @@ def all_products(request):
             subcategories = Subcategories.objects.filter(name__in=subcategories)
 
          
-
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
@@ -77,7 +74,6 @@ def all_products(request):
         'related_subcategory' :related_subcategory,
     }
     
-
     return render(request, template, context)
 
 
