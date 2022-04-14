@@ -14,7 +14,7 @@
     <h5>Order Date : {{ order.date }}</h5>
     <hr>
     <h5>Order Details: </h5> <br>
-    <table style="border: 1px solid rgb(189, 189, 189);">
+    <table style="border: 2px solid rgb(213, 213, 213);">
         <thead>
             <tr>
                 <th scope="col">Product</th>
@@ -29,7 +29,7 @@
             <tr>
                 <th scope="row">
                     {% if item.product.image1 %}
-                    <img src="{{ item.product.image1.url }}" alt="{{ item.product.name }}" width=150>
+                    <img style="text-align: start;" src="{{ item.product.image1.url }}" alt="{{ item.product.name }}" width=150> <br>
                     {% endif %}
                     <small>{{ item.product.name }}</small>
                 </th>
