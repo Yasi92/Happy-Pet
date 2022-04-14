@@ -1,5 +1,5 @@
 from django.test import TestCase
-from .forms import OrderForm, Order
+from ..forms import OrderForm, Order
 
 
 class TestOrderForm(TestCase):
