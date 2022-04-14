@@ -174,9 +174,14 @@ def checkout_success(request, order_number):
     order = get_object_or_404(Order, order_number=order_number)
     messages.success(request, f'Order {order_number} successfully processed! \
                         A confiramation email will be sent to {order.email}. ')
+
+
+    message_body = f'Thank you {order.full_name} for shopping with us!'
+
+
     send_mail(
-    'Order completed!',
-    'Thank you for your shopping.',
+    f'Your order {order.number} is completed!',
+    message_body,
     None,
     [str(order.email)],
     fail_silently=False,
