@@ -56,7 +56,13 @@
         <div class="col-6">
             <div class="row">
                 <div class="col-6 offset-4">
+                    {% if product.image1 %}
                     <img class="img-fluid" src="{{ product.image1.url }}" alt="{{ product.name }}">
+                    {% else %}
+
+                    <img class="img-fluid" src="{{ MEDIA_URL }}/noimage.pmg.jpeg" alt="{{ product.name }}">
+
+                    {% endif %}
                     <p>{{ product.name }}</p>
                     <p class="text-muted">{{ product.sku }}</p>
                 </div>

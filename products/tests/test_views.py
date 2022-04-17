@@ -44,6 +44,7 @@ class TestLogInRequiredViews(TestCase):
         self.user.save()
         self.client = Client()
         self.client.login(username=self.user.username, password='Mypassword')
+        
 
      
 
