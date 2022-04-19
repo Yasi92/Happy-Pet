@@ -44,10 +44,7 @@ def add_to_wishlist(request, item_id):
     # The method is borroewed from the thread on slack community
     # (https://stackoverflow.com/questions/23026337/django-get-current-url-path-from-actual-current-page)
     current_url = request.META['HTTP_REFERER']
-    next = request.GET.get('next')
-    print(next)
 
-    
     if item_id in list(wishlist_bag.keys()):
         messages.info(request, f'{ product.name } Already exists in your wish list')
 
