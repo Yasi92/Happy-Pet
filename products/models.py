@@ -19,7 +19,7 @@ class Category(models.Model):
         return self.name
 
     def get_friendly_name(self):
-        return self.friendly_name
+        return self.friendlyname
 
 
 
