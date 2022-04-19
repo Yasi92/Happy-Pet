@@ -4,7 +4,7 @@ from ..models import Order, OrderLineItem
 from products.models import Product, Category, Subcategories
 from profiles.models import UserProfile, User
 
-class TestViews(TestCase):
+class TestModels(TestCase):
     def setUp(self):
         self.category= Category.objects.create(category_id=6, name='test_category', 
                                             friendlyname='test_friendlyname')

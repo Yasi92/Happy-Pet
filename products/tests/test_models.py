@@ -2,7 +2,7 @@ from django.contrib.auth.models import User
 from django.test import TestCase
 from ..models import Category, Subcategories, Product, ProductReview
 
-class TestViews(TestCase):
+class TestModels(TestCase):
 
     def setUp(self):
         self.user = User.objects.create(

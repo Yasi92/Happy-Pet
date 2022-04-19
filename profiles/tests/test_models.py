@@ -2,7 +2,7 @@ from ..models import User, UserProfile
 from django.test import TestCase
 
 
-class TestViews(TestCase):
+class TestModels(TestCase):
     def setUp(self):
         self.user = User.objects.create(
             username='username',
