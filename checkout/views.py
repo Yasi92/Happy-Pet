@@ -47,8 +47,6 @@ def checkout(request):
     if request.method == "POST":
         bag = request.session.get('bag', {})
 
-
-            
         form_data = {
             'full_name': request.POST['full_name'],
             'email': request.POST['email'],
@@ -162,6 +160,8 @@ def checkout(request):
             order_form = OrderForm()    
     
     template = 'checkout/checkout.html'
+
+ 
     context = {
         'order_form' : order_form,
         'profile' : profile,
@@ -203,20 +203,20 @@ def checkout_success(request, order_number):
         order.user_profile = profile
         order.save()
        
-    if save_info == True:
-        profile_data ={
-            'default_phone_number': order.phone_number,
-            'default_country': order.country,
-            'default_postcode': order.postcode,
-            'default_city': order.town_or_city,
-            'default_street_address1': order.street_address1,
-            'default_street_address2': order.street_address2,
-            'default_county': order.county,
-        }    
+        if save_info == True:
+            profile_data ={
+                'default_phone_number': order.phone_number,
+                'default_country': order.country,
+                'default_postcode': order.postcode,
+                'default_city': order.town_or_city,
+                'default_street_address1': order.street_address1,
+                'default_street_address2': order.street_address2,
+                'default_county': order.county,
+            }    
 
-        user_profile_form = UserProfileForm(profile_data, instance=profile)
-        if user_profile_form.is_valid():
-            user_profile_form.save()
+            user_profile_form = UserProfileForm(profile_data, instance=profile)
+            if user_profile_form.is_valid():
+                user_profile_form.save()
 
 
     if 'bag' in request.session:
