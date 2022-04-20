@@ -1,9 +1,9 @@
-<div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center d-block d-lg-none grey-bg">
-    <a href="#" class="nav-link">
+<div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center d-block d-lg-none pink-bg border-bottom">
+    <a href="{% url 'home' %}" class="nav-link">
         <h1 class="logo-font text-black my-0">Happy Pet <i class="fa-solid fa-paw"></i></h1>
     </a>
 </div>
-<div class="col-12 grey-bg d-block d-lg-none py-1">
+<div class="col-12 pink-bg d-block d-lg-none py-1 border-bottom">
     <div class="row d-flex d-lg-none text-center">
         <div class="col-3">
             <a class="text-black nav-link" role="button" href="#" id="mobile-search" data-bs-toggle="dropdown"
@@ -63,7 +63,7 @@
                         {% endif %}
                     </div>
                     <p class="my-0">
-                        Favorite
+                        
                         {% if request.session.wishlist_bag %}
                         ({{ request.session.wishlist_bag|length }})
                         {% else %}
@@ -74,15 +74,15 @@
             </a>
         </div>
         <div class="col-3">
-            <a class="{% if grand_total %}text-primary font-weight-bold{% else %}text-black{% endif %} nav-link d-block d-lg-none"
+            <a class="{% if grand_total %}text-primary font-weight-bold{% else %} text-black{% endif %}"
                 href="{% url 'bag' %}">
                 <div class="text-center">
                     <div><i class="fa-solid fa-cart-shopping fa-lg"></i></div>
                     <p class="my-0">
                         {% if grand_total %}
-                        ${{ grand_total|floatformat:2 }}
+                        €{{ grand_total|floatformat:2 }}
                         {% else %}
-                        $0.00
+                        €0.00
                         {% endif %}
                     </p>
                 </div>

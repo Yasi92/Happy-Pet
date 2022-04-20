@@ -46,8 +46,8 @@
 
 <body>
     <header class="container-fluid fixed-top w-100">
-        <div id="topnav" class="row pt-lg-2 d-none d-lg-flex px-xl-4 px-0 grey-bg">
-            <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left grey-bg">
+        <div id="topnav" class="row pt-lg-2 d-none d-lg-flex px-xl-4 px-0 pink-bg">
+            <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left pink-bg">
                 <form method="GET" action="{% url 'products' %}" class="query-form">
                     <div class="input-group w-100">
                         <input class="form-control border border-black" type="text" name="q" placeholder="Search Here"
@@ -62,12 +62,12 @@
                     </div>
                 </form>
             </div>
-            <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center grey-bg">
-                <a href="#" class="nav-link">
+            <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center pink-bg">
+                <a href="{% url 'home' %}" class="nav-link">
                     <h2 class="logo-font text-black my-0">Happy Pet <i class="fa-solid fa-paw"></i></h2>
                 </a>
             </div>
-            <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 grey-bg">
+            <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 pink-bg">
                 <ul class="list-inline list-unstyled text-end my-0">
                     <li class="list-inline-item dropdown">
                         <a class="text-black nav-link" href="#" id="user-options" data-bs-toggle="dropdown"
@@ -103,7 +103,6 @@
                                     {% endif %}
                                 </div>
                                 <p class="my-0">
-                                    Favorite
                                     {% if request.session.wishlist_bag %}
                                     ({{ request.session.wishlist_bag|length }})
                                     {% else %}
@@ -113,16 +112,15 @@
                             </div>
                         </a>
                     </li>
-                    <li
-                        class="list-inline-item {% if grand_total %} text-info font-weight-bold{% else %}text-black{% endif %} ms-md-2">
-                        <a class="nav-link text-black" href="{% url 'bag' %}">
+                    <li class="list-inline-item ms-md-2">
+                        <a class="nav-link {% if grand_total %} text-primary font-weight-bold{% else %}text-black{% endif %}" href="{% url 'bag' %}">
                             <div class="text-center">
                                 <div><i class="fa-solid fa-cart-shopping fa-lg"></i></div>
                                 <p class="my-0">
                                     {% if grand_total %}
-                                    ${{ grand_total|floatformat:2 }}
+                                    €{{ grand_total|floatformat:2 }}
                                     {% else %}
-                                    $0.00
+                                    €0.00
                                     {% endif %}
                                 </p>
                             </div>

@@ -21,10 +21,7 @@ body {
     z-index: -1;
 }
 
-.grey-bg{
-    /* background-color: #b9b9b2 !important; */
-    /* background-color: #ebbabe !important; */
-    /* background-color: #ecca8a !important; */
+.pink-bg{
     background-color: #f0c1c1 !important;
 }
 
@@ -70,6 +67,14 @@ a{
 .btn-black {
     background: #000;
     color: #fff;
+}
+
+.btn-pink{
+    background-color: #f0c1c1 !important;
+}
+
+.btn-pink:hover{
+    background-color: #f58e8e !important;
 }
 
 
@@ -123,35 +128,7 @@ ul{
 
 }
 
-button.heart-icon{
-    width: 3.1rem;
-    height: 3.1rem;
-    border: 1px solid rgba(194, 194, 194, 0.838);
-    border-radius: 50%;
-}
 
-.heart-icon-borderless{
-    width: 3.1rem;
-    height: 3.1rem;
-    font-size: 1.5rem;
-
-}
-
-.heart-icon-borderless > a{
-    color: #6c757d;
-    
-}
-
-.heart-icon-borderless:hover > a{
-    color: #000000;
-    
-}
-
-button.heart-icon:hover{
-
-    border: 1px solid black;
-
-}
 
 .add-to-bag-btn{
     width: 70%;
@@ -178,9 +155,11 @@ button.heart-icon:hover{
 }
 
 
-li.list-group-item:hover > a.category-badge{
-    color:#fff !important;
+.current-category .btn-black:hover{
+    background-color: #5f5f5f;
+
 }
+
 
 li.list-group-item.current-category:hover{
     background-color: #000 !important;
@@ -247,11 +226,11 @@ ul{
 /* ----------------------------------------------------------------- dropdowns */
 .dropdown-menu{
 
-    background-color: #000;
+    background-color: #f0c1c1;
 }
 
 .dropdown-item{
-    color: #fff;
+    color: #000;
 }
 /* -------------------------------------------------------------------------------- carousel */
 /* This carousel is borrowed from (https://www.codeply.com/p/jCzaESNi07) */
@@ -409,6 +388,10 @@ span > i.carousel-control-left-black {
     overflow: visible;
     background-color: #fff !important;
 
+}
+
+.toast{
+    background-color: #fff !important;
 }
 
 .toast-capper{
@@ -587,6 +570,10 @@ footer.page-footer{
 
 
 @media screen and (max-width: 576px){
+    .header-container{
+        padding-top: 180px;
+    }
+
     .sim-carousel-inner > .carousel-item.active,
     .sim-carousel-inner > .carousel-item-next {
         display: flex;
@@ -594,7 +581,7 @@ footer.page-footer{
     }
 
     html{
-        /* max-width: fit-content; */
+        max-width: fit-content;
         min-width: fit-content;
         overflow-x: hidden;
         /* max-width: 90vw; */
@@ -626,7 +613,6 @@ footer.page-footer{
         height: 1.6rem;
         top: 40% !important;
     }
-
 
 }
 

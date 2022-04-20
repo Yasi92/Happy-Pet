@@ -1,3 +1,4 @@
+from urllib import response
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib import messages
 from profiles.models import UserProfile
@@ -66,7 +67,7 @@ def order_history(request, order_number):
     return render (request, template, context)
 
 
-
+@login_required
 def add_review(request, product_id):
     product = get_object_or_404(Product, product_id=product_id)
 
@@ -79,7 +80,7 @@ def add_review(request, product_id):
                             product=product, user=request.user,
                             stars=stars, content=content)  
         messages.success(request, f'Thank you for your review!')       
-        return redirect('profile')               
+        return redirect('profile')             
 
     form = ProductReviewForm()   
 

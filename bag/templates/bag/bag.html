@@ -72,7 +72,7 @@
                     <h6>Bag Total:</h6>
                 </div>
                 <div class="col-6">
-                    <h6 class="text-end">${{ total|floatformat:2 }}</h6>
+                    <h6 class="text-end">€{{ total|floatformat:2 }}</h6>
                 </div>
             </div>
             <div class="row">
@@ -80,7 +80,7 @@
                     <h6>Delivery:</h6>
                 </div>
                 <div class="col-6">
-                    <h6 class="text-end">${{ delivery|floatformat:2 }}</h6>
+                    <h6 class="text-end">€{{ delivery|floatformat:2 }}</h6>
                 </div>
             </div>
             <div class="row">
@@ -91,12 +91,12 @@
                 </div>
                 <div class="col-6">
                     <strong class="fw-bolder">
-                        <h6 class="text-end fw-bolder">${{ grand_total|floatformat:2 }}</h6>
+                        <h6 class="text-end fw-bolder">€{{ grand_total|floatformat:2 }}</h6>
                     </strong>
                 </div>
             </div>
             {% if free_delivery_delta %}
-            <p>You could get free delivery by spending just ${{ free_delivery_delta|floatformat:2 }} more!</p>
+            <p>You could get free delivery by spending just €{{ free_delivery_delta|floatformat:2 }} more!</p>
             {% endif %}
         </div>
     </div>
