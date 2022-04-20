@@ -57,4 +57,4 @@ class ProductForm(forms.ModelForm):
         self.fields['subcategory'].choices = subcategories_name
 
         for field_name, field in self.fields.items():
-            field.widget.attrs['class'] = 'border-black my-1'
+            field.widget.attrs['class'] = 'border-black rounded-3 my-2'

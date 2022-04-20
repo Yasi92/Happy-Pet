@@ -19,16 +19,17 @@
 <div class="overlay"></div>
 <div class="container">
 
-    <div class="row mx-3 mx-md-0">
-        <div class="col-lg-5 p-0 mx-auto my-3 col-12 ">
+    <div class="row">
+
+        <div class="col-lg-5 p-0 mx-auto my-3 col-10 offset-1 offset-lg-0 ">
             <button class="btn btn-lg btn-dark w-100 order-1">Profile Info</button>
         </div>
 
-        <div class="col-lg-5 col-12 p-0 offset-lg-1 mx-auto my-3 order-3 order-lg-2 ">
+        <div class="col-lg-5 col-10 offset-1 offset-lg-0 p-0 offset-lg-1 mx-auto my-3 order-3 order-lg-2 ">
             <button class="btn btn-lg btn-dark w-100">Order History</button>
         </div>
 
-        <div class="col-lg-5 col-12 p-3 mx-auto border border-3 rounded-3 order-2 order-lg-3 ">
+        <div class="col-lg-5 col-10 offset-1 offset-lg-0 p-3 mx-auto border border-3 rounded-3 order-2 order-lg-3 ">
             <p class="text-start">
                 Username : {{ profile }}</p>
             <p class="text-start">
@@ -99,7 +100,8 @@
                                 {% csrf_token %}
                                 {{ form | crispy }}
                                 <div class="text-center">
-                                    <button type="submit" class="btn btn-black text-center">Update Information</button>
+                                    <button type="submit" class="btn btn-black text-center">Update
+                                        Information</button>
                                 </div>
                             </form>
                         </div>
@@ -107,51 +109,54 @@
                 </div>
             </div>
         </div>
- 
-       
-      
-        <div class="col-lg-5 col-12 p-3 offset-lg-1 mx-auto border border-3 rounded-3 order-history order-4 ">
+
+        <div class="col-lg-5 col-10 offset-1 offset-lg-0 p-3 offset-lg-1 mx-auto border border-3 rounded-3 order-history order-4 ">
 
             <table class="table table-sm table-responsive">
                 <thead>
                     <tr>
                         <th><small>Order Number</small></th>
-                        <th><small>Date</small></th>
                         <th><small>Items</small></th>
                         <th><small>Order Total</small></th>
-                        <th><small>Review</small></th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for order in orders %}
                     <tr>
                         <td>
-                            <a class="link-primary text-decoration-underline" href="{% url 'order_history' order.order_number %}" title="{{ order.order_number }}">
+                            <a class="link-primary text-decoration-underline"
+                                href="{% url 'order_history' order.order_number %}" title="{{ order.order_number }}">
                                 <small>{{ order.order_number|truncatechars:6 }}</small>
                             </a>
+                            <small>{{ order.date|date:"Y-m-d" }}</small>
                         </td>
-                        <td><small>{{ order.date|date:"Y-m-d" }}</small></td>
                         <td>
                             <ul class="list-group list-group-flush">
                                 {% for item in order.lineitems.all|slice:":2" %}
-                                
+
                                 <li class="small list-group-item order-history-list">
-                                    
+
                                     {{ item.product.name }} x{{ item.quantity }} <br>
                                     {% if item.product_size %}
                                     Size : {{ item.product_size|title }} <br>
                                     {% endif %}
 
                                     {% if item.product_color %}
-                                    Color : {{ item.product_color|title }}
+                                    Color : {{ item.product_color|title }}<br>
                                     {% endif %}
-                                    <small><a class="link-primary text-decoration-underline" href="{% url 'add_review' item.product.product_id %}">Add Review</a></small>
+                                    
+                                    <small>
+                                        <a class="link-primary text-decoration-underline"
+                                            href="{% url 'add_review' item.product.product_id %}">
+                                            Add a Review
+                                        </a>
+                                    </small>
                                 </li>
 
                                 {% endfor %}
 
                                 {% if order.lineitems.all|length > 2 %}
-                                    <span class="px-3">...</span>
+                                <span class="px-3">...</span>
                                 {% endif %}
                             </ul>
                         </td>
@@ -161,7 +166,9 @@
                 </tbody>
             </table>
         </div>
+
     </div>
+
 </div>
 {% endblock %}
 

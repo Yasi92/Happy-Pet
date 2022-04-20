@@ -46,9 +46,9 @@
 
 <body>
     <header class="container-fluid fixed-top w-100">
-        <div id="topnav" class="row bg-white pt-lg-2 d-none d-lg-flex px-xl-4 px-0">
-            <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left">
-                <form method="GET" action="#" class="query-form">
+        <div id="topnav" class="row pt-lg-2 d-none d-lg-flex px-xl-4 px-0 grey-bg">
+            <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left grey-bg">
+                <form method="GET" action="{% url 'products' %}" class="query-form">
                     <div class="input-group w-100">
                         <input class="form-control border border-black" type="text" name="q" placeholder="Search Here"
                             aria-label="Search">
@@ -62,12 +62,12 @@
                     </div>
                 </form>
             </div>
-            <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center">
+            <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center grey-bg">
                 <a href="#" class="nav-link">
                     <h2 class="logo-font text-black my-0">Happy Pet <i class="fa-solid fa-paw"></i></h2>
                 </a>
             </div>
-            <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
+            <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 grey-bg">
                 <ul class="list-inline list-unstyled text-end my-0">
                     <li class="list-inline-item dropdown">
                         <a class="text-black nav-link" href="#" id="user-options" data-bs-toggle="dropdown"
@@ -96,7 +96,11 @@
                         <a class="nav-link" href="{% url 'wishlist' %}">
                             <div class="text-center text-black">
                                 <div>
+                                    {% if request.session.wishlist_bag %}
+                                    <i class="fa-solid fa-heart fa-lg text-danger"></i>
+                                    {% else %}
                                     <i class="fa-solid fa-heart fa-lg"></i>
+                                    {% endif %}
                                 </div>
                                 <p class="my-0">
                                     Favorite

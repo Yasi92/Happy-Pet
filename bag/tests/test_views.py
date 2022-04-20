@@ -40,6 +40,7 @@ class TestViews(TestCase):
             'redirect_url': f'/products/{product.product_id}/',
         })
 
+
         self.assertEquals(response.status_code, 302)
         self.assertIn(product.product_id, session['bag'])
         self.assertRedirects(response, f'/products/{product.product_id}/')

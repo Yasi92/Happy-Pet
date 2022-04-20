@@ -24,10 +24,12 @@
         </span>
         <span class="text-uppercase">Back to profile</span>
     </a>
+    <hr class="text-muted">
     <h3 class="my-3">Product Review</h3>
     <hr class="text-muted">
+
     <div class="row mt-4">
-        <div class="col-6">
+        <div class="col-12 col-md-6">
             <form action="{% url 'add_review' product.product_id %}" method="POST">
                 {% csrf_token %}
                 <fieldset class="pb-4">
@@ -50,12 +52,12 @@
                 </fieldset>
                 {{ form.content|as_crispy_field }}
 
-                <button type="submit" class="btn btn-black mt-3">Submit</button>
+                <button type="submit" class="btn btn-black my-3 w-100 ">Submit</button>
             </form>
         </div>
-        <div class="col-6">
+        <div class="col-12 col-md-6">
             <div class="row">
-                <div class="col-6 offset-4">
+                <div class="col-12 col-md-6 offset-md-4">
                     {% if product.image1 %}
                     <img class="img-fluid" src="{{ product.image1.url }}" alt="{{ product.name }}">
                     {% else %}
@@ -63,7 +65,7 @@
                     <img class="img-fluid" src="{{ MEDIA_URL }}/noimage.png" alt="{{ product.name }}">
 
                     {% endif %}
-                    <p>{{ product.name }}</p>
+                    <p class="pt-4">{{ product.name }}</p>
                     <p class="text-muted">{{ product.sku }}</p>
                 </div>
 

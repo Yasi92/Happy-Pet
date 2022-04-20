@@ -35,6 +35,10 @@
     font-size: 2rem;
 }
 
+table .list-group-item{
+    padding: .5rem 0;
+}
+
 
 
 

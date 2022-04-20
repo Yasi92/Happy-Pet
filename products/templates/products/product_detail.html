@@ -15,7 +15,7 @@
 {% block content %}
 <div class="overlay"></div>
 <div class="container">
-    <div class="row">
+    <div class="row mt-md-3">
         <div class="col-12">
             <button class="btn btn-black btn-sm">
                 <a href="{% url 'products' %}" class="text-white">
@@ -29,9 +29,9 @@
             <button class="btn btn-outline-dark btn-sm">
                 <a href="{% url 'remove_from_wishlist' product.product_id %}" class="text-black">
                     <span class="icon">
-                        <i class="fa-solid fa-heart"></i>
+                        <i class="fa-solid fa-heart text-danger"></i>
                     </span>
-                    <span class="text-uppercase">Remove From Wish List</span>
+                    <span class="text-uppercase">Remove</span>
                 </a>
             </button>
             {% else %}
@@ -40,13 +40,13 @@
                     <span class="icon">
                         <i class="fa-regular fa-heart"></i>
                     </span>
-                    <span class="text-uppercase">Add To Wish list</span>
+                    <span class="text-uppercase">Add</span>
                 </a>
             </button>
             {% endif %}
         </div>
     </div>
-    <div class="row my-3">
+    <div class="row my-md-3 px-2">
         <div class="col-12 col-sm-6 mt-3 order-2 order-md-1">
             <div>
                 <h3>{{ product.name }}</h3>
@@ -84,7 +84,7 @@
                 {% endif %}
 
 
-                <hr>
+                <hr class="text-muted">
                 <p class="small">
                     <a href="{% url 'products' %}?category={{ product.category.name }}&subcategory={{ product.subcategory.friendly_name }}"
                         class="text-muted text-decoration-none">
@@ -156,7 +156,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 mt-5 ">
+                    <div class="col-12 my-5 ">
                         <input type="submit" class="btn btn-lg add-to-bag-btn" value="Add to Bag">
                         <input type="hidden" name="redirect_url" value="{{ request.path }}">
                     </div>
@@ -168,16 +168,16 @@
 
         </div>
         <div class="col-12 col-sm-6 col-lg-5 offset-0 offset-lg-1 order-1 order-md-2">
-            <div class="my-5">
-                {% if product.image1 and not product.image2%}
+            <div class="my-4 my-md-0 text-center">
+                {% if product.image1 and not product.image2 %}
                 <a href="{{ product.image1.url }}" target="_blank">
-                    <img src="{{ product.image1.url }}" class="img-fluid img-lg" alt="{{ product.name }}">
+                    <img src="{{ product.image1.url }}" class="img-fluid" alt="{{ product.name }}">
                 </a>
-                {% elif product. and product.image2 %}
+                {% elif product.image1 and product.image2 %}
                 {% include 'products/includes/product_image_carousel.html' %}
                 {% else %}
                 <a href="#">
-                    <img src="{{ MEDIA_URL }}/noimage.png" class="img-fluid img-lg" alt="{{ product.name }}">
+                    <img src="{{ MEDIA_URL }}/noimage.png" class="img-fluid" alt="{{ product.name }}">
                 </a>
                 {% endif %}
             </div>
@@ -263,7 +263,7 @@
                                 </div>
                             </div>
                             {% empty %}
-                            <h3>No reviews</h3>
+                            <h4>No review</h4>
                             {% endfor %}
                         </div>
                     </div>

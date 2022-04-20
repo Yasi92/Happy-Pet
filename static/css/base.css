@@ -20,11 +20,21 @@ body {
     background: #fff;
     z-index: -1;
 }
+
+.grey-bg{
+    /* background-color: #b9b9b2 !important; */
+    /* background-color: #ebbabe !important; */
+    /* background-color: #ecca8a !important; */
+    background-color: #f0c1c1 !important;
+}
+
+#topnav{
+    min-height: 6rem;
+}
 /* ----------------------------------------------------------font properties */
 a{
     text-decoration: none;
 }
-
 
 .icon {
     align-items: center;
@@ -37,6 +47,8 @@ a{
 .logo-font {
     text-transform: uppercase;
 }
+
+
 
 /* ------------------------------------------------------------------colors */
 .text-black{
@@ -212,14 +224,18 @@ ul{
     min-width: 14.6rem;
 }
 
-.img-lg{
-    max-width: 26em;
-}
 
 .img-md{
     max-width: 10rem;
     min-height: 11rem;
     max-height: 11rem;
+
+}
+
+.img-sm{
+    max-width: 3rem;
+    min-height: 4rem;
+    max-height: 4rem;
 
 }
 
@@ -281,7 +297,7 @@ span > i.carousel-control-left-black {
     font-size: 2rem;
 }
 
-.carousel-control-prev{
+/* .carousel-control-prev{
     position: absolute;
     left: -10% ;
     top: 0;
@@ -293,7 +309,7 @@ span > i.carousel-control-left-black {
     position: absolute;
     right: -10% ;
     top: 0;
-}
+} */
 
 
 .mobile-sim-carousel {
@@ -391,6 +407,7 @@ span > i.carousel-control-left-black {
 
 .custom-toast{
     overflow: visible;
+    background-color: #fff !important;
 
 }
 
@@ -461,6 +478,7 @@ footer.page-footer{
     background-color: #000;
     color: #fff;
     width: 100vw !important;
+    margin-top: 3rem !important;
 
 }
 
@@ -475,6 +493,7 @@ footer.page-footer{
     .container {
         max-width: 80%;
     }
+
 }
 
 /* fixed top navbar only on medium and up */
@@ -488,7 +507,7 @@ footer.page-footer{
     }
 
     .header-container {
-        padding-top: 8rem;
+        padding-top: 10rem;
     }
 
     /* displays dropdown menu on hover */
@@ -506,11 +525,13 @@ footer.page-footer{
     body{
         height: calc(100vh - 116px);
     }
+
+
 }
 
 @media screen and (max-width: 768px){
     .header-container{
-        padding-top: 300px;
+        padding-top: 250px;
     }
 
     html{
@@ -522,6 +543,7 @@ footer.page-footer{
         width: 100%;
     }
 
+    
     .mr-n2 {
         margin-right: 0 !important;
     }
@@ -535,9 +557,31 @@ footer.page-footer{
         padding: 0.5rem;
     }
 
-    .container-fluid{
+    /* .container-fluid{
         width: 90%;
+    } */
+
+    .btn-group-custom button{
+        min-width: 10rem;
+        max-width: 10rem;
+        width: 10rem;
     }
+
+    .btn-group-custom button a{
+        font-size: .8rem;
+        padding: 0;
+    }
+
+
+    .btn-lg{
+        padding: .4rem .6rem;
+        font-size: 1rem;
+    }
+
+    #topnav{
+        min-height: unset !important;
+    }
+
 
 }
 
@@ -553,7 +597,12 @@ footer.page-footer{
         /* max-width: fit-content; */
         min-width: fit-content;
         overflow-x: hidden;
-        max-width: 90vw;
+        /* max-width: 90vw; */
+    }
+
+
+    .toast{
+        width: 17rem;
     }
 
 
@@ -577,26 +626,12 @@ footer.page-footer{
         height: 1.6rem;
         top: 40% !important;
     }
+
+
 }
 
 
 
-/* Product Form */
-
-/* .btn-file {
-    position: relative;
-    overflow: hidden;
-}
-
-.btn-file input[type="file"] {
-    position: absolute;
-    top: 0;
-    right: 0;
-    min-width: 100%;
-    min-height: 100%;
-    opacity: 0;
-    cursor: pointer;
-} */
 
 .custom-checkbox .custom-control-label::before {
     border-radius: 0;
