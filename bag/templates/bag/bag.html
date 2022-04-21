@@ -31,32 +31,33 @@
             {% if bag_items %}
             {% for item in bag_items %}
             <div class="row {% if not forloop.last %}border-bottom{% endif %} py-3">
-                <div class="col-6">
+                <div class="col-5 col-md-4">
                     {% if item.product.image1 %}
-                    <img src="{{ item.product.image1.url }}" alt="{{ item.product.name }}" class="img-fluid img-md">
+                    <img src="{{ item.product.image1.url }}" alt="{{ item.product.name }}" class="img-fluid">
                     {% else %}
-                    <img src="{{ MEDIA_URL }}/noimage.png" alt="{{ product.name }}" class="img-fluid img-md">
+                    <img src="{{ MEDIA_URL }}/noimage.png" alt="{{ product.name }}" class="img-fluid">
                     {% endif %}
                 </div>
 
-                <div class="col-5">
+                <div class="col-6 offset-1 offset-md-0 col-md-4">
                     <p>{{ item.product.name }} <br>
                         Size: {% if item.product.has_sizes %}{{ item.size|upper }}{% else %}N/A{% endif %} <br>
 
                         Color: {% if item.product.colors %}{{ item.color|upper }}{% else %}N/A{% endif %} <br>
-                        SKU : {{ item.product.sku }} <br>
+                        SKU : {{ item.product.sku }} <br><br>
                         Price : {{ item.product.price }} <br>
+                        QTY : {{ item.quantity }} <br>
                         Subtotal : {{ item.product.price | calc_subtotal:item.quantity }}
                     </p>
                 </div>
 
-                <div class="col-5 offset-6 col-md-3 offset-md-9">
+                <div class="col-5 offset-6 col-md-3 offset-md-1">
                     {% include 'bag/includes/bag-products-form.html' %}
                 </div>
             </div>
             {% endfor %}
             {% else %}
-            <p>Your bag is empty</p>
+            <p class="text-muted">Your bag is empty</p>
             {% endif %}
         </div>
     </div>

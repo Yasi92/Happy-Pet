@@ -124,11 +124,7 @@
                                     {% else %}
                                     <small class="text-muted">No Rating</small>
                                     {% endif %}
-                                    <p>{% for x in product.has_sizes %}
-                                        <small>{{ x }}</small>
-                                        {% endfor %}
-                                    </p>
-
+                   
                                     {% if request.user.is_superuser %}
                                     <small>
                                         <a href="{% url 'edit_product' product.product_id %}">Edit</a> |

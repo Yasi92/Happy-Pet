@@ -84,12 +84,19 @@
             opacity: 1,
         });
 
-        gsap.from("#bottom-fade-in", {
-            duration: 3,
-            ease: "power1.out",
-            y: 500,
-            opacity: 1,
-        });
+        gsap.fromTo("#bottom-fade-in",
+            {
+                autoAlpha: 0,
+                y: 500,
+            }, 
+            {
+                autoAlpha: 1,
+                duration: 3,
+                opacity: 1,
+                ease: "power1.out",
+                y:0,
+            }
+        );
 
         gsap.from("#left-fade-in", {
             duration: 3,
@@ -100,9 +107,13 @@
         }})
     }
 
-    if ($(window).width() > 768) {
-        homePageAnimCards();
-    }
+    
+ 
+        if ($(window).width() > 768) {
+            homePageAnimCards();
+        }
+
+
 </script>
 
 {% endblock %}
