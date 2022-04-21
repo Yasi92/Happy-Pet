@@ -187,6 +187,7 @@
         <div class="col-12">
             <div class="accordion" id="accordionExample">
                 <div class="accordion-item">
+                    {% if product.description %}
                     <h2 class="accordion-header" id="headingOne">
                         <button class="accordion-button" type="button" data-bs-toggle="collapse"
                             data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -199,6 +200,7 @@
                             <p>{{ product.description }}</p>
                         </div>
                     </div>
+                    {% endif %}
                 </div>
             </div>
             <div class="accordion-item">

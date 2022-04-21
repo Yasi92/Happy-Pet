@@ -115,15 +115,24 @@
     </div>
 </div>
 
-{% elif similar_products|length <= 4 %}
+{% elif similar_products|length <= 4 and not similar_products|length == 0 %}
 <div class="row">
     <div class="col-10 offset-1">
         <h1 class="my-4 text-center">Similar Products</h1>
         <div class="row">
             {% for s in similar_products %}
-            <div class="col-md-4 col-10 offset-1 border card">
+            <div class="{% if similar_products|length == 1 %}mx-auto {% endif %}
+            col-md-4 col-10 offset-1 offset-md-0 border card">
                 <div class="card-body">
-                    <img class="img-fluid pt-2" src="{{ s.image1.url }}">
+                    {% if s.image1 %}
+                    <a href="{% url 'product_detail' s.product_id %}" target="_blank">
+                        <img src="{{ s.image1.url }}" class="img-fluid pt-2" alt="{{ s.name }}">
+                    </a>
+                    {% else %}
+                    <a href="{% url 'product_detail' s.product_id %}">
+                        <img src="{{ MEDIA_URL }}/noimage.png" class="img-fluid pt-2" alt="{{ s.name }}">
+                    </a>
+                    {% endif %}
                     <p class="card-text text-black px-3">{{ product.name }}</p>
                 </div>
                 <div class="card-footer bg-white text-start text-black">
@@ -154,4 +163,5 @@
         </div>
     </div>
 </div>
+
 {% endif %}
