@@ -1,7 +1,6 @@
 <form class="form update-form" method="POST"
 action="{% url 'adjust_bag' item.item_id %}">
 {% csrf_token %}
-<!-- <div class="form-group"> -->
     <div class="input-group input-group-sm">
         <div class="input-group-prepend">
             <button class="decrement-qty btn btn-sm btn-black rounded-0"
@@ -31,7 +30,6 @@ action="{% url 'adjust_bag' item.item_id %}">
         <input type="hidden" name="product_color" value="{{ item.color }}">
         {% endif %}
     </div>
-<!-- </div> -->
 </form>
 
 <a class="update-link text-info"><small>Update</small></a>

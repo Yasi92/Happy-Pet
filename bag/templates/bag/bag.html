@@ -16,11 +16,11 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <button type="button" class="btn btn-dark btn-lg">
-                <a class="text-white" href="{% url 'products' %}">
+
+                <a class="text-white btn btn-dark btn-lg" href="{% url 'products' %}">
                     <span><i class="fa-solid fa-chevron-left text-white"></i> Continue Shopping</span>
                 </a>
-            </button>
+
             <hr class="text-muted">
             <h2 class="logo-font my-4">Your Shopping Bag</h2>
             <hr class="text-muted">
@@ -88,14 +88,14 @@
             </div>
             <div class="row">
                 <div class="col-6">
-                    <strong class="fw-bolder">
-                        <h6 class="fw-bolder">Grand Total</h6>
-                    </strong>
+                    
+                        <h6 class="fw-bolder"><strong class="fw-bolder">Grand Total</strong></h6>
+ 
                 </div>
                 <div class="col-6">
-                    <strong class="fw-bolder">
-                        <h6 class="text-end fw-bolder">€{{ grand_total|floatformat:2 }}</h6>
-                    </strong>
+                    
+                        <h6 class="text-end fw-bolder"><strong class="fw-bolder">€{{ grand_total|floatformat:2 }}</strong></h6>
+
                 </div>
             </div>
             {% if free_delivery_delta %}
@@ -107,16 +107,16 @@
 <div class="container">
     <div class="row">
         <div class="col-12 text-center btn-group-custom">
-            <button type="button" class="btn btn-dark btn-lg">
-                <a class="text-white" href="{% url 'products' %}">
+
+                <a class="text-white btn btn-dark btn-lg" href="{% url 'products' %}">
                     <span><i class="fa-solid fa-chevron-left text-white"></i> Continue Shopping</span>
                 </a>
-            </button>
-            <button type="button" class="btn btn-dark btn-lg">
-                <a class="text-white" href="{% url 'checkout' %}">
+
+
+                <a class="text-white btn btn-dark btn-lg" href="{% url 'checkout' %}">
                     <span><i class="fa-solid fa-credit-card text-white"></i> Check Out</span>
                 </a>
-            </button>
+
 
         </div>
     </div>
@@ -130,7 +130,7 @@
 {{ block.super }}
 
 
-<script type="text/javascript">
+<script>
     // Update quantity on click
     $('.update-link').click(function (e) {
         var form = $(this).prev('.update-form');

@@ -1,14 +1,17 @@
 <div class="collapse col-12 navbar-collapse bg-dark" id="main-nav">
     <ul class="navbar-nav w-auto mx-auto">
-        <a class="font-weight-bold nav-link text-white mr-5" href="{% url 'home' %}"
+        <li class="nav-item px-2">
+            <a class="font-weight-bold nav-link text-white mr-5" href="{% url 'home' %}"
             id="home-link">
             Home
         </a>
+        </li>
+      
         <!-- --------------------------------------All Products------------------------------------ -->
         <li class="nav-item dropdown px-2">
-            <a class="nav-link text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+            <a class="nav-link text-white" href="#" id="navbarDropdownProducts" role="button" data-bs-toggle="dropdown"
                 aria-expanded="false">All Products</a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownProducts">
                 <li><a class="dropdown-item" href="{% url 'products' %}?sort=price&direction=asc">By Price</a></li>
                 <li><a class="dropdown-item" href="{% url 'products' %}?sort=rating&direction=desc">By Rating</a></li>
                 <li><a class="dropdown-item" href="{% url 'products' %}?sort=category&direction=asc">By Category</a></li>
@@ -17,17 +20,17 @@
         </li>
         <!-- ---------------------------------------Dogs------------------------------------ -->
         <li class="nav-item dropdown px-2">
-            <a class="nav-link text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+            <a class="nav-link text-white" href="#" id="navbarDropdownDogs" role="button" data-bs-toggle="dropdown"
                 aria-expanded="false">Dogs <i class="fa-solid fa-dog"></i></a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownDogs">
                 <li><a class="dropdown-item" href="{% url 'products' %}?category=dogs&subcategory=nutrition">Nutrition</a></li>
                 <li><a class="dropdown-item" href="{% url 'products' %}?category=dogs&subcategory=snacks">Snacks</a></li>
                 <li><a class="dropdown-item" href="{% url 'products' %}?category=dogs&subcategory=toys">Toys</a></li>
                 <li><a class="dropdown-item" href="{% url 'products' %}?category=dogs&subcategory=care">Care</a></li>
-                <li><a class="dropdown-item" href="{% url 'products' %}?category=dogs&subcategory=pillows, baskets">Pillows & Baskets</a></li>
+                <li><a class="dropdown-item" href="{% url 'products' %}?category=dogs&subcategory=pillows,baskets">Pillows & Baskets</a></li>
                 <li><a class="dropdown-item" href="{% url 'products' %}?category=dogs&subcategory=collars">Collars</a></li>
                 <li><a class="dropdown-item" href="{% url 'products' %}?category=dogs&subcategory=clothing">Clothing</a></li>
-                <li><a class="dropdown-item" href="{% url 'products' %}?category=dogs&subcategory=belts, leashes">Belts & Leashes</a></li>
+                <li><a class="dropdown-item" href="{% url 'products' %}?category=dogs&subcategory=belts,leashes">Belts & Leashes</a></li>
                 <li><a class="dropdown-item" href="{% url 'products' %}?category=dogs&subcategory=accessories">Accessories</a></li>
                 <li><a class="dropdown-item" href="{% url 'products' %}?category=dogs&subcategory=dietary_supplements">Dietry Supplements</a></li>
                 <li><a class="dropdown-item" href="{% url 'products' %}?category=dogs&subcategory=nutrition,snacks,toys,care,pillows,baskets,collars,clothing,belts,leashes,accessories,dietary_supplements">All For Your Dog</a></li>
@@ -35,17 +38,17 @@
         </li>
         <!-- ---------------------------------------cats------------------------------------ -->
         <li class="nav-item dropdown px-2">
-            <a class="nav-link text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+            <a class="nav-link text-white" href="#" id="navbarDropdownCats" role="button" data-bs-toggle="dropdown"
                 aria-expanded="false">Cats <i class="fa-solid fa-cat"></i></a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownCats">
                 <li><a class="dropdown-item" href="{% url 'products' %}?category=cats&subcategory=nutrition">Nutrition</a></li>
                 <li><a class="dropdown-item" href="{% url 'products' %}?category=cats&subcategory=snacks">Snacks</a></li>
                 <li><a class="dropdown-item" href="{% url 'products' %}?category=cats&subcategory=toys">Toys</a></li>
                 <li><a class="dropdown-item" href="{% url 'products' %}?category=cats&subcategory=care">Care</a></li>
-                <li><a class="dropdown-item" href="{% url 'products' %}?category=cats&subcategory=pillows, baskets">Pillows & Baskets</a></li>
+                <li><a class="dropdown-item" href="{% url 'products' %}?category=cats&subcategory=pillows,baskets">Pillows & Baskets</a></li>
                 <li><a class="dropdown-item" href="{% url 'products' %}?category=cats&subcategory=collars">Collars</a></li>
                 <li><a class="dropdown-item" href="{% url 'products' %}?category=cats&subcategory=clothing">Clothing</a></li>
-                <li><a class="dropdown-item" href="{% url 'products' %}?category=cats&subcategory=belts, leashes">Belts & Leashes</a></li>
+                <li><a class="dropdown-item" href="{% url 'products' %}?category=cats&subcategory=belts,leashes">Belts & Leashes</a></li>
                 <li><a class="dropdown-item" href="{% url 'products' %}?category=cats&subcategory=accessories">Accessories</a></li>
                 <li><a class="dropdown-item" href="{% url 'products' %}?category=cats&subcategory=dietary_supplements">Dietry Supplements</a></li>
                 <li><a class="dropdown-item" href="{% url 'products' %}?category=birds&subcategory=cat_litter">Cat Litter</a></li>
@@ -54,9 +57,9 @@
         </li>
         <!-- ---------------------------------------birds------------------------------------ -->
         <li class="nav-item dropdown px-2">
-            <a class="nav-link text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+            <a class="nav-link text-white" href="#" id="navbarDropdownBirds" role="button" data-bs-toggle="dropdown"
                 aria-expanded="false">Birds <i class="fa-solid fa-dove"></i></a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownBirds">
                 <li><a class="dropdown-item" href="{% url 'products' %}?category=birds&subcategory=nutrition">Nutrition</a></li>
                 <li><a class="dropdown-item" href="{% url 'products' %}?category=birds&subcategory=snacks">Snacks</a></li>
                 <li><a class="dropdown-item" href="{% url 'products' %}?category=birds&subcategory=toys">Toys</a></li>
@@ -70,9 +73,9 @@
         </li>
         <!-- ---------------------------------------rodents------------------------------------ -->
         <li class="nav-item dropdown px-2">
-            <a class="nav-link text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+            <a class="nav-link text-white" href="#" id="navbarDropdownRodents" role="button" data-bs-toggle="dropdown"
                 aria-expanded="false">Rodents <i class="fa-solid fa-otter"></i></a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownRodents">
                 <li><a class="dropdown-item" href="{% url 'products' %}?category=rodents&subcategory=nutrition">Nutrition</a></li>
                 <li><a class="dropdown-item" href="{% url 'products' %}?category=rodents&subcategory=snacks">Snacks</a></li>
                 <li><a class="dropdown-item" href="{% url 'products' %}?category=rodents&subcategory=toys">Toys</a></li>
