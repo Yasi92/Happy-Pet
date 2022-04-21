@@ -111,7 +111,7 @@
                                     <p class="lead mb-0 text-start font-weight-bold">
                                         €{{ product.price|floatformat:"2" }}</p>
                                     <p class="small">
-                                        <a href="{% url 'products' %}?category={{ product.category.name }}&subcategory={{ product.subcategory.friendly_name }}"
+                                        <a href="{% url 'products' %}?category={{ product.category.name }}&subcategory={{ product.subcategory }}"
                                             class="text-muted text-decoration-none">
                                             <i class="fas fa-tags"></i>
                                             {{ product.category.name | title }} /
