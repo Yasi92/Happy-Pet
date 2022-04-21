@@ -31,15 +31,17 @@
             {% if bag_items %}
             {% for item in bag_items %}
             <div class="row {% if not forloop.last %}border-bottom{% endif %} py-3">
-                <div class="col-5 col-md-4">
+                <div class="col-5 col-md-2">
                     {% if item.product.image1 %}
+                    <a href="{% url 'product_detail' item.product.product_id %}">
                     <img src="{{ item.product.image1.url }}" alt="{{ item.product.name }}" class="img-fluid">
                     {% else %}
                     <img src="{{ MEDIA_URL }}/noimage.png" alt="{{ product.name }}" class="img-fluid">
                     {% endif %}
+                    </a>
                 </div>
 
-                <div class="col-6 offset-1 offset-md-0 col-md-4">
+                <div class="col-6 offset-1 offset-md-2 col-md-4">
                     <p>{{ item.product.name }} <br>
                         Size: {% if item.product.has_sizes %}{{ item.size|upper }}{% else %}N/A{% endif %} <br>
 
@@ -51,7 +53,7 @@
                     </p>
                 </div>
 
-                <div class="col-5 offset-6 col-md-3 offset-md-1">
+                <div class="col-5 offset-6 col-md-2 offset-md-2">
                     {% include 'bag/includes/bag-products-form.html' %}
                 </div>
             </div>
