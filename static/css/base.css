@@ -510,6 +510,10 @@ footer.page-footer{
 }
 
 @media screen and (max-width: 768px){
+    .header-container-allauth{
+        padding-top: 9.7rem;
+    }
+    
     .header-container{
         padding-top: 250px;
     }
@@ -635,5 +639,12 @@ footer.page-footer{
 
 .btn-file input{
     width: 90% !important;
+
+}
+
+.page_404{
+    background: #fff url('/media/404_page.png') no-repeat center right;
+    background-size:auto;
+    height: calc(100vh - 15rem);
 
 }
