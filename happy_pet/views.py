@@ -6,5 +6,5 @@ def page_not_found_view(request, exception):
 
 
 
-def internal_error_page(request, exception):
+def internal_error_page(request):
     return render(request, '500_page.html', status=500)
