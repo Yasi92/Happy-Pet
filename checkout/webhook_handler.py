@@ -6,6 +6,7 @@ from profiles.models import UserProfile
 import json
 import time
 
+
 class StripeWH_Handler:
     """Handle Stripe webhooks"""
 
@@ -44,14 +45,21 @@ class StripeWH_Handler:
         if username != 'AnonymousUser':
             profile = UserProfile.objects.get(user__username=username)
 
-            # The save_info value is returned as a string since it is passed to stripe with js
+            # The save_info value is returned as a string\
+            #  since it is passed to stripe with js
             if save_info == "true":
-                profile.default_phone_number = shipping_details.phone
-                profile.default_country = shipping_details.address.country
-                profile.default_postcode = shipping_details.address.postal_code
-                profile.default_city = shipping_details.address.city
-                profile.default_street_address1 = shipping_details.address.line1
-                profile.default_street_address2 = shipping_details.address.line2
+                profile.default_phone_number = (
+                    shipping_details.phone)
+                profile.default_country = (
+                    shipping_details.address.country)
+                profile.default_postcode = (
+                    shipping_details.address.postal_code)
+                profile.default_city = (
+                    shipping_details.address.city)
+                profile.default_street_address1 = (
+                    shipping_details.address.line1)
+                profile.default_street_address2 = (
+                    shipping_details.address.line2)
                 profile.default_county = shipping_details.address.state
                 profile.save()
 
@@ -80,7 +88,8 @@ class StripeWH_Handler:
                 time.sleep(1)
         if order_exists:
             return HttpResponse(
-                content=f'Webhook received: {event["type"]} | SUCCESS: Verified order already in database',
+                content=f'Webhook received: {event["type"]} |\
+                        SUCCESS: Verified order already in database',
                 status=200)
         else:
             order = None
@@ -109,41 +118,43 @@ class StripeWH_Handler:
                             product=product,
                             quantity=item_data,
                         )
-                        order_line_item.save()                      
+                        order_line_item.save()
                     else:
                         if 'items_by_filter' in item_data:
-                            for item, quantity in item_data['items_by_filter'].items():
+                            for item, quantity in (
+                                    item_data['items_by_filter'].items()):
                                 size = item.split('_')[1]
                                 color = item.split('_')[2]
                                 order_line_item = OrderLineItem(
-                                order=order,
-                                product=product,
-                                quantity=quantity,
-                                product_size=size,
-                                product_color=color,
+                                    order=order,
+                                    product=product,
+                                    quantity=quantity,
+                                    product_size=size,
+                                    product_color=color,
                                 )
                                 order_line_item.save()
-                                                                    
+
                         elif 'items_by_size' in item_data:
-                            for size, quantity in item_data['items_by_size'].items():
+                            for size, quantity in (
+                                    item_data['items_by_size'].items()):
                                 order_line_item = OrderLineItem(
-                                order=order,
-                                product=product,
-                                quantity=quantity,
-                                product_size=size,
+                                    order=order,
+                                    product=product,
+                                    quantity=quantity,
+                                    product_size=size,
                                 )
                                 order_line_item.save()
 
                         elif 'items_by_color' in item_data:
-                            for color, quantity in item_data['items_by_color'].items():    
-
+                            for color, quantity in (
+                                    item_data['items_by_color'].items()):
                                 order_line_item = OrderLineItem(
-                                order=order,
-                                product=product,
-                                quantity=quantity,
-                                product_color=color,
+                                    order=order,
+                                    product=product,
+                                    quantity=quantity,
+                                    product_color=color,
                                 )
-                                order_line_item.save()             
+                                order_line_item.save()
             except Exception as e:
                 if order:
                     order.delete()
@@ -151,9 +162,9 @@ class StripeWH_Handler:
                     content=f'Webhook received: {event["type"]} | ERROR: {e}',
                     status=500)
         return HttpResponse(
-            content=f'Webhook received: {event["type"]} | SUCCESS: Created order in webhook',
+            content=f'Webhook received: {event["type"]} |\
+                SUCCESS: Created order in webhook',
             status=200)
-
 
     def handle_payment_intent_payment_failed(self, event):
         """

@@ -19,4 +19,3 @@ urlpatterns = [
 
 handler404 = "happy_pet.views.page_not_found_view"
 handler500 = "happy_pet.views.internal_error_page"
-

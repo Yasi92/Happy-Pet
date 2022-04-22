@@ -28,23 +28,21 @@ def profile(request):
 
         else:
             messages.error(request,
-                    "Update failed. Please ensure the form is valid.")
+                           "Update failed. Please ensure the form is valid.")
     else:
         form = UserProfileForm(instance=profile)
 
     orders = profile.orders.all().order_by('-date')
 
-
     template = "profiles/profile.html"
     context = {
-        'form' : form,
-        'profile' : profile,
-        'orders' : orders,
-        'on_profile_page' : True,
+        'form': form,
+        'profile': profile,
+        'orders': orders,
+        'on_profile_page': True,
     }
 
     return render(request, template, context)
-
 
 
 def order_history(request, order_number):
@@ -58,11 +56,11 @@ def order_history(request, order_number):
 
     template = 'checkout/checkout_success.html'
     context = {
-        'order' : order,
-        'from_profile' : True,
+        'order': order,
+        'from_profile': True,
     }
 
-    return render (request, template, context)
+    return render(request, template, context)
 
 
 @login_required
@@ -78,19 +76,18 @@ def add_review(request, product_id):
         ProductReview.objects.create(
                             product=product, user=request.user,
                             stars=stars, content=content)
-        messages.success(request, f'Thank you for your review!')
+        messages.success(request, 'Thank you for your review!')
         return redirect('profile')
 
-    product_review = ProductReview.objects.filter(product=product, user=request.user)
-
-
+    product_review = ProductReview.objects.filter(
+        product=product, user=request.user)
     form = ProductReviewForm()
 
     template = 'profiles/add_review.html'
     context = {
-        'product' : product,
-        'form' : form,
-        'on_review_page' : True,
+        'product': product,
+        'form': form,
+        'on_review_page': True,
         'product_review': product_review,
     }
 

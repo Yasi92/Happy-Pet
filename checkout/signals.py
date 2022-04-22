@@ -16,4 +16,4 @@ def delete_on_save(sender, instance, **kwargs):
     """
     delete order total on lineitem delete
     """
-    instance.order.update_total()    
+    instance.order.update_total()

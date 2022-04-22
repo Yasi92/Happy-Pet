@@ -199,10 +199,10 @@ ul{
 }
 
 .card-img-top{
-    max-height: 16rem;
-    max-width: 14.6rem;
-    min-height: 16rem;
-    min-width: 14.6rem;
+    max-height: 15.6rem;
+    max-width: 13rem;
+    min-height: 15.6rem;
+    min-width: 13rem;
 }
 
 
@@ -284,8 +284,8 @@ span > i.carousel-control-left-black {
 
 
 .allauth-form-inner-content p {
-    margin-top: 1.5rem; 
-    color: #6c757d; 
+    margin-top: 1.5rem;
+    color: #6c757d;
 }
 
 .allauth-form-inner-content input {
@@ -326,14 +326,14 @@ span > i.carousel-control-left-black {
 }
 
 .allauth-form-inner-content button:hover,
-.allauth-form-inner-content input[type='submit']:hover {	
+.allauth-form-inner-content input[type='submit']:hover {
 	color: #fff;
     background-color: #222;
     border-color: #222;
 }
 
 .allauth-form-inner-content a {
-	color: #17a2b8; 
+	color: #17a2b8;
 }
 
 
@@ -351,7 +351,7 @@ span > i.carousel-control-left-black {
 .navbar{
     justify-content: center;
     align-items: center;
-    padding-top: 0; 
+    padding-top: 0;
     padding-bottom: 0;
     display: block;
 }
@@ -362,7 +362,7 @@ span > i.carousel-control-left-black {
     top: 5rem;
     right: 1rem;
     z-index: 9999999;
-   
+
 }
 
 .custom-toast{
@@ -381,10 +381,10 @@ span > i.carousel-control-left-black {
 
 /* from CSS-tricks.com: https://css-tricks.com/snippets/css/css-triangle/ */
 .arrow-up {
-    width: 0; 
-    height: 0; 
+    width: 0;
+    height: 0;
     border-left: 4px solid transparent;
-    border-right: 4px solid transparent; 
+    border-right: 4px solid transparent;
     border-bottom: 10px solid black;
     position: absolute;
     top: -10px;
@@ -448,7 +448,7 @@ footer.page-footer{
 
 
 .navInActive
-{                                                                      
+{
 -webkit-transform:translate3d(0px, 0, 0);
 -moz-transform:translate3d(0px, 0, 0);
 -ms-transform:translate3d(0px, 0, 0);
@@ -490,7 +490,7 @@ footer.page-footer{
 
     /* displays dropdown menu on hover */
 	.navbar .nav-item:hover .dropdown-menu {
-        display: block; 
+        display: block;
     }
 
 }
@@ -511,7 +511,7 @@ footer.page-footer{
     .header-container-allauth{
         padding-top: 9.7rem;
     }
-    
+
     .header-container{
         padding-top: 250px;
     }
@@ -525,11 +525,11 @@ footer.page-footer{
         width: 100%;
     }
 
-    
+
     .mr-n2 {
         margin-right: 0 !important;
     }
-    
+
     /* custom negative left margin */
     .ml-n2 {
         margin-left: 0 !important;
@@ -601,9 +601,9 @@ footer.page-footer{
         width: 1.6rem;
         height: 1.6rem;
         top: 40% !important;
-    
+
     }
-    
+
     .sim-carousel-control-next {
         z-index: 2000;
         right: -1% !important;

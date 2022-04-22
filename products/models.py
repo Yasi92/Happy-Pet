@@ -2,12 +2,17 @@ from django.db import models
 from multiselectfield import MultiSelectField
 from django.contrib.auth.models import User
 
+
 class Category(models.Model):
-    category_id = models.IntegerField(db_column='category_ID',
-                            primary_key=True)  
+    category_id = models.IntegerField(
+        db_column='category_ID',
+        primary_key=True)
+
     name = models.CharField(max_length=45)
-    friendlyname = models.CharField(db_column='friendlyName',
-                             max_length=45, blank=True, null=True) 
+
+    friendlyname = models.CharField(
+        db_column='friendlyName',
+        max_length=45, blank=True, null=True)
 
     class Meta:
         db_table = 'category'
@@ -18,6 +23,7 @@ class Category(models.Model):
 
     def get_friendly_name(self):
         return self.friendlyname
+
 
 class Product(models.Model):
     small = 'Small'
@@ -52,24 +58,35 @@ class Product(models.Model):
         (brown, 'Brown')
     ]
 
-    product_id = models.AutoField(db_column='Product_ID', primary_key=True) 
+    product_id = models.AutoField(
+        db_column='Product_ID', primary_key=True)
+
     name = models.CharField(max_length=45)
-    friendlyname = models.CharField(db_column='friendlyName', max_length=45) 
-    category = models.ForeignKey('Category', models.DO_NOTHING, db_column='category_ID') 
-    subcategory = models.ForeignKey('Subcategories', models.DO_NOTHING, db_column='subcategory_ID')  
+    friendlyname = models.CharField(
+        db_column='friendlyName', max_length=45)
+
+    category = models.ForeignKey(
+        'Category', models.DO_NOTHING, db_column='category_ID')
+
+    subcategory = models.ForeignKey(
+        'Subcategories', models.DO_NOTHING, db_column='subcategory_ID')
+
     description = models.TextField(blank=True, null=True)
     price = models.DecimalField(max_digits=6, decimal_places=2)
-    rating = models.DecimalField(max_digits=6, decimal_places=2, blank=True, null=True)
+    rating = models.DecimalField(
+        max_digits=6, decimal_places=2, blank=True, null=True)
+
     image1 = models.ImageField(blank=True, null=True)
     image2 = models.ImageField(blank=True, null=True)
     image3 = models.ImageField(blank=True, null=True)
     sku = models.CharField(unique=True, max_length=254)
-    has_sizes = MultiSelectField(max_length=350, choices=has_sizes, blank=True, null=True)
-    colors = MultiSelectField(max_length=350, choices=colors, blank=True, null=True)
-
+    has_sizes = MultiSelectField(
+        max_length=350, choices=has_sizes, blank=True, null=True)
+    colors = MultiSelectField(
+        max_length=350, choices=colors, blank=True, null=True)
 
     class Meta:
-        db_table = 'Products'                   
+        db_table = 'Products'
 
     def __str__(self):
         return self.name
@@ -95,23 +112,26 @@ class Subcategories(models.Model):
         (rodents, 'rodents'),
     ]
 
-    subcategory_id = models.AutoField(db_column='subcategory_ID', primary_key=True)  # Field name made lowercase.
+    subcategory_id = models.AutoField(
+        db_column='subcategory_ID', primary_key=True)
     name = models.CharField(max_length=45)
     friendly_name = models.CharField(max_length=45, blank=True, null=True)
-    category = MultiSelectField(max_length=350, choices=categories, blank=True, null=True)
+    category = MultiSelectField(
+        max_length=350, choices=categories, blank=True, null=True)
 
     class Meta:
-        db_table = 'SUBCATEGORIES'   
+        db_table = 'SUBCATEGORIES'
         verbose_name_plural = 'Subcategories'
-
 
     def __str__(self):
         return self.name
 
+
 class ProductReview(models.Model):
-    product = models.ForeignKey(Product, related_name='reviews', on_delete=models.CASCADE)
-    user = models.ForeignKey(User, related_name='reviews', on_delete=models.CASCADE)
+    product = models.ForeignKey(
+        Product, related_name='reviews', on_delete=models.CASCADE)
+    user = models.ForeignKey(
+        User, related_name='reviews', on_delete=models.CASCADE)
     content = models.TextField(blank=True, null=True)
     stars = models.IntegerField()
     date = models.DateTimeField(auto_now_add=True)
-

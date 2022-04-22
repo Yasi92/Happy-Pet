@@ -4,11 +4,11 @@ from .widgets import CustomClearableFileInput
 
 
 class ProductReviewForm(forms.ModelForm):
+
     class Meta:
         model = ProductReview
         fields = ('content', 'stars',)
 
-    
     def __init__(self, *args, **kwargs):
         """
         Add placeholders and classes, remove auto-generated
@@ -36,16 +36,24 @@ class ProductForm(forms.ModelForm):
         model = Product
         fields = '__all__'
 
-    image1 = forms.ImageField(label='Image1', required=False, widget=CustomClearableFileInput)    
-    image2 = forms.ImageField(label='Image2', required=False, widget=CustomClearableFileInput)    
-    image3 = forms.ImageField(label='Image3', required=False, widget=CustomClearableFileInput)    
+    image1 = forms.ImageField(
+        label='Image1', required=False, widget=CustomClearableFileInput)
+
+    image2 = forms.ImageField(
+        label='Image2', required=False, widget=CustomClearableFileInput)
+
+    image3 = forms.ImageField(
+        label='Image3', required=False, widget=CustomClearableFileInput)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        categories = Category.objects.all()                
-        subcategories = Subcategories.objects.all()    
-        category_name = [(c.category_id, c.name) for c in categories]          
-        subcategories_name = [(s.subcategory_id, s.name) for s in subcategories]          
+        categories = Category.objects.all()
+        subcategories = Subcategories.objects.all()
+        category_name = [(
+            c.category_id, c.name) for c in categories]
+
+        subcategories_name = [(
+            s.subcategory_id, s.name) for s in subcategories]
 
         self.fields['category'].choices = category_name
         self.fields['subcategory'].choices = subcategories_name

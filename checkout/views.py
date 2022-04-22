@@ -1,5 +1,8 @@
 
-from django.shortcuts import redirect, render, reverse, get_object_or_404, HttpResponse
+from django.shortcuts import (
+    redirect, render,
+    reverse, get_object_or_404,
+    HttpResponse)
 from django.contrib import messages
 from django.conf import settings
 from django.views.decorators.http import require_POST
@@ -8,7 +11,6 @@ from profiles.forms import UserProfileForm
 from .models import Order, OrderLineItem, UserProfile
 from bag.contexts import bag_contents
 from products.models import Product
-from django.core.mail import send_mail
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 
@@ -18,7 +20,7 @@ import stripe
 
 @require_POST
 def cache_checkout_data(request):
-    
+
     try:
         pid = request.POST.get('client_secret').split('_secret')[0]
         stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -32,7 +34,6 @@ def cache_checkout_data(request):
         messages.error(request, 'Sorry, your payment cannot be \
             processed right now. Please try again later.')
         return HttpResponse(content=e, status=400)
-
 
 
 def checkout(request):
@@ -70,71 +71,76 @@ def checkout(request):
                         product=product,
                         quantity=item_data,
                     )
-                    order_line_item.save()                   
+                    order_line_item.save()
                 else:
                     if 'items_by_filter' in item_data:
-                        for item, quantity in item_data['items_by_filter'].items():
+                        for item, quantity in (
+                                item_data['items_by_filter'].items()):
                             size = item.split('_')[1]
                             color = item.split('_')[2]
                             order_line_item = OrderLineItem(
-                            order=order,
-                            product=product,
-                            quantity=quantity,
-                            product_size=size,
-                            product_color=color,
+                                order=order,
+                                product=product,
+                                quantity=quantity,
+                                product_size=size,
+                                product_color=color,
                             )
-                            order_line_item.save()                                                               
+                            order_line_item.save()
                     elif 'items_by_size' in item_data:
-                        for size, quantity in item_data['items_by_size'].items():
+                        for size, quantity in (
+                                item_data['items_by_size'].items()):
 
                             order_line_item = OrderLineItem(
-                            order=order,
-                            product=product,
-                            quantity=quantity,
-                            product_size=size,
+                                order=order,
+                                product=product,
+                                quantity=quantity,
+                                product_size=size,
                             )
                             order_line_item.save()
                     elif 'items_by_color' in item_data:
-                        for color, quantity in item_data['items_by_color'].items():    
+                        for color, quantity in (
+                                item_data['items_by_color'].items()):
 
                             order_line_item = OrderLineItem(
-                            order=order,
-                            product=product,
-                            quantity=quantity,
-                            product_color=color,
+                                order=order,
+                                product=product,
+                                quantity=quantity,
+                                product_color=color,
                             )
                             order_line_item.save()
             request.session['save_info'] = 'save-info' in request.POST
-            return redirect(reverse('checkout_success', args=[order.order_number]))
+            return redirect(reverse('checkout_success',
+                                    args=[order.order_number]))
 
         else:
             messages.error(request, 'There was an error with your form \
                 Please double check your information.')
 
-    else:    
+    else:
         profile = None
         bag = request.session.get('bag', {})
 
         if not bag:
-            messages.error(request, "There is nothing in your bag at the moment")
+            messages.error(request,
+                           "There is nothing in your bag at the moment")
             return redirect('products')
         if request.user.is_authenticated:
             profile = UserProfile.objects.get(user=request.user)
 
         current_bag = bag_contents(request)
         total = current_bag['grand_total']
-        stripe_total = round(total * 100)    
+        stripe_total = round(total * 100)
         stripe.api_key = stripe_secret_key
         intent = stripe.PaymentIntent.create(
-            amount = stripe_total,
-            currency = settings.STRIPE_CURRENCY,
+            amount=stripe_total,
+            currency=settings.STRIPE_CURRENCY,
         )
         if request.user.is_authenticated:
             try:
                 profile = UserProfile.objects.get(user=request.user)
                 order_form = OrderForm(initial={
-                    'full_name' : profile.user.get_full_name(),
-                    'email' : profile.user.email,
+                    'full_name': profile.user.get_full_name(),
+                    'email': profile.user.email,
                     'phone_number': profile.default_phone_number,
                     'country': profile.default_country,
                     'postcode': profile.default_postcode,
@@ -144,36 +150,35 @@ def checkout(request):
                     'county': profile.default_county,
                 })
             except UserProfile.DoesNotExist:
-                order_form = OrderForm()    
+                order_form = OrderForm()
         else:
-            order_form = OrderForm()    
-    
+            order_form = OrderForm()
+
     template = 'checkout/checkout.html'
     context = {
-        'order_form' : order_form,
-        'profile' : profile,
-        'stripe_public_key' : stripe_public_key,
-        'client_secret' : intent.client_secret,
+        'order_form': order_form,
+        'profile': profile,
+        'stripe_public_key': stripe_public_key,
+        'client_secret': intent.client_secret,
     }
 
     return render(request, template, context)
 
 
-
 def checkout_success(request, order_number):
-    profile =  None
+    profile = None
     save_info = request.session['save_info']
     order = get_object_or_404(Order, order_number=order_number)
     messages.success(request, f'Order {order_number} successfully processed! \
                         A confiramation email will be sent to {order.email}. ')
 
     merge_data = {
-        'order' : order,
-    }     
-          
+        'order': order,
+    }
+
     html_body = render_to_string("email-templates.html", merge_data)
     message = EmailMultiAlternatives(
-       subject=f'Your order with Happy Pet is confirmed!',
+       subject='Your order with Happy Pet is confirmed!',
        body=f'Thank you {order.full_name} for shopping with us.',
        from_email=None,
        to=[str(order.email)]
@@ -182,14 +187,13 @@ def checkout_success(request, order_number):
     message.attach_alternative(html_body, "text/html")
     message.send(fail_silently=False)
 
-
     if request.user.is_authenticated:
         profile = UserProfile.objects.get(user=request.user)
         order.user_profile = profile
         order.save()
-       
-        if save_info == True:
-            profile_data ={
+
+        if save_info is True:
+            profile_data = {
                 'default_phone_number': order.phone_number,
                 'default_country': order.country,
                 'default_postcode': order.postcode,
@@ -197,7 +201,7 @@ def checkout_success(request, order_number):
                 'default_street_address1': order.street_address1,
                 'default_street_address2': order.street_address2,
                 'default_county': order.county,
-            }    
+            }
             user_profile_form = UserProfileForm(profile_data, instance=profile)
             if user_profile_form.is_valid():
                 user_profile_form.save()
@@ -205,9 +209,9 @@ def checkout_success(request, order_number):
     if 'bag' in request.session:
         del request.session['bag']
 
-    template = 'checkout/checkout_success.html' 
+    template = 'checkout/checkout_success.html'
     context = {
-        'order' : order,
-    }   
+        'order': order,
+    }
 
     return render(request, template, context)

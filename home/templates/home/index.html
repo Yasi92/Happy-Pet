@@ -11,12 +11,12 @@
         <div class="row mt-2">
             <div class="col-12 col-md-6 mr-n2">
                 <a href="{% url 'products' %}?category=dogs&subcategory=nutrition,snacks,toys,care,pillows,baskets,collars,clothing,belts,leashes,accessories,dietary_supplements" class="text-center">
-                    <img id="up-fade-in" class="img-responsive float-end" src="{{ MEDIA_URL }}/happy_dog.PNG" alt="happy dog image">
+                    <img id="up-fade-in" class="img-responsive float-end" src="{{ MEDIA_URL }}/happy_dog.PNG" alt="image of a smiling dog">
                 </a>
             </div>
             <div class="col-12 col-md-6 ml-n2">
                 <a href="{% url 'products' %}?category=cats&subcategory=nutrition,snacks,toys,care,pillows,baskets,collars,clothing,belts,leashes,accessories,dietary_supplements,cat_litter">
-                    <img id="right-fade-in" class="img-responsive float-start" src="{{ MEDIA_URL }}/cat.PNG" alt="cat image">
+                    <img id="right-fade-in" class="img-responsive float-start" src="{{ MEDIA_URL }}/cat.PNG" alt="image of a curious cat">
                 </a>
             </div>
         </div>
@@ -28,12 +28,12 @@
         <div class="row">
             <div class="col-12 col-md-6 left mr-n2">
                 <a href="{% url 'products' %}?category=rodents&subcategory=nutrition,snacks,toys,care,collars,accessories,dietary_supplements,rodent_house">
-                    <img id="left-fade-in" class="img-responsive float-end" src="{{ MEDIA_URL }}/rodent.PNG" alt="Rodent image">
+                    <img id="left-fade-in" class="img-responsive float-end" src="{{ MEDIA_URL }}/rodent.PNG" alt="image of a cute rabbit">
                 </a>
             </div>
             <div class="col-12 col-md-6 left ml-n2">
                 <a href="{% url 'products' %}?category=birds&subcategory=nutrition,snacks,toys,care,accessories,dietary_supplements,bird_houses,chicken_feed">
-                    <img id="bottom-fade-in" class="img-responsive float-start" src="{{ MEDIA_URL }}/pirrot.PNG" alt="Pirrot image">
+                    <img id="bottom-fade-in" class="img-responsive float-start" src="{{ MEDIA_URL }}/pirrot.PNG" alt="image of a vivid pirrot">
                 </a>
             </div>
         </div>
@@ -42,7 +42,7 @@
                 <a href="{% url 'products' %}" class="btn btn-black btn-lg">Shop All</a>
             </div>
         </div>
-    </div>    
+    </div>
 {% endblock %}
 
 {% block corejs %}
@@ -57,11 +57,11 @@
         // Animating the animal cards on window load
         function homePageAnimCards(){
             document.addEventListener("DOMContentLoaded", function(event) {
-            window.onload = function(){ 
+            window.onload = function(){
             gsap.fromTo(".shop-all-btn",
                 {
                     autoAlpha: 0
-                }, 
+                },
                 {
                     autoAlpha: 1, duration: 2, delay:3, zIndex:999
                 }
@@ -86,7 +86,7 @@
                 {
                     autoAlpha: 0,
                     y: 500,
-                }, 
+                },
                 {
                     autoAlpha: 1,
                     duration: 3,
@@ -103,10 +103,9 @@
                 opacity: 1,
             });
             }})
-        }  
+        }
             if ($(window).width() > 768) {
                 homePageAnimCards();
             }
     </script>
 {% endblock %}
-
