@@ -25,15 +25,15 @@
                     {% for item in bag_items %}
                         <div class="row {% if not forloop.last %}border-bottom{% endif %} py-3">
                             <div class="col-5 col-md-2">
+                                <a href="{% url 'product_detail' item.product.product_id %}">
                                 {% if item.product.image1 %}
-                                    <a href="{% url 'product_detail' item.product.product_id %}">
-                                        <img src="{{ item.product.image1.url }}" alt="{{ item.product.name }}" class="img-fluid">
+                                    <img src="{{ item.product.image1.url }}" alt="{{ item.product.name }}" class="img-fluid img-md">
                                 {% else %}
-                                        <img src="{{ MEDIA_URL }}/noimage.png" alt="{{ product.name }}" class="img-fluid">
+                                    <img src="{{ MEDIA_URL }}/noimage.png" alt="{{ product.name }}" class="img-fluid img-md">
                                 {% endif %}
-                                    </a>
+                                </a>
                             </div>
-                            <div class="col-6 offset-1 offset-md-2 col-md-4">
+                            <div class="col-6 offset-md-1 col-md-4">
                                 <p>{{ item.product.name }} <br>
                                     Size: {% if item.product.has_sizes %}{{ item.size|upper }}{% else %}N/A{% endif %} <br>
                                     Color: {% if item.product.colors %}{{ item.color|upper }}{% else %}N/A{% endif %} <br>
@@ -43,7 +43,7 @@
                                     Subtotal : {{ item.product.price | calc_subtotal:item.quantity }}
                                 </p>
                             </div>
-                            <div class="col-5 offset-6 col-md-2 offset-md-2">
+                            <div class="col-6 offset-5 col-md-2 offset-md-3">
                                 {% include 'bag/includes/bag-products-form.html' %}
                             </div>
                         </div>
@@ -77,12 +77,12 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-6">                                                  
+                    <div class="col-6">
                         <h6 class="fw-bolder">
                             <strong class="fw-bolder">Grand Total</strong>
-                        </h6>  
+                        </h6>
                     </div>
-                    <div class="col-6">                     
+                    <div class="col-6">
                         <h6 class="text-end fw-bolder">
                             <strong class="fw-bolder">€{{ grand_total|floatformat:2 }}</strong>
                         </h6>

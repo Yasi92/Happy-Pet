@@ -497,7 +497,7 @@ footer.page-footer{
 
 @media (max-width: 991px){
     .header-container{
-        padding-top: 300px;
+        padding-top: 200px;
     }
 
     body{
@@ -513,7 +513,7 @@ footer.page-footer{
     }
 
     .header-container{
-        padding-top: 250px;
+        padding-top: 200px;
     }
 
     html{
@@ -618,6 +618,15 @@ footer.page-footer{
         height: 14rem;
         width: 50%;
     }
+
+
+    .img-md{
+        max-width: 8rem;
+        min-height: 9rem;
+        max-height: 9rem;
+
+    }
+
 
 }
 
