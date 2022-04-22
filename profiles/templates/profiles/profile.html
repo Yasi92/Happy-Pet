@@ -54,7 +54,7 @@
                     {% if profile.default_city %}
                         {{ profile.default_city }}
                     {% else %}
-                    <   small class="text-info"> Not Filled Yet </small>
+                    <small class="text-info"> Not Filled Yet </small>
                     {% endif %}
                 </p>
                 <p class="text-start">
@@ -132,7 +132,7 @@
 
                                             {% if item.product_color %}
                                                 Color : {{ item.product_color|title }}<br>
-                                            {% endif %}                                          
+                                            {% endif %}
                                             <small>
                                                 <a class="link-primary text-decoration-underline"
                                                     href="{% url 'add_review' item.product.product_id %}">

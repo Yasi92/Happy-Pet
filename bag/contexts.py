@@ -3,7 +3,6 @@ from django.shortcuts import get_object_or_404
 from decimal import Decimal
 from products.models import Product
 from happy_pet.settings import FREE_DELIVERY_THRESHOLD
-from products.models import Product
 
 
 def bag_contents(request):
@@ -22,9 +21,9 @@ def bag_contents(request):
             total += item_data * product.price
             product_count += item_data
             bag_items.append({
-                'item_id' : item_id,
-                'quantity' : item_data,
-                'product' : product,
+                'item_id': item_id,
+                'quantity': item_data,
+                'product': product,
             })
         else:
             product = get_object_or_404(Product, pk=item_id)
@@ -36,12 +35,12 @@ def bag_contents(request):
                     product_count += quantity
 
                     bag_items.append({
-                    'item_id' : item_id,
-                    'quantity' : quantity,
-                    'product' : product,
-                    'size' : size,
-                    'color' : color,
-                })
+                        'item_id': item_id,
+                        'quantity': quantity,
+                        'product': product,
+                        'size': size,
+                        'color': color,
+                    })
             elif 'items_by_size' in item_data:
                 for size, quantity in item_data['items_by_size'].items():
                     quantity = quantity
@@ -49,40 +48,40 @@ def bag_contents(request):
                     product_count += quantity
 
                     bag_items.append({
-                    'item_id' : item_id,
-                    'quantity' : quantity,
-                    'product' : product,
-                    'size' : size,
-            })
+                        'item_id': item_id,
+                        'quantity': quantity,
+                        'product': product,
+                        'size': size,
+                    })
             elif 'items_by_color' in item_data:
-                for color, quantity in item_data['items_by_color'].items():    
+                for color, quantity in item_data['items_by_color'].items():
                     quantity = quantity
                     total += quantity * product.price
                     product_count += quantity
                     bag_items.append({
-                    'item_id' : item_id,
-                    'quantity' : quantity,
-                    'product' : product,
-                    'color' : color,
-            })
+                        'item_id': item_id,
+                        'quantity': quantity,
+                        'product': product,
+                        'color': color,
+                    })
 
     if total < FREE_DELIVERY_THRESHOLD:
-        delivery = Decimal(total) * Decimal(settings.STANDARD_DELIVERY_PERCENTAGE/100)
+        delivery = Decimal(total) * Decimal(
+            settings.STANDARD_DELIVERY_PERCENTAGE/100)
         free_delivery_delta = FREE_DELIVERY_THRESHOLD - total
     else:
         delivery = 0
         free_delivery_delta = 0
 
-    grand_total = delivery + Decimal(total)        
-    
+    grand_total = delivery + Decimal(total)
     context = {
-        "bag_items":bag_items,
-        "total":total,
-        "product_count":product_count,
-        "delivery":Decimal(delivery),
-        "free_delivery_delta":free_delivery_delta,
+        "bag_items": bag_items,
+        "total": total,
+        "product_count": product_count,
+        "delivery": Decimal(delivery),
+        "free_delivery_delta": free_delivery_delta,
         "free_delivery_threshold": FREE_DELIVERY_THRESHOLD,
-        "grand_total":grand_total,
+        "grand_total": grand_total,
     }
 
     return context

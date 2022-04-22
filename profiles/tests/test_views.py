@@ -26,7 +26,7 @@ class TestViews(TestCase):
 
         self.assertEquals(response.status_code, 200)
         self.assertTemplateUsed(response, 'profiles/profile.html')
-        
+
 
 
     # Tests update profile info
@@ -64,7 +64,7 @@ class TestViews(TestCase):
             town_or_city='anywhere',
             street_address1='borneo',
             stripe_pid = 5786755,
-    
+
         )
 
 
@@ -83,47 +83,33 @@ class TestViews(TestCase):
         price=11.2, sku=46576,
         )
 
-        self.add_review_url = reverse('add_review', args=[product.product_id])    
+        self.add_review_url = reverse('add_review', args=[product.product_id])
         response = self.client.get(self.add_review_url)
 
         self.assertTemplateUsed('profiles/add_review.html')
         self.assertEquals(response.status_code, 200)
 
 
-
-
-
     # Tests adding reviews to products
-    def test_add_review_POST_request(self):
+    def test_add_review_POST_request(self): 
+
         product = Product.objects.create(
             name='test_product',
-            category=Category.objects.create(category_id=6, name='test_category'),
-            subcategory=Subcategories.objects.create(subcategory_id=67, name="test_subcategory"),
+            category=Category.objects.create(
+                category_id=6, name='test_category'),
+            subcategory=Subcategories.objects.create(
+                subcategory_id=67, name="test_subcategory"),
             price=11.2, sku=46576
         )
 
-        self.add_review_url = reverse('add_review', args=[product.product_id])    
+        self.add_review_url = reverse('add_review', args=[product.product_id])
         response = self.client.post(self.add_review_url, {
-            'stars' : 3,
-            'content' : 'test review',
+            'stars': 3,
+            'content': 'test review',
         })
-
-   
         review_added = ProductReview.objects.get(product=product.product_id)
 
         self.assertEquals(response.status_code, 302)
         self.assertEquals(review_added.content, 'test review')
         self.assertEquals(review_added.stars, 3)
         self.assertTemplateUsed('profiles/add_review.html')
-
-
-
-
-            
-
-
-
-
-
-    
-

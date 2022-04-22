@@ -24,15 +24,16 @@ def profile(request):
         form = UserProfileForm(request.POST, instance=profile)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Profile updated successfully!')    
+            messages.success(request, 'Profile updated successfully!')
 
         else:
-            messages.error(request, 
-                    "Update failed. Please ensure the form is valid.")    
+            messages.error(request,
+                    "Update failed. Please ensure the form is valid.")
     else:
         form = UserProfileForm(instance=profile)
 
     orders = profile.orders.all().order_by('-date')
+
 
     template = "profiles/profile.html"
     context = {
@@ -42,7 +43,7 @@ def profile(request):
         'on_profile_page' : True,
     }
 
-    return render(request, template, context) 
+    return render(request, template, context)
 
 
 
@@ -76,18 +77,22 @@ def add_review(request, product_id):
 
         ProductReview.objects.create(
                             product=product, user=request.user,
-                            stars=stars, content=content)  
-        messages.success(request, f'Thank you for your review!')       
-        return redirect('profile')             
+                            stars=stars, content=content)
+        messages.success(request, f'Thank you for your review!')
+        return redirect('profile')
 
-    form = ProductReviewForm()   
+    product_review = ProductReview.objects.filter(product=product, user=request.user)
+
+
+    form = ProductReviewForm()
 
     template = 'profiles/add_review.html'
     context = {
         'product' : product,
         'form' : form,
         'on_review_page' : True,
+        'product_review': product_review,
     }
 
-    form = ProductReviewForm()   
+    form = ProductReviewForm()
     return render(request, template, context)

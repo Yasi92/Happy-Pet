@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib import messages
 from products.models import Product
@@ -18,11 +17,10 @@ def view_wishlist(request):
 
     tempalte = 'wishlist/wishlist.html'
     context = {
-        'products' : products,
+        'products': products,
     }
 
     return render(request, tempalte, context)
-
 
 
 def add_to_wishlist(request, item_id):
@@ -30,7 +28,6 @@ def add_to_wishlist(request, item_id):
     product = get_object_or_404(Product, product_id=item_id)
     wishlist_bag = request.session.get('wishlist_bag', {})
     wishlist_item_id = request.session.get('wishlist_item_id', [])
-
     # Returns to the current url
     # The method is borroewed from the thread on slack community
     # (https://stackoverflow.com/questions/23026337/django-get-current-url-path-from-actual-current-page)
@@ -42,7 +39,7 @@ def add_to_wishlist(request, item_id):
 
     else:
         wishlist_bag[item_id] = True
-        wishlist_item_id.append(int(item_id)) 
+        wishlist_item_id.append(int(item_id))
 
         messages.info(request, f'{ product.name } \
                         Added to your wish list')
@@ -50,18 +47,18 @@ def add_to_wishlist(request, item_id):
     request.session['wishlist_bag'] = wishlist_bag
     request.session['wishlist_item_id'] = wishlist_item_id
 
-    return HttpResponseRedirect(current_url) 
+    return HttpResponseRedirect(current_url)
 
 
 def remove_from_wishlist(request, item_id):
     product = get_object_or_404(Product, product_id=item_id)
     wishlist_bag = request.session.get('wishlist_bag', {})
 
-    # A wishlist_item_id is used here to toggle the favorite icon based on 
+    # A wishlist_item_id is used here to toggle the favorite icon based on
     # whether the item exists in the wish list or not.
 
-    # A seperate list is prefered over iterating through keys and values 
-    # in wishlist_bag since the for loop to get the item_id value 
+    # A seperate list is prefered over iterating through keys and values
+    # in wishlist_bag since the for loop to get the item_id value
     # conflicts the outer for loop of products.
     wishlist_item_id = request.session.get('wishlist_item_id', [])
     current_url = request.META['HTTP_REFERER']
@@ -73,5 +70,4 @@ def remove_from_wishlist(request, item_id):
     request.session['wishlist_bag'] = wishlist_bag
     request.session['wishlist_item_id'] = wishlist_item_id
 
-    return redirect(current_url)   
-
+    return redirect(current_url)
