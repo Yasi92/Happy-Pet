@@ -17,7 +17,7 @@
             <div class="col-12">
                 <a class="text-white btn btn-dark btn-lg" href="{% url 'products' %}">
                     <span>
-                        <i class="fa-solid fa-chevron-left text-white"></i> 
+                        <i class="fa-solid fa-chevron-left text-white"></i>
                         Continue Shopping
                     </span>
                 </a>
@@ -36,9 +36,9 @@
                                 <div class="col-5 col-md-4 offset-md-1">
                                     <a href="{% url 'product_detail' item.product.product_id %}">
                                         {% if item.product.image1 %}
-                                            <img class="w-100" src="{{ item.product.image1.url }}" alt="{{ product.name }}">
+                                            <img class="w-100 img-md" src="{{ item.product.image1.url }}" alt="{{ product.name }}">
                                         {% else %}
-                                            <img class="w-100" src="{{ MEDIA_URL }}/noimage.png" alt="{{ product.name }}">
+                                            <img class="w-100 img-md" src="{{ MEDIA_URL }}/noimage.png" alt="{{ product.name }}">
                                         {% endif %}
                                     </a>
                                 </div>

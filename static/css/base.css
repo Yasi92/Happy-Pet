@@ -614,6 +614,11 @@ footer.page-footer{
         top: 40% !important;
     }
 
+    .img-responsive {
+        height: 14rem;
+        width: 50%;
+    }
+
 }
 
 

@@ -19,7 +19,7 @@
             <span class="text-uppercase">Back to profile</span>
         </a>
         <hr class="text-muted">
-        <h3 class="my-3">Product Review</h3>
+        <h2 class="my-3 logo-font">Product Review</h2>
         <hr class="text-muted">
         {% if not product_review %}
             <div class="row mt-4">
@@ -54,11 +54,11 @@
                         <div class="col-12 col-md-6 offset-md-4">
                         {% if product.image1 %}
                             <a href="{% url 'product_detail' product.product_id %}">
-                                <img class="img-fluid" src="{{ product.image1.url }}" alt="{{ product.name }}">
+                                <img class="img-responsive" src="{{ product.image1.url }}" alt="{{ product.name }}">
                             </a>
                         {% else %}
                             <a href="{% url 'product_detail' product.product_id %}">
-                                <img class="img-fluid" src="{{ MEDIA_URL }}/noimage.png" alt="{{ product.name }}">
+                                <img class="img-responsive" src="{{ MEDIA_URL }}/noimage.png" alt="{{ product.name }}">
                             </a>
                         {% endif %}
                         <p class="pt-4">{{ product.name }}</p>
