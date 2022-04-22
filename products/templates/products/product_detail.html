@@ -10,21 +10,21 @@
     <div class="container">
         <div class="row mt-md-3">
             <div class="col-12">
-                    <a href="{% url 'products' %}" class="text-white btn btn-black btn-sm">
+                    <a href="{% url 'products' %}" class="text-white btn btn-black">
                         <span class="icon">
                             <i class="fas fa-chevron-left"></i>
                         </span>
                         <span class="text-uppercase">Keep Shopping</span>
                     </a>
                 {% if product.product_id in request.session.wishlist_item_id %}
-                    <a href="{% url 'remove_from_wishlist' product.product_id %}" class="text-black btn btn-outline-dark btn-sm">
+                    <a href="{% url 'remove_from_wishlist' product.product_id %}" class="text-black btn btn-outline-dark">
                         <span class="icon">
                             <i class="fa-solid fa-heart text-danger"></i>
                         </span>
                         <span class="text-uppercase">Remove</span>
                     </a>
                 {% else %}
-                    <a href="{% url 'add_to_wishlist' product.product_id %}" class="text-black btn-sm btn btn-outline-dark">
+                    <a href="{% url 'add_to_wishlist' product.product_id %}" class="text-black btn btn-outline-dark">
                         <span class="icon">
                             <i class="fa-regular fa-heart"></i>
                         </span>
