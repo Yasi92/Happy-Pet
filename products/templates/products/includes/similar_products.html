@@ -1,82 +1,145 @@
 {% if similar_products|length > 4 %}
-<div class="row d-none d-md-block">
-    <div class="col-12 text-center">
-        <h1 class="my-4 text-center">Similar Products</h1>
-        <div class="carousel sim-carousel slide" id="myCarousel">
-            <button class="sim-carousel-control-prev carousel-control-prev" type="button" data-bs-target="#myCarousel"
-                data-bs-slide="prev">
-                <i class="fa-solid fa-chevron-left fa-lg text-black"></i>
+<!-- ///////////////////////////////// medium and up carousel ///////////////////////// -->
+    <div class="row d-none d-md-block">
+        <div class="col-12 text-center">
+            <h1 class="my-4 text-center">Similar Products</h1>
+            <div class="carousel sim-carousel slide" id="myCarousel">
+                <button class="sim-carousel-control-prev carousel-control-prev" type="button" data-bs-target="#myCarousel"
+                    data-bs-slide="prev">
+                    <i class="fa-solid fa-chevron-left fa-lg text-black"></i>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="sim-carousel-control-next carousel-control-next" type="button" data-bs-target="#myCarousel"
+                    data-bs-slide="next">
+                    <i class="fa-solid fa-chevron-right fa-lg text-black"></i>
+                    <span class="visually-hidden">Next</span>
+                </button>
+                <div class="carousel-inner sim-carousel-inner">
+                    {% for s in similar_products %}
+                        <div class="row g-0 carousel-item{% if forloop.first  %} active{% endif %}">
+                            <div class="card col-md-3 border">
+                                {% if s.image1 %}
+                                    <a href="{% url 'product_detail' s.product_id %}" target="_blank">
+                                        <img src="{{ s.image1.url }}" class="img-md pt-2" alt="{{ s.name }}">
+                                    </a>
+                                {% else %}
+                                    <a href="{% url 'product_detail' s.product_id %}">
+                                        <img src="{{ MEDIA_URL }}/noimage.png" class="img-md" alt="{{ s.name }}">
+                                    </a>
+                                {% endif %}
+                                <div class="card-body text-center">
+                                    <p class="card-text text-black px-3">{{ s.name }}</p>
+                                </div>
+                                <div class="card-footer bg-white text-start text-black">
+                                    <div class="row">
+                                        <div class="col">
+                                            <p class="lead mb-0 text-start font-weight-bold">€{{ s.price|floatformat:"2" }}</p>
+                                            <p class="small">
+                                                <a href="{% url 'product_detail' s.product_id %}"
+                                                    class="text-muted text-decoration-none">
+                                                    <i class="fas fa-tags"></i>
+                                                    {{ s.category.name | title }} / {{ s.subcategory.friendly_name }}
+                                                </a>
+                                            </p>
+                                            {% if s.rating %}
+                                                <small class="text-muted">
+                                                    <i class="fas fa-star mr-1"></i>
+                                                    {{ s.rating }} / 5
+                                                </small>
+                                            {% else %}
+                                                <small class="text-muted">
+                                                    No Rating
+                                                </small>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- /////////////////////////////////  small screen carousel ///////////////////////// -->
+    <div class="row d-block d-md-none">
+        <div class="col-10 offset-1">
+            <h1 class="my-4 text-center">Similar Products</h1>
+            <div id="mobileSimCarousel" class="carousel mobile-sim-carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    {% for s in similar_products %}
+                        <div class="carousel-item{% if forloop.first  %} active{% endif %}">
+                            <div class="card">
+                                {% if s.image1 %}
+                                    <a href="{% url 'product_detail' s.product_id %}" target="_blank" class="text-center">
+                                        <img src="{{ s.image1.url }}" class="d-block w-100 pt-2" alt="{{ s.name }}">
+                                    </a>
+                                {% else %}
+                                    <a href="{% url 'product_detail' s.product_id %}" target="_blank" class="text-center">
+                                        <img src="{{ MEDIA_URL }}/noimage.png" class="d-block w-100 pt-2" alt="{{ s.name }}">
+                                    </a>
+                                {% endif %}
+                                <div class="card-body">
+                                    <p class="card-text text-black px-3">{{ product.name }}</p>
+                                </div>
+                                <div class="card-footer bg-white text-start text-black">
+                                    <div class="row">
+                                        <div class="col">
+                                            <p class="lead mb-0 text-start font-weight-bold">€{{ s.price|floatformat:"2" }}</p>
+                                            <p class="small">
+                                                <a href="{% url 'product_detail' s.product_id %}"
+                                                    class="text-muted text-decoration-none">
+                                                    <i class="fas fa-tags"></i>
+                                                    {{ s.category.name | title }} / {{ s.subcategory.friendly_name }}
+                                                </a>
+                                            </p>
+                                            {% if s.rating %}
+                                                <small class="text-muted">
+                                                    <i class="fas fa-star mr-1"></i>
+                                                    {{ s.rating }} / 5
+                                                </small>
+                                            {% else %}
+                                                <small class="text-muted">No Rating</small>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#mobileSimCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
             </button>
-            <button class="sim-carousel-control-next carousel-control-next" type="button" data-bs-target="#myCarousel"
-                data-bs-slide="next">
-                <i class="fa-solid fa-chevron-right fa-lg text-black"></i>
+            <button class="carousel-control-next" type="button" data-bs-target="#mobileSimCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
             </button>
-            <div class="carousel-inner sim-carousel-inner">
-                {% for s in similar_products %}
-                <div class="row g-0 carousel-item{% if forloop.first  %} active{% endif %}">
-                    <div class="card col-md-3 border">
-                        {% if s.image1 %}
-                        <a href="{% url 'product_detail' s.product_id %}" target="_blank">
-                            <img src="{{ s.image1.url }}" class="img-md pt-2" alt="{{ s.name }}">
-                        </a>
-                        {% else %}
-                        <a href="{% url 'product_detail' s.product_id %}">
-                            <img src="{{ MEDIA_URL }}/noimage.png" class="img-md" alt="{{ s.name }}">
-                        </a>
-                        {% endif %}
-                        <div class="card-body text-center">
-                            <p class="card-text text-black px-3">{{ s.name }}</p>
-                        </div>
-                        <div class="card-footer bg-white text-start text-black">
-                            <div class="row">
-                                <div class="col">
-                                    <p class="lead mb-0 text-start font-weight-bold">€{{ s.price|floatformat:"2" }}</p>
-                                    <p class="small">
-                                        <a href="{% url 'product_detail' s.product_id %}"
-                                            class="text-muted text-decoration-none">
-                                            <i class="fas fa-tags"></i>
-                                            {{ s.category.name | title }} / {{ s.subcategory.friendly_name }}
-                                        </a>
-                                    </p>
-                                    {% if s.rating %}
-                                    <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ s.rating }} / 5</small>
-                                    {% else %}
-                                    <small class="text-muted">No Rating</small>
-                                    {% endif %}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                {% endfor %}
-            </div>
         </div>
     </div>
-</div>
-<div class="row d-block d-md-none">
-    <div class="col-10 offset-1">
-        <h1 class="my-4 text-center">Similar Products</h1>
-        <div id="mobileSimCarousel" class="carousel mobile-sim-carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
+{% elif similar_products|length <= 4 and not similar_products|length == 0 %}
+    <div class="row">
+        <div class="col-10 offset-1">
+            <h1 class="my-4 text-center">Similar Products</h1>
+            <div class="row">
                 {% for s in similar_products %}
-                <div class="carousel-item{% if forloop.first  %} active{% endif %}">
-                    <div class="card">
-                        {% if s.image1 %}
-                        <a href="{% url 'product_detail' s.product_id %}" target="_blank" class="text-center">
-                            <img src="{{ s.image1.url }}" class="d-block w-100 pt-2" alt="{{ s.name }}">
-                        </a>
-                        {% else %}
-                        <a href="{% url 'product_detail' s.product_id %}" target="_blank" class="text-center">
-                            <img src="{{ MEDIA_URL }}/noimage.png" class="d-block w-100 pt-2" alt="{{ s.name }}">
-                        </a>
-                        {% endif %}
+                    <div class="{% if similar_products|length == 1 %}mx-auto {% endif %}
+                    col-md-4 col-10 offset-1 offset-md-0 border card p-0">
                         <div class="card-body">
+                            {% if s.image1 %}
+                                <a href="{% url 'product_detail' s.product_id %}" target="_blank">
+                                    <img src="{{ s.image1.url }}" class="img-fluid pt-2" alt="{{ s.name }}">
+                                </a>
+                            {% else %}
+                                <a href="{% url 'product_detail' s.product_id %}">
+                                    <img src="{{ MEDIA_URL }}/noimage.png" class="img-fluid pt-2" alt="{{ s.name }}">
+                                </a>
+                            {% endif %}
                             <p class="card-text text-black px-3">{{ product.name }}</p>
                         </div>
-
-
                         <div class="card-footer bg-white text-start text-black">
                             <div class="row">
                                 <div class="col">
@@ -89,74 +152,19 @@
                                         </a>
                                     </p>
                                     {% if s.rating %}
-                                    <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ s.rating }} / 5</small>
+                                        <small class="text-muted">
+                                            <i class="fas fa-star mr-1"></i>
+                                            {{ s.rating }} / 5
+                                        </small>
                                     {% else %}
-                                    <small class="text-muted">No Rating</small>
+                                        <small class="text-muted">No Rating</small>
                                     {% endif %}
-
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
                 {% endfor %}
             </div>
         </div>
-
-        <button class="carousel-control-prev" type="button" data-bs-target="#mobileSimCarousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#mobileSimCarousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
     </div>
-</div>
-
-{% elif similar_products|length <= 4 and not similar_products|length == 0 %}
-<div class="row">
-    <div class="col-10 offset-1">
-        <h1 class="my-4 text-center">Similar Products</h1>
-        <div class="row">
-            {% for s in similar_products %}
-            <div class="{% if similar_products|length == 1 %}mx-auto {% endif %}
-            col-md-4 col-10 offset-1 offset-md-0 border card p-0">
-                <div class="card-body">
-                    {% if s.image1 %}
-                    <a href="{% url 'product_detail' s.product_id %}" target="_blank">
-                        <img src="{{ s.image1.url }}" class="img-fluid pt-2" alt="{{ s.name }}">
-                    </a>
-                    {% else %}
-                    <a href="{% url 'product_detail' s.product_id %}">
-                        <img src="{{ MEDIA_URL }}/noimage.png" class="img-fluid pt-2" alt="{{ s.name }}">
-                    </a>
-                    {% endif %}
-                    <p class="card-text text-black px-3">{{ product.name }}</p>
-                </div>
-                <div class="card-footer bg-white text-start text-black">
-                    <div class="row">
-                        <div class="col">
-                            <p class="lead mb-0 text-start font-weight-bold">€{{ s.price|floatformat:"2" }}</p>
-                            <p class="small">
-                                <a href="{% url 'product_detail' s.product_id %}"
-                                    class="text-muted text-decoration-none">
-                                    <i class="fas fa-tags"></i>
-                                    {{ s.category.name | title }} / {{ s.subcategory.friendly_name }}
-                                </a>
-                            </p>
-                            {% if s.rating %}
-                            <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ s.rating }} / 5</small>
-                            {% else %}
-                            <small class="text-muted">No Rating</small>
-                            {% endif %}
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-    </div>
-</div>
-
 {% endif %}

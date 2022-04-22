@@ -1,210 +1,148 @@
 {% extends "base.html" %}
 {% load static %}
+
 {% block page_header %}
-<div class="container header-container">
-    <div class="row">
-        <div class="col">
-
-        </div>
-    </div>
-</div>
+    <div class="container header-container"></div>
 {% endblock %}
+
 {% block content %}
-<div class="overlay"></div>
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-10 offset-1 text-center">
-            <hr class="text-muted">
-            <h2 class="logo-font">Products</h2>
-            <hr class="text-muted">
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-12 col-10 offset-1 offset-lg-0 text-center mt-3">
-            {% if current_categories and current_subcategories %}
-            <div class="current-category pb-2">
-                <div class="btn btn-pink rounded-3">
-                    <span class="badge">
-                        <a href="{% url 'products' %}?category={{ current_categories.0 }}&subcategory={% for s in related_subcategory %}{{ s }},{% endfor %}"
-                            class="text-decoration-none text-black">{{ current_categories.0 | title }}</a>
-                    </span>
-                </div>
+    <div class="overlay"></div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-10 offset-1 text-center">
+                <hr class="text-muted">
+                <h2 class="logo-font">Products</h2>
+                <hr class="text-muted">
             </div>
-            <ul class="list-inline justify-content-center">
-                {% for s in current_subcategories %}
-                <li class="list-inline-item current-category rounded-3 my-1">
-                    <div class="btn btn-black btn-sm rounded-3">
-                        <span class="badge">
-                            <a href="{% url 'products' %}?category={{ current_categories.0 }}&subcategory={{ s }}"
-                                class="text-decoration-none text-white">{{ s.friendly_name }}
-                            </a>
-                        </span>
-                    </div>
-                </li>
-                {% endfor %}
-            </ul>
-            {% endif %}
         </div>
-    </div>
-
-    <div class="row">
-        <div class="col-10 product-container offset-1">
-            <div class="row mt-1 mb-2">
-                <div class="col-12 col-md-6 my-auto order-md-last d-flex justify-content-center justify-content-md-end">
-                    <div class="sort-select-wrapper w-50">
-                        <select id="sort-selector"
-                            class="custom-select w-100 custom-select-sm p-1 rounded-3 border border-{% if current_sorting != 'None_None' %}info{% else %}black{% endif %}">
-                            <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort by...
-                            </option>
-                            <option value="price_asc" {% if current_sorting == 'price_asc' %}selected{% endif %}>Price
-                                (low to high)</option>
-                            <option value="price_desc" {% if current_sorting == 'price_desc' %}selected{% endif %}>Price
-                                (high to low)</option>
-                            <option value="rating_asc" {% if current_sorting == 'rating_asc' %}selected{% endif %}>
-                                Rating (low to high)</option>
-                            <option value="rating_desc" {% if current_sorting == 'rating_desc' %}selected{% endif %}>
-                                Rating (high to low)</option>
-                            <option value="name_asc" {% if current_sorting == 'name_asc' %}selected{% endif %}>Name
-                                (A-Z)</option>
-                            <option value="name_desc" {% if current_sorting == 'name_desc' %}selected{% endif %}>Name
-                                (Z-A)</option>
-                            <option value="category_asc" {% if current_sorting == 'category_asc' %}selected{% endif %}>
-                                Category (A-Z)</option>
-                            <option value="category_desc"
-                                {% if current_sorting == 'category_desc' %}selected{% endif %}>Category (Z-A)</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 order-md-first">
-                    <p class="text-muted mt-3 text-center text-md-start">
-                        {% if search_term or current_categories or current_sorting != 'None_None' %}
-                        <span class="small"><a href="{% url 'products' %}">Products Home</a> | </span>
-                        {% endif %}
-                        {{ products|length }} Products{% if search_term %} found for
-                        <strong>"{{ search_term }}"</strong>{% endif %}
-                    </p>
-                </div>
-            </div>
-            <div class="row">
-                {% for product in products %}
-                <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
-                    <div class="card product-card h-100 text-center">
-                        {% if product.image1 %}
-                        <a href="{% url 'product_detail' product.product_id %}" target="_blank"
-                            class="product-dtl-link">
-                            <img src="{{ product.image1.url }}" class="card-img-top img-responsive mt-2"
-                                alt="{{ product.name }}">
-                        </a>
-                        {% else %}
-                        <a href="{% url 'product_detail' product.product_id %}" class="product-dtl-link">
-                            <img src="{{ MEDIA_URL }}/noimage.png" class="card-img-top img-responsive"
-                                alt="{{ product.name }}">
-                        </a>
-                        {% endif %}
-
-                        <div class="card-body pb-3">
-                            <p class="card-text text-black px-3">{{ product.name }}</p>
+        <div class="row">
+            <div class="col-lg-12 col-10 offset-1 offset-lg-0 text-center mt-3">
+                {% if current_categories and current_subcategories %}
+                    <div class="current-category pb-2">
+                        <div class="btn btn-pink rounded-3">
+                            <span class="badge">
+                                <a href="{% url 'products' %}?category={{ current_categories.0 }}&subcategory={% for s in related_subcategory %}{{ s }},{% endfor %}"
+                                    class="text-decoration-none text-black">{{ current_categories.0 | title }}</a>
+                            </span>
                         </div>
-                        <div class="card-footer bg-white text-start text-black">
-                            <div class="row">
-                                <div class="col">
-                                    <p class="lead mb-0 text-start font-weight-bold">
-                                        €{{ product.price|floatformat:"2" }}</p>
-                                    <p class="small">
-                                        <a href="{% url 'products' %}?category={{ product.category.name }}&subcategory={{ product.subcategory }}"
-                                            class="text-muted text-decoration-none">
-                                            <i class="fas fa-tags"></i>
-                                            {{ product.category.name | title }} /
-                                            {{ product.subcategory.friendly_name }}
+                    </div>
+                    <ul class="list-inline justify-content-center">
+                        {% for s in current_subcategories %}
+                            <li class="list-inline-item current-category rounded-3 my-1">
+                                <div class="btn btn-black btn-sm rounded-3">
+                                    <span class="badge">
+                                        <a href="{% url 'products' %}?category={{ current_categories.0 }}&subcategory={{ s }}"
+                                            class="text-decoration-none text-white">{{ s.friendly_name }}
                                         </a>
-                                    </p>
-                                    {% if product.rating %}
-                                    <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ product.rating }} /
-                                        5</small>
-                                    {% else %}
-                                    <small class="text-muted">No Rating</small>
-                                    {% endif %}
-                   
-                                    {% if request.user.is_superuser %}
-                                    <small>
-                                        <a href="{% url 'edit_product' product.product_id %}">Edit</a> |
-                                        <a data-bs-toggle="modal" data-bs-target="#modal-{{ product.product_id }}"
-                                            class="text-danger" href="#">Delete</a>
-                                    </small>
+                                    </span>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-10 product-container offset-1">
+                <div class="row mt-1 mb-2">
+                    {% include 'products/includes/sorting_selector.html' %}
+                    <div class="col-12 col-md-6 order-md-first">
+                        <p class="text-muted mt-3 text-center text-md-start">
+                            {% if search_term or current_categories or current_sorting != 'None_None' %}
+                                <span class="small">
+                                    <a href="{% url 'products' %}">
+                                        Products Home
+                                    </a> | 
+                                </span>
+                            {% endif %}
+                            {{ products|length }} Products{% if search_term %} found for
+                            <strong>"{{ search_term }}"</strong>{% endif %}
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    {% for product in products %}
+                        <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
+                            <div class="card product-card h-100 text-center">
+                                {% if product.image1 %}
+                                    <a href="{% url 'product_detail' product.product_id %}" target="_blank"
+                                        class="product-dtl-link">
+                                        <img src="{{ product.image1.url }}" class="card-img-top img-responsive mt-2"
+                                            alt="{{ product.name }}">
+                                    </a>
+                                {% else %}
+                                    <a href="{% url 'product_detail' product.product_id %}" class="product-dtl-link">
+                                        <img src="{{ MEDIA_URL }}/noimage.png" class="card-img-top img-responsive"
+                                            alt="{{ product.name }}">
+                                    </a>
+                                {% endif %}
+                                <div class="card-body pb-3">
+                                    <p class="card-text text-black px-3">{{ product.name }}</p>
+                                </div>
+                                <div class="card-footer bg-white text-start text-black">
+                                    <div class="row">
+                                        <div class="col">
+                                            <p class="lead mb-0 text-start font-weight-bold">
+                                                €{{ product.price|floatformat:"2" }}</p>
+                                            <p class="small">
+                                                <a href="{% url 'products' %}?category={{ product.category.name }}&subcategory={{ product.subcategory }}"
+                                                    class="text-muted text-decoration-none">
+                                                    <i class="fas fa-tags"></i>
+                                                    {{ product.category.name | title }} /
+                                                    {{ product.subcategory.friendly_name }}
+                                                </a>
+                                            </p>
+                                            {% if product.rating %}
+                                                <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ product.rating }} /
+                                                    5
+                                                </small>
+                                            {% else %}
+                                                <small class="text-muted">No Rating</small>
+                                            {% endif %}
+                        
+                                            {% if request.user.is_superuser %}
+                                                <small>
+                                                    <a href="{% url 'edit_product' product.product_id %}">Edit</a> |
+                                                    <a data-bs-toggle="modal" data-bs-target="#modal-{{ product.product_id }}"
+                                                        class="text-danger" href="#">Delete</a>
+                                                </small>
 
-                                    <!-- Modal Structure -->
-                                    <div class="modal fade" tabindex="-1" id="modal-{{ product.product_id }}"
-                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Delete Product</h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                        aria-label="Close"></button>
+                                                <!-- Modal Structure -->
+                                                <div class="modal fade" tabindex="-1" id="modal-{{ product.product_id }}"
+                                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabel">Delete Product</h5>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                                    aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <p>Are you sure you want to delete "{{ product.name }}"</p>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary"
+                                                                    data-bs-dismiss="modal">Close</button>
+                                                                <a class="btn btn-small btn-black"
+                                                                    href="{% url 'delete_product' product.product_id %}">Yes</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div class="modal-body">
-                                                    <p>Are you sure you want to delete "{{ product.name }}"</p>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary"
-                                                        data-bs-dismiss="modal">Close</button>
-                                                    <a class="btn btn-small btn-black"
-                                                        href="{% url 'delete_product' product.product_id %}">Yes</a>
-                                                </div>
-                                            </div>
+                                            {% endif %}
                                         </div>
                                     </div>
-                                    {% endif %}
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    {% endfor %}
                 </div>
-                {% endfor %}
             </div>
         </div>
     </div>
-</div>
-
 {% endblock %}
 
 {% block postloadjs %}
 {{block.super}}
-
-<script>
-    // Makes the entire list section clickable
-    $(".list-group-item").click(function () {
-        window.location = $(this).find("a").attr("href");
-        return false;
-    });
-
-    $(".current-category").click(function () {
-        window.location = $(this).find("a").attr("href");
-        return false;
-    });
-</script>
-<script>
-    // This sort selector is learned from boutique ado project
-    $('#sort-selector').change(function () {
-        var selector = $(this);
-        var currentUrl = new URL(window.location);
-
-        var selectedVal = selector.val();
-        if (selectedVal != "reset") {
-            var sort = selectedVal.split("_")[0];
-            var direction = selectedVal.split("_")[1];
-
-            currentUrl.searchParams.set("sort", sort);
-            currentUrl.searchParams.set("direction", direction);
-
-            window.location.replace(currentUrl);
-        } else {
-            currentUrl.searchParams.delete("sort");
-            currentUrl.searchParams.delete("direction");
-
-            window.location.replace(currentUrl);
-        }
-    })
-</script>
-
+    <script type="text/javascript" src="{% static 'products/js/product.js' %}"></script>
 {% endblock %}

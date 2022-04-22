@@ -1,15 +1,14 @@
-from urllib import response
 from django.shortcuts import get_object_or_404, render, redirect
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+
 from profiles.models import UserProfile
 from .forms import UserProfileForm
 from checkout.models import Order
 from products.models import Product, ProductReview
 from products.forms import ProductReviewForm
-from django.contrib.auth.decorators import login_required
 
 
-# Create your views here.
 @login_required
 def profile(request):
     """
@@ -21,8 +20,6 @@ def profile(request):
         profile = get_object_or_404(UserProfile, user=request.user)
         orders = profile.orders.all().order_by('-date')
 
-
-
     if request.method == "POST":
         form = UserProfileForm(request.POST, instance=profile)
         if form.is_valid():
@@ -30,14 +27,12 @@ def profile(request):
             messages.success(request, 'Profile updated successfully!')    
 
         else:
-            messages.error(request, "Update failed. Please ensure the form is valid.")    
-
+            messages.error(request, 
+                    "Update failed. Please ensure the form is valid.")    
     else:
         form = UserProfileForm(instance=profile)
 
-
     orders = profile.orders.all().order_by('-date')
-
 
     template = "profiles/profile.html"
     context = {
@@ -52,6 +47,8 @@ def profile(request):
 
 
 def order_history(request, order_number):
+    ''' A view to return order history of the user '''
+
     order = get_object_or_404(Order, order_number=order_number)
     messages.info(request, (
         f'This is a past confirmation for order numebr {order_number}.'
@@ -69,8 +66,9 @@ def order_history(request, order_number):
 
 @login_required
 def add_review(request, product_id):
-    product = get_object_or_404(Product, product_id=product_id)
+    ''' Add review to products '''
 
+    product = get_object_or_404(Product, product_id=product_id)
     if request.method == 'POST' and request.user.is_authenticated:
 
         stars = request.POST.get('stars')
@@ -84,7 +82,6 @@ def add_review(request, product_id):
 
     form = ProductReviewForm()   
 
-
     template = 'profiles/add_review.html'
     context = {
         'product' : product,
@@ -92,7 +89,5 @@ def add_review(request, product_id):
         'on_review_page' : True,
     }
 
-
     form = ProductReviewForm()   
-
     return render(request, template, context)

@@ -1,180 +1,167 @@
 {% extends "base.html" %}
 {% load static %}
+
 {% block page_header %}
-
-{% block extra_css %}
-<link rel="stylesheet" href="{% static 'profiles/css/profile.css' %}">
+    {% block extra_css %}
+        <link rel="stylesheet" href="{% static 'profiles/css/profile.css' %}">
+    {% endblock %}
+    <div class="container header-container"></div>
 {% endblock %}
 
-
-<div class="container header-container">
-    <div class="row">
-        <div class="col">
-
-        </div>
-    </div>
-</div>
-{% endblock %}
 {% block content %}
-<div class="overlay"></div>
-<div class="container">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5 p-0 mx-auto my-3 col-10 offset-1 offset-lg-0 ">
+                <button class="btn btn-lg btn-dark w-100 order-1">Profile Info</button>
+            </div>
 
-    <div class="row">
+            <div class="col-lg-5 col-10 offset-1 offset-lg-0 p-0 offset-lg-1 mx-auto my-3 order-3 order-lg-2 ">
+                <button class="btn btn-lg btn-dark w-100">Order History</button>
+            </div>
 
-        <div class="col-lg-5 p-0 mx-auto my-3 col-10 offset-1 offset-lg-0 ">
-            <button class="btn btn-lg btn-dark w-100 order-1">Profile Info</button>
-        </div>
+            <div class="col-lg-5 col-10 offset-1 offset-lg-0 p-3 mx-auto border border-3 rounded-3 order-2 order-lg-3 ">
+                <p class="text-start">
+                    Username : {{ profile }}</p>
+                <p class="text-start">
+                    Email Address : {{ profile.user.email }}</p>
+                <p class="text-start">
+                    Telephone Number :
+                    {% if profile.default_phone_number %}
+                        {{ profile.default_phone_number }}
+                    {% else %}
+                        <small class="text-info"> Not Filled Yet </small>
+                    {% endif %}
+                </p>
+                <p class="text-start">
+                    Country :
+                    {% if profile.default_country %}
+                        {{ profile.default_country }}
+                    {% else %}
+                        <small class="text-info"> Not Filled Yet </small>
+                    {% endif %}
+                </p>
+                <p class="text-start">
+                    Post Code :
+                    {% if profile.default_postcode %}
+                        {{ profile.default_postcode }}
+                    {% else %}
+                        <small class="text-info"> Not Filled Yet </small>
+                    {% endif %}
+                </p>
+                <p class="text-start">
+                    City or Town :
+                    {% if profile.default_city %}
+                        {{ profile.default_city }}
+                    {% else %}
+                    <   small class="text-info"> Not Filled Yet </small>
+                    {% endif %}
+                </p>
+                <p class="text-start">
+                    Street Adress 1 :
+                    {% if profile.default_street_address1 %}
+                        {{ profile.default_street_address1 }}
+                    {% else %}
+                        <small class="text-info"> Not Filled Yet </small>
+                    {% endif %}
+                </p>
+                <p class="text-start">
+                    Street Address 2 :
+                    {% if profile.default_street_address2 %}
+                        {{ profile.default_street_address2 }}
+                    {% else %}
+                        <small class="text-info"> Not Filled Yet </small>
+                    {% endif %}
+                </p>
 
-        <div class="col-lg-5 col-10 offset-1 offset-lg-0 p-0 offset-lg-1 mx-auto my-3 order-3 order-lg-2 ">
-            <button class="btn btn-lg btn-dark w-100">Order History</button>
-        </div>
-
-        <div class="col-lg-5 col-10 offset-1 offset-lg-0 p-3 mx-auto border border-3 rounded-3 order-2 order-lg-3 ">
-            <p class="text-start">
-                Username : {{ profile }}</p>
-            <p class="text-start">
-                Email Address : {{ profile.user.email }}</p>
-            <p class="text-start">
-                Telephone Number :
-                {% if profile.default_phone_number %}
-                {{ profile.default_phone_number }}
-                {% else %}
-                <small class="text-info"> Not Filled Yet </small>
-                {% endif %}
-            </p>
-            <p class="text-start">
-                Country :
-                {% if profile.default_country %}
-                {{ profile.default_country }}
-                {% else %}
-                <small class="text-info"> Not Filled Yet </small>
-                {% endif %}
-            </p>
-            <p class="text-start">
-                Post Code :
-                {% if profile.default_postcode %}
-                {{ profile.default_postcode }}
-                {% else %}
-                <small class="text-info"> Not Filled Yet </small>
-                {% endif %}
-            </p>
-            <p class="text-start">
-                City or Town :
-                {% if profile.default_city %}
-                {{ profile.default_city }}
-                {% else %}
-                <small class="text-info"> Not Filled Yet </small>
-                {% endif %}
-            </p>
-            <p class="text-start">
-                Street Adress 1 :
-                {% if profile.default_street_address1 %}
-                {{ profile.default_street_address1 }}
-                {% else %}
-                <small class="text-info"> Not Filled Yet </small>
-                {% endif %}
-            </p>
-            <p class="text-start">
-                Street Address 2 :
-                {% if profile.default_street_address2 %}
-                {{ profile.default_street_address2 }}
-                {% else %}
-                <small class="text-info"> Not Filled Yet </small>
-                {% endif %}
-            </p>
-
-            <button class="btn btn-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
-                aria-controls="offcanvasRight">Update Profile</button>
-            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight"
-                aria-labelledby="offcanvasRightLabel">
-                <div class="offcanvas-header">
-                    <h5 id="offcanvasRightLabel">Update Profile</h5>
-                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
-                        aria-label="Close"></button>
-                </div>
-                <div class="offcanvas-body">
-                    <div class="row">
-                        <div class="col-12">
-                            <h3>Edit Profile</h3>
-                            <form action="{% url 'profile' %}" method="POST" id="profile-update-form">
-                                {% csrf_token %}
-                                {{ form | crispy }}
-                                <div class="text-center">
-                                    <button type="submit" class="btn btn-black text-center">Update
-                                        Information</button>
-                                </div>
-                            </form>
+                <button class="btn btn-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+                    aria-controls="offcanvasRight">Update Profile</button>
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight"
+                    aria-labelledby="offcanvasRightLabel">
+                    <div class="offcanvas-header">
+                        <h5 id="offcanvasRightLabel">Update Profile</h5>
+                        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <div class="row">
+                            <div class="col-12">
+                                <h3>Edit Profile</h3>
+                                <form action="{% url 'profile' %}" method="POST" id="profile-update-form">
+                                    {% csrf_token %}
+                                    {{ form | crispy }}
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-black text-center">Update
+                                            Information</button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <div class="col-lg-5 col-10 offset-1 offset-lg-0 p-3 offset-lg-1 mx-auto border border-3 rounded-3 order-history order-4 ">
+
+                <table class="table table-sm table-responsive">
+                    <thead>
+                        <tr>
+                            <th><small>Order Number</small></th>
+                            <th><small>Items</small></th>
+                            <th><small>Order Total</small></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for order in orders %}
+                            <tr>
+                                <td>
+                                    <a class="link-primary text-decoration-underline"
+                                        href="{% url 'order_history' order.order_number %}" title="{{ order.order_number }}">
+                                        <small>{{ order.order_number|truncatechars:6 }}</small>
+                                    </a>
+                                    <small>{{ order.date|date:"Y-m-d" }}</small>
+                                </td>
+                                <td>
+                                    <ul class="list-group list-group-flush">
+                                        {% for item in order.lineitems.all|slice:":2" %}
+                                        <li class="small list-group-item order-history-list">
+                                            {{ item.product.name }} x{{ item.quantity }} <br>
+                                            {% if item.product_size %}
+                                                Size : {{ item.product_size|title }} <br>
+                                            {% endif %}
+
+                                            {% if item.product_color %}
+                                                Color : {{ item.product_color|title }}<br>
+                                            {% endif %}                                          
+                                            <small>
+                                                <a class="link-primary text-decoration-underline"
+                                                    href="{% url 'add_review' item.product.product_id %}">
+                                                    Add a Review
+                                                </a>
+                                            </small>
+                                        </li>
+                                        {% endfor %}
+                                        {% if order.lineitems.all|length > 2 %}
+                                            <li>
+                                                <span class="px-3">...</span>
+                                            </li>
+                                        {% endif %}
+                                    </ul>
+                                </td>
+                                <td>
+                                    <small>{{ order.grand_total }}</small>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         </div>
-
-        <div class="col-lg-5 col-10 offset-1 offset-lg-0 p-3 offset-lg-1 mx-auto border border-3 rounded-3 order-history order-4 ">
-
-            <table class="table table-sm table-responsive">
-                <thead>
-                    <tr>
-                        <th><small>Order Number</small></th>
-                        <th><small>Items</small></th>
-                        <th><small>Order Total</small></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for order in orders %}
-                    <tr>
-                        <td>
-                            <a class="link-primary text-decoration-underline"
-                                href="{% url 'order_history' order.order_number %}" title="{{ order.order_number }}">
-                                <small>{{ order.order_number|truncatechars:6 }}</small>
-                            </a>
-                            <small>{{ order.date|date:"Y-m-d" }}</small>
-                        </td>
-                        <td>
-                            <ul class="list-group list-group-flush">
-                                {% for item in order.lineitems.all|slice:":2" %}
-
-                                <li class="small list-group-item order-history-list">
-
-                                    {{ item.product.name }} x{{ item.quantity }} <br>
-                                    {% if item.product_size %}
-                                    Size : {{ item.product_size|title }} <br>
-                                    {% endif %}
-
-                                    {% if item.product_color %}
-                                    Color : {{ item.product_color|title }}<br>
-                                    {% endif %}
-                                    
-                                    <small>
-                                        <a class="link-primary text-decoration-underline"
-                                            href="{% url 'add_review' item.product.product_id %}">
-                                            Add a Review
-                                        </a>
-                                    </small>
-                                </li>
-
-                                {% endfor %}
-
-                                {% if order.lineitems.all|length > 2 %}
-                                <li><span class="px-3">...</span></li>
-                                {% endif %}
-                            </ul>
-                        </td>
-                        <td><small>{{ order.grand_total }}</small></td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
-
     </div>
-
-</div>
 {% endblock %}
-
 
 
 {% block postloadjs %}
 {{ block.super }}
-<script type="text/javascript" src="{% static 'profiles/js/countryfield.js' %}"></script>
+    <script type="text/javascript" src="{% static 'profiles/js/countryfield.js' %}"></script>
 {% endblock %}

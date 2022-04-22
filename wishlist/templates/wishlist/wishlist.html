@@ -2,120 +2,104 @@
 {% load static %}
 
 {% block page_header %}
-
-<div class="container header-container">
-    <div class="row">
-        <div class="col">
-
-        </div>
-    </div>
-</div>
+    <div class="container header-container"></div>
 {% endblock %}
+
 {% block content %}
-<div class="overlay"></div>
-<div class="container">
-    <div class="row">
-        <div class="col-12">
-  
-                <a class="text-white btn btn-dark" href="{% url 'products' %}">
-                    <span><i class="fa-solid fa-chevron-left text-white"></i> Continue Shopping</span>
-                </a>
-
-            <hr class="text-muted">
-            <h2 class="logo-font my-4">Your Wish List</h2>
-            <hr class="text-muted">
-            
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                    <a class="text-white btn btn-dark" href="{% url 'products' %}">
+                        <span><i class="fa-solid fa-chevron-left text-white"></i> 
+                            Continue Shopping
+                        </span>
+                    </a>
+                <hr class="text-muted">
+                <h2 class="logo-font my-4">Your Wish List</h2>
+                <hr class="text-muted">
+            </div>
         </div>
-    </div>
-    <div class="row">
-        {% if products|length == 0 %}
-        <div class="col-12">
-        <p class="text-muted">Your Wish List Is Empty</p>
-        </div>
-        {% endif %}
-        {% for product in products %}
-        <div class="col-12">
-            <div class="card mb-3 p-3">
-                <div class="row g-0">
-                    <div class="col-md-4">
-                        <div class="float-end d-block d-md-none">                  
-                            <a href="{% url 'remove_from_wishlist' product.product_id %}" class="text-black" title="Remove Item">
-                                <span class="icon">
-                                    <i class="fa-solid fa-trash-can fa-xl"></i>
-                                </span>
-                            </a>
-                        </div>
-
-                        <a href="{% url 'product_detail' product.product_id %}" target="_blank">
-                            <img src="{{ product.image1.url }}" class="img-fluid rounded-start img-md"
-                            alt="{{ product.name }}">
-                        </a>
-                    </div>
-                    <div class="col-md-8">
-                        <div class="float-end d-none d-md-block">
-                            <a href="{% url 'remove_from_wishlist' product.product_id %}" class="text-black" title="Remove Item">
-                                <span class="icon">
-                                    <i class="fa-solid fa-trash-can fa-xl"></i>
-                                </span>
-                            </a>
-                        </div>
-
-                      
-                        <div class="card-body">
-                            <a href="{% url 'product_detail' product.product_id %}" target="_blank"></a>
-                            <h5 class="card-title">{{ product.name }}</h5>
-                            <div class="mt-4">
-                                <p>SKU: {{ product.sku }} <br>
-                                    Price: {{ product.price }}€ <br>
-                                    Size:
-                                    {% if product.has_sizes %}
-                                    <ul class="list-group list-group-horizontal small">
-                                        {% for x in product.has_sizes %}
-                                        <li class="list-group-item">
-                                            {{ x }}
-                                        </li>
-                                        {% endfor %}
-                                    </ul>
-                                    {% else %}
-                                    N/A
-                                    {% endif %}
-                                    <br>
-                                    Color:
-                                    {% if product.colors %}
-                                    <ul class="list-group list-group-horizontal small">
-                                        {% for x in product.colors %}
-                                        <li class="list-group-item">
-                                            {{ x }}
-                                        </li>
-                                        {% endfor %}
-                                    </ul>
-                                    {% else %}
-                                    N/A
-                                    {% endif %}
-                  
+        <div class="row">
+            {% if products|length == 0 %}
+                <div class="col-12">
+                    <p class="text-muted">Your Wish List Is Empty</p>
+                </div>
+            {% endif %}
+            {% for product in products %}
+                <div class="col-12">
+                    <div class="card mb-3 p-3">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <div class="float-end d-block d-md-none">                  
+                                    <a href="{% url 'remove_from_wishlist' product.product_id %}" class="text-black" title="Remove Item">
+                                        <span class="icon">
+                                            <i class="fa-solid fa-trash-can fa-xl"></i>
+                                        </span>
+                                    </a>
+                                </div>
+                                <a href="{% url 'product_detail' product.product_id %}" target="_blank">
+                                    <img src="{{ product.image1.url }}" class="img-fluid rounded-start img-md"
+                                    alt="{{ product.name }}">
+                                </a>
                             </div>
- 
-                    
+                            <div class="col-md-8">
+                                <div class="float-end d-none d-md-block">
+                                    <a href="{% url 'remove_from_wishlist' product.product_id %}" class="text-black" title="Remove Item">
+                                        <span class="icon">
+                                            <i class="fa-solid fa-trash-can fa-xl"></i>
+                                        </span>
+                                    </a>
+                                </div>
+                                <div class="card-body">
+                                    <a href="{% url 'product_detail' product.product_id %}" target="_blank"></a>
+                                    <h5 class="card-title">{{ product.name }}</h5>
+                                    <div class="mt-4">
+                                        <p>SKU: {{ product.sku }} <br>
+                                            Price: {{ product.price }}€ <br>
+                                            Size:
+                                            {% if product.has_sizes %}
+                                                <ul class="list-group list-group-horizontal small">
+                                                    {% for x in product.has_sizes %}
+                                                        <li class="list-group-item">
+                                                            {{ x }}
+                                                        </li>
+                                                    {% endfor %}
+                                                </ul>
+                                            {% else %}
+                                                N/A
+                                            {% endif %}
+                                            <br>
+                                            Color:
+                                            {% if product.colors %}
+                                                <ul class="list-group list-group-horizontal small">
+                                                    {% for x in product.colors %}
+                                                    <li class="list-group-item">
+                                                        {{ x }}
+                                                    </li>
+                                                    {% endfor %}
+                                                </ul>
+                                            {% else %}
+                                                N/A
+                                            {% endif %}
+                                        </p>    
+                                    </div>       
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            {% endfor %}
         </div>
-        {% endfor %}
-
     </div>
-</div>
-
 {% endblock %}
-
 
 {% block postloadjs %}
 {{ block.super }}
-<script>
-    $('.card-body').click(function(){
-        window.location = $(this).find("a").attr("href");
+    <script>
+        $('.card-body').click(function(){
+            window.location = $(this).find("a").attr("href");
 
-    })
-
-</script>
+        })
+    </script>
 {% endblock %}

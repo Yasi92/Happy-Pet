@@ -3,7 +3,6 @@ from .models import Product, ProductReview, Subcategories, Category
 from .widgets import CustomClearableFileInput
 
 
-
 class ProductReviewForm(forms.ModelForm):
     class Meta:
         model = ProductReview
@@ -19,7 +18,6 @@ class ProductReviewForm(forms.ModelForm):
         placeholders = {
             'content': 'Write your review here',
             'stars': 'Rate',
-   
         }
 
         self.fields['content'].widget.attrs['autofocus'] = True
@@ -33,8 +31,6 @@ class ProductReviewForm(forms.ModelForm):
             self.fields[field].label = False
 
 
-
-
 class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
@@ -43,8 +39,6 @@ class ProductForm(forms.ModelForm):
     image1 = forms.ImageField(label='Image1', required=False, widget=CustomClearableFileInput)    
     image2 = forms.ImageField(label='Image2', required=False, widget=CustomClearableFileInput)    
     image3 = forms.ImageField(label='Image3', required=False, widget=CustomClearableFileInput)    
-
-  
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

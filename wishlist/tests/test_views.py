@@ -14,7 +14,6 @@ class TestViews(TestCase):
         self.wishlist_url = reverse('wishlist')
 
 
-
     def test_wishlist_view(self):
         ''' Tests the wishlist view '''
         response = self.client.get(self.wishlist_url)
@@ -23,8 +22,8 @@ class TestViews(TestCase):
         self.assertTemplateUsed(response, 'wishlist/wishlist.html')
 
 
-
     def test_add_to_wishlist(self):
+        ''' Tests add to wish list '''
         product = Product.objects.create(name='test_product3',
                         category=Category.objects.create(category_id=6, name='test_category'),
                         subcategory=Subcategories.objects.create(subcategory_id=67, name="test_subcategory"),
@@ -42,6 +41,7 @@ class TestViews(TestCase):
 
 
     def test_remove_from_wishlist(self):
+        ''' Tests remove item from wishlist '''
         product = Product.objects.create(name='test_product3',
                         category=Category.objects.create(category_id=6, name='test_category'),
                         subcategory=Subcategories.objects.create(subcategory_id=67, name="test_subcategory"),

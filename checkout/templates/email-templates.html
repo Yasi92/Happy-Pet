@@ -1,89 +1,91 @@
 <!doctype html>
 <html lang="en">
+    <head></head>
 
-<head></head>
-
-<body style="font-family:Arial, Helvetica, sans-serif">
-    <div>
+    <body style="font-family:Arial, Helvetica, sans-serif">
+        <div>
+            <hr class="text-muted">
+            <h2>Thank You "{{order.full_name}}" for shopping with Happy Pet.</h2>
+            <hr class="text-muted">
+            <p>Your order information is below.</p>
+        </div>
+        <h5>Order Number : {{ order.order_number }}</h5>
+        <h5>Order Date : {{ order.date }}</h5>
         <hr class="text-muted">
-        <h2>Thank You "{{order.full_name}}" for shopping with Happy Pet.</h2>
+        <h5>Order Details: </h5> <br>
+        <table style="border: 2px solid rgb(213, 213, 213); padding: 1rem;">
+            <thead>
+                <tr>
+                    <th scope="col">Product</th>
+                    <th scope="col">Size</th>
+                    <th scope="col">Color</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Price @ Each</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in order.lineitems.all %}
+                <tr>
+                    <th scope="row">
+                        {% if item.product.image1 %}
+                            <img style="text-align: start;" src="{{ item.product.image1.url }}" 
+                            alt="{{ item.product.name }}" width=150> <br>
+                        {% endif %}
+                        <small>{{ item.product.name }}</small>
+                    </th>
+                    <td>
+                        {% if item.product_size %}
+                            <small>{{ item.product_size|title }}</small>
+                        {% else %}
+                            <small>-</small>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if item.product_color %}
+                            <small>{{ item.product_color|title }}</small>
+                        {% else %}
+                            <small>-</small>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <small>{{ item.quantity }}</small>
+                    </td>
+                    <td>
+                        <small>{{ item.product.price }}</small>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
         <hr class="text-muted">
-        <p>Your order information is below.</p>
-    </div>
-    <h5>Order Number : {{ order.order_number }}</h5>
-    <h5>Order Date : {{ order.date }}</h5>
-    <hr class="text-muted">
-    <h5>Order Details: </h5> <br>
-    <table style="border: 2px solid rgb(213, 213, 213); padding: 1rem;">
-        <thead>
-            <tr>
-                <th scope="col">Product</th>
-                <th scope="col">Size</th>
-                <th scope="col">Color</th>
-                <th scope="col">Quantity</th>
-                <th scope="col">Price @ Each</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for item in order.lineitems.all %}
-            <tr>
-                <th scope="row">
-                    {% if item.product.image1 %}
-                    <img style="text-align: start;" src="{{ item.product.image1.url }}" alt="{{ item.product.name }}" width=150> <br>
-                    {% endif %}
-                    <small>{{ item.product.name }}</small>
-                </th>
-                <td>
-                    {% if item.product_size %}
-                    <small>{{ item.product_size|title }}</small>
-                    {% else %}
-                    <small>-</small>
-                    {% endif %}
-                </td>
-                <td>
-                    {% if item.product_color %}
-                    <small>{{ item.product_color|title }}</small>
-                    {% else %}
-                    <small>-</small>
-                    {% endif %}
-                </td>
-                <td>
-                    <small>{{ item.quantity }}</small>
-                </td>
-                <td>
-                    <small>{{ item.product.price }}</small>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    <hr class="text-muted">
+        <h5>Delivering To:</h5>
+        <p>{{ order.full_name }} <br>
+            {{ order.street_address1 }} <br>
 
-    <h5>Delivering To:</h5>
-    <p>{{ order.full_name }} <br>
-        {{ order.street_address1 }} <br>
-        {% if order.street_address2 %}
-        {{ order.street_address1 }} <br>
-        {% endif %}
-        {% if order.county %}
-        {{ order.county }} <br>
-        {% endif %}
-        {{ order.town_or_city }} <br>
+            {% if order.street_address2 %}
+                {{ order.street_address1 }} <br>
+            {% endif %}
 
-        {% if order.postcode %}
-        {{ order.postcode }} <br>
-        {% endif %}
-        {{ order.country }} <br>
-        {{ order.phone_number }}
-    </p>
+            {% if order.county %}
+                {{ order.county }} <br>
+            {% endif %}
 
-    <hr class="text-muted">
-    <h5>Billing Info:</h5>
-    <p>Order Total : <strong>{{ order.order_total }}</strong><br>
-    Delivery : <strong>{{ order.delivery_cost }}</strong><br>
-    Grand Total : <strong>{{ order.grand_total }}</strong></p>
+            {{ order.town_or_city }} <br>
 
+            {% if order.postcode %}
+                {{ order.postcode }} <br>
+            {% endif %}
+            
+            {{ order.country }} <br>
+            {{ order.phone_number }}
+        </p>
+        <hr class="text-muted">
+        <h5>Billing Info:</h5>
+        <p>
+        Order Total : <strong>{{ order.order_total }}</strong><br>
+        Delivery : <strong>{{ order.delivery_cost }}</strong><br>
+        Grand Total : <strong>{{ order.grand_total }}</strong>
+        </p>
 
-</body>
-
+    </body>
 </html>

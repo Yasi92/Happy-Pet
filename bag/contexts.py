@@ -1,9 +1,7 @@
 from django.conf import settings
-from decimal import Decimal
-from django.conf import settings
 from django.shortcuts import get_object_or_404
+from decimal import Decimal
 from products.models import Product
-
 from happy_pet.settings import FREE_DELIVERY_THRESHOLD
 from products.models import Product
 
@@ -32,7 +30,6 @@ def bag_contents(request):
             product = get_object_or_404(Product, pk=item_id)
             if 'items_by_filter' in item_data:
                 for item, quantity in item_data['items_by_filter'].items():
-                
                     size = item.split('_')[1]
                     color = item.split('_')[2]
                     total += quantity * product.price
@@ -45,9 +42,7 @@ def bag_contents(request):
                     'size' : size,
                     'color' : color,
                 })
-
             elif 'items_by_size' in item_data:
-
                 for size, quantity in item_data['items_by_size'].items():
                     quantity = quantity
                     total += quantity * product.price
@@ -59,15 +54,11 @@ def bag_contents(request):
                     'product' : product,
                     'size' : size,
             })
-
-
             elif 'items_by_color' in item_data:
                 for color, quantity in item_data['items_by_color'].items():    
-
                     quantity = quantity
                     total += quantity * product.price
                     product_count += quantity
-
                     bag_items.append({
                     'item_id' : item_id,
                     'quantity' : quantity,

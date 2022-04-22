@@ -1,6 +1,8 @@
 <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center d-block d-lg-none pink-bg border-bottom">
     <a href="{% url 'home' %}" class="nav-link">
-        <h1 class="logo-font text-black my-0">Happy Pet <i class="fa-solid fa-paw"></i></h1>
+        <h1 class="logo-font text-black my-0">Happy Pet 
+            <i class="fa-solid fa-paw"></i>
+        </h1>
     </a>
 </div>
 <div class="col-12 pink-bg d-block d-lg-none py-1 border-bottom">
@@ -41,14 +43,14 @@
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="user-options-mobile">
                 {% if request.user.is_authenticated %}
-                {% if request.user.is_superuser %}
-                <a href="{% url 'add_product' %}" class="dropdown-item">Product Management</a>
-                {% endif %}
-                <a href="{% url 'profile' %}" class="dropdown-item">My Profile</a>
-                <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
+                    {% if request.user.is_superuser %}
+                        <a href="{% url 'add_product' %}" class="dropdown-item">Product Management</a>
+                    {% endif %}
+                    <a href="{% url 'profile' %}" class="dropdown-item">My Profile</a>
+                    <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
                 {% else %}
-                <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
-                <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
+                    <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
+                    <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
                 {% endif %}
             </div>
         </div>
@@ -65,9 +67,9 @@
                     <p class="my-0">
                         
                         {% if request.session.wishlist_bag %}
-                        ({{ request.session.wishlist_bag|length }})
+                            ({{ request.session.wishlist_bag|length }})
                         {% else %}
-                        (0)
+                            (0)
                         {% endif %}
                     </p>
                 </div>
@@ -80,9 +82,9 @@
                     <div><i class="fa-solid fa-cart-shopping fa-lg"></i></div>
                     <p class="my-0">
                         {% if grand_total %}
-                        €{{ grand_total|floatformat:2 }}
+                            €{{ grand_total|floatformat:2 }}
                         {% else %}
-                        €0.00
+                            €0.00
                         {% endif %}
                     </p>
                 </div>

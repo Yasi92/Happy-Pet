@@ -24,15 +24,18 @@ action="{% url 'adjust_bag' item.item_id %}">
             </button>
         </div>
         {% if item.product.has_sizes %}
-        <input type="hidden" name="product_size" value="{{ item.size }}">
+            <input type="hidden" name="product_size" value="{{ item.size }}">
         {% endif %}
         {% if item.product.colors %}
-        <input type="hidden" name="product_color" value="{{ item.color }}">
+            <input type="hidden" name="product_color" value="{{ item.color }}">
         {% endif %}
     </div>
 </form>
-
-<a class="update-link text-info"><small>Update</small></a>
+<a class="update-link text-info">
+    <small>Update</small>
+</a>
 <a class="remove-item text-danger float-end" id="remove_{{ item.item_id }}"
     data-product_size="{{ item.size }}"
-    data-product_color="{{ item.color }}"><small>Remove</small></a>
+    data-product_color="{{ item.color }}">
+    <small>Remove</small>
+</a>

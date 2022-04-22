@@ -1,9 +1,8 @@
-from audioop import add
-from django.test import TestCase, SimpleTestCase
+from django.test import TestCase
 from django.urls import reverse, resolve
-from checkout.views import cache_checkout_data, checkout, checkout_success
+from checkout.views import (cache_checkout_data, 
+                            checkout, checkout_success)
 from checkout.webhooks import webhook
-
 
 # Testing urls are learned from (https://www.youtube.com/watch?v=0MrgsYswT1c&list=PLbpAWbHbi5rMF2j5n6imm0enrSD9eQUaM&index=2)
 

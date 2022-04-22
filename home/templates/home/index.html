@@ -1,11 +1,12 @@
 {% extends "base.html" %}
 {% load static %}
+
 {% block page_header %}
-<div class="container header-container">
-</div>
+    <div class="container header-container"></div>
 {% endblock %}
+
 {% block content %}
-<div class="overlay"></div>
+    <div class="overlay"></div>
     <div class="container anim-card-container">
         <div class="row mt-2">
             <div class="col-12 col-md-6 mr-n2">
@@ -41,10 +42,7 @@
                 <a href="{% url 'products' %}" class="btn btn-black btn-lg">Shop All</a>
             </div>
         </div>
-    </div> 
-
-    
-
+    </div>    
 {% endblock %}
 
 {% block corejs %}
@@ -53,68 +51,62 @@
 {% endblock %}
 
 
-
 {% block postloadjs %}
 {{ block.super }}
-<script>
-    // Animating the animal cards on window load
-    function homePageAnimCards(){
-        document.addEventListener("DOMContentLoaded", function(event) {
-        window.onload = function(){ 
-        gsap.fromTo(".shop-all-btn",
-            {
-                autoAlpha: 0
-            }, 
-            {
-                autoAlpha: 1, duration: 2, delay:3, zIndex:999
-            }
-        );
+    <script>
+        // Animating the animal cards on window load
+        function homePageAnimCards(){
+            document.addEventListener("DOMContentLoaded", function(event) {
+            window.onload = function(){ 
+            gsap.fromTo(".shop-all-btn",
+                {
+                    autoAlpha: 0
+                }, 
+                {
+                    autoAlpha: 1, duration: 2, delay:3, zIndex:999
+                }
+            );
 
-        gsap.from("#up-fade-in", {
-        duration: 3,
-        ease: "power1.out",
-        y: -500,
-        opacity: 1,
-        });
-
-        gsap.from("#right-fade-in", {
+            gsap.from("#up-fade-in", {
             duration: 3,
             ease: "power1.out",
-            x: 500,
+            y: -500,
             opacity: 1,
-        });
+            });
 
-        gsap.fromTo("#bottom-fade-in",
-            {
-                autoAlpha: 0,
-                y: 500,
-            }, 
-            {
-                autoAlpha: 1,
+            gsap.from("#right-fade-in", {
                 duration: 3,
-                opacity: 1,
                 ease: "power1.out",
-                y:0,
+                x: 500,
+                opacity: 1,
+            });
+
+            // This format of animation fixes the unwanted white space below the footer on safari browsers.
+            gsap.fromTo("#bottom-fade-in",
+                {
+                    autoAlpha: 0,
+                    y: 500,
+                }, 
+                {
+                    autoAlpha: 1,
+                    duration: 3,
+                    opacity: 1,
+                    ease: "power1.out",
+                    y:0,
+                }
+            );
+
+            gsap.from("#left-fade-in", {
+                duration: 3,
+                ease: "power1.out",
+                x: -500,
+                opacity: 1,
+            });
+            }})
+        }  
+            if ($(window).width() > 768) {
+                homePageAnimCards();
             }
-        );
-
-        gsap.from("#left-fade-in", {
-            duration: 3,
-            ease: "power1.out",
-            x: -500,
-            opacity: 1,
-        });
-        }})
-    }
-
-    
- 
-        if ($(window).width() > 768) {
-            homePageAnimCards();
-        }
-
-
-</script>
-
+    </script>
 {% endblock %}
 

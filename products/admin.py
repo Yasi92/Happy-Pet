@@ -1,7 +1,6 @@
 from django.contrib import admin
 from .models import Category, Product, Subcategories, ProductReview
 
-
 class AdminProduct(admin.ModelAdmin):
     list_display = (
         'sku',
@@ -10,9 +9,7 @@ class AdminProduct(admin.ModelAdmin):
         'rating',
         'CategoryName',
         'SubCategoryName',
-          
     )
-
     ordering = ('name',)
 
 class AdminCategory(admin.ModelAdmin):
@@ -21,20 +18,16 @@ class AdminCategory(admin.ModelAdmin):
         'friendlyname',
     )
 
-
-
 class AdminSubcategories(admin.ModelAdmin):
     list_display = (
         'name',
     )    
-
 
 class AdminProductReview(admin.ModelAdmin):
     list_display = (
         'user',
         'product',
         'stars',
-
     )
 
 

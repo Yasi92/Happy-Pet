@@ -1,12 +1,11 @@
-from math import prod
 from django.test import TestCase
 from ..models import Order, OrderLineItem
 from products.models import Product, Category, Subcategories
 from profiles.models import UserProfile, User
-
 class TestModels(TestCase):
     def setUp(self):
-        self.category= Category.objects.create(category_id=6, name='test_category', 
+        self.category= Category.objects.create(category_id=6, 
+                                            name='test_category', 
                                             friendlyname='test_friendlyname')
         self.subcategory = Subcategories.objects.create(subcategory_id=67, 
                                                 name="test_subcategory")
@@ -38,7 +37,8 @@ class TestModels(TestCase):
 
 
     def test_Order_model(self):
-        ''' Tests _generate_order_number() method works and generate an order number '''
+        ''' Tests _generate_order_number() 
+        method works and generate an order number '''
 
         self.assertIsNotNone(self.order.order_number)
 
@@ -53,12 +53,14 @@ class TestModels(TestCase):
         ''' Tests that update_total() method return correct value '''
 
         self.assertEquals(self.order.grand_total, 
-                            (self.product.price*self.order_line_item.quantity) 
+                            (self.product.price*
+                            self.order_line_item.quantity) 
                             + self.order.delivery_cost)
         self.assertEquals(self.order.grand_total, 24.64)
         self.assertIsNot(self.order.delivery_cost, 0)
         self.assertEquals(self.order.order_total, 
-                            self.product.price*self.order_line_item.quantity)
+                            self.product.price*
+                            self.order_line_item.quantity)
 
 
     def test_order_line_item_model(self):
@@ -73,7 +75,8 @@ class TestModels(TestCase):
         '''Tests the string method formating of the model'''
 
         self.assertEquals(self.order_line_item.__str__(), 
-                            f'SKU {self.product.sku} on order {self.order.order_number}') 
+                            f'SKU {self.product.sku} on order\
+                            {self.order.order_number}') 
 
 
 

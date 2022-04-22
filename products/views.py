@@ -2,10 +2,10 @@ from audioop import reverse
 from django.shortcuts import get_object_or_404, redirect, render, reverse
 from django.contrib import messages
 from django.db.models import Q
-from .models import Product, Category, Subcategories
-
 from django.contrib.auth.decorators import login_required
 from django.db.models.functions import Lower
+
+from .models import Product, Category, Subcategories
 from .forms import ProductForm
 
 
@@ -33,36 +33,36 @@ def all_products(request):
             if sortkey == 'category':
                 sortkey = 'category__name'
 
-        
             if direction == "desc":
                 sortkey = f'-{sortkey}'
                 
             products = products.order_by(sortkey)
 
-
         if 'category' and 'subcategory' in request.GET:
             categories = request.GET['category'].split(',')
             subcategories = request.GET['subcategory'].split(',')
 
-            # Gets the related subcategories of the selected category to pass it as a url param to filter all subcategories of the selected category
-            related_subcategory = Subcategories.objects.filter(category__icontains=categories[0]).values_list('name', flat=True)
+            # Gets the related subcategories of the selected category to pass it as 
+            # a url param to filter all subcategories of the selected category
+            related_subcategory = Subcategories.objects.filter(
+                category__icontains=categories[0]).values_list('name', flat=True)
           
-            products = products.filter(category__name__in=categories, subcategory__name__in=subcategories)
+            products = products.filter(category__name__in=categories,
+                                     subcategory__name__in=subcategories)
             categories = Category.objects.filter(name__in=categories)
             subcategories = Subcategories.objects.filter(name__in=subcategories)
 
-         
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
                 messages.error(request, "You did not enter any search criteria!")
                 return redirect(reverse('products'))
 
-            queries = Q(name__icontains=query) | Q(description__icontains=query) | Q(subcategory__friendly_name__icontains=query)
+            queries = (Q(name__icontains=query) | Q(description__icontains=query) |
+                        Q(subcategory__friendly_name__icontains=query))
             products = products.filter(queries)    
 
     current_sorting = f'{sort}_{direction}'
-
 
     template = 'products/products.html'
     context = {
@@ -77,7 +77,6 @@ def all_products(request):
     return render(request, template, context)
 
 
-
 def product_detail(request, product_id):
     """ A view to return product details and similar products """
 
@@ -87,8 +86,6 @@ def product_detail(request, product_id):
                                 subcategory=product.subcategory).exclude(
                                 product_id=product.product_id)
 
-
-
     template = 'products/product_detail.html'
     context = {
         'product' : product,
@@ -96,7 +93,6 @@ def product_detail(request, product_id):
     }
 
     return render(request, template, context)        
-
 
 
 @login_required
@@ -108,7 +104,6 @@ def add_product(request):
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect(reverse('home'))
 
-
     if request.method == "POST":
         form = ProductForm(request.POST, request.FILES)
 
@@ -117,7 +112,8 @@ def add_product(request):
             messages.success(request, "Successfully added product")
             return redirect(reverse('product_detail', args=[product.product_id]))
         else:
-            messages.error(request, "Failed to add product. Please ensure the form is valid.")
+            messages.error(request, "Failed to add product.\
+                             Please ensure the form is valid.")
     else:
         form = ProductForm()
 
@@ -128,7 +124,6 @@ def add_product(request):
     }
 
     return render(request, template, context)
-
 
 
 
@@ -149,7 +144,8 @@ def edit_product(request, product_id):
             messages.success(request, "Successfully Updated product")
             return redirect(reverse('product_detail', args=[product.product_id]))
         else:
-            messages.error(request, "Failed to Edit product. Please ensure the form is valid.")
+            messages.error(request, "Failed to Edit product.\
+                                 Please ensure the form is valid.")
     else:
         form = ProductForm(instance=product)
         messages.info(request, f'You are editing {product.name}.')
