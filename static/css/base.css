@@ -272,6 +272,16 @@ span>i.carousel-control-left-black {
 
 /* //////////////////////////////////////// Allauth form formatting ////////////////////*/
 /* Taken from boutique ado project */
+.overlay-allauth {
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    background: #fff url(/media/404_page.png) no-repeat center right;
+    z-index: -1;
+}
+
 .allauth-form-inner-content p {
     margin-top: 1.5rem;
     color: #6c757d;
@@ -612,6 +622,11 @@ footer.page-footer {
         max-height: 9rem;
 
     }
+
+    .overlay-allauth {
+        background: #fff;
+    }
+
 
 
 }
