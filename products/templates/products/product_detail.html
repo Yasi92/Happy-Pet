@@ -88,13 +88,13 @@
                 <div class="my-4 my-md-0 text-center">
                     {% if product.image1 and not product.image2 %}
                         <a href="{{ product.image1.url }}" target="_blank">
-                            <img src="{{ product.image1.url }}" class="img-responsive" alt="{{ product.name }}">
+                            <img src="{{ product.image1.url }}" class="img-responsive-product" alt="{{ product.name }}">
                         </a>
                     {% elif product.image1 and product.image2 %}
                         {% include 'products/includes/product_image_carousel.html' %}
                     {% else %}
                         <a href="#">
-                            <img src="{{ MEDIA_URL }}/noimage.png" class="iimg-responsive" alt="{{ product.name }}">
+                            <img src="{{ MEDIA_URL }}/noimage.png" class="img-responsive-product" alt="{{ product.name }}">
                         </a>
                     {% endif %}
                 </div>

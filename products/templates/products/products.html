@@ -52,7 +52,7 @@
                                 <span class="small">
                                     <a href="{% url 'products' %}">
                                         Products Home
-                                    </a> | 
+                                    </a> |
                                 </span>
                             {% endif %}
                             {{ products|length }} Products{% if search_term %} found for
@@ -67,12 +67,12 @@
                                 {% if product.image1 %}
                                     <a href="{% url 'product_detail' product.product_id %}" target="_blank"
                                         class="product-dtl-link">
-                                        <img src="{{ product.image1.url }}" class="card-img-top img-responsive mt-2"
+                                        <img src="{{ product.image1.url }}" class="card-img-top mt-2"
                                             alt="{{ product.name }}">
                                     </a>
                                 {% else %}
                                     <a href="{% url 'product_detail' product.product_id %}" class="product-dtl-link">
-                                        <img src="{{ MEDIA_URL }}/noimage.png" class="card-img-top img-responsive"
+                                        <img src="{{ MEDIA_URL }}/noimage.png" class="card-img-top"
                                             alt="{{ product.name }}">
                                     </a>
                                 {% endif %}
@@ -99,7 +99,7 @@
                                             {% else %}
                                                 <small class="text-muted">No Rating</small>
                                             {% endif %}
-                        
+
                                             {% if request.user.is_superuser %}
                                                 <small>
                                                     <a href="{% url 'edit_product' product.product_id %}">Edit</a> |

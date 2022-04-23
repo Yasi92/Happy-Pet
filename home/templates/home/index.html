@@ -6,17 +6,18 @@
 {% endblock %}
 
 {% block content %}
+<section id="main2" class="d-flex align-items-center">
     <div class="overlay"></div>
-    <div class="container anim-card-container">
-        <div class="row mt-2">
-            <div class="col-12 col-md-6 mr-n2">
+    <div class="container">
+        <div class="row mt-2 mx-auto justify-content-center">
+            <div class="col-12 col-md-6 mr-n2 text-center">
                 <a href="{% url 'products' %}?category=dogs&subcategory=nutrition,snacks,toys,care,pillows,baskets,collars,clothing,belts,leashes,accessories,dietary_supplements" class="text-center">
-                    <img id="up-fade-in" class="img-responsive float-end" src="{{ MEDIA_URL }}/happy_dog.PNG" alt="image of a smiling dog">
+                    <img id="up-fade-in" class="img-responsive-anim-card float-md-end" src="{{ MEDIA_URL }}/happy_dog.PNG" alt="image of a smiling dog">
                 </a>
             </div>
-            <div class="col-12 col-md-6 ml-n2">
+            <div class="col-12 col-md-6 ml-n2 text-center">
                 <a href="{% url 'products' %}?category=cats&subcategory=nutrition,snacks,toys,care,pillows,baskets,collars,clothing,belts,leashes,accessories,dietary_supplements,cat_litter">
-                    <img id="right-fade-in" class="img-responsive float-start" src="{{ MEDIA_URL }}/cat.PNG" alt="image of a curious cat">
+                    <img id="right-fade-in" class="img-responsive-anim-card float-md-start" src="{{ MEDIA_URL }}/cat.PNG" alt="image of a curious cat">
                 </a>
             </div>
         </div>
@@ -25,15 +26,15 @@
                 <a href="{% url 'products' %}" class="btn btn-black btn-lg shop-all-btn position-absolute top-50 start-50 translate-middle">Shop All</a>
             </div>
         </div>
-        <div class="row">
-            <div class="col-12 col-md-6 left mr-n2">
+        <div class="row mx-auto justify-content-center">
+            <div class="col-12 col-md-6 left mr-n2 text-center">
                 <a href="{% url 'products' %}?category=rodents&subcategory=nutrition,snacks,toys,care,collars,accessories,dietary_supplements,rodent_house">
-                    <img id="left-fade-in" class="img-responsive float-end" src="{{ MEDIA_URL }}/rodent.PNG" alt="image of a cute rabbit">
+                    <img id="left-fade-in" class="img-responsive-anim-card float-md-end" src="{{ MEDIA_URL }}/rodent.PNG" alt="image of a cute rabbit">
                 </a>
             </div>
-            <div class="col-12 col-md-6 left ml-n2">
+            <div class="col-12 col-md-6 left ml-n2 text-center">
                 <a href="{% url 'products' %}?category=birds&subcategory=nutrition,snacks,toys,care,accessories,dietary_supplements,bird_houses,chicken_feed">
-                    <img id="bottom-fade-in" class="img-responsive float-start" src="{{ MEDIA_URL }}/pirrot.PNG" alt="image of a vivid pirrot">
+                    <img id="bottom-fade-in" class="img-responsive-anim-card float-md-start" src="{{ MEDIA_URL }}/pirrot.PNG" alt="image of a vivid pirrot">
                 </a>
             </div>
         </div>
@@ -43,7 +44,8 @@
             </div>
         </div>
     </div>
-{% endblock %}
+</section>
+    {% endblock %}
 
 {% block corejs %}
 {{ block.super }}
@@ -58,54 +60,76 @@
         function homePageAnimCards(){
             document.addEventListener("DOMContentLoaded", function(event) {
             window.onload = function(){
-            gsap.fromTo(".shop-all-btn",
-                {
-                    autoAlpha: 0
-                },
-                {
-                    autoAlpha: 1, duration: 2, delay:3, zIndex:999
-                }
-            );
+                gsap.fromTo(".shop-all-btn",
+                    {
+                        autoAlpha: 0
+                    },
+                    {
+                        autoAlpha: 1, duration: 2, delay:3, zIndex:999
+                    }
+                );
 
-            gsap.from("#up-fade-in", {
-            duration: 3,
-            ease: "power1.out",
-            y: -500,
-            opacity: 1,
-            });
-
-            gsap.from("#right-fade-in", {
+                gsap.from("#up-fade-in", {
                 duration: 3,
                 ease: "power1.out",
-                x: 500,
+                y: -500,
                 opacity: 1,
-            });
+                });
 
-            // This format of animation fixes the unwanted white space below the footer on safari browsers.
-            gsap.fromTo("#bottom-fade-in",
-                {
-                    autoAlpha: 0,
-                    y: 500,
-                },
-                {
-                    autoAlpha: 1,
-                    duration: 3,
-                    opacity: 1,
-                    ease: "power1.out",
-                    y:0,
-                }
-            );
+                gsap.fromTo("#right-fade-in",
+                    {
+                        autoAlpha: 0,
+                        x: 500,
+                    },
+                    {
+                        autoAlpha: 1,
+                        duration: 3,
+                        opacity: 1,
+                        ease: "power1.out",
+                        x:0,
+                    }
+                );
 
-            gsap.from("#left-fade-in", {
-                duration: 3,
-                ease: "power1.out",
-                x: -500,
-                opacity: 1,
-            });
-            }})
-        }
-            if ($(window).width() > 768) {
-                homePageAnimCards();
-            }
+                gsap.fromTo("#bottom-fade-in",
+                    {
+                        autoAlpha: 0,
+                        y: 500,
+                    },
+                    {
+                        autoAlpha: 1,
+                        duration: 3,
+                        opacity: 1,
+                        ease: "power1.out",
+                        y:0,
+                    }
+                );
+
+                gsap.fromTo("#left-fade-in",
+                    {
+                        autoAlpha: 0,
+                        x: -500,
+                    },
+                    {
+                        autoAlpha: 1,
+                        duration: 3,
+                        opacity: 1,
+                        ease: "power1.out",
+                        x:0,
+                    }
+                );
+
+            };
+        })};
+
+        if ($(window).width() > 768) {
+            homePageAnimCards();
+        };
+
+        setInterval(function () {
+            var header = document.querySelector("header").offsetHeight;
+            var footer = document.querySelector("footer").offsetHeight;
+            document.getElementById("main2").style.minHeight = "calc( 96vh - " + header + "px" + " - " + footer + "px )";
+            document.getElementById("myBtn").style.bottom = footer + "px";
+        }, 100);
     </script>
 {% endblock %}

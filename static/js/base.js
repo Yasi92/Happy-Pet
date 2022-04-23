@@ -1,4 +1,4 @@
-// back to top button 
+// back to top button
 // learned from (https://stackoverflow.com/questions/14249998/jquery-back-to-top)
 if ($(window).scrollTop() < 800) {
     $('.btt-button').hide();
@@ -22,13 +22,12 @@ $('.btt-link').click(function (e) {
 /* The method has been learned from this tutorial (https://www.youtube.com/watch?v=US_3XvufMLU) and
 manipulated by me to make it responsive to all screen sizes.*/
 
-/* Get the height of header and footer on different screen size to push 
+/* Get the height of header and footer on different screen size to push
   the footer to the bottom of the page regardless of the size of content.*/
 setInterval(function () {
     var header = document.querySelector("header").offsetHeight;
     var footer = document.querySelector("footer").offsetHeight;
-    document.getElementById("main").style.minHeight = "calc( 96vh - " + header + "px" + " - " + footer +
-        "px )";
+    document.getElementById("main").style.minHeight = "calc( 96vh - " + header + "px" + " - " + footer + "px )";
 
     document.getElementById("myBtn").style.bottom = footer + "px";
 

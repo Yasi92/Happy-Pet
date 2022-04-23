@@ -11,6 +11,7 @@ body {
     font-family: 'Lato';
 }
 
+
 .overlay{
     height: 100%;
     width: 100%;
@@ -184,15 +185,18 @@ li.list-group-item.current-category:hover{
 }
 
 /* --------------------------------------------------------images and cards */
-.img-responsive {
+.img-responsive-anim-card {
+    height: 21.87rem;
+    width: 21.87rem;
+    box-shadow: 0px 0px 8px rgb(111, 109, 109);
+}
+
+
+.img-responsive-product {
     height: 25rem;
     width: 76%;
 }
 
-.anim-card-container img{
-    box-shadow: 0px 0px 8px rgb(111, 109, 109);
-
-}
 
 ul{
     padding: 0 !important;
@@ -441,8 +445,8 @@ span > i.carousel-control-left-black {
 footer.page-footer{
     background-color: #000;
     color: #fff;
-    width: 100vw !important;
-    margin-top: 3rem !important;
+    /* width: 100vw !important; */
+    margin-top: 1rem !important;
 
 }
 
@@ -520,20 +524,14 @@ footer.page-footer{
         min-width: fit-content;
     }
 
-    .img-responsive {
+
+    .img-responsive-product {
         height: 22rem;
         width: 100%;
     }
 
 
-    .mr-n2 {
-        margin-right: 0 !important;
-    }
 
-    /* custom negative left margin */
-    .ml-n2 {
-        margin-left: 0 !important;
-    }
 
     .nav-link{
         padding: 0.5rem;
@@ -566,6 +564,16 @@ footer.page-footer{
 
 
 @media screen and (max-width: 576px){
+
+    .mr-n2 {
+        margin-right: 0 !important;
+    }
+
+    /* custom negative left margin */
+    .ml-n2 {
+        margin-left: 0 !important;
+    }
+
     .header-container{
         padding-top: 180px;
     }
@@ -578,10 +586,12 @@ footer.page-footer{
 
     html{
         max-width: fit-content;
-        min-width: fit-content;
+        min-width: 378px;
         overflow-x: hidden;
 
     }
+
+
 
     p{
         font-size: smaller;
@@ -614,7 +624,12 @@ footer.page-footer{
         top: 40% !important;
     }
 
-    .img-responsive {
+    .img-responsive-anim-card{
+        height: 18.75rem;
+        width: 18.75rem;
+    }
+
+    .img-responsive-product {
         height: 14rem;
         width: 50%;
     }
@@ -626,6 +641,8 @@ footer.page-footer{
         max-height: 9rem;
 
     }
+
+
 
 
 }
