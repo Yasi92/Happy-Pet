@@ -1,5 +1,4 @@
 html {
-    height: 100%;
     width: 100vw;
     max-width: 100vw;
     overflow-x: hidden;
@@ -7,7 +6,6 @@ html {
 
 body {
     height: calc(100vh - 200px);
-    height: 100vh !important;
     color: rgb(0, 0, 0);
     font-family: 'Lato';
 }
@@ -414,7 +412,6 @@ span>i.carousel-control-left-black {
 footer.page-footer {
     background-color: #000;
     color: #fff;
-    /* width: 100vw !important; */
     margin-top: 1rem !important;
 }
 
@@ -481,6 +478,12 @@ footer.page-footer {
 
 
 @media screen and (max-width: 768px) {
+    body {
+        min-height: calc(100vh - 200px);
+        margin-bottom: 7rem !important;
+        height: unset;
+    }
+
     .header-container-allauth {
         padding-top: 10.8rem;
     }
@@ -520,6 +523,17 @@ footer.page-footer {
 
     #topnav {
         min-height: unset !important;
+    }
+
+    /* Footer is fixed on medium and down as a quick fix for
+    different size of body content across all pages.
+    If this is removed, the footer will jump up to the middle of the page when
+    navbar toggler expands. */
+    footer.page-footer {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        left: 0;
     }
 
 
