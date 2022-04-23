@@ -27,7 +27,7 @@ manipulated by me to make it responsive to all screen sizes.*/
 setInterval(function () {
     var header = document.querySelector("header").offsetHeight;
     var footer = document.querySelector("footer").offsetHeight;
-    document.getElementById("main").style.minHeight = "calc( 96vh - " + header + "px" + " - " + footer + "px )";
+    document.getElementById("main").style.minHeight = "calc( 100vh - " + header + "px" + " - " + footer + "px )";
 
     document.getElementById("myBtn").style.bottom = footer + "px";
 

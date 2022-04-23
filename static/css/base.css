@@ -6,7 +6,8 @@ html {
 }
 
 body {
-    height: calc(100vh - 164px);
+    height: calc(100vh - 200px);
+    height: 100vh !important;
     color: rgb(0, 0, 0);
     font-family: 'Lato';
 }
@@ -476,17 +477,12 @@ footer.page-footer {
         padding-top: 200px;
     }
 
-    body {
-        height: calc(100vh - 116px);
-    }
-
-
 }
 
 
 @media screen and (max-width: 768px) {
     .header-container-allauth {
-        padding-top: 9.7rem;
+        padding-top: 10.8rem;
     }
 
     .header-container {
@@ -496,7 +492,7 @@ footer.page-footer {
     html {
         min-width: fit-content;
     }
-    
+
     .img-responsive-product {
         height: 22rem;
         width: 100%;
