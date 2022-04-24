@@ -75,7 +75,7 @@
                         </a>
                     </p>
                     {% if product.rating %}
-                        <small class="text-muted">{{ product.rating }} / 5</small>
+                        <small class="text-muted">{{ product.rating|floatformat:"0" }} / 5</small>
                     {% else %}
                         <small class="text-muted">No Rating</small>
                     {% endif %}

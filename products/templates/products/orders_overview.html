@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+    <div class="container header-container"></div>
+{% endblock %}
+
+{% block content %}
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <hr class="text-muted">
+                <h2 class="logo-font my-4">Product Management</h2>
+                <hr class="text-muted">
+                <h4 class="ps-1">All Orders</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="accordion" id="accordionExample">
+                {% for order in orders %}
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="{{ order.order_number }}">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapse{{ order.order_number }}" aria-expanded="true" aria-controls="collapse{{ order.order_number }}">
+                                {{ order.order_number|truncatechars:6 }} - {{ order.date }} <br>
+                                {{ order.user_profile }}
+
+                            </button>
+                        </h2>
+                        <div id="collapse{{ order.order_number }}" class="accordion-collapse collapse show" aria-labelledby="heading"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <div class="row">
+                                    <div class="col-12 pb-3">
+                                        <h6 class="text-primary">{{ order.order_number }}</h6>
+                                    </div>
+                                    <div class="col-8">
+
+                                        <ul class="list-group list-group-numbered">
+                                            {% for item in order.lineitems.all|slice:":2" %}
+                                                <li class="list-group-item py-3">
+                                                    {{ item.product.name }}: <span>{{ item.quantity }}x</span> <br>
+                                                    <span>SKU: {{ item.product.sku }}</span>
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                    <div class="col-4">
+                                        <p>
+                                            Order total: {{ order.order_total }} <br>
+                                            Delivery: {{ order.delivery_cost }} <br>
+                                            <hr class="text-muted">
+                                            Grand total: {{ order.grand_total }}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

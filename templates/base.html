@@ -82,7 +82,8 @@
                         <div class="dropdown-menu border-0" aria-labelledby="user-options">
                             {% if request.user.is_authenticated %}
                                 {% if request.user.is_superuser %}
-                                    <a href="{% url 'add_product' %}" class="dropdown-item">Product Management</a>
+                                    <a href="{% url 'orders_overview' %}" class="dropdown-item">All Orders</a>
+                                    <a href="{% url 'add_product' %}" class="dropdown-item">Add Product</a>
                                 {% endif %}
                                 <a href="{% url 'profile' %}" class="dropdown-item">My Profile</a>
                                 <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
@@ -176,7 +177,7 @@
     <footer class="page-footer text-center align-items-center">
         <!-- the dynamic copyright year is learned form
             (https://stackoverflow.com/questions/43714006/how-can-one-create-a-dynamic-copyright-date-without-document-write-in-javascri) -->
-        <p class="py-3">Copyright &copy;
+        <p class="py-2">Copyright &copy;
             <span id="year"> </span> - HAPPY PET all Rights Reserved
         </p>
     </footer>

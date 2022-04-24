@@ -7,6 +7,7 @@ from django.db.models.functions import Lower
 
 from .models import Product, Category, Subcategories
 from .forms import ProductForm
+from checkout.models import Order
 
 
 def all_products(request):
@@ -182,3 +183,21 @@ def delete_product(request, product_id):
     product.delete()
     messages.success(request, 'Product deleted!')
     return redirect(reverse('products'))
+
+
+@login_required
+def orders_overview(request):
+    '''
+    A view to render all the orders for the store staff
+    '''
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store owners can do that.')
+        return redirect(reverse('home'))
+
+    orders = Order.objects.all()
+    template = 'products/orders_overview.html'
+    context = {
+        'orders': orders,
+    }
+
+    return render(request, template, context)

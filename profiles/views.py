@@ -15,7 +15,7 @@ def profile(request):
     Display the user's profile
     """
     profile = None
-    # profile = get_object_or_404(UserProfile, user=request.user)
+
     if request.user.is_authenticated:
         profile = get_object_or_404(UserProfile, user=request.user)
         orders = profile.orders.all().order_by('-date')

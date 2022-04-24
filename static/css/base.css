@@ -2,12 +2,15 @@ html {
     width: 100vw;
     max-width: 100vw;
     overflow-x: hidden;
+    max-width: 100vw;
+    
 }
 
 body {
     height: calc(100vh - 200px);
     color: rgb(0, 0, 0);
     font-family: 'Lato';
+    max-width: 100vw;
 }
 
 /* ////////////////////////////////// colors and bg colors//////////////////////////////////// */
@@ -627,6 +630,9 @@ footer.page-footer {
         background: #fff;
     }
 
+    .page_404 {
+        background: #fff url('/media/404_page.png') no-repeat bottom right;
+    }
 
 
 }
