@@ -27,7 +27,6 @@ This is a website for an online pet shop. On this website, users can purchase an
     * [Yet to be implemented](#yet-to-be-implemented)
 3. [Data Architecture](#data-info)
     * [Database Choice](#db)
-    * [Data Type](#data-type)
     * [Examples of database collections in JSON format](#json-format)
 4. [Technologies](#tech)
 5. [Languages](#langs)
@@ -172,7 +171,7 @@ Home page:
     * The cards are links to product detail page of the relevant product.
     * The cards are hoverable for a better user wxperince and accessibility.
     * If the user is verified as staff, a 'delete' and 'edit' links will be displayed on the cards for the user to either easily navigate to the edit product page or remove the product.
-        * If users intents to delete an item, a modal will open to the screen for the user to confirm the deletion of the product for avoiding unintentional deletion of products.
+    * If users intents to delete an item, a modal will open to the screen for the user to confirm the deletion of the product for avoiding unintentional deletion of products.
 
 
 ![Product Detail](/readme-assets/img/product-detail.png)
@@ -186,6 +185,10 @@ Home page:
         #### Product Description
         - Full name, image, price, category, and subcategory as links, rating, a quantity selector, and a 'Add to bag' button.
         - Since a product may have multiple images, in that case, multiple images are displayed in a carousel.
+        #### Delet/Edit links
+        - If the user is verified as staff, the 'edit' and 'delete' links will be visible on this page to enable users edit or delete the product conviniently.
+        - Once the 'delete' button is clicked, a modal will open to the screen for the user to confirm the deletion of the product for avoiding unintentional deletion of products.
+
         #### Add to bag form
         - A quantity selector box that enables users to chose the number of products they are about to buy.
         ![size and color select box](/readme-assets/img/color-size-selector.png)
@@ -282,8 +285,8 @@ Home page:
             * The Stripe payment page includes a summary of what the user is buying, and fields to enter credit card information.
             * All the validation and messages to the user on this page are handled by stripe.
             * By clicking on the "Complete order" button and on successful completion of payment, the user is redirected to the order confirmation page.
-            * By completing an order, an email will be sent to the username's email address containing an overview of their order.
-            * 'Adjust Bag' button is paced under the payment field to enable users go back and adjust their shopping cart if needed.
+            * By completing an order, an email will be sent to the username's email address containing an overview of their order along with a toast message popping up on the screen informing the user that a confirmation email will be sent to the user's email address.
+            * 'Adjust Bag' button is placed under the payment field to enable users to go back and adjust their shopping cart if needed.
         2. Order summary section:
             * In this section, a quick overview of products to be bought, order total, delivery, and grand total will be displayed once again.
 
@@ -297,27 +300,44 @@ Home page:
     * Under the order summary, a 'Back to store' button is placed to navigate users to the product page.
 
 
+
 ![Registeration Page](/readme-assets/img/sign-up.png)
 
-*   ### Registeration Page
-    * A user who has not register on the website can create a new account using the register page. The page on this form includes a username (which must be unique), email address, password and password conformation fields.
+*   ### Registration Page
+    * A user who has not registered on the website can create a new account using the register page. The page on this form includes a username (which must be unique), email address, password, and password conformation fields.
 
 
 
 ![Login Page](/readme-assets/img/sign-in.png)
 
 *   ### Login Page
-    * A user who has already registered on the website can login throught this page and have access to their profile page.
+    * A user who has already registered on the website can log in through this page and have access to their profile page.
     * Validation for this form is handled in the back end and relevant feedback is sent to the user when they sign in.
-    * If the user has forgotten their password, they can recover their password by clicking on the 'Forgot password' link and then they will be navigated to a page where they can set a new password for their account.
-    * All the authentication processes throughout this website are handled in the backend using allauth django.
+    * If the user has forgotten their password, they can recover their password by clicking on the 'Forgot password' link, and then they will be navigated to a page where they can set a new password for their account.
+    * All the authentication processes throughout this website are handled in the backend using allauth Django.
 
 
 
 ![Log out Page](/readme-assets/img/sign-out-page.png)
 
 *   ### Logout Page
-    * Any user who clicks on "Log out" from the navigation bar is automatically logged out and their session data cleared. They are taken to a page that informs them that they have been logged out and provides a link to log back in if they wish.
+    * Any user who clicks on "Log out" from the navigation bar is automatically logged out and their session data is cleared. They are taken to a page that informs them that they have been logged out and provides a link to log back in if they wish.
+
+
+
+![Add Product Page](/readme-assets/img/add_product.png)
+
+*   ### Add Product Page
+    * This page is only accessible for store owners and staff members to enable them to add a product to the website.
+    * After adding the new product, the user will be directed to the product detail page.
+
+
+![All Orders](/readme-assets/img/all_orders.png)
+
+*   ### All Orders Page
+    * This page is only accessible for store owners and staff members to enable them to have an overview of all orders.
+    * To design this page, accordion components are used to contain each order's overview and a quick summary.
+
 
 
 ![Custom 404 Page](/readme-assets/img/404-page.png)
@@ -342,24 +362,156 @@ Home page:
 
 
 ### Yet to be implemented <a id="yet-to-be-implemented"></a>
-
+    1. More features on all orders page for the store owner to view, manage and modify an order if needed.
+    2. Add sorting selector to product management page to enable users to sort orders based on different sorting methods such as date, number, alphabetically, and so on.
+    3. Getting a product image change according to the selected color of the product. Unfortunately this is not working and as a result no matter what color user has selected, the image of product remains the same.
+    4. Enable users to register on the website with their social accounts using Django allauth social authentication tokens.
+    5. Add additional payment methods. The current free version of Stripe checkout only allows customers to pay via credit card. Many people prefer to pay via PayPal, bank transfer, or iDeal.
 
 
 
 ## Information Architecture <a id="data-info"></a>
 
 ### Database Choice <a id="db"></a>
+* As a framework Django works with SQL databases. During development on my local machine I worked with MySQL Workbench.
+On deployment, the SQL database provided by Heroku is a PostgreSQL database.
+The data base is designed by myself from the scratch using the handy visual database design tool 'MySQL Workbench'.
+
+
+### Data Models <a id="db"></a>
+- User
+    -  The User model utilized for this project is the standard one provided by django.contrib.auth.models
+
+
+- Category Model
+    - Whithin the products app, category model holds the data needed for differenet categories.
+
+
+| Name | Key in db | Validation | Field Type |
+| ----------- | ----------- | ----------- | ----------- |
+| category_id | category_ID | primary_key=True | AutoField |
+| name | name | max_length=45 | CharField |
+| friendlyname | friendlyName | max_length=45, blank=True, null=True | CharField |
+
+
+- Subcategories Model
+    - Whithin the products app, subcategory model holds the data needed for differenet subcategories.
+
+
+| Name | Key in db | Validation | Field Type |
+| ----------- | ----------- | ----------- | ----------- |
+| subcategory_id | subcategory_ID | primary_key=True | AutoField |
+| name | name | max_length=45 | CharField |
+| friendlyname | friendlyName | max_length=45, blank=True, null=True | CharField |
+| category | Category | max_length=350, choices=categories, blank=True, null=True | MultiSelectField |
+
+- The categories choices are defined whithin the Subcategories model.
+- Category and Subcategory models have a many-to-many relation and that is the reason it is prefered to have category field as a multiselectField to represent the category options.
 
 
 
-### Data Storage Types <a id="data-type"></a>
-* The types of data stored in the database are:
-    * ObjectId
-    * String
-    * Boolean
-    * DateTime
 
-### Collections JSON format <a id="json-format"></a>
+- Products model
+    - Within the products app, the Product model holds all the data needed for the products in the shop.
+
+| Name | Key in db | Validation | Field Type |
+| ----------- | ----------- | ----------- | ----------- |
+| product_id | Product_ID | primary_key=True | AutoField |
+| name | name | max_length=45 | charfield |
+| friendlyname | friendlyName | max_length=45 | charfield |
+| category | Category | on_delete=models.DO_NOTHING | ForeignKey To Category |
+| subcategory | Subcategories | on_delete=models.DO_NOTHING | ForeignKey To Subcategory |
+| description | description | blank=True, null=True | charfield |
+| price | price | max_digits=6, decimal_places=2 | DecimalField |
+| rating | rating | max_digits=6, decimal_places=2, blank=True, null=True | DecimalField |
+| image1 | image1 | blank=True, null=True | ImageField |
+| image2 | image2 | blank=True, null=True | ImageField |
+| image3 | image3 | blank=True, null=True | ImageField |
+| sku | sku | unique=True, max_length=254 | CharField |
+| has_sizes | has_sizes | max_length=350, choices=has_sizes, blank=True, null=True | MultiSelectField |
+| colors | colors | max_length=350, choices=colors, blank=True, null=True | MultiSelectField |
+
+
+- The has_sizes and color choices are defined whithin the Product model.
+- The Product model uses Pillow to store all image files in an AWS S3 bucket.
+
+
+
+
+- ProductReview Model
+    - Whithin the products app, ProductReview model holds the data needed for product reviews.
+
+
+| Name | Key in db | Validation | Field Type |
+| ----------- | ----------- | ----------- | ----------- |
+| product | product | related_name='reviews', on_delete=models.CASCADE | ForeignKey to Product |
+| user | user | related_name='reviews', on_delete=models.CASCADE | ForeignKey to User |
+| content | content | blank=True, null=True | TextField |
+| stars | stars | - | IntegerField |
+| date | date | auto_now_add=True | DateTimeField |
+
+
+
+- UserProfile Model
+    - Whithin the profiles app, UserProfile model holds the data for each users' default data.
+
+| user | user | User, on_delete=models.CASCADE | OneToOneField |
+| default_phone_number | default_phone_number | max_length=20, null=True,blank=True  | CharField |
+| default_country | default_country | blank_label='Country *', null=True, blank=True | CountryField |
+| default_postcode | default_postcode | max_length=20, null=True, blank=True | CharField |
+| default_city | default_city | max_length=40, null=True, blank=True | CharField |
+| default_street_address1 | default_street_address1 | max_length=80, null=True, blank=True | CharField |
+| default_street_address2 | default_street_address2 | max_length=80, null=True, blank=True | CharField |
+| default_county | default_county | max_length=80, null=True, blank=True | CharField |
+
+
+- The UserProfile model is autogenerated after every User model is created.
+
+
+- Order Model
+    - Whithin the checkout app, Order model holds the data needed for orders.
+
+
+| Name | Key in db | Validation | Field Type |
+| ----------- | ----------- | ----------- | ----------- |
+| order_number | order_number | max_length=32, null=False, editable=False | CharField |
+| user_profile | user_profile | on_delete=models.SET_NULL,
+        null=True, blank=True, related_name='orders' | ForeignKey to UserProfile |
+| full_name | full_name | max_length=50, null=False, blank=False | CharField |
+| email | email | max_length=254, null=False, blank=False | EmailField |
+| phone_number | phone_number | max_length=20, null=False, blank=False | CharField |
+| country | Country | blank_label="Country *", null=False, blank=False |  CountryField|
+| postcode | postcode | max_length=20, null=True, blank=True | CharField |
+| town_or_city | town_or_city | max_length=40, null=False, blank=False | CharField |
+| street_address1 | street_address1 | max_length=80, null=False, blank=False | CharField |
+| street_address2 | street_address2 | max_length=80, null=True, blank=True | CharField |
+| county | county | max_length=80, null=True, blank=True | CharField |
+| date | date | auto_now_add=True | DateTimeField |
+| delivery_cost | delivery_cost | max_digits=6, decimal_places=2, null=False, default=0 | DecimalField |
+| order_total | order_total | max_digits=10, decimal_places=2, null=False, default=0 | DecimalField |
+| grand_total | grand_total | max_digits=10, decimal_places=2, null=False, default=0 | DecimalField |
+| original_bag | original_bag | null=False, blank=False, default='' | TextField |
+| stripe_pid | stripe_pid | max_length=254, null=False, blank=False, default='' | CharField |
+
+
+- An instance of the Order model is created before any OrderLineItem, as the latter relies on the former for a ForeignKey.
+
+
+
+- OrderLineItem Model
+    - Whithin the checkout app, OrderLineItem model holds the data for each individual item in the shopping cart.
+
+| order | order | Order, null=False, blank=False,
+        on_delete=models.CASCADE, related_name='lineitems' | ForeignKey To Order |
+| product | product | Product, null=False, blank=False,
+        on_delete=models.CASCADE | ForeignKey To Product |
+| product_size | product_size | max_length=10, null=True, blank=True | CharField |
+| product_color | product_color | max_length=15, null=True, blank=True | CharField |
+| quantity | quantity | null=False, blank=False, default=0 | IntegerField |
+| lineitem_total | lineitem_total | blank=False, null=False, editable=False | FloatField |
+
+- An instance of OrderLineItem is created for each unique product in the users cart. It links to the already existing Order for this user, the relevant product and the quantity the user wishes to buy.
+
 
 
 ## Technologies Used <a id="tech"></a>
@@ -368,16 +520,16 @@ Home page:
 - CSS
 - JavaScript
 - Python3
-- Dockerfile
+
 
 ### IDE <a id="ide"></a>
 - VScode
 
-### Frameworks, Libraries, CDN's, resources: <a id="libs"></a>
+### Tools: <a id="libs"></a>
 
 
-1. [Materialize]()
-- This was used for the main layout, forms, alerts and other elements.
+1. [Django](https://www.djangoproject.com/)
+- As python web framework for rapid development and clean design.
 
 2. [Balsamiq](https://balsamiq.com/wireframes/)
 - This was used to create mockups during the design process.
@@ -424,29 +576,70 @@ Home page:
 16. [favicon.io](https://favicon.io/)
 - This was used to create and insert a favicon.
 
-17. [draw.io](https://app.diagrams.net/)
-- This was used to create the flowchart for register and login functions.
+17. [Stripe](https://stripe.com/nl)
+- As payment platform to validate and accept credit card payments securely.
 
-18. [Mongodb](https://cloud.mongodb.com/)
-- Mongodb Atlas was used as a cloud database in this project.
+18. [AWS S3 Bucket](https://aws.amazon.com/)
+- To store images entered into the database.
 
-19. [PyMongo](https://pymongo.readthedocs.io/en/stable/)
-- This was used to make communication between Python and MongoDB possible.
+19. [Boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html)
+- To enable creation, configuration and management of AWS S3.
 
-20. [Flask](https://pymongo.readthedocs.io/en/stable/)
-- This was used to construct and render pages.
+20. [Coverage](https://coverage.readthedocs.io/en/6.3.2/)
+- To measure code coverage of python unittests.
 
-21. [Jinja](https://jinja.palletsprojects.com/en/3.0.x/)
-- This was used to simplify displaying data from the backend of this project smoothly and effectively in html.
+21. [Django Crispy Forms](https://django-crispy-forms.readthedocs.io/en/latest/)
+- To style django forms.
 
-22. [Wtforms](https://wtforms.readthedocs.io/en/2.3.x/)
-- This was used to construct forms in this project.
+22. [Django Storages](https://django-storages.readthedocs.io/en/latest/)
+- A collection of custom storage backends with django to work with boto3 and AWS S3.
 
-23. [Werkzeug](https://werkzeug.palletsprojects.com/en/2.0.x/)
-- This was used to generate and check hashing passwords in the sign In/Up functions.
+23. [Gunicorn](https://pypi.org/project/gunicorn/)
+- WSGI HTTP Server for UNIX to aid in deployment of the Django project to heroku.
 
 24. [Heroku](https://dashboard.heroku.com/login)
 - This was used as the deployment platform.
+
+25. [Pillow](https://pillow.readthedocs.io/en/stable/)
+- as python imaging library to aid in processing image files to store in database.
+
+26. [Psycopg2](https://pypi.org/project/psycopg2/)
+- as PostgreSQL database adapter for Python.
+
+27. [PIP](https://pip.pypa.io/en/stable/installing/)
+- for installation of tools needed in this project.
+
+28. [Browserstack](https://www.browserstack.com/)
+- to test functionality on all browsers and devices.
+
+29. [OAuth 2.0](https://developers.google.com/identity/protocols/oauth2)
+- to Access Google APIs for sending emails.
+
+30. [google-auth-oauthlib ](https://pypi.org/project/google-auth-oauthlib/)
+- This library provides oauthlib integration with google-auth.
+
+31. [python-dotenv 0.20.0](https://pypi.org/project/python-dotenv/)
+- Used to set local variables.
+### Databases
+* [PostgreSQL](https://www.postgresql.org/)
+- for production database, provided by heroku.
+* [MySQL](https://www.mysql.com/)
+- as development database.
+
+
+
+### Libraries
+* [Bootstrap5](https://getbootstrap.com/)
+- to simplify the structure of the website and make the website responsive easily.
+* [FontAwesome](https://fontawesome.com/)
+- to provide icons for The House of Mouse webshop.
+* [JQuery](https://jquery.com/)
+- to simplify DOM manipulation.
+* [GSAP](https://greensock.com/gsap/)
+- a popular set of JavaScript tools for building animations on the web.
+
+
+
 
 ## Testing <a id="test"></a>
 Testing information can be found in a separate [TESTING.md file](TESTING.md)
@@ -461,7 +654,7 @@ This is used to make changes to the project code.
 5. Now change the current working directory to the location you'd like the cloned directory to be made.
 6. Type git clone, and then paste the URL you copied from the remote repository.
 
-`$ git clone https://github.com/Yasi92/read-and-recommend.git`
+`$ git clone https://github.com/Yasi92/Happy-Pet.git`
 
 ### How to run this project locally
 
@@ -472,26 +665,65 @@ Ensure you have the following tools and packages installed on your machine:
  - PIP
  - Python3
  - Git
- - An account at MongoDB Atlas or MongoDB.
+
+To allow you to access all functionality on the site locally, ensure you have created free accounts with the following services: - [Stripe](https://dashboard.stripe.com/) - [AWS](https://aws.amazon.com/) and set up an S3 bucket.
+
 
 
 #### Instructions
 1. Clone the repository with the following command.
 `$ git clone https://github.com/Yasi92/Happy-Pet.git`
+
 2. cd to the correct repository location.
+
 3. If needed, Upgrade pip locally with
 `pip install --upgrade pip`
+
 4. Install all required modules with the command
 `pip -r requirements.txt`
-5. In your local IDE create a file called .env.py
-6. Inside the .env.py file, create a SECRET_KEY variable and a MONGO_URI to link to your own database.
+
+5. In your local IDE create a file called .env.py in the same level as your settings.py
+
+6. Inside the .env.py set the following variables:
+
+    AWS_ACCESS_KEY_ID = <enter key here>
+    AWS_SECRET_ACCESS_KEY = <enter key here>
+    AWS_STORAGE_BUCKET_NAME = <enter bucket name here>
+    SECRET_KEY = <Django SECRET KEY>
+    DATABASE_PASSWORD = <database password>
+    STRIPE_PUBLIC_KEY = <STRIPE PUBLIC KEY>
+    STRIPE_SECRET_KEY = <STRIPE SECRET KEY>
+    STRIPE_WH_SECRET = <STRIPE WH SECRET>
+    DEVELOPMENT = True
+    USE_AWS = True
+    EMAIL_HOST_PASS = <enter host pass>
+    EMAIL_HOST_USER = <enter user email>
+    DEVELOPMENT = <any value>
+
+- DEVELOPMENT environment variable is set only within the development environment, it does not exist in the deployed version, making it possible to have different settings for the two environments. For example setting DEBUG to True only when working in development and not on the deployed site.
+
+7. Set the ALLOWED HOSTS variable in setting.py to localhost.
+
+8. Migrate the admin panel models to create your database template with the terminal command.
+    `python3 manage.py migrate`
+
+9. Create your superuser to access the django admin panel and database with the following command, and then follow the steps to add your admin username and password:
+    `python3 manage.py createsuperuser`
+
 **Note** that the data in the .env.py are confidential and as a result it won't be provided here.
-7. You can now run the application with the command
-`python app.py`
+8. You can now run the program locally with the following command:
+
+    `python3 manage.py runserver`
+
+9. Once the program is running, go to the local link provided and add /admin to the end of the URL. Here log in with your superuser account and create instances of Category, Subcategories and Product within the new database.
+
+10. Once instances of these items exist in your database your local site will run as expected.
+
+
 
 ### Heroku Deployement <a id="heroku"></a>
 1. Create a requirements.txt file using the terminal command `pip freeze > requirements.txt.`
-2. Create a Procfile with the terminal command `echo web: python app.py > Procfile.`
+2. Create a Procfile with the terminal command `echo web: gunicorn happy_pet.wsgi:application`
 3. git add and git commit the new requirements and Procfile and then git push the project to GitHub.
 4. Create a new app on the Heroku website by clicking the "New" button in your dashboard. Give it a name and set the region to Europe.
 5. From the heroku dashboard of your newly created application, click on "Deploy" > "Deployment method" and select GitHub.
@@ -501,27 +733,40 @@ Ensure you have the following tools and packages installed on your machine:
 
 | Key | Value |
 | ----------- | ----------- |
-| IP | 0.0.0.0 |
-|  |  |
-| PORT | 8000 |
-| SECRET_KEY | 	<your_secret_key> |
+| AWS_ACCESS_KEY_ID | your secret key |
+| AWS_SECRET_ACCESS_KEY | your secret key |
+| DATABASE_URL | your postgres database url |
+| EMAIL_HOST_PASS | your email host pass |
+| EMAIL_HOST_USER | your email user |
+| SECRET_KEY | your secret key |
+| STRIPE_PUBLIC_KEY | your public key |
+| STRIPE_SECRET_KEY | your secret key |
+| STRIPE_WH_SECRET | your wh secret key |
+| USE_AWS | True |
 
-9. In the heroku dashboard, click "Deploy".
-10. In the "Manual Deployment" section of this page, made sure the master branch is selected and then click "Deploy Branch".
-11. The site is now successfully deployed.
+9. From the command line of your local IDE:
+
+    - Enter the heroku postres shell
+    - Migrate the database models
+    - Create your superuser account in your new database
+- Instructions on how to do these steps can be found in the [heroku devcenter documentation](https://devcenter.heroku.com/articles/heroku-postgresql).
+10. In the heroku dashboard, click "Deploy".
+11. In the "Manual Deployment" section of this page, made sure the master branch is selected and then click "Deploy Branch".
+11. From the link provided add /admin to the end of the URL, log in with your superuser account and create instances of Category, Subcategories and Product within the new database.
+12. Once instances of these items exist in your database your heroku site will run as expected.
+
 
 ## Credits <a id="credits"></a>
 ### Content <a id="content"></a>
+- The content of products on this website are taken from different online pet shops and are collected by myself for the purpose of generating a database for this project.
 
 ### Media <a id="media"></a>
-The heading image in the website is taken from:
-- [Pinterest](https://nl.pinterest.com/)
+- The animal images on the home page are from [Pinterest](https://nl.pinterest.com/).
+
+
 
 ### Code <a id="code"></a>
-- The template and functions for 404 and 500 pages were provided by my mentor **Richard Wells**.
-- Styling active element menu in flask has been learned from [here](https://stackoverflow.com/questions/22173041/styling-active-element-menu-in-flask)
-- The dynamic copyright year is learned form [here](https://stackoverflow.com/questions/43714006/how-can-one-create-a-dynamic-copyright-date-without-document-write-in-javascri)
-- The back to top button is learned from this thread on stackoverflow [here](https://stackoverflow.com/questions/14249998/jquery-back-to-top)
+
 
 ## Acknowledgements <a id="ackn"></a>
 
@@ -529,7 +774,6 @@ The heading image in the website is taken from:
 - Tutors at Code Institute for their continued support.
 - Code Institute's Slack community was a great help every step of the way during the project.
 - Stack Overflow.
-- My mentor Richard Wells.
 - I have learned more in detail about how to complete my README from **Anna Gilhespy**'s project, provided in the Code Institute's Slack community as a README template.
 
 
