@@ -3,7 +3,10 @@
 [The Website In Action](https://happy-pet.herokuapp.com/)
 [Main README.md file](README.md)
 
-## Html, CSS, Javascript Validation
+
+## Automated Testing
+### Validation Services
+The following validation services and linter were used to check the validity of the website code.
 
 - [HTML Validation](https://validator.w3.org/)
 was used to validate all the HTML files.
@@ -11,6 +14,8 @@ was used to validate all the HTML files.
   To get around this issue all the html files were validates by manually direct input of each file. The files were extracted from the 'view page source' on the browser.
 - All the files has been validated and all essential errors were fixed.
 
+
+![CSS validation report](/readme-assets/img/css_validation.png)
 - [W3C CSS Validation](https://jigsaw.w3.org/css-validator/) was used to validate the code in my style.css file.
 - The website has been tested with the Lighthouse for each page separately and on both desktop and mobile devices and, required actions have been taken to improve the functionality of the website as much as possible.
 - Lighthouse was also used to check the overall performance of the website and as a way to improve the website performance.
@@ -18,10 +23,48 @@ was used to validate all the HTML files.
 For instance, since images across this project have all been downloaded from different platforms with different sizes, the required action to resize all the images in a proper ratio is time-consuming, and as mentioned before due to time constraints for this project it has been disregarded.
 
 
+[JSHint](https://jshint.com/)  was used to validate javascript.
+- All the errors and warnings from JSHint such as missing semicolons and unused variables have been fixed properly.
+
 | Bugs | Solutions |
+| ---------- | --------- |
 | While pushing to the Github at the first stage of the project, the DATABASE credentials such as my database password and my Django secret key has been unintentionally pushed to my remote repository. | To fix this issue, I cleaned my settings.py and all its content from the previous commit histories using the 'BFG' repo-cleaner  |
 | Since the min-height of my main section across all templates is set by javascript calculating it based on the header and footer size, Once the navbar is collapsed on mobile and iPad devices the footer would jump up to the middle of the page. | As a quick fix for this issue, the footer is set fixed at the bottom of the screen on medium and down devices. This is not the perfect solution for this issue however as this issue was known at a late stage of the project it has been preferred to be temporarily fixed this way. |
 
+
+[Python extension for Visual Studio Code ](https://code.visualstudio.com/docs/languages/python)   was used to validate Python.
+[Flake8](https://flake8.pycqa.org/en/latest/)   was used to fix linting issue and to checke my code base against coding style PEP8.
+* To check this you can run the following command in your terminal:
+    ` python3 -m flake8 `
+
+
+
+
+### Python Testing
+#### How to run Python tests
+To run the existing Python tests:
+    1. After running the project locally in your IDE run the following command:
+    ` python3 manage.py test `
+    2. If you wish to run the tests within a specific app only you can specify with:
+    ` python3 manage.py test <app name here> `
+    3. The test results will be shown within the terminal.
+
+### Covarage
+[Coverage.py](https://coverage.readthedocs.io/en/6.3.2/) was used to provide feedback during testing to check that enough of my code had been tested.
+How to run coverage
+
+In the terminal enter the following command:
+1. ` coverage run --source=<app name> manage.py test`
+2. ` coverage report `
+3. ` coverage html `
+4. ` python3 -m http.server `
+
+- [home app coverage report](/readme-assets/img/home_coverage_html.png)
+- [products app coverage report](/readme-assets/img/products_coverage_html.png)
+- [profile app coverage report](/readme-assets/img/profiles_coverage_html.png)
+- [checkout app coverage report](/readme-assets/img/checkout_coverage_html.png)
+- [bag app coverage report](/readme-assets/img/bag_coverage_html.png)
+- [whishlist app coverage report](/readme-assets/img/wishlist_coverage_html.png)
 
 
 | Known Issues | Causes |
@@ -33,17 +76,9 @@ For instance, since images across this project have all been downloaded from dif
 
 The potential common paths through the website:
 
-- Home > Sign-Up
-- Home > Sign-In
-- Home > Book
-- Home > Profile
-- Book > Shopping Link
-- Profile > Edit Profile
-- Profile > Edit Book
-- Profile > Add a Book
-
-
 Each of these possible paths has been tested repeatedly.
+
+
 ### Testing client stories from UX section of [README.md](README.md)
 
 1. As a first-time visitor, I would like to
@@ -55,53 +90,17 @@ Each of these possible paths has been tested repeatedly.
 ## Manual (logical) testing of all elements and functionality on every page.
 
 ###  Navigation Bar
-- Click on every single link on the navigation bar to assure they are all properly wired up.
-- Check the page URL and make sure it shows the right pathname. (http://read-and-recommend.herokuapp.com/get_books)
-- Check the accessibility to the links that are supposed to be visible on the two different states of logged In/Out.
-- Hover over every single link to make sure they have the proper style.
-- Click on the links and make sure the active style is applied to them until another link is clicked.
-- Change the screen size from desktop to tablet to verify that the navigation bar is responsive and switches from the inline menu to the burger icon dropdown menu at the appropriate place.
-- Click on the burger icon to make sure the menu opens from the right side of the screen.
-- Check the search box size and function on the home page.
-- Type a book title that is known it exists and make sure it will be displayed.
-- Type an author name and make sure it displays all the books from that author.
-- Type a title or an author name that exists in the database and make sure the "No Results found" text displays on the screen.
-- Click on the reset button and make sure it resets the searches and displays all books.
+
 
 ### Home page
-- Click on every collection bar link and make sure they display the books from the right category.
-- Check the page URL and make sure it shows the right path name as expected. (http://read-and-recommend.herokuapp.com/get_books/get_categories/history)
-- Make sure the active style is applied to the links on click.
-- Resize the window size and make sure that the links have proper position and padding on the iPad and mobile screen.
-- Scroll down the page and check the layout of the book cards on the home page.
-- Click on the book cards and make sure they navigate to the corresponding book detail page.
-- Hover over the book cards and make sure they have the applied style.
-- Resize the window in the iPad and mobile screen size to make sure all sections are responsive and the layout changes on different screen sizes.
 
 
-### Book Detail page
--
 
-### Edit Book Page
--
 
 ### Profile Page
 -
 
 
-
-
-### Edit Profile Page
--
-
-
-### Add a Book Page
--
-### Sign In page
--
-
-### Sign Up page
--
 
 
 ###  Sticky back-to-top button
@@ -112,16 +111,11 @@ Each of these possible paths has been tested repeatedly.
 
 
 ### Footer
-- Confirm that footer code is identical on all HTML pages.
-- Try to log in and check the footer on every single page to make sure that the links embedded in the footer updates accordingly.
-- Try to log out and check the quick access links in the footer alters according to the navigation bar links on different pages.
-- Resize the window in the iPad and mobile screen size to make sure all sections are responsive and the layout changes on different screen sizes.
-- From the home page, check if all the book collection links are accessible from the footer as well, and check every link separately.
 
 ### Custom 404 Page
 - Try to change the pathname in the URL manually to a random name and make sure that the custom 404 page appears on the screen informing you that the page is not found.
 - Click on the "Let's Go Home" button and make sure it returns you to the home page.
-- **Note** that this is something that you can examine only if the Debugger is False in your flask app.
+- **Note** that this is something that you can examine only on production and not on your development environment when the debuuger is set to True.
 
 ## Further Testing
 I have tested the live website on the following browsers and devices with [BrowserStack](https://live.browserstack.com/)
@@ -145,12 +139,12 @@ I have tested the live website on the following browsers and devices with [Brows
 
 | Browser | Issues |
 | ----------- | ----------- |
-| Google Chrome | The window.history(-1) does not always return to the same scroll position. |
+| Google Chrome | - |
 | Safari | No issues found |
 | Firefox | No issues found |
-| IE | The javascript does not run on IE 10 and earlier versions and as a result, the application does not run properly. |
-| Edge | The window.history(-1) does not always return to the same scroll position. |
-| Opera | The window.history(-1) does not always return to the same scroll position. |
+| IE |  |
+| Edge |  |
+| Opera |  |
 
 
 - All the links and buttons on the website were checked repeatedly.
