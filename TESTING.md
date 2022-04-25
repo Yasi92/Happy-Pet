@@ -26,10 +26,6 @@ For instance, since images across this project have all been downloaded from dif
 [JSHint](https://jshint.com/)  was used to validate javascript.
 - All the errors and warnings from JSHint such as missing semicolons and unused variables have been fixed properly.
 
-| Bugs | Solutions |
-| ---------- | --------- |
-| While pushing to the Github at the first stage of the project, the DATABASE credentials such as my database password and my Django secret key has been unintentionally pushed to my remote repository. | To fix this issue, I cleaned my settings.py and all its content from the previous commit histories using the 'BFG' repo-cleaner  |
-| Since the min-height of my main section across all templates is set by javascript calculating it based on the header and footer size, Once the navbar is collapsed on mobile and iPad devices the footer would jump up to the middle of the page. | As a quick fix for this issue, the footer is set fixed at the bottom of the screen on medium and down devices. This is not the perfect solution for this issue however as this issue was known at a late stage of the project it has been preferred to be temporarily fixed this way. |
 
 
 [Python extension for Visual Studio Code ](https://code.visualstudio.com/docs/languages/python)   was used to validate Python.
@@ -67,8 +63,56 @@ In the terminal enter the following command:
 - [whishlist app coverage report](/readme-assets/img/wishlist_coverage_html.png)
 
 
+
+| Bugs | Solutions |
+| ---------- | --------- |
+| While pushing to the Github at the first stage of the project, the DATABASE credentials such as my database password and my Django secret key has been unintentionally pushed to my remote repository. | To fix this issue, I cleaned my settings.py and all its content from the previous commit histories using the 'BFG' repo-cleaner  |
+| Since the min-height of my main section across all templates is set by javascript calculating it based on the header and footer size, Once the navbar is collapsed on mobile and iPad devices the footer would jump up to the middle of the page. | As a quick fix for this issue, the footer is set fixed at the bottom of the screen on medium and down devices. This is not the perfect solution for this issue however as this issue was known at a late stage of the project it has been preferred to be temporarily fixed this way. |
+| When trying to add an item with an existing item_id in bag session with different color/size the new item would replace the previous item with the same item_id in the bag eventhough the increment quantity was defined to add the new item. | A f-string method was used to get around this issue and generate a uniqe value of the item for the bag session dictionary. This is caused by python dictionaries not excepting duplicated keys. The code is shown below before and after the solution. |
+
+### Before fixing the bug
+```
+if item_id in list(bag.keys()):
+  if size in bag[item_id][items_by_filter][size] and color in bag[item_id]['items_by_filter'][color]:
+      bag[item_id]['items_by_filter'][size] = size
+      bag[item_id]['items_by_filter'][color] = color
+      bag[item_id]['items_by_filter'][quantity] += quantity
+  else:
+      bag[item_id]['items_by_filter'][size] = size
+      bag[item_id]['items_by_filter'][color] = color
+      bag[item_id]['items_by_filter'][quantity] = quantity
+else:
+  bag[item_id] = { 'items_by_filter' : {
+    size :size,
+    color : color,
+    quantity : quantity
+  }
+}
+```
+
+
+### After fixing the bug
+```
+item = f'{item_id}_{size}_{color}'
+
+if size and color:
+    if item_id in list(bag.keys()):
+        if item in bag[item_id]['items_by_filter'].keys():
+            bag[item_id]['items_by_filter'][item] += quantity
+        else:
+            bag[item_id]['items_by_filter'][item] = quantity
+    else:
+        bag[item_id] = {'items_by_filter': {item: quantity}}
+
+```
+
+
+
 | Known Issues | Causes |
-| ----------- | ----------- |
+| --------------- | --------------- |
+| When running flake8, some warnings in regards to line being too long have been disregarded in test.py files. | Since the values being asserted should be exactly the same with the same indentation levels these warnings have been disregarded. EXP: profiles/tests/test_forms.py:49:80: |
+| The site users (registered users) are supposed to be able to rate and leave a review only on the products they ordred an item from however, currently users are able to navigate to the product review page for all products if they know the proper URl. | This is caused by not filtering products that are going to be reviewed based on whether the user has ordered them. |
+| Some product on the site are available in different sizes and/or colors and as it should when the user selects a differnet color, the image of the product added to the shopping cart should match the selected color however this is not the case at the moment. | This is as a result of not having proper modeling for products and should be improved for real-life online stores. |
 
 
 

@@ -73,20 +73,42 @@ All pages on this website are responsive to desktop, iPad and, mobile screens.
 
 
 ### User Stories: <a id="user-stories"></a>
+[User Stories PDF](/readme-assets/PetShop%20UserStories.pdf)
 
-1. As a first-time visitor, I would like to browse on the website to buy an item for my pet.
-2. As a first-time visitor, I would like to find a specific item I am looking for and buy it.
-3. As a first-time visitor, I would like to find out more about a specific item I am curious about and read other consumers' reviews about it.
-4. As a first-time visitorr, I would like to find some similar products for the item I am looking for.
-5. As a returning visitor, I would like to have a personalized account and save my billing address info.
-6. As a returning visitor, I would like to rate a product I recently bought and let other users know about my opinion.
-7. As a returning visitor, I would like to make a purchase and update my new profile info for my future purchases.
-8. As store owner , I would like to add a new product to the website to be sold.
-9. As store owner , I would like to update an existing product on the website.
-10. As store owner , I would like to remove a out of stuck product from the website.
-11. As store owner , I would like to keep track of the orders and be able to see the details of all orders.
+#### As a shopper:
+
+1. I would like to browse on the website to buy an item for my pet.
+2. I would like to find a specific item I am looking for and buy it.
+3. I would like to, select the size and quantity of a product when purchasing it.
+4. I would like to, view selected products in my bag ready for checkout.
+5. I would like to, adjust the number of selected items in the bag.
+6. I would like to, enter my payment info safly.
+7. I would like to, view an order confirmation after checkout.
+8. I would like to, recieving a confirmation email after the checkout.
+9. I would like to see the product I searched for and the number of results.
+10. I would like to search for a product by name or description.
+11. I would like to have the possibility to check the total of my added items easily.
+12. I would like to find some similar products for the item I am looking for.
+13. I would like to be able to add my favorite items to my wishlist.
+14. I would like to be able to sort the list of products in different sorting options as I wihs.
 
 
+#### As a site user (Returning user)
+
+1. I would like to have a personalized account and save my billing address info.
+2. I would like to login and logout.
+3. I would like to Be able to write a review on a purchased product
+4. I would like to rate a product I recently bought and let other users know about my opinion.
+5. I would like to make a purchase and update my new profile info for my future purchases.
+6. I would like to register for an account on the site.
+7. I would like to recover my password in case I forget it.
+
+
+#### As Store Owner (Admin)
+1. I would like to add a new product to the website to be sold.
+2. I would like to update an existing product on the website.
+3. I would like to remove a out of stuck product from the website.
+4. I would like to keep track of the orders and be able to see the details of all orders.
 
 ### Wireframe Mockups: <a id="wireframes"></a>
 
