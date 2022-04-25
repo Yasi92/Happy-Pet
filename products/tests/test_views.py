@@ -33,7 +33,8 @@ class TestViews(TestCase):
         response = self.client.get(self.product_detail_url)
 
         self.assertEquals(response.status_code, 200)
-        self.assertTemplateUsed(response, 'products/product_detail.html')
+        self.assertTemplateUsed(
+            response, 'products/product_detail.html')
 
 
 class TestLogInRequiredViews(TestCase):
@@ -47,6 +48,7 @@ class TestLogInRequiredViews(TestCase):
         self.client = Client()
         self.client.login(
             username=self.user.username, password='Mypassword')
+        self.orders_overview_url = reverse('orders_overview')
 
     def test_add_product_GET_request(self):
         self.add_product_url = reverse('add_product')
@@ -141,3 +143,9 @@ class TestLogInRequiredViews(TestCase):
 
         self.assertEquals(response.status_code, 302)
         self.assertEquals(self.product.count(), 0)
+
+    def test_orders_overview(self):
+        response = self.client.get(self.orders_overview_url)
+
+        self.assertEquals(response.status_code, 200)
+        self.assertTemplateUsed('products/orders_overview.html')

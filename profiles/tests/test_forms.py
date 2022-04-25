@@ -42,6 +42,8 @@ class TestForms(SimpleTestCase):
         self.assertFalse(form.is_valid())
         # The default_country is a select field of\
         # countries and the value should be a valid choice
-        self.assertEqual(form.errors['default_country'][0],
-                         'Select a valid choice. non-existent country is not one\
-                          of the available choices.')
+
+        # The flake8 warning redarding this line being too long
+        # is disregarded since the AssertEqual needs the exact value
+        # with the same indentation level as the errro messsage.
+        self.assertEqual(form.errors['default_country'][0], 'Select a valid choice. non-existent country is not one of the available choices.')

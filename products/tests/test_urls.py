@@ -2,7 +2,8 @@ from django.test import TestCase
 from django.urls import reverse, resolve
 from products.views import (
     all_products, product_detail,
-    add_product, edit_product, delete_product)
+    add_product, edit_product, delete_product,
+    orders_overview)
 
 
 # Testing urls are learned from
@@ -30,3 +31,7 @@ class TestUrls(TestCase):
     def test_delete_product(self):
         url = reverse('delete_product', args=[77])
         self.assertEquals(resolve(url).func, delete_product)
+
+    def test_order_overviews(self):
+        url = reverse('orders_overview')
+        self.assertEquals(resolve(url).func, orders_overview)

@@ -2,7 +2,9 @@
 from django.test import TestCase, Client
 from django.urls import reverse
 
-from products.models import Product, Category, ProductReview, Subcategories
+from products.models import (
+    Product, Category,
+    ProductReview, Subcategories)
 from ..models import User, UserProfile
 from checkout.models import Order
 

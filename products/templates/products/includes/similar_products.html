@@ -44,7 +44,7 @@
                                             {% if s.rating %}
                                                 <small class="text-muted">
                                                     <i class="fas fa-star mr-1"></i>
-                                                    {{ s.rating }} / 5
+                                                    {{ s.rating|floatformat:"0" }} / 5
                                                 </small>
                                             {% else %}
                                                 <small class="text-muted">
@@ -97,7 +97,7 @@
                                             {% if s.rating %}
                                                 <small class="text-muted">
                                                     <i class="fas fa-star mr-1"></i>
-                                                    {{ s.rating }} / 5
+                                                    {{ s.rating|floatformat:"0" }} / 5
                                                 </small>
                                             {% else %}
                                                 <small class="text-muted">No Rating</small>
@@ -154,7 +154,7 @@
                                     {% if s.rating %}
                                         <small class="text-muted">
                                             <i class="fas fa-star mr-1"></i>
-                                            {{ s.rating }} / 5
+                                            {{ s.rating|floatformat:"0" }} / 5
                                         </small>
                                     {% else %}
                                         <small class="text-muted">No Rating</small>

@@ -77,6 +77,8 @@ class TestModels(TestCase):
     def test_string_method_of_order_line_item_model(self):
         '''Tests the string method formating of the model'''
 
+        # The flake8 warning redarding this line being too long
+        # is disregarded since the AssertEqual needs the exact value
+        # with the same indentation level as the errro messsage.
         self.assertEquals(self.order_line_item.__str__(),
-                          f'SKU {self.product.sku} on order\
-                          {self.order.order_number}')
+                          f'SKU {self.product.sku} on order {self.order.order_number}')

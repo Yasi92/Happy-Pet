@@ -133,34 +133,5 @@
 {% block postloadjs %}
 {{ block.super }}
     {% include 'products/includes/quantity_input_script.html' %}
-    <script>
-        function simlilarCarousel() {
-            /* This carousel is borrowed from (https://www.codeply.com/p/jCzaESNi07) */
-            var myCarousel = document.querySelector('#myCarousel')
-            var carousel = new bootstrap.Carousel(myCarousel, {
-                interval: 2000,
-                wrap: true
-            })
-            var slides = document.querySelectorAll('.sim-carousel .carousel-item')
-
-            slides.forEach((el) => {
-                // number of slides per carousel-item
-                const minPerSlide = slides.length
-                let next = el.nextElementSibling
-                for (var i = 1; i < minPerSlide; i++) {
-                    if (!next) {
-                        // wrap carousel by using first child
-                        next = slides[0]
-                    }
-                    let cloneChild = next.cloneNode(true)
-                    el.appendChild(cloneChild.children[0])
-                    next = next.nextElementSibling
-                }
-            })
-        }
-
-        if ($(window).width() > 767) {
-            simlilarCarousel();
-        }
-    </script>
+    <script src="{% static 'products/js/product.js' %}"></script>
 {% endblock %}

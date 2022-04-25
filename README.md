@@ -686,38 +686,40 @@ To allow you to access all functionality on the site locally, ensure you have cr
 
 6. Inside the .env.py set the following variables:
 
-    AWS_ACCESS_KEY_ID = <enter key here>
-    AWS_SECRET_ACCESS_KEY = <enter key here>
-    AWS_STORAGE_BUCKET_NAME = <enter bucket name here>
-    SECRET_KEY = <Django SECRET KEY>
-    DATABASE_PASSWORD = <database password>
-    STRIPE_PUBLIC_KEY = <STRIPE PUBLIC KEY>
-    STRIPE_SECRET_KEY = <STRIPE SECRET KEY>
-    STRIPE_WH_SECRET = <STRIPE WH SECRET>
-    DEVELOPMENT = True
-    USE_AWS = True
-    EMAIL_HOST_PASS = <enter host pass>
-    EMAIL_HOST_USER = <enter user email>
-    DEVELOPMENT = <any value>
+    - SECRET_KEY = Your Django SECRET KEY
+    - DATABASE_PASSWORD = Your database password
+    - STRIPE_PUBLIC_KEY = Your STRIPE PUBLIC KEY
+    - STRIPE_SECRET_KEY = Your STRIPE SECRET KEY
+    - STRIPE_WH_SECRET = Your STRIPE WH SECRET
+    - DEVELOPMENT = True
+**Note** that the data in the .env.py are confidential and as a result it won't be provided here.
+
 
 - DEVELOPMENT environment variable is set only within the development environment, it does not exist in the deployed version, making it possible to have different settings for the two environments. For example setting DEBUG to True only when working in development and not on the deployed site.
 
-7. Set the ALLOWED HOSTS variable in setting.py to localhost.
+7. Set the ALLOWED HOSTS variable in setting.py to your localhost.
+8. Switch the database to Django default database.
+**Note** Add the following db as your DATABASES variable in settings.py since the database used in development for this project was not the default sqlite3.
+```DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'mydatabase',
+    }
+}
+```
 
-8. Migrate the admin panel models to create your database template with the terminal command.
-    `python3 manage.py migrate`
+9. Migrate the admin panel models to create your database template with the terminal command.
+`python3 manage.py migrate`
 
-9. Create your superuser to access the django admin panel and database with the following command, and then follow the steps to add your admin username and password:
-    `python3 manage.py createsuperuser`
+10. Create your superuser to access the django admin panel and database with the following command, and then follow the steps to add your admin username and password:
+`python3 manage.py createsuperuser`
 
-**Note** that the data in the .env.py are confidential and as a result it won't be provided here.
-8. You can now run the program locally with the following command:
+11. You can now run the program locally with the following command:
+`python3 manage.py runserver`
 
-    `python3 manage.py runserver`
+12. Once the program is running, go to the local link provided and add /admin to the end of the URL. Here log in with your superuser account and create instances of Category, Subcategories and Product within the new database.
 
-9. Once the program is running, go to the local link provided and add /admin to the end of the URL. Here log in with your superuser account and create instances of Category, Subcategories and Product within the new database.
-
-10. Once instances of these items exist in your database your local site will run as expected.
+13. Once instances of these items exist in your database your local site will run as expected.
 
 
 
@@ -745,20 +747,20 @@ To allow you to access all functionality on the site locally, ensure you have cr
 | USE_AWS | True |
 
 9. From the command line of your local IDE:
-
-    - Enter the heroku postres shell
+    - Enter the Heroku Postgres shell
     - Migrate the database models
     - Create your superuser account in your new database
-- Instructions on how to do these steps can be found in the [heroku devcenter documentation](https://devcenter.heroku.com/articles/heroku-postgresql).
-10. In the heroku dashboard, click "Deploy".
-11. In the "Manual Deployment" section of this page, made sure the master branch is selected and then click "Deploy Branch".
-11. From the link provided add /admin to the end of the URL, log in with your superuser account and create instances of Category, Subcategories and Product within the new database.
+- Instructions on how to do these steps can be found in the [heroku dev center documentation](https://devcenter.heroku.com/articles/heroku-postgresql).
+10. In the Heroku dashboard, click "Deploy".
+11. In the "Manual Deployment" section of this page, make sure the master branch is selected and then click "Deploy Branch".
+11. From the link provided add /admin to the end of the URL, log in with your superuser account, and create instances of Category, Subcategories, and Product within the new database.
 12. Once instances of these items exist in your database your heroku site will run as expected.
+
 
 
 ## Credits <a id="credits"></a>
 ### Content <a id="content"></a>
-- The content of products on this website are taken from different online pet shops and are collected by myself for the purpose of generating a database for this project.
+- The content of products on this website are taken from different online pet shops and are collected by myself for the purpose of generating a database for this project. All the borrowed content on this website are for the educational purposes only.
 
 ### Media <a id="media"></a>
 - The animal images on the home page are from [Pinterest](https://nl.pinterest.com/).
@@ -766,6 +768,10 @@ To allow you to access all functionality on the site locally, ensure you have cr
 
 
 ### Code <a id="code"></a>
+- The core concept of stripe payment are directly coming from Boutique-ado project and Stripe documentaion.
+- The main functionalities and methods throughout the website are learned and/or borrowed from code institute tutorial videos.
+- The star rating of products are learned form [this tutorial](https://www.youtube.com/watch?v=YN2jW4Fp7tM).
+- Unit testing the python code is learned from [these tutorial series](https://www.youtube.com/playlist?list=PLbpAWbHbi5rMF2j5n6imm0enrSD9eQUaM).
 
 
 ## Acknowledgements <a id="ackn"></a>
