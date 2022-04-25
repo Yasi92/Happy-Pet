@@ -71,6 +71,11 @@
                                         <tr>
                                             <th scope="row">
                                                 <small>{{ item.product.name }}</small> <br>
+                                                {% if from_profile %}
+                                                    <a href="{% url 'add_review' item.product.product_id %}">
+                                                        <small>Add a Review</small>
+                                                    </a>
+                                                {% endif %}
                                             </th>
                                             <td>
                                                 {% if item.product_size %}

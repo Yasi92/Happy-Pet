@@ -165,7 +165,7 @@ Home page:
 
 
 
-![Product page](/readme-assets/img/products.png)
+![Products page](/readme-assets/img/products.png)
 *   ### Products Page
     * Products page displays products in card groups based on selected category and/or subcategory.
     * The default page displays all products with the total number of products on the website.
@@ -191,7 +191,7 @@ Home page:
     * Product cards contains summary of a product in different sections.
     * The product cards contains an image, name, price, current category and subcategory as a link, and rating of the product.
     * The cards are links to product detail page of the relevant product.
-    * The cards are hoverable for a better user wxperince and accessibility.
+    * The cards are hoverable for a better user experince and accessibility.
     * If the user is verified as staff, a 'delete' and 'edit' links will be displayed on the cards for the user to either easily navigate to the edit product page or remove the product.
     * If users intents to delete an item, a modal will open to the screen for the user to confirm the deletion of the product for avoiding unintentional deletion of products.
 
@@ -204,7 +204,7 @@ Home page:
         - 'Keep Shopping' button on the top left of the page to navigate to the product page.
         #### 'Add' or 'Remove' Button
         - 'Add' or 'Remove' button to add product to or remove it from the wish list accordingly.
-        #### Product Description
+        #### Product Details
         - Full name, image, price, category, and subcategory as links, rating, a quantity selector, and a 'Add to bag' button.
         - Since a product may have multiple images, in that case, multiple images are displayed in a carousel.
         #### Delet/Edit links
@@ -354,6 +354,15 @@ Home page:
     * After adding the new product, the user will be directed to the product detail page.
 
 
+
+![Edit Product Page](/readme-assets/img/edit_product.png)
+
+*   ### Edit Product Page
+    * This page is only accessible for store owners and staff members to enable them to add a product to the website.
+    * After clicking the intended product, users will be navigated to the page with a prefilled product form where users are able to edit the product as needed.
+
+
+
 ![All Orders](/readme-assets/img/all_orders.png)
 
 *   ### All Orders Page
@@ -389,7 +398,8 @@ Home page:
     3. Getting a product image change according to the selected color of the product. Unfortunately this is not working and as a result no matter what color user has selected, the image of product remains the same.
     4. Enable users to register on the website with their social accounts using Django allauth social authentication tokens.
     5. Add additional payment methods. The current free version of Stripe checkout only allows customers to pay via credit card. Many people prefer to pay via PayPal, bank transfer, or iDeal.
-
+    6. The star rating method is visually working properly however, the rating of products is not actually based on the rating average. This is achievable by [django star rating](https://django-star-ratings.readthedocs.io/en/latest/).
+    7. [Django Wishlists](https://pypi.org/project/django-wishlist/) will be replacing the current method of the wish list for improving its functionality.
 
 
 ## Information Architecture <a id="data-info"></a>
