@@ -420,18 +420,13 @@ I have tested the live website on the following browsers and devices with [Brows
   - iPad (Chrome Developer Tools, On physical devices)
   - iPad Pro (Chrome Developer Tools, BrowserStack)
   - iPad mini (Chrome Developer Tools, BrowserStack)
+    (The responsive design is not working as expected on Air iPad series)
   - Galaxy Note 3 (Chrome Developer Tools, BrowserStack)
   - Galaxy S III (Chrome Developer Tools, BrowserStack)
   - Macbook
+  - iPad Air
+    (The responsive design is not working as expected on Air iPad series)
 
-| Browser | Issues |
-| ----------- | ----------- |
-| Google Chrome | - |
-| Safari | No issues found |
-| Firefox | No issues found |
-| IE |  |
-| Edge |  |
-| Opera |  |
 
 
 - All the links and buttons on the website were checked repeatedly.

@@ -73,7 +73,7 @@ All pages on this website are responsive to desktop, iPad and, mobile screens.
 
 
 ### User Stories: <a id="user-stories"></a>
-[User Stories PDF](/readme-assets/PetShop%20UserStories.pdf)
+[User Stories PDF](/readme-assets/userStories.pdf)
 
 #### As a shopper:
 
@@ -114,7 +114,13 @@ All pages on this website are responsive to desktop, iPad and, mobile screens.
 
 
 Home page:
-[Home page wireframes PDF](static/readme-assets/wireframes/home.pdf)
+[Home](/readme-assets/home.pdf)
+[Products](/readme-assets/products.pdf)
+[Product Detail](/readme-assets/product_detail.pdf)
+[Shopping Cart](/readme-assets/bag.pdf)
+[Checkout](/readme-assets/checkout.pdf)
+[Profile](/readme-assets/profile.pdf)
+[Edit Profile](/readme-assets/edit_profile.pdf)
 
 
 ## Features <a id="features"></a>
@@ -126,8 +132,6 @@ Home page:
      * The main colors used for the design are as shown below.
      ![color theme](/readme-assets/img/color-theme.png)
      * The website is mono-font and the primary font 'Lato' is chosen for this website.
-
-
 
 
 
@@ -172,7 +176,7 @@ Home page:
     * A sort selector bar is on the right side of the products to sort products based on different sorting methods.
     * The layout of the page is different on mobile and iPad devices.
     * Depending on the device size, the number of cards on each row differs.
-
+![Products responsive style](/readme-assets/img/products_responsive.png)
 
 
 
@@ -196,7 +200,7 @@ Home page:
     * If users intents to delete an item, a modal will open to the screen for the user to confirm the deletion of the product for avoiding unintentional deletion of products.
 
 
-![Product Detail](/readme-assets/img/product-detail.png)
+![Product Detail](/readme-assets/img/product_detai_responsive.png)
 
 *   ### Product Detail Page
     * Product detail page has different sections:
@@ -507,8 +511,7 @@ The data base is designed by myself from the scratch using the handy visual data
 | Name | Key in db | Validation | Field Type |
 | ----------- | ----------- | ----------- | ----------- |
 | order_number | order_number | max_length=32, null=False, editable=False | CharField |
-| user_profile | user_profile | on_delete=models.SET_NULL,
-        null=True, blank=True, related_name='orders' | ForeignKey to UserProfile |
+| user_profile | user_profile | on_delete=models.SET_NULL, null=True, blank=True, related_name='orders' | ForeignKey to UserProfile |
 | full_name | full_name | max_length=50, null=False, blank=False | CharField |
 | email | email | max_length=254, null=False, blank=False | EmailField |
 | phone_number | phone_number | max_length=20, null=False, blank=False | CharField |
@@ -533,10 +536,10 @@ The data base is designed by myself from the scratch using the handy visual data
 - OrderLineItem Model
     - Whithin the checkout app, OrderLineItem model holds the data for each individual item in the shopping cart.
 
-| order | order | Order, null=False, blank=False,
-        on_delete=models.CASCADE, related_name='lineitems' | ForeignKey To Order |
-| product | product | Product, null=False, blank=False,
-        on_delete=models.CASCADE | ForeignKey To Product |
+| Name | Key in db | Validation | Field Type |
+| ----------- | ----------- | ----------- | ----------- |
+| order | order | Order, null=False, blank=False, on_delete=models.CASCADE, related_name='lineitems' | ForeignKey To Order |
+| product | product | Product, null=False, blank=False, on_delete=models.CASCADE | ForeignKey To Product |
 | product_size | product_size | max_length=10, null=True, blank=True | CharField |
 | product_color | product_color | max_length=15, null=True, blank=True | CharField |
 | quantity | quantity | null=False, blank=False, default=0 | IntegerField |
