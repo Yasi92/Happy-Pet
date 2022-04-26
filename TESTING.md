@@ -1,7 +1,7 @@
 # Happy Pet - Testing in detils
 
-[The Website In Action](https://happy-pet.herokuapp.com/)
-[Main README.md file](README.md)
+- [The Website In Action](https://happy-pet.herokuapp.com/)
+- [Main README.md file](README.md)
 
 
 
@@ -149,7 +149,7 @@ if size and color:
 
  <a id="known-issues"></a>
 
- 
+
 | Known Issues | Causes |
 | --------------- | --------------- |
 | When running flake8, some warnings in regards to the line being too long have been disregarded in test.py files. | Since the values being asserted should be exactly the same with the same indentation levels these warnings have been disregarded. EXP: profiles/tests/test_forms.py:49:80: |
