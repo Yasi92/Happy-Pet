@@ -77,26 +77,26 @@ All pages on this website are responsive to desktop, iPad and, mobile screens.
 
 #### As a shopper:
 
-1. I would like to browse on the website to buy an item for my pet.
+1. I would like to browse the website to buy an item for my pet.
 2. I would like to find a specific item I am looking for and buy it.
 3. I would like to, select the size and quantity of a product when purchasing it.
 4. I would like to, view selected products in my bag ready for checkout.
 5. I would like to, adjust the number of selected items in the bag.
-6. I would like to, enter my payment info safly.
+6. I would like to, enter my payment info safely.
 7. I would like to, view an order confirmation after checkout.
-8. I would like to, recieving a confirmation email after the checkout.
+8. I would like to, receive a confirmation email after the checkout.
 9. I would like to see the product I searched for and the number of results.
 10. I would like to search for a product by name or description.
 11. I would like to have the possibility to check the total of my added items easily.
 12. I would like to find some similar products for the item I am looking for.
 13. I would like to be able to add my favorite items to my wishlist.
-14. I would like to be able to sort the list of products in different sorting options as I wihs.
+14. I would like to be able to sort the list of products in different sorting options as I wish.
 
 
 #### As a site user (Returning user)
 
 1. I would like to have a personalized account and save my billing address info.
-2. I would like to login and logout.
+2. I would like to log in and log out.
 3. I would like to Be able to write a review on a purchased product
 4. I would like to rate a product I recently bought and let other users know about my opinion.
 5. I would like to make a purchase and update my new profile info for my future purchases.
@@ -107,20 +107,18 @@ All pages on this website are responsive to desktop, iPad and, mobile screens.
 #### As Store Owner (Admin)
 1. I would like to add a new product to the website to be sold.
 2. I would like to update an existing product on the website.
-3. I would like to remove a out of stuck product from the website.
+3. I would like to remove an out-of-stock product from the website.
 4. I would like to keep track of the orders and be able to see the details of all orders.
-
 ### Wireframe Mockups: <a id="wireframes"></a>
 
 
-Home page:
-[Home](/readme-assets/home.pdf)
-[Products](/readme-assets/products.pdf)
-[Product Detail](/readme-assets/product_detail.pdf)
-[Shopping Cart](/readme-assets/bag.pdf)
-[Checkout](/readme-assets/checkout.pdf)
-[Profile](/readme-assets/profile.pdf)
-[Edit Profile](/readme-assets/edit_profile.pdf)
+- [Home](/readme-assets/home.pdf)
+- [Products](/readme-assets/products.pdf)
+- [Product Detail](/readme-assets/product_detail.pdf)
+- [Shopping Cart](/readme-assets/bag.pdf)
+- [Checkout](/readme-assets/checkout.pdf)
+- [Profile](/readme-assets/profile.pdf)
+- [Edit Profile](/readme-assets/edit_profile.pdf)
 
 
 ## Features <a id="features"></a>
@@ -132,6 +130,16 @@ Home page:
      * The main colors used for the design are as shown below.
      ![color theme](/readme-assets/img/color-theme.png)
      * The website is mono-font and the primary font 'Lato' is chosen for this website.
+     * All the iscons used in this project are from [Font Awesome](https://fontawesome.com/start)
+        - ![paw icon](/readme-assets/img/paw.png)  Used for the logo.
+        - ![shopping cart icon](/readme-assets/img/cart.png)    Useed fo the shopping cart.
+        - ![heart icon](/readme-assets/img/heart.png)    Used for the wishlist.
+        - ![search icon](/readme-assets/img/search.png)    Used for the search box.
+        - ![user icon](/readme-assets/img/user.png)     Used for the user profile.
+        - ![dog icon](/readme-assets/img/dog.png)     Used for Dog product category.
+        - ![cat icon](/readme-assets/img/cat.png)     Used for Cat product category.
+        - ![bird icon](/readme-assets/img/bird.png)     Used for Bird product category.
+        - ![sloth icon](/readme-assets/img/sloth.png)     Used for Rodent product category.
 
 
 
@@ -151,8 +159,8 @@ Home page:
     * If the wish list is not empty, the heart icon color turns red and if not, the color is set to black.
     * The shopping cart icon shows the total amount of added products.
     * If the bag is not empty, the shopping cart icon color turns blue and if not, the color is set to black.
-    * The main product navbar displays different categories of the products and when it is hovered over, a dropdown list of subcategories will be displayed.
-    * Small icons of every main category is added for the purpose of UI design.
+    * The main product navbar displays different categories of the products and when it has hovered over, a dropdown list of subcategories will be displayed.
+    * Small icons of every main category are added for the purpose of UI design.
     * On iPad and mobile devices, the main product navbar will be collapsed to a burger button on top of the page.
 
 
@@ -192,10 +200,10 @@ Home page:
 ![Product card](/readme-assets/img/product-card.png)
 
 *   ### Product Cards
-    * Product cards contains summary of a product in different sections.
-    * The product cards contains an image, name, price, current category and subcategory as a link, and rating of the product.
-    * The cards are links to product detail page of the relevant product.
-    * The cards are hoverable for a better user experince and accessibility.
+    * Product cards contain a summary of a product in different sections.
+    * The product cards contain an image, name, price, current category, and subcategory as a link, and a rating of the product.
+    * The cards are links to the product detail page of the relevant product.
+    * The cards are hoverable for a better user experience and accessibility.
     * If the user is verified as staff, a 'delete' and 'edit' links will be displayed on the cards for the user to either easily navigate to the edit product page or remove the product.
     * If users intents to delete an item, a modal will open to the screen for the user to confirm the deletion of the product for avoiding unintentional deletion of products.
 
@@ -207,30 +215,30 @@ Home page:
         #### 'Keep Shopping' Button
         - 'Keep Shopping' button on the top left of the page to navigate to the product page.
         #### 'Add' or 'Remove' Button
-        - 'Add' or 'Remove' button to add product to or remove it from the wish list accordingly.
+        - 'Add' or 'Remove' button to add a product to or remove it from the wish list accordingly.
         #### Product Details
         - Full name, image, price, category, and subcategory as links, rating, a quantity selector, and a 'Add to bag' button.
         - Since a product may have multiple images, in that case, multiple images are displayed in a carousel.
-        #### Delet/Edit links
-        - If the user is verified as staff, the 'edit' and 'delete' links will be visible on this page to enable users edit or delete the product conviniently.
-        - Once the 'delete' button is clicked, a modal will open to the screen for the user to confirm the deletion of the product for avoiding unintentional deletion of products.
+        #### Delete/Edit links
+        - If the user is verified as staff, the 'edit' and 'delete' links will be visible on this page to enable users to edit or delete the product conveniently.
+        - Once the 'delete' button is clicked, a modal will open on the screen for the user to confirm the deletion of the product for avoiding unintentional deletion of products.
 
         #### Add to bag form
-        - A quantity selector box that enables users to chose the number of products they are about to buy.
+        - A quantity selector box that enables users to choose the number of products they are about to buy.
         ![size and color select box](/readme-assets/img/color-size-selector.png)
-        - A select box for avaibale sizes and colors will be placed on the product form if the product is available in different colors and sizes.
+        - A select box for available sizes and colors will be placed on the product form if the product is available in different colors and sizes.
         - An outstanding 'Add To Bag' button to add the selected product to the shopping cart.
         #### Product Description
         - ![Product desciption and review section](/readme-assets/img/review-desc.png)
         - The product description is displayed in an accordion containing all details about the product.
         #### Review Section
-        - The product review section is displayed in an accordion containing rows displaying user reviews content, star rating and date of added reviews.
+        - The product review section is displayed in an accordion containing rows displaying user reviews content, star rating, and date of added reviews.
         #### Similar Products Section
         - ![similar product carousel](/readme-assets/img/sim-carousel.png)
-        - Similar products of the same category and subcategory are displayed in similar products section.
+        - Similar products of the same category and subcategory are displayed in the similar products section.
         - This section is displayed in a carousel if the number of similar products is more than 4 and, displayed in a single row if it is less than 4 items on the list.
-        - This section is slightly diffrent on mobile devices in the way that if there is more than 4 products on the list, the item cards will be displayed one by one in the carousel.
-    * The layout of the product detail page is different on mobile devices in the way that the product form and product image will be displayed on seperated rows.
+        - This section is slightly different on mobile devices in the way that if there are more than 4 products on the list, the item cards will be displayed one by one in the carousel.
+    * The layout of the product detail page is different on mobile devices in the way that the product form and product image will be displayed in separated rows.
 
 
 
@@ -330,7 +338,7 @@ Home page:
 ![Registeration Page](/readme-assets/img/sign-up.png)
 
 *   ### Registration Page
-    * A user who has not registered on the website can create a new account using the register page. The page on this form includes a username (which must be unique), email address, password, and password conformation fields.
+    * A user who has not registered on the website can create a new account using the register page. The page on this form includes a username (which must be unique), email address, password, and password confirmation fields.
 
 
 
@@ -378,7 +386,8 @@ Home page:
 ![Custom 404 Page](/readme-assets/img/404-page.png)
 *  ### Custom 404 / 500 Page: <a id="404"></a>
     * The custom 404 page prevents users from confusion and redirects them to the home page if the URL is unavailable or does not exist.
-    * The same design and style applies for the 500 error handling page.
+    * The same design and style apply to the 500 error handling page.
+
 
 
 
@@ -389,38 +398,37 @@ Home page:
 
 ![Footer](/readme-assets/img/footer.png)
 *  ### Footer: <a id="footer"></a>
-    * The footer is identical on all pages and it provides a copyright of the happy pet website.
+    * The footer is identical on all pages and it provides the copyright of the happy pet website.
     * the footer is sticky to the bottom of the page on small and medium devices.
-    **Note** The footer is fixed on medium and small devices such as iPad and mobile as a quick fix for different size of body content across all pages.
+    **Note** The footer is fixed on medium and small devices such as iPad and mobiles as a quick fix for different sizes of body content across all pages.
     If this is removed, the footer will jump up to the middle of the page when
     navbar toggler expands.
 
-
 ### Yet to be implemented <a id="yet-to-be-implemented"></a>
-    1. More features on all orders page for the store owner to view, manage and modify an order if needed.
-    2. Add sorting selector to product management page to enable users to sort orders based on different sorting methods such as date, number, alphabetically, and so on.
-    3. Getting a product image change according to the selected color of the product. Unfortunately this is not working and as a result no matter what color user has selected, the image of product remains the same.
-    4. Enable users to register on the website with their social accounts using Django allauth social authentication tokens.
-    5. Add additional payment methods. The current free version of Stripe checkout only allows customers to pay via credit card. Many people prefer to pay via PayPal, bank transfer, or iDeal.
-    6. The star rating method is visually working properly however, the rating of products is not actually based on the rating average. This is achievable by [django star rating](https://django-star-ratings.readthedocs.io/en/latest/).
-    7. [Django Wishlists](https://pypi.org/project/django-wishlist/) will be replacing the current method of the wish list for improving its functionality.
+1. More features on all orders page for the store owner to view, manage and modify an order if needed.
+2. Add sorting selector to product management page to enable users to sort orders based on different sorting methods such as date, number, alphabetically, and so on.
+3. Getting a product image change according to the selected color of the product. Unfortunately, this is not working and as a result, no matter what color the user has selected, the image of the product remains the same.
+4. Enable users to register on the website with their social accounts using Django allauth social authentication tokens.
+5. Add additional payment methods. The current free version of Stripe checkout only allows customers to pay via credit card. Many people prefer to pay via PayPal, bank transfer, or iDeal.
+6. The star rating method is visually working properly however, the rating of products is not actually based on the rating average. This is achievable by [django star rating](https://django-star-ratings.readthedocs.io/en/latest/).
+7. [Django Wishlists](https://pypi.org/project/django-wishlist/) will be replacing the current method of the wishlist for improving its functionality.
 
 
 ## Information Architecture <a id="data-info"></a>
 
 ### Database Choice <a id="db"></a>
-* As a framework Django works with SQL databases. During development on my local machine I worked with MySQL Workbench.
+* As a framework Django works with SQL databases. During development on my local machine, I worked with MySQL Workbench.
 On deployment, the SQL database provided by Heroku is a PostgreSQL database.
-The data base is designed by myself from the scratch using the handy visual database design tool 'MySQL Workbench'.
+The database is designed by myself from the scratch using the handy visual database design tool 'MySQL Workbench'.
 
 
 ### Data Models <a id="db"></a>
 - User
-    -  The User model utilized for this project is the standard one provided by django.contrib.auth.models
+    -  The User model utilized for this project is the standard one provided by Django.contrib.auth.models
 
 
 - Category Model
-    - Whithin the products app, category model holds the data needed for differenet categories.
+    - Within the products app, the category model holds the data needed for different categories.
 
 
 | Name | Key in db | Validation | Field Type |
@@ -431,7 +439,7 @@ The data base is designed by myself from the scratch using the handy visual data
 
 
 - Subcategories Model
-    - Whithin the products app, subcategory model holds the data needed for differenet subcategories.
+    - Within the products app, the subcategory model holds the data needed for different subcategories.
 
 
 | Name | Key in db | Validation | Field Type |
@@ -441,8 +449,8 @@ The data base is designed by myself from the scratch using the handy visual data
 | friendlyname | friendlyName | max_length=45, blank=True, null=True | CharField |
 | category | Category | max_length=350, choices=categories, blank=True, null=True | MultiSelectField |
 
-- The categories choices are defined whithin the Subcategories model.
-- Category and Subcategory models have a many-to-many relation and that is the reason it is prefered to have category field as a multiselectField to represent the category options.
+- The category choices are defined within the Subcategories model.
+- Category and Subcategory models have a many-to-many relation and that is the reason it is preferred to have a category field as a multi-select field to represent the category options.
 
 
 
@@ -475,8 +483,7 @@ The data base is designed by myself from the scratch using the handy visual data
 
 
 - ProductReview Model
-    - Whithin the products app, ProductReview model holds the data needed for product reviews.
-
+    - Within the products app, ProductReview model holds the data needed for product reviews.
 
 | Name | Key in db | Validation | Field Type |
 | ----------- | ----------- | ----------- | ----------- |
@@ -489,8 +496,11 @@ The data base is designed by myself from the scratch using the handy visual data
 
 
 - UserProfile Model
-    - Whithin the profiles app, UserProfile model holds the data for each users' default data.
+    - Within the profiles app, UserProfile model holds the data for each user's default data.
 
+
+| Name | Key in db | Validation | Field Type |
+| ----------- | ----------- | ----------- | ----------- |
 | user | user | User, on_delete=models.CASCADE | OneToOneField |
 | default_phone_number | default_phone_number | max_length=20, null=True,blank=True  | CharField |
 | default_country | default_country | blank_label='Country *', null=True, blank=True | CountryField |
@@ -505,7 +515,7 @@ The data base is designed by myself from the scratch using the handy visual data
 
 
 - Order Model
-    - Whithin the checkout app, Order model holds the data needed for orders.
+    - Within the checkout app, the Order model holds the data needed for orders.
 
 
 | Name | Key in db | Validation | Field Type |
@@ -529,12 +539,12 @@ The data base is designed by myself from the scratch using the handy visual data
 | stripe_pid | stripe_pid | max_length=254, null=False, blank=False, default='' | CharField |
 
 
-- An instance of the Order model is created before any OrderLineItem, as the latter relies on the former for a ForeignKey.
+- An instance of the Order model is created before any OrderLine Item, as the latter relies on the former for a Foreign Key.
 
 
 
 - OrderLineItem Model
-    - Whithin the checkout app, OrderLineItem model holds the data for each individual item in the shopping cart.
+    - Within the checkout app, the OrderLineItem model holds the data for each individual item in the shopping cart.
 
 | Name | Key in db | Validation | Field Type |
 | ----------- | ----------- | ----------- | ----------- |
@@ -545,8 +555,7 @@ The data base is designed by myself from the scratch using the handy visual data
 | quantity | quantity | null=False, blank=False, default=0 | IntegerField |
 | lineitem_total | lineitem_total | blank=False, null=False, editable=False | FloatField |
 
-- An instance of OrderLineItem is created for each unique product in the users cart. It links to the already existing Order for this user, the relevant product and the quantity the user wishes to buy.
-
+- An instance of OrderLineItem is created for each unique product in the user's cart. It links to the already existing Order for this user, the relevant product, and the quantity the user wishes to buy.
 
 
 ## Technologies Used <a id="tech"></a>
@@ -564,115 +573,109 @@ The data base is designed by myself from the scratch using the handy visual data
 
 
 1. [Django](https://www.djangoproject.com/)
-- As python web framework for rapid development and clean design.
+As python web framework for rapid development and clean design.
 
 2. [Balsamiq](https://balsamiq.com/wireframes/)
-- This was used to create mockups during the design process.
+This was used to create mockups during the design process.
 
 3. [GitHub](https://github.com/)
-- Github was used as a remote repository and to deploy the website.
+Github was used as a remote repository to deploy the website.
 
 4. [Git](https://git-scm.com/)
-- Git was used as version control to keep track of files and push them to the remote repository.
+Git was used as version control to keep track of files and push them to the remote repository.
 
 5. [FontAwesome](https://fontawesome.com/start)
-- Font Awesome was used throughout the website to add icons.
+Font Awesome was used throughout the website to add icons.
 
 6. [Google Fonts](https://fonts.google.com/)
-- Google fonts were used to import the font styles in the website.
+Google fonts were used to import the font styles to the website.
 
 7. [Chrome Developer Tools:](https://developer.chrome.com/docs/devtools/)
-- This was used for debugging and for checking the responsiveness of the website.
+This was used for debugging and for checking the responsiveness of the website.
 
 8. [Ami Responsive](http://ami.responsivedesign.is/)
-- This was used to test the website responsiveness.
+This was used to test the website responsiveness.
 
 9. [HTMLValidationService](https://validator.w3.org/)
-- This was used to check the markup validity of the web documents.
+This was used to check the markup validity of the web documents.
 
 10. [CSSValidationService](https://validator.w3.org/)
-- This was used to check the markup validity of the web documents.
+This was used to check the markup validity of the web documents.
 
 11. [Coolors.co](https://coolors.co/eae8ed-bcdadd-b3d1bb-62a9af-af70c2-500966)
-- This was used to choose the color theme used in the website.
+This was used to choose the color theme used in the website.
 
 12. [Unicorn Revealer Extention](https://chrome.google.com/webstore/detail/unicorn-revealer/lmlkphhdlngaicolpmaakfmhplagoaln?hl=en-GB)
-- This is a developer-friendly tool to locate the overflows and was used throughout the process.
+This is a developer-friendly tool to locate the overflows and was used throughout the process.
 
 13. [w3schools](https://www.w3schools/)
-- This was used for documentation for most troubles and errors.
+This was used for documentation for most troubles and errors.
 
 14. [jQuery](https://jquery.com/)
-- This was used as Javascript library to write less Javascript codes.
+This was used as a Javascript library to write fewer Javascript codes.
 
 15. [Pinterest](https://nl.pinterest.com/)
-- This was used to download images for the website.
+This was used to download images for the website.
 
-16. [favicon.io](https://favicon.io/)
-- This was used to create and insert a favicon.
+16. [Gmail](https://mail.google.com/mail/)
+Used to send emails.
 
 17. [Stripe](https://stripe.com/nl)
-- As payment platform to validate and accept credit card payments securely.
+As a payment platform to validate and accept credit card payments securely.
 
 18. [AWS S3 Bucket](https://aws.amazon.com/)
-- To store images entered into the database.
+To store images entered into the database.
 
 19. [Boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html)
-- To enable creation, configuration and management of AWS S3.
+To enable creation, configuration and management of AWS S3.
 
 20. [Coverage](https://coverage.readthedocs.io/en/6.3.2/)
-- To measure code coverage of python unittests.
+To measure code coverage of python unit tests.
 
 21. [Django Crispy Forms](https://django-crispy-forms.readthedocs.io/en/latest/)
-- To style django forms.
+To style Django forms.
 
 22. [Django Storages](https://django-storages.readthedocs.io/en/latest/)
-- A collection of custom storage backends with django to work with boto3 and AWS S3.
+A collection of custom storage backends with Django to work with boto3 and AWS S3.
 
 23. [Gunicorn](https://pypi.org/project/gunicorn/)
-- WSGI HTTP Server for UNIX to aid in deployment of the Django project to heroku.
+WSGI HTTP Server for UNIX to aid in the deployment of the Django project to Heroku.
 
 24. [Heroku](https://dashboard.heroku.com/login)
-- This was used as the deployment platform.
+This was used as the deployment platform.
 
 25. [Pillow](https://pillow.readthedocs.io/en/stable/)
-- as python imaging library to aid in processing image files to store in database.
+As python imaging library to aid in processing image files to store in the database.
 
 26. [Psycopg2](https://pypi.org/project/psycopg2/)
-- as PostgreSQL database adapter for Python.
+As PostgreSQL database adapter for Python.
 
 27. [PIP](https://pip.pypa.io/en/stable/installing/)
-- for installation of tools needed in this project.
+For installation of tools needed in this project.
 
 28. [Browserstack](https://www.browserstack.com/)
-- to test functionality on all browsers and devices.
+To test functionality on all browsers and devices.
 
-29. [OAuth 2.0](https://developers.google.com/identity/protocols/oauth2)
-- to Access Google APIs for sending emails.
-
-30. [google-auth-oauthlib ](https://pypi.org/project/google-auth-oauthlib/)
-- This library provides oauthlib integration with google-auth.
-
-31. [python-dotenv 0.20.0](https://pypi.org/project/python-dotenv/)
-- Used to set local variables.
+29. [python-dotenv 0.20.0](https://pypi.org/project/python-dotenv/)
+Used to set local variables.
 ### Databases
 * [PostgreSQL](https://www.postgresql.org/)
-- for production database, provided by heroku.
+For production database, provided by heroku.
 * [MySQL](https://www.mysql.com/)
-- as development database.
-
+As development database.
+* [MySQL Workbench](https://www.mysql.com/products/workbench/)
+As a visual tool to create my database.
 
 
 ### Libraries
 * [Bootstrap5](https://getbootstrap.com/)
-- to simplify the structure of the website and make the website responsive easily.
+To simplify the structure of the website and make the website responsive easily.
 * [FontAwesome](https://fontawesome.com/)
-- to provide icons for The House of Mouse webshop.
+To provide icons for The House of Mouse webshop.
 * [JQuery](https://jquery.com/)
-- to simplify DOM manipulation.
+To simplify DOM manipulation.
 * [GSAP](https://greensock.com/gsap/)
-- a popular set of JavaScript tools for building animations on the web.
-
+A popular set of JavaScript tools for building animations on the web.
 
 
 
@@ -730,7 +733,7 @@ To allow you to access all functionality on the site locally, ensure you have cr
 **Note** that the data in the .env.py are confidential and as a result it won't be provided here.
 
 
-- DEVELOPMENT environment variable is set only within the development environment, it does not exist in the deployed version, making it possible to have different settings for the two environments. For example setting DEBUG to True only when working in development and not on the deployed site.
+- The DEVELOPMENT environment variable is set only within the development environment, it does not exist in the deployed version, making it possible to have different settings for the two environments. For example, setting DEBUG to True only when working in development and not on the deployed site.
 
 7. Set the ALLOWED HOSTS variable in setting.py to your localhost.
 8. Switch the database to Django default database.
@@ -795,7 +798,7 @@ To allow you to access all functionality on the site locally, ensure you have cr
 
 ## Credits <a id="credits"></a>
 ### Content <a id="content"></a>
-- The content of products on this website are taken from different online pet shops and are collected by myself for the purpose of generating a database for this project. All the borrowed content on this website are for the educational purposes only.
+- The content of products on this website is taken from different online pet shops and is collected by myself for the purpose of generating a database for this project. All the borrowed content on this website is for educational purposes only.
 
 ### Media <a id="media"></a>
 - The animal images on the home page are from [Pinterest](https://nl.pinterest.com/).
@@ -803,9 +806,9 @@ To allow you to access all functionality on the site locally, ensure you have cr
 
 
 ### Code <a id="code"></a>
-- The core concept of stripe payment are directly coming from Boutique-ado project and Stripe documentaion.
+- The core functionality of stripe payment is directly coming from the Boutique-ado project and Stripe documentation.
 - The main functionalities and methods throughout the website are learned and/or borrowed from code institute tutorial videos.
-- The star rating of products are learned form [this tutorial](https://www.youtube.com/watch?v=YN2jW4Fp7tM).
+- The star rating of products is learned form [this tutorial](https://www.youtube.com/watch?v=YN2jW4Fp7tM).
 - Unit testing the python code is learned from [these tutorial series](https://www.youtube.com/playlist?list=PLbpAWbHbi5rMF2j5n6imm0enrSD9eQUaM).
 
 
@@ -819,4 +822,4 @@ To allow you to access all functionality on the site locally, ensure you have cr
 
 
 ## Disclaimer <a id="disc"></a>
-The content of this website is educational purposes only.
+The content of this website is for educational purposes only.

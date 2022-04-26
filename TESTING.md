@@ -11,8 +11,8 @@ The following validation services and linter were used to check the validity of 
 - [HTML Validation](https://validator.w3.org/)
 was used to validate all the HTML files.
   * **Important Note** on the pages with the jinja template, the W3c validator throws many errors in regards to the syntax and variable names inserted by the jinja template.
-  To get around this issue all the html files were validates by manually direct input of each file. The files were extracted from the 'view page source' on the browser.
-- All the files has been validated and all essential errors were fixed.
+  To get around this issue all the html files were validated by manually direct input of each file. The files were extracted from the 'view page source' on the browser.
+- All the files have been validated and all essential errors were fixed.
 
 
 ![CSS validation report](/readme-assets/img/css_validation.png)
@@ -29,7 +29,7 @@ For instance, since images across this project have all been downloaded from dif
 
 
 [Python extension for Visual Studio Code ](https://code.visualstudio.com/docs/languages/python)   was used to validate Python.
-[Flake8](https://flake8.pycqa.org/en/latest/)   was used to fix linting issue and to checke my code base against coding style PEP8.
+[Flake8](https://flake8.pycqa.org/en/latest/)   was used to fix the linting issue and to check my code base against coding style PEP8.
 * To check this you can run the following command in your terminal:
     ` python3 -m flake8 `
 
@@ -68,7 +68,8 @@ In the terminal enter the following command:
 | ---------- | --------- |
 | While pushing to the Github at the first stage of the project, the DATABASE credentials such as my database password and my Django secret key has been unintentionally pushed to my remote repository. | To fix this issue, I cleaned my settings.py and all its content from the previous commit histories using the 'BFG' repo-cleaner  |
 | Since the min-height of my main section across all templates is set by javascript calculating it based on the header and footer size, Once the navbar is collapsed on mobile and iPad devices the footer would jump up to the middle of the page. | As a quick fix for this issue, the footer is set fixed at the bottom of the screen on medium and down devices. This is not the perfect solution for this issue however as this issue was known at a late stage of the project it has been preferred to be temporarily fixed this way. |
-| When trying to add an item with an existing item_id in bag session with different color/size the new item would replace the previous item with the same item_id in the bag eventhough the increment quantity was defined to add the new item. | A f-string method was used to get around this issue and generate a uniqe value of the item for the bag session dictionary. This is caused by python dictionaries not excepting duplicated keys. The code is shown below before and after the solution. |
+| When trying to add an item with an existing item_id in a bag session with a different color/size the new item would replace the previous item with the same item_id in the bag even though the increment quantity was defined to add the new item. | An f-string method was used to get around this issue and generate a unique value of the item for the bag session dictionary. This is caused by python dictionaries not excepting duplicated keys. The code is shown below before and after the solution. |
+
 
 ### Before fixing the bug
 ```
@@ -110,9 +111,9 @@ if size and color:
 
 | Known Issues | Causes |
 | --------------- | --------------- |
-| When running flake8, some warnings in regards to line being too long have been disregarded in test.py files. | Since the values being asserted should be exactly the same with the same indentation levels these warnings have been disregarded. EXP: profiles/tests/test_forms.py:49:80: |
-| The site users (registered users) are supposed to be able to rate and leave a review only on the products they ordred an item from however, currently users are able to navigate to the product review page for all products if they know the proper URl. | This is caused by not filtering products that are going to be reviewed based on whether the user has ordered them. |
-| Some product on the site are available in different sizes and/or colors and as it should when the user selects a differnet color, the image of the product added to the shopping cart should match the selected color however this is not the case at the moment. | This is as a result of not having proper modeling for products and should be improved for real-life online stores. |
+| When running flake8, some warnings in regards to the line being too long have been disregarded in test.py files. | Since the values being asserted should be exactly the same with the same indentation levels these warnings have been disregarded. EXP: profiles/tests/test_forms.py:49:80: |
+| The site users (registered users) are supposed to be able to rate and leave a review only on the products they ordered an item from however, currently users are able to navigate to the product review page for all products if they know the proper URL. | This is caused by not filtering products that are going to be reviewed based on whether the user has ordered them. |
+| Some product on the site is available in different sizes and/or colors and as it should when the user selects a different color, the image of the product added to the shopping cart should match the selected color however this is not the case at the moment. | This is a result of not having proper modeling for products and should be improved for real-life online stores. |
 
 
 
@@ -134,7 +135,7 @@ if size and color:
     * Once on the shopping cart page, the quantity selector box enables users to adjust the number of items in the bag.
     * The 'Delete' link under the quantity selector on the page enables users to completely remove the item from their shopping cart.
 6. I would like to, enter my payment info safely.
-    * The checkout page, features a safe payement method provided from Stripe that enables users to securly proceed their payments.
+    * The checkout page, features a safe payment method provided by Stripe that enables users to securely proceed with their payments.
 7. I would like to, view an order confirmation after checkout.
     * After the payment has been succeeded, a toast message pops up on the window informing users that their order has been placed successfully and that they will receive a confirmation email.
     * Once the order is completed, the user will be navigated to the checkout success page where they will be provided with a summary of their order details. This page is accessible from the order links on their profile page as well.
@@ -182,11 +183,11 @@ if size and color:
       - From the product page on every product card.
       - From the Product deatils page under the product price.
   From the edit product page, the admin will be provided with a prefilled product form and is able to update any field as needed.
-3. I would like to remove an out of stuck product from the website.
+3. I would like to remove an out-of-stock product from the website.
     * The Delete product link is accessible from 2 different paths:
       - From the product page on every product card.
       - From the Product deatils page under the product price
-  Once the 'Delete' button is ckicked a deletion confirmation opens in a modal asking the user to confirm the process to avoid aby unindented deletion of products.
+  Once the 'Delete' button is clicked a deletion confirmation opens in a modal asking the user to confirm the process to avoid aby unindented deletion of products.
 4. I would like to keep track of the orders and be able to see the details of all orders.
     * The all order page is accessible from the Profile dropdown in the navbar and the admin can have an overview of all processed orders on this page.
 
@@ -218,7 +219,7 @@ if size and color:
 
 
 ### Products Page
-  * Hover over the product cards and confirm that the box-shadow style is applied when the cards are hovered over.
+  * Hover over the product cards and confirm that the box-shadow style is applied when the cards have hovered over.
   * click on different options of the sorting selector and confirm that it sorts the products as expected.
   * Click on the current category and subcategories shown on product cards and confirm that it filters the relevant category and subcategory properly.
   * Resize the page and confirm the expected layout on medium and small devices applied to the page.
@@ -227,38 +228,38 @@ if size and color:
 
 
 
+
 ### Product Detail Page
   * Click on the 'Keep shopping' button and confirm it navigates to the products page.
-  * Click the "Add" button with the heart icon and confirm the product is added to wishlist.
+  * Click the "Add" button with the heart icon and confirm the product is added to the wishlist.
   * Make sure when the product exists in the wishlist, the heart icon color is red and the "Add" text is changed to "Remove".
   * Click on the minus and plus quantity selector and confirm it works as expected and that the minimum value of it is set to 1.
-  * Add the product to the shopping cart and ensure the toast message appears on top right of the page for 5 seconds.
-  * Check the toast message containing the bag items and ensure it displayes the correct data.
+  * Add the product to the shopping cart and ensure the toast message appears on the top right of the page for 5 seconds.
+  * Check the toast message containing the bag items and ensure it displays the correct data.
   * Find a product with more than 1 image and confirm that the product images are displayed in a carousel.
-  * Find a product which is available in different sizes and colors and ensure that the selcted color and size is added to the bag.
+  * Find a product that is available in different sizes and colors and ensure that the selected color and size are added to the bag.
   * Repeat the last step and add the product with the same size and color value to the bag and ensure the quantity of the item is adjusted properly.
   * Select a different size and/or color of the same product and confirm that the new selected size and/or color is added to the shopping cart.
   * Click on the description accordion button and confirm that the description text displays.
-  * Find a product without description and ensure the description section is not visible.
-  * Click the review accordion button and ensure the prodct reviews are visible.
+  * Find a product without a description and ensure the description section is not visible.
+  * Click the review accordion button and ensure the product reviews are visible.
   * Find a product without any review and ensure the 'No Review' text appears in the section.
-  * Scroll down the page and confirm the similar producrts carousel is working as expected.
-  * Click on the next and previous careousel buttons and confirm they work properly.
+  * Scroll down the page and confirm the similar products carousel is working as expected.
+  * Click on the next and previous carousel buttons and confirm they work properly.
   * Click on a product card in the similar products carousel and confirm it navigates to the relevant product detail page in a new tab.
   * Find a single product in a subcategory and confirm that the similar product section is not visible.
   * Find a product from a subcategory with less than 4 products and confirm that the similar products are displayed in a single row containing the product cards and not in a carousel anymore.
   * Resize the window and ensure the responsive style is added to the page.
   * log in to the site with an admin account and ensure that the 'Delete' and 'Edit' links are visible on the page for the admin user and ensure the links work as expected.
-
 ### Profile Page
   * Log in to the site and confirm the "Profile" link is visible in the navbar.
   * Confirm the data added on the profile info are correct.
-  * Click on the "Update Profile" button and ensure that it opens a modal containing profile update form.
+  * Click on the "Update Profile" button and ensure that it opens a modal containing the profile update form.
   * Confirm that the update profile form is prefilled with the correct data.
-  * Update a field on the from and click submit to ensure the data is updated as expected.
-  * Confirm all the orders from the user are listes on the order history box.
+  * Update a field on the form and click submit to ensure the data is updated as expected.
+  * Confirm all the orders from the user are listed on the order history box.
   * Click on the order number and ensure it navigates to the checkout success page with the order summary info.
-  * Confirm that once navigated to checkout success page, a toast message appears on the screen informing that this is a past confirmation.
+  * Confirm that once navigated to the checkout success page, a toast message appears on the screen informing that this is a past confirmation.
   * Ensure that there is a "Add a Review" link for each product in the order history table.
   * Click on the "Add a Review" link and confirm it navigates to the product review page for the relevant product.
   * Resize the window and ensure the responsive style applies to the layout of the page.
@@ -332,10 +333,10 @@ if size and color:
   * Ensure that after following the link in the email you can confirm your email address and a success toast message appears on the screen informing you that you are registered successfully.
 
 ### Login Page
-  * This page is accessible from the login link in Profile dropdown in the navbar only when loged out.
-  * Enter an existing username and password and confirm you are successfully loged in.
-  * Click on the "Forgot password" link and confirm it navigates to a reset password page where you can recover password.
-  * Click on "Home" button and ensure it navigates to the home page.
+  * This page is accessible from the login link in the Profile dropdown in the navbar only when logged out.
+  * Enter an existing username and password and confirm you are successfully logged in.
+  * Click on the "Forgot password" link and confirm it navigates to a reset password page where you can recover the password.
+  * Click on the "Home" button and ensure it navigates to the home page.
   * Resize the window and confirm that the background image of the page is not visible on mobile devices for the purpose of maintaining the proper contrast.
 
 
@@ -348,34 +349,35 @@ if size and color:
   * Click on the "Cancel" button and confirm it ignores the logout and redirects to the home page.
 
 ### Add Product Page
-  * Log in to the site with an admin account and confirm the "Add a Product" is visible from the profile dropdown link in the navbar.
+  * Login to the site with an admin account and confirm the "Add a Product" is visible from the profile dropdown link in the navbar.
   * Click on the "Add a Product" link and confirm it navigates to the product management page with a form to add a product.
   * Fill out the form properly and confirm it redirects to the product detail page with the correct product data.
   * Leave off a required field on the form and try to submit the form, confirm the form won't be submitted and that the window location jumps to the field causing the error.
   * Add a product without an image and ensure the default no-image image is set to the product.
-  * Add a product with multiple images and confirm that all imgaes of the product are displayed in a carousel in product deatil page.
+  * Add a product with multiple images and confirm that all images of the product are displayed in a carousel on the product detail page.
   * Attempt to get this page by manually adding the URL while the user is not an admin and make sure an error toast message pops on the screen informing the user that this action is only allowed for the store owners.
+
 
 
   ### Edit Product Page
   * Confirm the form is prefilled with the product data that is going to be edited.
   * Modify a field on the form and confirm it navigates to the product detail page with the updated data.
-  * Confirm that once landed on the page an info toast message pops on the screen informing the user which product is being edited.
+  * Confirm that once landed on the page and info toast message pops on the screen informing the user which product is being edited.
   * Attempt to get this page by manually adding the URL while the user is not an admin and make sure an error toast message pops on the screen informing the user that this action is only allowed for the store owners.
 
 
  ### Delete a Product
   * Click on the "Delete" button and confirm a confirmation modal opens to the screen asking the user if they are sure they want to delete the product.
-  * Confirm the deletion by clicking "Yes" button and ensure the product has been removed properly.
+  * Confirm the deletion by clicking the "Yes" button and ensure the product has been removed properly.
 
 
 ### All Orders Page
-  * Confirm this page is accessible only for admin account.
+  * Confirm this page is accessible only for the admin accounts.
   * Click on each accordion button and ensure it displays the order details.
 
 
 ### 404 page
-  * Deliberately Enter a non-existent URL into the url box and ensure it renders the custom 404 page letting the user know the page has not been found.
+  * Deliberately Enter a non-existent URL into the URL box and ensure it renders the custom 404 page letting the user know the page has not been found.
   * Click on the "Let's go back home" button and confirms it redirects to the home page.
   * Resize the window and confirm that the background image of the page is not visible on mobile devices for the purpose of maintaining the proper contrast.
 
@@ -397,12 +399,10 @@ if size and color:
 - Click on the button and make sure that the animation effect works properly and the page scrolls to the top smoothly.
 
 
-### Footer
-
 ### Custom 404 Page
 - Try to change the pathname in the URL manually to a random name and make sure that the custom 404 page appears on the screen informing you that the page is not found.
 - Click on the "Let's Go Home" button and make sure it returns you to the home page.
-- **Note** that this is something that you can examine only on production and not on your development environment when the debuuger is set to True.
+- **Note** that this is something that you can examine only on production and not in your development environment when the debugger is set to True.
 
 ## Further Testing
 I have tested the live website on the following browsers and devices with [BrowserStack](https://live.browserstack.com/)
@@ -420,15 +420,15 @@ I have tested the live website on the following browsers and devices with [Brows
   - iPad (Chrome Developer Tools, On physical devices)
   - iPad Pro (Chrome Developer Tools, BrowserStack)
   - iPad mini (Chrome Developer Tools, BrowserStack)
-    (The responsive design is not working as expected on Air iPad series)
+    (The responsive design is not working as expected on iPad mini series)
   - Galaxy Note 3 (Chrome Developer Tools, BrowserStack)
   - Galaxy S III (Chrome Developer Tools, BrowserStack)
   - Macbook
   - iPad Air
-    (The responsive design is not working as expected on Air iPad series)
 
 
 
-- All the links and buttons on the website were checked repeatedly.
-- The website has been manually tested and evaluated by my mentor "Richard Wells" and I was provided with valuable feedback and ideas.
-- Friends and acquaintances were asked to review the website, its content, and the user experience overall.
+
+All the links and buttons on the website were checked repeatedly.
+The website has been manually tested and evaluated by my mentor "Richard Wells" and I was provided with valuable feedback and ideas.
+Friends and acquaintances were asked to review the website, its content, and the user experience overall.
