@@ -4,8 +4,46 @@
 [Main README.md file](README.md)
 
 
-## Automated Testing
-### Validation Services
+
+## Table of Contents
+1. [Automated Testing](#auto-test)
+    * [Validation Services](#val-services)
+    * [Python Testing](#python-test)
+        * [How to run Python tests](#python-test-run)
+        * [Coverage](#coverage)
+2. [Bugs & Solutions](#bugs-solutions)
+3. [Known Issues](#known-issues)
+4. [User Stories Testing](#user-story-testing)
+5. [Logical/Manual Testing](#manual-testing)
+    - [Navigation Bar](#nav-test)
+    - [Home](#home)
+    - [Products Page](#products)
+    - [Product Detail Page](#product-detail-test)
+    - [Profile Page](#profile-test)
+    - [Product Review](#product-review-test)
+    - [Wishlist](#wishlist-test)
+    - [Shopping Cart](#bag-test)
+    - [Checkout Page](#checkout-test)
+    - [Order Confirmation](#order-conf-test)
+    - [Registration Page](#register-test)
+    - [Login Page](#login-test)
+    - [Logout Page](#logout-test)
+    - [Add Product Page](#add-product)
+    - [Edit Product Page](#edit-product)
+    - [Delete a Product](#delete-product)
+    - [All Orders Page](#all-orders)
+    - [404 page](#404-test)
+    - [Back To Top Button](#back-top-btn-test)
+    - [Footer](#footer-test)
+3. [Further Testing](#further-testing)
+    - [Devices](#devices)
+
+
+
+
+
+## Automated Testing <a id="auto-test"></a>
+### Validation Services  <a id="val-services"></a>
 The following validation services and linter were used to check the validity of the website code.
 
 - [HTML Validation](https://validator.w3.org/)
@@ -36,8 +74,8 @@ For instance, since images across this project have all been downloaded from dif
 
 
 
-### Python Testing
-#### How to run Python tests
+### Python Testing   <a id="python-test"></a>
+#### How to run Python tests  <a id="python-test-run"></a>
 To run the existing Python tests:
     1. After running the project locally in your IDE run the following command:
     ` python3 manage.py test `
@@ -45,7 +83,7 @@ To run the existing Python tests:
     ` python3 manage.py test <app name here> `
     3. The test results will be shown within the terminal.
 
-### Covarage
+### Covarage   <a id="coverage"></a>
 [Coverage.py](https://coverage.readthedocs.io/en/6.3.2/) was used to provide feedback during testing to check that enough of my code had been tested.
 How to run coverage
 
@@ -64,7 +102,7 @@ In the terminal enter the following command:
 
 
 
-| Bugs | Solutions |
+| Bugs | Solutions |  <a id="bugs-solutions"></a>
 | ---------- | --------- |
 | While pushing to the Github at the first stage of the project, the DATABASE credentials such as my database password and my Django secret key has been unintentionally pushed to my remote repository. | To fix this issue, I cleaned my settings.py and all its content from the previous commit histories using the 'BFG' repo-cleaner  |
 | Since the min-height of my main section across all templates is set by javascript calculating it based on the header and footer size, Once the navbar is collapsed on mobile and iPad devices the footer would jump up to the middle of the page. | As a quick fix for this issue, the footer is set fixed at the bottom of the screen on medium and down devices. This is not the perfect solution for this issue however as this issue was known at a late stage of the project it has been preferred to be temporarily fixed this way. |
@@ -109,7 +147,7 @@ if size and color:
 
 
 
-| Known Issues | Causes |
+| Known Issues | Causes |   <a id="known-issues"></a>
 | --------------- | --------------- |
 | When running flake8, some warnings in regards to the line being too long have been disregarded in test.py files. | Since the values being asserted should be exactly the same with the same indentation levels these warnings have been disregarded. EXP: profiles/tests/test_forms.py:49:80: |
 | The site users (registered users) are supposed to be able to rate and leave a review only on the products they ordered an item from however, currently users are able to navigate to the product review page for all products if they know the proper URL. | This is caused by not filtering products that are going to be reviewed based on whether the user has ordered them. |
@@ -117,7 +155,7 @@ if size and color:
 
 
 
-## User stories testing:
+## User stories testing: <a id="user-story-testing"></a>
 
 ### Testing client stories from UX section of [README.md](README.md)
 
@@ -193,9 +231,9 @@ if size and color:
 
 
 
-## Manual (logical) testing of all elements and functionality on every page.
+## Manual (logical) testing of all elements and functionality on every page.   <a id="manual-testing"></a>
 
-###  Navigation Bar
+###  Navigation Bar  <a id="nav-test"></a>
   * Click each link in the navbar to confirm that it leads to the correct page.
   * Confirm that when logged out the options "Register" and "Log in" are visible and that "Account" and "Log out" are not.
   * log in to the site, confirm that options "Account" and "Log out" are visible and that "Register" and "Log in" are not.
@@ -208,7 +246,7 @@ if size and color:
   * Make a search query using the search box and ensure it displays the expected result as well as the number of results.
 
 
-### Home page
+### Home page  <a id="home"></a>
   * Reload the page and ensure the animation runs as expected.
   * Click on each animal images and meke sure it navigates to the products page with filtering the products based on the relevant category.
   * Click on the 'Shop All' button and ensure it navigates to the product page displaying all products.
@@ -218,7 +256,7 @@ if size and color:
 
 
 
-### Products Page
+### Products Page  <a id="products"></a>
   * Hover over the product cards and confirm that the box-shadow style is applied when the cards have hovered over.
   * click on different options of the sorting selector and confirm that it sorts the products as expected.
   * Click on the current category and subcategories shown on product cards and confirm that it filters the relevant category and subcategory properly.
@@ -229,7 +267,7 @@ if size and color:
 
 
 
-### Product Detail Page
+### Product Detail Page  <a id="product-detail-test"></a>
   * Click on the 'Keep shopping' button and confirm it navigates to the products page.
   * Click the "Add" button with the heart icon and confirm the product is added to the wishlist.
   * Make sure when the product exists in the wishlist, the heart icon color is red and the "Add" text is changed to "Remove".
@@ -251,7 +289,7 @@ if size and color:
   * Find a product from a subcategory with less than 4 products and confirm that the similar products are displayed in a single row containing the product cards and not in a carousel anymore.
   * Resize the window and ensure the responsive style is added to the page.
   * log in to the site with an admin account and ensure that the 'Delete' and 'Edit' links are visible on the page for the admin user and ensure the links work as expected.
-### Profile Page
+### Profile Page  <a id="prfile-test"></a>
   * Log in to the site and confirm the "Profile" link is visible in the navbar.
   * Confirm the data added on the profile info are correct.
   * Click on the "Update Profile" button and ensure that it opens a modal containing the profile update form.
@@ -265,7 +303,7 @@ if size and color:
   * Resize the window and ensure the responsive style applies to the layout of the page.
 
 
-### Product Review Page
+### Product Review Page  <a id="product-review-test"></a>
   * Click on the "Back to Profile" button and confirm it navigates to the profile page.
   * Confirm that the product detail of the product going to be rated is properly displayed next to the form.
   * Check that the default star rating is applied and is set to 1.
@@ -277,7 +315,7 @@ if size and color:
   * Try to click on the same rated product and confirm that the rating form is not visible anymore and instead the user is provided with their previous review on the product.
 
 
-### Wish list
+### Wish list  <a id="wishlist-test"></a>
   * Add a few items to the wish list and navigates to the wish list.
   * Confirm that the added products are displayed in separate rows containing the product name, SKU, and price.
   * Add an item with available different sizes and/or colors and confirm that the available sizes and colors are displayed on the product row.
@@ -286,7 +324,7 @@ if size and color:
   * Empty the wish list and confirm the wish list heart icon turn black and displays (0) number.
   * Resize the window and ensure the responsive style applies to the layout of the page.
 
-### Shopping cart
+### Shopping cart   <a id="bag-test"></a>
   * Click on the "Continue Shopping" button and confirm it navigates to the products page.
   * Add a few different items to the bag and confirm all added items are displayed in separate rows with the correct size, color, and quantity values.
   * Adjust the quantity of an item with the quantity selector on each row, click update and confirm the quantity has been updated as expected.
@@ -301,7 +339,7 @@ if size and color:
 
 
 
-### Checkout Page
+### Checkout Page  <a id="checkout-test"></a>
   * Confirm all the added items are listed on the page with the expected size, color, and quantity values.
   * Login to the site and make sure your username and email address are visible on a small box above the payment form and, the payment form is prefilled with the profile info.
   * Log out and make sure the profile infobox is not visible anymore and that the payment form is empty.
@@ -314,7 +352,7 @@ if size and color:
   * Resize the window and ensure the responsive style applies to the layout of the page.
   * click on the "Adjust Bag" button and ensure it redirects to the shopping cart.
 
- ### Order Confirmation
+ ### Order Confirmation  <a id="order-conf-test"></a>
   * confirm being navigated to the order confirmation/checkout success page after placing an order and completing the payment.
   * If navigating from the profile page, ensure a toast message appears on the screen informing that this is a past order confirmation.
   * Confirm that the order confirmation table includes all products on the order.
@@ -325,14 +363,14 @@ if size and color:
 
 
 
-### Registration Page
+### Registration Page  <a id="register-test"></a>
   * Confirm this page is accessible from the link in the Profile dropdown in the navbar.
   * Resize the window and confirm that the background image of the page is not visible on mobile devices for the purpose of maintaining the proper contrast.
   * Fill out the registration form and make a new account on the page.
   * Ensure you are asked to verify your email address and that an email asking you to confirm your email address has been sent to your email address.
   * Ensure that after following the link in the email you can confirm your email address and a success toast message appears on the screen informing you that you are registered successfully.
 
-### Login Page
+### Login Page  <a id="login-test"></a>
   * This page is accessible from the login link in the Profile dropdown in the navbar only when logged out.
   * Enter an existing username and password and confirm you are successfully logged in.
   * Click on the "Forgot password" link and confirm it navigates to a reset password page where you can recover the password.
@@ -341,14 +379,14 @@ if size and color:
 
 
 
-### Logout Page
+### Logout Page  <a id="logout-test"></a>
   * Confirm this page is accessible from the profile dropdown link only if the user is logged in.
   * Resize the window and confirm that the background image of the page is not visible on mobile devices for the purpose of maintaining the proper contrast.
   * Click on the checkout link and ensure it navigates to the logout confirmation page.
   * Click on the "Sign Out" button and ensure it successfully logs the user out and redirects to the home page.
   * Click on the "Cancel" button and confirm it ignores the logout and redirects to the home page.
 
-### Add Product Page
+### Add Product Page  <a id="add-product"></a>
   * Login to the site with an admin account and confirm the "Add a Product" is visible from the profile dropdown link in the navbar.
   * Click on the "Add a Product" link and confirm it navigates to the product management page with a form to add a product.
   * Fill out the form properly and confirm it redirects to the product detail page with the correct product data.
@@ -359,52 +397,40 @@ if size and color:
 
 
 
-  ### Edit Product Page
+  ### Edit Product Page  <a id="edit-product"></a>
   * Confirm the form is prefilled with the product data that is going to be edited.
   * Modify a field on the form and confirm it navigates to the product detail page with the updated data.
   * Confirm that once landed on the page and info toast message pops on the screen informing the user which product is being edited.
   * Attempt to get this page by manually adding the URL while the user is not an admin and make sure an error toast message pops on the screen informing the user that this action is only allowed for the store owners.
 
 
- ### Delete a Product
+ ### Delete a Product  <a id="delete-product"></a>
   * Click on the "Delete" button and confirm a confirmation modal opens to the screen asking the user if they are sure they want to delete the product.
   * Confirm the deletion by clicking the "Yes" button and ensure the product has been removed properly.
 
 
-### All Orders Page
+### All Orders Page  <a id="all-orders"></a>
   * Confirm this page is accessible only for the admin accounts.
   * Click on each accordion button and ensure it displays the order details.
 
 
-### 404 page
+### 404 page  <a id="404-test"></a>
   * Deliberately Enter a non-existent URL into the URL box and ensure it renders the custom 404 page letting the user know the page has not been found.
   * Click on the "Let's go back home" button and confirms it redirects to the home page.
   * Resize the window and confirm that the background image of the page is not visible on mobile devices for the purpose of maintaining the proper contrast.
+**Note** This is something that you can examine only on production and not in your development environment when the debugger is set to True.
 
-
-### Back To Top Button
+### Back To Top Button   <a id="back-top-btn-test"></a>
   * Confirm the button is invisible once the page is at the top and not scrolled to the bottom.
   * Click on the button and make sure that the animation effect works properly and the page scrolls to the top smoothly.
 
 
-### Footer
+### Footer  <a id="footer-test"></a>
   * Confirm the footer position is fixed at the bottom of the page on desktop and larger screens and sticky bottom on medium and small devices.
 
 
 
-###  Sticky back-to-top button
-- Verify that the button shows up in the right position on every page.
-- Click on the button to confirm that the button works.
-- Open the page in the "Developer Tool", choose a mobile device and ensure that the size and spacing of the button change properly.
-- Click on the button and make sure that the animation effect works properly and the page scrolls to the top smoothly.
-
-
-### Custom 404 Page
-- Try to change the pathname in the URL manually to a random name and make sure that the custom 404 page appears on the screen informing you that the page is not found.
-- Click on the "Let's Go Home" button and make sure it returns you to the home page.
-- **Note** that this is something that you can examine only on production and not in your development environment when the debugger is set to True.
-
-## Further Testing
+## Further Testing  <a id="further-testing"></a>
 I have tested the live website on the following browsers and devices with [BrowserStack](https://live.browserstack.com/)
 
 - Google Chrome
@@ -414,7 +440,7 @@ I have tested the live website on the following browsers and devices with [Brows
 - Edge
 - Opera
 
-### Devices
+### Devices  <a id="devices"></a>
   - iPhone X/12/12 pro (Chrome Developer Tools, On physical devices)
   - Galaxy S21 (Chrome Developer Tools, On physical device)
   - iPad (Chrome Developer Tools, On physical devices)

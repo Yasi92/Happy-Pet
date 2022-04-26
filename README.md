@@ -12,30 +12,40 @@ This is a website for an online pet shop. On this website, users can purchase an
     * [Goals](#goals)
     * [User Stories](#user-stories)
     * [Wireframes](#wireframes)
-    * [Flowchart](#flowchart)
 2. [Features](#features)
     * [Design In Depth](#des-in-depth)
     * [Navigation Bar](#nav)
     * [Home Page](#home)
-    * []()
-    * []()
-    * []()
-    * []()
+    * [Products Page](#products)
+    * [Product Cards](#product-card)
+    * [Product Detail](#product-detail)
+    * [Profile](#profile)
+    * [Product Review](#product-review)
+    * [Wishlist](#wishlist)
+    * [Shopping Cart](#bag)
+    * [Checkout Page](#checkout)
+    * [Order Confirmation](#order-confirmation)
+    * [Registeration Page](#register)
+    * [Login Page](#login)
+    * [Logout Page](#logout)
+    * [Add Product Page](#add-product)
+    * [Edit product Page](#edit-product)
+    * [All Orders](#all-orders)
+    * [Back To Top Button](#back-btn)
     * [Custom 404 Page](#404)
-    * [Custom 500 PAge](#500)
     * [Footer](#footer)
     * [Yet to be implemented](#yet-to-be-implemented)
 3. [Data Architecture](#data-info)
     * [Database Choice](#db)
-    * [Examples of database collections in JSON format](#json-format)
+    * [Database Models](#db-models)
 4. [Technologies](#tech)
 5. [Languages](#langs)
 6. [IDE](#ide)
 7. [Libraries and CDNs](#libs)
 8. [Testing](TESTING.md)
 9. [Deployement](#deploy)
-    * [Heroku Deployement](#heroku)
     * [Local Clone](#local-run)
+    * [Heroku Deployement](#heroku)
 10. [Credits](#credits)
     * [Content](#content)
     * [Media](#media)
@@ -178,7 +188,7 @@ All pages on this website are responsive to desktop, iPad and, mobile screens.
 
 
 ![Products page](/readme-assets/img/products.png)
-*   ### Products Page
+*   ### Products Page  <a id="products"></a>
     * Products page displays products in card groups based on selected category and/or subcategory.
     * The default page displays all products with the total number of products on the website.
     * A sort selector bar is on the right side of the products to sort products based on different sorting methods.
@@ -197,7 +207,7 @@ All pages on this website are responsive to desktop, iPad and, mobile screens.
 
 
 
-![Product card](/readme-assets/img/product-card.png)
+![Product card](/readme-assets/img/product-card.png)  <a id="product-card"></a>
 
 *   ### Product Cards
     * Product cards contain a summary of a product in different sections.
@@ -208,7 +218,7 @@ All pages on this website are responsive to desktop, iPad and, mobile screens.
     * If users intents to delete an item, a modal will open to the screen for the user to confirm the deletion of the product for avoiding unintentional deletion of products.
 
 
-![Product Detail](/readme-assets/img/product_detai_responsive.png)
+![Product Detail](/readme-assets/img/product_detai_responsive.png)    <a id="product-detail"></a>
 
 *   ### Product Detail Page
     * Product detail page has different sections:
@@ -244,7 +254,8 @@ All pages on this website are responsive to desktop, iPad and, mobile screens.
 
 ![Profile Page](/readme-assets/img/profile.png)
 
-*   ### Profile Page
+*   ### Profile Page  <a id="profile"></a>
+
     * Profile page is accessible from the 'My account' link on the navbar only if the user has signed in.
     * The layout of the profile page is different on mobile devices in the way that the 2 sections are stacked on top of each other.
     * Profile page consists of 2 different sections:
@@ -264,7 +275,8 @@ All pages on this website are responsive to desktop, iPad and, mobile screens.
 
 ![Product Review Page](/readme-assets/img/product-review.png)
 
-*   ### Product Review Page
+*   ### Product Review Page  <a id="product-review"></a>
+
     * Product review page is accessible from the embedded links from the order history table on the profile page.
     * The star rating is provided for users to easily rate a product.
     * The content of the review is an optional field to enable users to share their experiences in detail.
@@ -274,7 +286,7 @@ All pages on this website are responsive to desktop, iPad and, mobile screens.
 
 
 
-![Wish list](/readme-assets/img/wishlist.png)
+![Wish list](/readme-assets/img/wishlist.png)   <a id="wishlist"></a>
 
 *   ### Wish list
     * On the wish list page, favorite products are listed in cards.
@@ -286,7 +298,7 @@ All pages on this website are responsive to desktop, iPad and, mobile screens.
 
 
 
-![Shopping cart](/readme-assets/img/bag.png)
+![Shopping cart](/readme-assets/img/bag.png)  <a id="bag"></a>
 
 *   ### Shopping cart
     * All the products added to the shopping cart are displayed in separated rows.
@@ -302,7 +314,7 @@ All pages on this website are responsive to desktop, iPad and, mobile screens.
     * A 'checkout' button is placed beside the 'continue shopping' button that navigated users to the checkout page.
 
 
-![checkout page](/readme-assets/img/checkout.png)
+![checkout page](/readme-assets/img/checkout.png)  <a id="checkout"></a>
 
 *   ### Checkout Page
     * The checkout page consists of 2 different sections:
@@ -327,7 +339,7 @@ All pages on this website are responsive to desktop, iPad and, mobile screens.
 
 
 
-![Order Confirmation](/readme-assets/img/order-conf.png)
+![Order Confirmation](/readme-assets/img/order-conf.png)  <a id="order-confirmation"></a>
 
 *   ### Order Confirmation
     * The order confirmation page contains a detailed overview of the order such as order info, product name, selected size/color, the quantity of each item, delivery address, and an overview of billing info.
@@ -337,14 +349,14 @@ All pages on this website are responsive to desktop, iPad and, mobile screens.
 
 ![Registeration Page](/readme-assets/img/sign-up.png)
 
-*   ### Registration Page
+*   ### Registration Page  <a id="register"></a>
     * A user who has not registered on the website can create a new account using the register page. The page on this form includes a username (which must be unique), email address, password, and password confirmation fields.
 
 
 
 ![Login Page](/readme-assets/img/sign-in.png)
 
-*   ### Login Page
+*   ### Login Page  <a id="login"></a>
     * A user who has already registered on the website can log in through this page and have access to their profile page.
     * Validation for this form is handled in the back end and relevant feedback is sent to the user when they sign in.
     * If the user has forgotten their password, they can recover their password by clicking on the 'Forgot password' link, and then they will be navigated to a page where they can set a new password for their account.
@@ -354,14 +366,14 @@ All pages on this website are responsive to desktop, iPad and, mobile screens.
 
 ![Log out Page](/readme-assets/img/sign-out-page.png)
 
-*   ### Logout Page
+*   ### Logout Page  <a id="logout"></a>
     * Any user who clicks on "Log out" from the navigation bar is automatically logged out and their session data is cleared. They are taken to a page that informs them that they have been logged out and provides a link to log back in if they wish.
 
 
 
 ![Add Product Page](/readme-assets/img/add_product.png)
 
-*   ### Add Product Page
+*   ### Add Product Page  <a id="add-product"></a>
     * This page is only accessible for store owners and staff members to enable them to add a product to the website.
     * After adding the new product, the user will be directed to the product detail page.
 
@@ -369,7 +381,7 @@ All pages on this website are responsive to desktop, iPad and, mobile screens.
 
 ![Edit Product Page](/readme-assets/img/edit_product.png)
 
-*   ### Edit Product Page
+*   ### Edit Product Page  <a id="edit-product"></a>
     * This page is only accessible for store owners and staff members to enable them to add a product to the website.
     * After clicking the intended product, users will be navigated to the page with a prefilled product form where users are able to edit the product as needed.
 
@@ -377,7 +389,7 @@ All pages on this website are responsive to desktop, iPad and, mobile screens.
 
 ![All Orders](/readme-assets/img/all_orders.png)
 
-*   ### All Orders Page
+*   ### All Orders Page   <a id="all-orders"></a>
     * This page is only accessible for store owners and staff members to enable them to have an overview of all orders.
     * To design this page, accordion components are used to contain each order's overview and a quick summary.
 
@@ -422,7 +434,7 @@ On deployment, the SQL database provided by Heroku is a PostgreSQL database.
 The database is designed by myself from the scratch using the handy visual database design tool 'MySQL Workbench'.
 
 
-### Data Models <a id="db"></a>
+### Data Models <a id="db-models"></a>
 - User
     -  The User model utilized for this project is the standard one provided by Django.contrib.auth.models
 
