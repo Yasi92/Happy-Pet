@@ -177,7 +177,7 @@ All pages on this website are responsive to desktop, iPad and, mobile screens.
 
 ![Home page](/readme-assets/img/home.png)
 
-*   ### Home page provides: <a id="home"></a>
+*   ### Home page <a id="home"></a>
     * On desktop and larger screens the animal images have an animation effect for entering the screen.
     * Each of the animal images is a link to the relevant category of products and filters the products accordingly.
     * The 'Shop All' button navigates to the products page and displays all products of all categories.
